@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <link href="/static/store/store.css" rel="stylesheet">
+    <link href="../../static/store/store.css" rel="stylesheet">
  <div class="row">
     <div class="col-md-3 ">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm  position-static">
@@ -58,15 +58,74 @@
    <div class="col-md-9">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-800 position-static">
         <div class="col p-1 d-flex flex-column position-static">
+            <div class="row">
+                       <div class="col-md-3 mt-lg-5">
+               <img width="100%" src="../../static/store/photo.jpg" alt="My photo">
+           </div>
 
-            <h4 class="font-italic">Username: {{user.username}}</h4>
+        <div class="col-md-9">
 
+               <div class="card-body">
+                  <table class="table">
+    <tbody>
+        <tr>
+          <th width="15%" style="font-family: Playfair Display">Username</th>
+            <td> <p class="card-text" style="color: #ff9c07"  >{{user.username}}</p></td>
+
+        </tr>
+
+        <tr>
+          <th width="20%" style="font-family: Playfair Display">Email</th>
+            <td style="color: #5a6268; font-family: 'Sitka Small'">{{user.email}}</td>
+
+        </tr>
+      <tr>
+          <th width="15%" style="font-family: Playfair Display">Phone</th>
+            <td style="color: #5a6268; font-family: 'Sitka Small' ">{{user.phone}}</td>
+
+        </tr>
+
+     <tr>
+          <th width="15%" style="font-family: Playfair Display">Address</th>
+            <td style="color: #5a6268; font-family: 'Sitka Small'">{{user.address}}</td>
+
+        </tr>
+
+     <tr>
+          <th width={{user.city}}"15%" style="font-family: Playfair Display">City</th>
+            <td style="color: #5a6268; font-family: 'Sitka Small'"> {{user.city}}
+        </tr>
+
+    <tr>
+          <th width={{user.city}}"15%" style="font-family: Playfair Display">State</th>
+            <td style="color: #5a6268; font-family: 'Sitka Small'"> {{user.state}}
+        </tr>
+
+         <tr>
+          <th width={{user.city}}"15%" style="font-family: Playfair Display">Zip Code</th>
+            <td style="color: #5a6268; font-family: 'Sitka Small'"> {{user.zip_code}}
+        </tr>
+
+
+    </tbody>
+
+</table>
+
+                   <div align="center">
+
+                  <button type="button" class="btn btn-lg btn-outline-success ">Edit</button>
+
+                </div>
+                </div>
+                   </div>
+            </div>
         </div>
   </div>
 
    </div>
 
       </div>
+
 
 
 {% endblock %}
