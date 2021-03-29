@@ -3,27 +3,11 @@
 <html>
 <head>
   <title>{% block title %}{% endblock %}</title>
-  <link href="{% static 'account/base.css' %}" rel="stylesheet">
+  <link href="/static/account/base.css" rel="stylesheet">
 </head>
 <body>
   <div id="header">
     <span class="logo">Logo</span>
-
-
-
-        {% if request.user.is_authenticated %}
-      <ul class="menu">
-        <li {% if section == 'mainpage' %} class="selected" {% endif %}>
-          <a href="#">Mainpage</a>
-        </li>
-        <li {% if section == 'images' %} class="selected" {% endif %}>
-          <a href="#">Images</a>
-        </li>
-        <li {% if section == 'people' %} class="selected" {% endif %}>
-          <a href="#">People</a>
-        </li>
-      </ul>
-    {% endif %}
 
     <span class="user">
       {% if request.user.is_authenticated %}
