@@ -2,16 +2,19 @@
 
 
 .blog-header-logo {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-  font-size: 2.25rem;
+  font-family: Pristina,"Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 2.5rem;
+  font-weight: bolder;
 
 }
 
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;
-  font-family: "Lucida Handwriting", serif;
-  font-size: 20px;
+  font-family: "Bookman Old Style", serif;
+  font-weight: bolder;
+  font-size: 35px;
+  font-style: oblique;
 }
 
 /* Declare heights because of positioning of img element */
@@ -115,11 +118,214 @@ h1, h2, h3, h4, h5, h6 {
  */
 .blog-footer {
   padding: 2.5rem 0;
-  color: #999;
+  color: #ffffff;
   text-align: center;
-  background-color: #f9f9f9;
+      background: url("../../static/store/nav2.jpg") bottom;
+    background-size: 100%;
+opacity: 60%;
   border-top: .05rem solid #e5e5e5;
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+     .bd-placeholder-img {
+        font-size: 1.120rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .nav-scroller{
+          background: #e6faf5;
+          font-family:"Sitka Banner";
+          font-weight: lighter;
+          font-size: 1.15rem;
+
+      }
+
+
+     .blog-header{
+         margin-top: 50px;
+
+     }
+
+   .btn-outline-success{
+       font-family: "Sitka Display";
+       font-size: 10pt;
+
+
+   }
+
+   .list-unstyled{
+       font-family: Corbel;
+       font-size: 18px ;
+       font-weight: lighter;
+   }
+
+   .card-text{
+      font-family: Corbel;
+     color: #5a6268;
+   }
+
+   * {
+    box-sizing: border-box;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+body {
+    height: 100%;
+    width: 100%;
+    margin-top: 100px;
+}
+header {
+
+    width: 100%;
+    height: 100px;
+    position: relative;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.nav_wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    z-index: 5000;
+
+}
+nav {
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+
+}
+nav ul {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: green;
+    margin: 0;
+    padding: 0 20px;
+    list-style: none;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+nav a{
+    display: block;
+    padding: 10px;
+    color: #ffffff;
+    text-decoration: none;
+}
+.menu_toggle {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    z-index: 2000;
+}
+.menu_toggle .fa {
+    font-size: 20px;
+    cursor: pointer;
+}
+.top ul {
+    background: url("../../static/store/nav2.jpg") center;
+    background-size: 100%;
+    -webkit-transform-origin: 50% 50% -50px;
+    -ms-transform-origin: 50% 50% -50px;
+    transform-origin: 50% 50% -50px;
+    -webkit-transform: rotateX(90deg) translateZ(0);
+    transform: rotateX(90deg) translateZ(0);
+    opacity: 75%;
+}
+.sub ul {
+    background: url("../../static/store/nav2.jpg") bottom;
+
+    -webkit-transform-origin: 50% 50% -50px;
+    -ms-transform-origin: 50% 50% -50px;
+    transform-origin: 50% 50% -50px;
+    -webkit-transform: rotateY(0deg) translateZ(0);
+    transform: rotateY(0deg) translateZ(0);
+     opacity: 75%;
+}
+.nav_wrap {
+     font-family: "Rockwell Nova Light";
+    -webkit-transform-origin: 50% 50% -50px;
+    -ms-transform-origin: 50% 50% -50px;
+    transform-origin: 50% 50% -50px;
+    -webkit-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+}
+.menu_toggle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+    z-index: 6000;
+}
+body.off_top .nav_wrap {
+
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+}
+body.off_top .menu_toggle {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+}
+body.sub_is_visible .nav_wrap {
+    -webkit-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+}
+ #logo{
+     margin-bottom: 10px;
+ }
+
+ .blog-header-logo{
+     color: #bbe4f1;
+ }
