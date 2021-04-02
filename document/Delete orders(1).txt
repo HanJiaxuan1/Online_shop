@@ -1,0 +1,30 @@
+title Delete items
+actor staff
+control website
+entity system
+entity selected：order
+
+staff->website:selectorder
+activate website
+
+website->system:getDetails
+website-->staff:
+deactivate website
+
+staff->website:cancelSelected
+activate website
+
+website->staff:confirm
+
+activate staff
+
+staff-->website:return true
+deactivate staff
+
+website->selected：order:<<destroy>>
+destroy selected：order
+
+website->website:updateDisplay()
+
+website-->staff:
+deactivate website

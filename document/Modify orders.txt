@@ -1,0 +1,30 @@
+title Modify orders
+
+actor Staff
+control website
+participant system
+
+Staff -> website:selects modify order 
+activate website
+website ->website:Looking for data
+website ->Staff:Display
+activate Staff
+Staff ->website:Select relevant order
+deactivate Staff
+website ->Staff:Highlight the selected order
+activate Staff
+Staff ->website:new details
+deactivate Staff
+alt legal input
+website ->Staff:Desplay dialog to enter the details
+activate Staff
+Staff ->website:new Details
+deactivate Staff
+activate website
+website ->system:update order
+website ->Staff:Display new order
+deactivate website
+else illegal input
+website ->Staff:Please input legal information
+deactivate website
+end

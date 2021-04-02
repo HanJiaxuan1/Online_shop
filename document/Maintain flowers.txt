@@ -1,0 +1,11 @@
+title Maintain flowers
+
+actor Staff
+control website
+
+
+Staff -> website:Log in
+activate system
+website ->system:Request data
+system ->Staff:Display flowers and operation
+deactivate system

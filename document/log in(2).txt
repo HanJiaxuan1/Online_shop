@@ -1,0 +1,15 @@
+title Log in
+
+actor Staff
+control website
+participant system
+
+Staff ->  website:ID and password
+
+ website -> system:check ID and password
+
+
+system ->system:Authentication data
+system ->website:wrong ID and password
+website ->Staff:log in failed
+

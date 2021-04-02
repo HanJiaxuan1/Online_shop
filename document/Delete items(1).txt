@@ -1,0 +1,30 @@
+title Delete order
+actor staff
+control website
+entity system
+entity selected：flower
+
+staff->website:selectflower
+activate website
+
+website->system:getDetails
+website-->staff:
+deactivate website
+
+staff->website:cancelSelected
+activate website
+
+website->staff:confirm
+
+activate staff
+
+staff-->website:return true
+deactivate staff
+
+website->selected：flower:<<destroy>>
+destroy selected：flower
+
+website->website:updateDisplay()
+
+website-->staff:
+deactivate website
