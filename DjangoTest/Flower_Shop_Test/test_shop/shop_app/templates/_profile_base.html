@@ -162,9 +162,9 @@
 
     <div class="row">
     <div class="col-md-3 ">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm  position-static">
-        <div class="col p-4 d-flex flex-column position-static">
- <aside class="col-md-10 blog-sidebar">
+      <div class="row    overflow-hidden flex-md-row  position-relative"  >
+        <div class="col p-4 d-flex flex-column">
+ <aside class=" col-md-8 blog-sidebar" >
 
       <div class="p-1">
         <h4 class="font-italic">Account</h4>
@@ -174,7 +174,7 @@
           <li><a href="#" style="color: gray">Collections</a></li>
           <li><a href="#" style="color: gray">My Cart</a></li>
         </ol>
- <hr class="mb-4">
+
       </div>
 
 
@@ -186,15 +186,15 @@
           <li><a href="#" style="color: gray">My Comments</a></li>
 
         </ol>
-           <hr class="mb-4">
+
       </div>
 
       <div class="p-1">
         <h4 class="font-italic">Service</h4>
         <ol class="list-unstyled">
-          <li><a href="#" style="color: gray">Red</a></li>
-          <li><a href="#" style="color: gray">Yellow</a></li>
-          <li><a href="#" style="color: gray">White</a></li>
+          <li><a href="#" style="color: gray">Messages</a></li>
+          <li><a href="#" style="color: gray">Replies</a></li>
+
 
         </ol>
 
@@ -240,6 +240,30 @@ $(document).ready(function() {
             $('body').removeClass('off_top sub_is_visible');
             $('.menu_toggle .fa').addClass('fa-bars').removeClass('fa-arrow-left');
 
+        }
+    });
+});
+
+
+$(document).ready(function() {
+    $(window).bind('scroll', function() {
+        let navHeight = $(window).height() - 400;
+        if ($(window).scrollTop() > navHeight) {
+            $('.blog-sidebar').addClass('fixed');
+        } else {
+            $('.blog-sidebar').removeClass('fixed');
+        }
+    });
+});
+
+
+$(document).ready(function() {
+    $(window).bind('scroll', function() {
+        let navHeight = $(window).height() - 80;
+        if ($(window).scrollTop() > navHeight) {
+            $('.blog-sidebar').addClass('fixed');
+        } else {
+            $('.blog-sidebar').removeClass('fixed');
         }
     });
 });

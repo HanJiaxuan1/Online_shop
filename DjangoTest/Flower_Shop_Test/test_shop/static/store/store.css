@@ -329,3 +329,10 @@ body.sub_is_visible .nav_wrap {
  .blog-header-logo{
      color: #344234;
  }
+
+ .fixed {
+    position: fixed;
+    top: 80px;
+    height: 80px;
+    z-index: 1;
+}
