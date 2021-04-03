@@ -161,10 +161,10 @@
 
 
     <div class="row">
-    <div class="col-md-3 ">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm  position-static">
-        <div class="col p-4 d-flex flex-column position-static">
- <aside class="col-md-10 blog-sidebar">
+    <div class="col-md-2 ">
+      <div class="row overflow-hidden flex-md-row  position-sticky"  style="background: white; ">
+        <div class="nav blog-sidebar col p-3 d-flex  flex-column ">
+ <aside class=" col-md-12 " >
 
       <div class="p-1">
         <h4 class="font-italic">Usage</h4>
@@ -174,7 +174,7 @@
           <li><a href="#" style="color: gray">Birthday</a></li>
 
         </ol>
- <hr class="mb-4">
+
       </div>
 
 
@@ -186,7 +186,7 @@
           <li><a href="#" style="color: gray">Sunflower</a></li>
 
         </ol>
-           <hr class="mb-4">
+
       </div>
 
       <div class="p-1">
@@ -197,7 +197,7 @@
           <li><a href="#" style="color: gray">White</a></li>
 
         </ol>
-           <hr class="mb-4">
+
       </div>
 
       <div class="p-1">
@@ -247,6 +247,19 @@ $(document).ready(function() {
             $('body').removeClass('off_top sub_is_visible');
             $('.menu_toggle .fa').addClass('fa-bars').removeClass('fa-arrow-left');
 
+        }
+    });
+});
+
+
+
+$(document).ready(function() {
+    $(window).bind('scroll', function() {
+        let navHeight = $(window).height() - 400;
+        if ($(window).scrollTop() > navHeight) {
+            $('.blog-sidebar').addClass('fixed');
+        } else {
+            $('.blog-sidebar').removeClass('fixed');
         }
     });
 });
