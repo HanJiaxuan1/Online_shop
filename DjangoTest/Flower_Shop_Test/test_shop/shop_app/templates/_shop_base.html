@@ -164,7 +164,7 @@
     <div class="col-md-2 ">
       <div class="row overflow-hidden flex-md-row  position-sticky"  style="background: white; ">
         <div class="nav blog-sidebar col p-3 d-flex  flex-column ">
- <aside class=" col-md-12 " >
+ <aside class=" col-md-10 " >
 
       <div class="p-1">
         <h4 class="font-italic">Usage</h4>
@@ -255,7 +255,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $(window).bind('scroll', function() {
-        let navHeight = $(window).height() - 400;
+        let navHeight = $(window).height() - 500;
         if ($(window).scrollTop() > navHeight) {
             $('.blog-sidebar').addClass('fixed');
         } else {
