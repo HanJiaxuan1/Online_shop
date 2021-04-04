@@ -2,7 +2,41 @@
 
 {% block title %}Logged out{% endblock %}
 
+
 {% block content %}
-  <h1>Logged out</h1>
-  <p>You have been successfully logged out. You can <a href="{% url 'account:login' %}">log-in again</a>.</p>
+
+
+
+    <link href="/static/account/user_base.css" rel="stylesheet">
+
+
+
+
+   <div class="col-md-10">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-800 position-static">
+        <div class="col p-1 d-flex flex-column position-static">
+            <div class="row">
+
+        <div class="col-md-9">
+
+               <div class="card-body">
+
+
+
+
+
+                  <h1>Logged out</h1>
+                  <p>You have been successfully logged out. You can <a href="{% url 'account:login' %}">log-in again</a>.</p>
+
+
+
+
+
+                </div>
+                   </div>
+            </div>
+        </div>
+  </div>
+   </div>
+
 {% endblock %}

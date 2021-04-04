@@ -54,11 +54,9 @@ def register(request):
                   'account/register.html',
                   {'user_form': user_form})
 
-
 @login_required
 def mainpage(request):
     return render(request, 'account/mainpage.html', {'section': 'mainpage'})
-
 
 @login_required
 def edit(request):

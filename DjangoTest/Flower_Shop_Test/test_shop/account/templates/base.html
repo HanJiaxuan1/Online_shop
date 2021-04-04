@@ -1,29 +1,226 @@
-{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+   <title>{% block title %} {% endblock %}</title>
 
-<html>
-<head>
-  <title>{% block title %}{% endblock %}</title>
-  <link href="/static/account/base.css" rel="stylesheet">
-</head>
-<body>
-  <div id="header">
-    <span class="logo">Logo</span>
 
-    <span class="user">
-      {% if request.user.is_authenticated %}
-        Hello {{ request.user.first_name }},
-        <a href="{% url 'account:logout' %}">Logout</a>
-      {% else %}
-        <a href="{% url 'account:login' %}">Log-in</a>
-      {% endif %}
-    </span>
 
+
+    <!-- Bootstrap core CSS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link href="/static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/static/store/store.css" rel="stylesheet">
+
+
+    <style>
+
+
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/store/store.css" rel="stylesheet">
+
+  </head>
+
+<header>
+    <div class='nav_wrap'>
+
+        <nav class='top'>
+
+        <ul>
+
+    <li class="nav-item active ">
+          <a class="nav-link" href="{% url 'shop_app:index' %}">Store<span class="sr-only">current</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shop_app:profile' %}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shop_app:cart' %}">Cart</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Service</a>
+        </li>
+
+
+        {% if request.user.is_authenticated %}
+
+          <li class="nav-item">
+              <p class="nav-link"> Hello {{ request.user.first_name }}</p>
+          </li>
+
+
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
+          </li>
+
+          {% else %}
+
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'account:login' %}">Log-in</a>
+          </li>
+
+          {% endif %}
+
+
+
+
+
+      </ul>
+        </nav>
+        <nav class='sub'>
+         <ul>
+    <li class="nav-item active ">
+          <a class="nav-link" href="{% url 'shop_app:index' %}">Store<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shop_app:profile' %}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shop_app:cart' %}">Cart</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Service</a>
+        </li>
+
+
+        {% if request.user.is_authenticated %}
+
+          <li class="nav-item">
+              <p class="nav-link"> Hello {{ request.user.first_name }}</p>
+          </li>
+
+
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
+          </li>
+
+          {% else %}
+
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'account:login' %}">Log-in</a>
+          </li>
+
+          {% endif %}
+
+
+
+
+
+      </ul>
+        </nav>
+    </div>
+    <div class='menu_toggle'>
+        <i class='fa fa-bars'></i>
+    </div>
+</header>
+  <body>
+
+
+<div class="container">
+
+  <div class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center" id="logo">
+ <div class="col-4 ">
+
+        <a class="blog-header-logo " href="#"><img src="https://img.icons8.com/color/50/000000/ikebana.png"/>
+         Bouquet Pickup</a></div>
 
 
     </div>
-  <div id="content">
-    {% block content %}
-    {% endblock %}
   </div>
-</body>
+
+
+
+
+
+
+    <div class="row">
+    <div class="col-md-2 ">
+      <div class="row    overflow-hidden flex-md-row  position-relative"  >
+        <div class="col p-4 d-flex flex-column">
+ <aside class=" col-md-10 blog-sidebar" >
+
+
+
+
+    </aside>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+        {% block content %}{% endblock %}
+
+
+    </div>
+
+
+
+</div>
+
+<footer class="blog-footer">
+    <p> - Welcome to Bouquet Pickup -</p>
+  <p>    Happiness & Joy
+  </p>
+</footer>
+
+<script>
+    $('.menu_toggle').on('click', function() {
+    $('body').toggleClass('sub_is_visible');
+    $('.menu_toggle .fa').toggleClass('fa-bars fa-arrow-left');
+
+});
+
+$(document).ready(function() {
+    $(window).scroll(function() {
+        if ($(window).scrollTop() >=100) {
+            $('body').addClass('off_top');
+        } else {
+            $('body').removeClass('off_top sub_is_visible');
+            $('.menu_toggle .fa').addClass('fa-bars').removeClass('fa-arrow-left');
+
+        }
+    });
+});
+
+
+$(document).ready(function() {
+    $(window).bind('scroll', function() {
+        let navHeight = $(window).height() - 400;
+        if ($(window).scrollTop() > navHeight) {
+            $('.blog-sidebar').addClass('fixed');
+        } else {
+            $('.blog-sidebar').removeClass('fixed');
+        }
+    });
+});
+
+
+$(document).ready(function() {
+    $(window).bind('scroll', function() {
+        let navHeight = $(window).height() - 80;
+        if ($(window).scrollTop() > navHeight) {
+            $('.blog-sidebar').addClass('fixed');
+        } else {
+            $('.blog-sidebar').removeClass('fixed');
+        }
+    });
+});
+</script>
+
+  </body>
 </html>
+
+</div>
+
