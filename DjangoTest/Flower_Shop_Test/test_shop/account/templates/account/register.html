@@ -1,12 +1,18 @@
 {% extends "base.html" %}
+{% block title %}Create an account{% endblock %}
 
-{% block title %}Reset your password{% endblock %}
+
 
 
 
 {% block content %}
 
+
+
     <link href="/static/account/user_base.css" rel="stylesheet">
+
+
+
 
    <div class="col-md-10">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-800 position-static">
@@ -19,17 +25,15 @@
 
 
 
-                     <h1>Reset your password</h1>
-  {% if validlink %}
-    <p>Please enter your new password twice:</p>
-    <form action="." method="post">
-      {{ form.as_p }}
-      {% csrf_token %}
-      <p><input type="submit" value="Change my password" /></p>
-    </form>
-  {% else %}
-    <p>The password reset link was invalid, possibly because it has already been used. Please request a new password reset.</p>
-  {% endif %}
+
+  <h1>Create an account</h1>
+  <p>Please, sign up using the following form:</p>
+  <form action="." method="post">
+    {{ user_form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Create my account"></p>
+  </form>
+
 
 
 
