@@ -10,16 +10,20 @@
 
 <div class="my-3 p-3 bg-white rounded shadow-sm">
     <div class="row border-bottom border-gray align-content-between">
-    <div class="col-md-5 ">
+    <div class="col-md-3 ">
    <h5 class="pb-2 mb-0">Product Name</h5>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
    <h5 class="pb-2 mb-0">Unit Price</h5>
     </div>
 
       <div class="col-md-2">
    <h5 class="pb-2 mb-0">Quantity</h5>
+    </div>
+
+        <div class="col-md-2">
+   <h5 class="pb-2 mb-0">Sum</h5>
     </div>
 
       <div class="col-md-2">
@@ -40,10 +44,12 @@
     <div class="row border-bottom border-gray mb-10">
             <div class="col-md-2">
 
-                <img class="bd-placeholder-img card-img-top" width="100%" height="100" src="{{cart_item.product.product_image}}" role="img" >
+                <img class="bd-placeholder-img card-img-top" width="100%" height="100" src="/{{cart_item.product.product_image}}" role="img" >
 
           </div>
-        <div class="col-md-3">
+
+
+        <div class="col-md-1">
             <div class="card-body">
 
                      <p class="card-text">{{cart_item.product.product_name}}</p>
@@ -52,7 +58,7 @@
         </div>
 
 
-            <div class="col-md-3">
+            <div class="col-md-2">
             <div class="card-body">
                      <p class="card-text">{{cart_item.product.price}}</p>
              </div>
@@ -60,10 +66,18 @@
 
             <div class="col-md-2">
             <div class="card-body">
-
-      <input class="form-control" type="number"  min="1" placeholder="1" required>
+      <input class="form-control" type="number"  min="1" placeholder="{{cart_item.number}}" required>
              </div>
         </div>
+
+
+         <div class="col-md-3">
+            <div class="card-body">
+                     <p class="card-text"> the calculated price</p>
+             </div>
+            </div>
+
+
 
             <div class="col-md-2">
             <div class="card-body">
