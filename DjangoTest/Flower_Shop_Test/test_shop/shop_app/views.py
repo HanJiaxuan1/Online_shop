@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Product
+from .models import Product, Cart, Order
 
 
 
@@ -31,4 +31,6 @@ def cart(request):
     # global logedin_user
     # if request.user.is_authenticated:
     #     logedin_user = get_object_or_404(Profile, request.user.username)
-    return render(request, 'cart.html', {'user': request.user})
+    login_user = request.user
+    cart_list = Cart.objects.filter(user=login_user)
+    return render(request, 'cart.html', {'user': login_user, 'cart_list': cart_list})

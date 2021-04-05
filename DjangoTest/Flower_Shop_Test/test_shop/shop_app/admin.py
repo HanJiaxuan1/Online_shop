@@ -3,9 +3,11 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import Product, User, Order, Contact
+from .models import Product, Cart, Order
 
 admin.site.register(Product)
-admin.site.register(User)
+
+admin.site.register(Cart)
+
 admin.site.register(Order)
-admin.site.register(Contact)
+
