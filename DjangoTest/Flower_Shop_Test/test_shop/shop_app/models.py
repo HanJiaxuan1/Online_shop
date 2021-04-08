@@ -35,16 +35,18 @@ class Cart(models.Model):
 
 class Order(models.Model):
     STATUS_CHOICES = (
-        ('active', 'ACTIVE'),
+        ('unpaid', 'UNPAID'),
+        ('paid', 'PAID'),
         ('shipped', 'SHIPPED'),
-        ('deliver', 'DELIVER'),
+        ('delivered', 'DELIVERED'),
+        ('received', 'RECEIVED'),
     )
     order_id = models.AutoField(primary_key=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    order_list = models.CharField(max_length=255,)
     total_price = models.IntegerField()
     date = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='active')
+    status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='unpaid')
 
     def __str__(self):
-        return f" Order: {self.order_id} - {self.user} - {self.product}"
+        return f" Order: {self.order_id} - {self.user} - {self.order_list}"
