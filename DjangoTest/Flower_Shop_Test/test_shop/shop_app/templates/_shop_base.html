@@ -20,6 +20,83 @@
 
     <style>
 
+#card {
+    position: relative;
+    height: 362px;
+    width: 282px;
+
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+
+}
+#card div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 242px;
+    height: 322px;
+    padding: 20px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: 1.5s ease-in-out;
+    -moz-transition: 1.5s ease-in-out;
+    -ms-transition: 1.5s ease-in-out;
+    -o-transition: 1.5s ease-in-out;
+    transition: 1.5s ease-in-out;
+}
+#card div.lower {
+    font-family: verdana, arial, sans-serif;
+
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+}
+#card div.lower h1 {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    color: #525050;
+    line-height: 40px;
+}
+#card div.upper .btn{
+    margin-left: 70px;
+}
+#card div.lower .btn{
+    margin: 20px;
+}
+#card div.lower p {
+    font-size: 40px;
+    padding: 10px;
+    margin: 10px;
+    color: #66a175;
+    line-height: 50px;
+    font-family: "Lucida Handwriting";
+}
+#card div.lower a {
+    color: #393937;
+}
+#card div.upper {
+    -moz-transform-style: preserve-3d;
+    -moz-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+
+}
+#card div.upper img {
+    width: 100%;
+}
+#card:hover div.lower {
+    -moz-transform: rotateY(0);
+    -webkit-transform: rotateY(0);
+}
+#card:hover div.upper {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
+
 
     </style>
 

@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <link href="/static/store/store.css" rel="stylesheet">
+    <link href="../../static/store/store.css" rel="stylesheet">
    <div class="col-md-10">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-500 position-static">
         <div class="col p-1 d-flex flex-column position-static">
@@ -20,7 +20,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <video  autoplay loop playsinline muted>
-     <source src="/static/store/shop.mp4" type="video/mp4">
+     <source src="../../static/store/shop.mp4" type="video/mp4">
         </video>
         <div class="container">
           <div class="carousel-caption text-left">
@@ -46,33 +46,37 @@
 
 
 
-        <div class="col-md-3">
-          <div class="card mb-2 shadow-sm">
 
-            <img class="bd-placeholder-img card-img-top" width="100%" height="100" src="{{product.product_image}}" role="img" >
+<div id="card" >
+    <div class="lower shadow-sm">
 
-            <div class="card-body">
-                <p class="card-text">{{ product.product_name }}</p>
-                <p class="card-text">{{ product.price }}</p>
-              <div class="d-flex justify-content-center align-items-center">
 
-                <div class="btn-group">
-                    <a class="btn btn-sm btn-outline-success "  href="{% url 'shop_app:detail' product.product_id %}"   >See Detail</a>
-
-                  <button type="button" class="btn btn-sm btn-outline-success">
-                      <img width="20" src="https://img.icons8.com/color/50/000000/shopping-cart--v1.png"/>
+<p>{{product.product_desc}}</p>
+         <a class="btn btn-sm btn-outline-success "  href="{% url 'shop_app:detail' product.product_id %}"   >See Detail</a>
+         <button type="button" class="btn btn-sm btn-outline-success">
+                      <img width="20px" src="https://img.icons8.com/color/50/000000/shopping-cart--v1.png"/>
                   </button>
-                </div>
+    </div>
+    <div class="upper shadow-sm">
 
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <img class="bd-placeholder-img card-img-top" height="65%"  src="{{product.product_image}}" role="img" >
+
+        <p class="card-text" style="font-family: 'Playfair Display'">{{ product.product_name }}</p>
+                <h3 class="card-text" id="price" style="font-family: 'Sitka Banner'">{{ product.price }}</h3>
+   <a class="btn btn-sm btn-outline-success "  href="{% url 'shop_app:detail' product.product_id %}"   >See Detail</a>
+
+    </div>
+</div>
+
+
+
+
 
 
             {% endfor %}
           {% else %}
-                <p>Sorry... No products are available.</p>
+                <p>No polls are available.</p>
           {% endif %}
 
 
