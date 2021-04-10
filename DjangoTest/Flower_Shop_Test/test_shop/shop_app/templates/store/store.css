@@ -1,6 +1,7 @@
-/* stylelint-disable selector-list-comma-newline-after */
 
-
+body{
+    background: #b1d2e0;
+}
 .blog-header-logo {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
   font-size: 2.25rem;
@@ -35,6 +36,7 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-weight: bolder;
 }
 
 .display-4 {
@@ -119,7 +121,101 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
+
+
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+.product {
+    height: 700px;
+    width: 1000px;
+    background: white;
+    position: relative;
+    margin-top: 0px;
+    left: calc(30% - 300px);
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+
+    .product .header {
+    height: 40px;
+    position: relative;
+    padding: 20px;
+}
+.product .main {
+    padding: 0 30px;
+}
+.product .main .quantity {
+    margin-top: 40px;
+    color: #333;
+}
+.product .main h1 {
+    font-size: 4.5rem;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    margin: 0 -5px -15px;
+    color: #232e3a;
+   font-weight: bolder;
+}
+.product .main h2 {
+    color: #999999;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    margin: 0 0;
+    text-transform: uppercase;
+   font-weight: bolder;
+}
+.product .main h3 {
+    color: #232e3a;
+    margin: 0;
+     font-weight: bolder;
+}
+.product .main img {
+   max-height: 200px;
+    margin-left: 25px;
+}
+.product .main .left,
+.product .main .right {
+    width: 50%;
+    padding: 0 calc(5% - 1px);
+}
+.product .main .right {
+    color: #999;
+    font-size: .85rem;
+    line-height: 1.5;
+}
+.product .footer {
+    position: absolute;
+    bottom: 0;
+    padding: 5px 40px 5px 0;
+    width: calc(100% - 40px);
+    left: 10%;
+    border-top: 1px solid #ccc;
+}
+.product .footer .left p:before {
+    content: "Total Price";
+    text-transform: uppercase;
+    font-size: .7rem;
+    color: black;
+    position: absolute;
+    top: -12px;
+    width: 200%;
+}
+.product .footer p {
+    color: #47be73;
+    position: relative;
+    font-size: 1.5rem;
+}
+.left {
+    float: left;
+
+}
+.right {
+    float: right;
+    font-family: 'Montserrat', sans-serif;
+}
+

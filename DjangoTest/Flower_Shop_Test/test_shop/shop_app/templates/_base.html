@@ -10,23 +10,94 @@
 
 
 
+<style>
+
+    .product .header {
+    height: 40px;
+    position: relative;
+    padding: 20px;
+}
+.product .main {
+    padding: 0 30px;
+}
+.product .main .quantity {
+    margin-top: 40px;
+    color: #333;
+}
+.product .main h1 {
+    font-size: 4.5rem;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    margin: 0 -5px -15px;
+    color: #232e3a;
+}
+.product .main h2 {
+    color: #999999;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    margin: 0 0;
+    text-transform: uppercase;
+}
+.product .main h3 {
+    color: #232e3a;
+    margin: 0;
+}
+.product .main img {
+   max-height: 200px;
+    margin-left: 25px;
+}
+.product .main .left,
+.product .main .right {
+    width: 50%;
+    padding: 0 calc(5% - 1px);
+}
+.product .main .right {
+    color: #999;
+    font-size: .85rem;
+    line-height: 1.5;
+}
+.product .footer {
+    position: absolute;
+    bottom: 0;
+    padding: 5px 40px 5px 0;
+    width: calc(100% - 40px);
+    left: 10%;
+    border-top: 1px solid #ccc;
+}
+.product .footer .left p:before {
+    content: "Total Price";
+    text-transform: uppercase;
+    font-size: .7rem;
+    color: black;
+    position: absolute;
+    top: -12px;
+    width: 200%;
+}
+.product .footer p {
+    color: #47be73;
+    position: relative;
+    font-size: 1.5rem;
+}
+.left {
+    float: left;
+
+}
+.right {
+    float: right;
+    font-family: 'Montserrat', sans-serif;
+}
+</style>
 
     <!-- Bootstrap core CSS -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link href="\static\assets\dist\css\bootstrap.min.css" rel="stylesheet">
-      <link href="\static\store\store.css" rel="stylesheet">
+<link href="../../static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="store/store.css" rel="stylesheet">
 
-
-
-    <style>
-
-
-    </style>
 
     <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900" >
     <!-- Custom styles for this template -->
-    <link href="\static\store\store.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
   </head>
 
@@ -204,5 +275,5 @@ $(document).ready(function() {
   </body>
 </html>
 
-</div>
+
 
