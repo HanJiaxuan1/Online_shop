@@ -38,7 +38,8 @@
  <div class="album py-5 bg-white">
     <div class="container">
 
-      <div class="row">
+      <div data-column='3' class="at-grid">
+
 
 
           {% if price_p_list %}
@@ -46,27 +47,21 @@
 
 
 
+ <div class="at-column">
+            <div class="at-user">
+                <div class="at-user__avatar"> <img class="bd-placeholder-img card-img-top" height="65%"  src="/media/{{product.product_image}}" role="img" >
 
-<div id="card" >
-    <div class="lower shadow-sm">
+                </div>
+                <div class="at-user__name">{{ product.product_name }}</div>
+                <div class="at-user__title">{{ product.price }}</div>
+                <div class="at-social">
+                    <div class="box one" >
+    <div class="item" onclick="window.location.href={% url 'shop_app:detail' product.product_id %}">See detail</div>
 
-
-<p><img class="bd-placeholder-img card-img-top" height="65%"  src="/media/{{product.product_image}}" role="img" ></p>
-         <a class="btn btn-sm btn-outline-success "  href="{% url 'shop_app:detail' product.product_id %}"   >See Detail</a>
-         <button type="button" class="btn btn-sm btn-outline-success">
-                      <img width="20px" src="https://img.icons8.com/color/50/000000/shopping-cart--v1.png"/>
-                  </button>
-    </div>
-    <div class="upper shadow-sm">
-
-
-        <img class="bd-placeholder-img card-img-top" height="65%"  src="/media/{{product.product_image}}" role="img" >
-
-        <p class="card-text" style="font-family: 'Playfair Display'">{{ product.product_name }}</p>
-                <h3 class="card-text" id="price" style="font-family: 'Sitka Banner'">{{ product.price }} ￥</h3>
-
-    </div>
 </div>
+         </div>
+            </div>
+        </div>
 
 
 

@@ -489,8 +489,8 @@ body.sub_is_visible .nav_wrap {
     text-align: center;
 }
 .at-user__avatar {
-    width: 220px;
-    height: 120px;
+    width: 200px;
+    height: 150px;
 
     margin: 0 auto 10px;
     overflow: hidden;
