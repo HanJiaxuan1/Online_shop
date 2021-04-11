@@ -44,7 +44,6 @@ class Order(models.Model):
     order_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     order_list = models.CharField(max_length=255,)
-    total_price = models.IntegerField()
     date = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='unpaid')
 

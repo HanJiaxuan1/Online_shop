@@ -33,7 +33,7 @@
     {% if cart_list %}
     {% for cart_item in cart_list %}
 
-    <div class="row border-bottom border-gray mb-10" id="one_good">
+    <div class="row border-bottom border-gray mb-10 cart-list" id="one_good">
         <div class="col-md-2">
             <img class="bd-placeholder-img card-img-top" width="100%" height="100" src="/{{cart_item.product.product_image}}" role="img" >
         </div>
@@ -47,19 +47,19 @@
 
         <div class="col-md-2">
             <div class="card-body">
-                <p class="card-text" id="price">{{cart_item.product.price}}</p>
+                <p class="card-text" id="price"+{{cart_item.cart_id}}>{{cart_item.product.price}}</p>
             </div>
         </div>
 
         <div class="col-md-2">
             <div class="card-body">
-                <input class="form-control" id="num" type="number"  min="1" placeholder="{{cart_item.number}}" required>
+                <input class="form-control" id="num"+{{cart_item.cart_id}} type="number"  min="1" value="{{cart_item.number}}" required>
             </div>
         </div>
 
          <div class="col-md-3">
             <div class="card-body">
-                <p class="card-text" id="calculated_price"> the calculated price</p>
+                <p class="card-text" id="calculated_price" ></p>
             </div>
          </div>
 
@@ -96,6 +96,7 @@
 <script>
     $(function() {
         // 加载完页面时,计算总计
+        calculateItemSum();
         showTotal();
         $('.checkbox').on('click', function () {
         // 选择多选框后,再重新计算
@@ -104,27 +105,46 @@
     });
     // 计算总计函数
     function showTotal() {
-        var total = 0;
-        var number = 0;
+        let total = 0;
+        let number = 0;
         // 1. 获取所有的被勾选的条目复选框 循环遍历
         $(".checkbox").each(function () {
-            var isChecked = $(this).prop("checked");
+            let isChecked = $(this).prop("checked");
             // 如果多选框被选中
             if(isChecked == true) {
                 // 2. 获取复选框的值，再通过父子关系找到对应元素，获取其文本
-                var price = parseFloat($(this).parents("#one_good").find("#price").html()); //得到商品的单价
-                var num =  parseInt($(this).parents("#one_good").find("#num").attr("placeholder")); //得到商品的数量
-                var calculated_price = num * price
+                let price = parseFloat($(this).parents("#one_good").find("#price").html()); //得到商品的单价
+                console.log("i_price: ",price)
+                let num =  parseInt($(this).parents("#one_good").find("#num").attr("value")); //得到商品的数量
+                let calculated_price = num * price
                 //3. 累加计算
                 total += calculated_price;
                 number += 1;
-                $("#calculated_price").text("￥"+calculated_price.toFixed(2));
+                // $("#calculated_price").text("￥"+calculated_price.toFixed(2));
             }
         });
     // 4. 把总计显示在总计元素上
+        console.log("total: ",total)
         $("#total_number").text(number+"  Bouquets");
         $("#total_price").text("￥"+total.toFixed(2));//toFixed(2)函数的作用是把total保留2位
     }
+
+    function calculateItemSum(){
+
+        let each_item = $(".cart-list").each(function (index) {
+
+            let item_price = $(".cart-list #price").eq(index).text();
+            // console.log("i_price: ",item_price)
+            let num = $(".cart-list #num").eq(index).val();
+            // console.log("i_num: ",num)
+            let item_sum = item_price * num;
+            // console.log("i_sum: ",item_sum)
+            $(".cart-list #calculated_price").eq(index).text(item_sum);
+
+        })
+
+    }
+
 </script>
 
 {% endblock %}
