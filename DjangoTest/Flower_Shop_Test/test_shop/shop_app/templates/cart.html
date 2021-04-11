@@ -9,25 +9,25 @@
 
 <div class="my-3 p-3 bg-white rounded shadow-sm">
     <div class="row border-bottom border-gray align-content-between">
-    <div class="col-md-3 ">
-   <h5 class="pb-2 mb-0">Product Name</h5>
-    </div>
-
-    <div class="col-md-2">
-   <h5 class="pb-2 mb-0">Unit Price</h5>
-    </div>
-
-      <div class="col-md-2">
-   <h5 class="pb-2 mb-0">Quantity</h5>
-    </div>
+        <div class="col-md-3 ">
+            <h5 class="pb-2 mb-0">Product Name</h5>
+        </div>
 
         <div class="col-md-2">
-   <h5 class="pb-2 mb-0">Sum</h5>
-    </div>
+            <h5 class="pb-2 mb-0">Unit Price</h5>
+        </div>
 
-      <div class="col-md-2">
-   <h5 class="pb-2 mb-0">Operations</h5>
-    </div>
+        <div class="col-md-2">
+            <h5 class="pb-2 mb-0">Quantity</h5>
+        </div>
+
+        <div class="col-md-2">
+            <h5 class="pb-2 mb-0">Sum</h5>
+        </div>
+
+        <div class="col-md-2">
+            <h5 class="pb-2 mb-0">Operations</h5>
+        </div>
     </div>
 
     {% if cart_list %}
@@ -59,80 +59,72 @@
 
          <div class="col-md-3">
             <div class="card-body">
-                     <p class="card-text"> the calculated price</p>
-             </div>
+                <p class="card-text" id="calculated_price"> the calculated price</p>
             </div>
+         </div>
 
-            <div class="col-md-2">
+        <div class="col-md-2">
             <div class="card-body">
                 <p class="card-text">Delete</p>
                 <p class="card-text">Collect</p>
              </div>
         </div>
-              </div>
+    </div>
 
-            {% endfor %}
-          {% else %}
-                <p>Sorry... No products in cart.</p>
-          {% endif %}
-
-  </div>
+    {% endfor %}
+    {% else %}
+        <p>Sorry... No products in cart.</p>
+    {% endif %}
+</div>
       </div>
+
 <div class="row">
-    <div class="col-md-5 " >
+    <div class="col-md-3 " >
         <h4>Total </h4>
-
-        </div>
-
-      <div class="col-md-5 " >
-
-        <h3 class="total_price" style="color: #e3b058">￥0 </h3>
-        </div>
-
-          <div class="col-md-2 align-items-end ">
-           <button class="btn btn-lg btn-outline-success" >Checkout</button>
-
-        </div>
-        </div>
+    </div>
+    <div class="col-md-3 " >
+        <h3 id="total_number" style="color: #e3b058">0 </h3>
+    </div>
+    <div class="col-md-3 " >
+        <h3 id="total_price" style="color: #e3b058">￥0 </h3>
+    </div>
+    <div class="col-md-3 align-items-end ">
+        <button class="btn btn-lg btn-outline-success" >Checkout</button>
+    </div>
+</div>
 
 <script>
-  $(function() {
-    // 加载完页面时,计算总计
-    showTotal();
-    $('.checkbox').on('click', function () {
-      // 选择多选框后,再重新计算
-      showTotal();
+    $(function() {
+        // 加载完页面时,计算总计
+        showTotal();
+        $('.checkbox').on('click', function () {
+        // 选择多选框后,再重新计算
+        showTotal();
+        });
     });
-  });
-  // 计算总计
-  function showTotal() {
-    var total = 0;
-    var number = 0;
-    // 1. 获取所有的被勾选的条目复选框！循环遍历
-    $(".checkbox").each(function () {
-      var isChecked = $(this).prop("checked");
-      // 如果多选框被选中
-      if(isChecked == true) {
-        // 2. 获取复选框的值，即其他元素的前缀
-        // alert("id" + id);
-        //3. 再通过前缀找到小计元素，获取其文本
-          var price = parseFloat($(this).parents("#one_good").find("#price").html()); //得到商品的单价
-          var num =  parseInt($(this).parents("#one_good").find("#num").attr("placeholder")); //得到商品的数量
-          var tot = num * price
-        // alert(text);
-        //4. 累加计算
-          total += tot;
-          console.log(tot)
-          console.log(price)
-          console.log(num)
-          number += 1;
-        // alert(total);
-      }
-    });
-    // 5. 把总计显示在总计元素上
-    $(".txts").text(number);//toFixed(2)函数的作用是把total保留2位
-    $(".total_price").text(total.toFixed(2));//toFixed(2)函数的作用是把total保留2位
-  }
+    // 计算总计函数
+    function showTotal() {
+        var total = 0;
+        var number = 0;
+        // 1. 获取所有的被勾选的条目复选框 循环遍历
+        $(".checkbox").each(function () {
+            var isChecked = $(this).prop("checked");
+            // 如果多选框被选中
+            if(isChecked == true) {
+                // 2. 获取复选框的值，再通过父子关系找到对应元素，获取其文本
+                var price = parseFloat($(this).parents("#one_good").find("#price").html()); //得到商品的单价
+                var num =  parseInt($(this).parents("#one_good").find("#num").attr("placeholder")); //得到商品的数量
+                var calculated_price = num * price
+                //3. 累加计算
+                total += calculated_price;
+                number += 1;
+                $(this.#calculated_price).text("￥"+calculated_price.toFixed(2));
+            }
+        });
+    // 4. 把总计显示在总计元素上
+        $("#total_number").text(number+"  Bouquets");
+        $("#total_price").text("￥"+total.toFixed(2));//toFixed(2)函数的作用是把total保留2位
+    }
 </script>
 
 {% endblock %}
