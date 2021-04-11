@@ -3,7 +3,6 @@
 
 {% block title %}Cart{% endblock %}
 
-
 {% block content %}
     <link href="/static/store/store.css" rel="stylesheet">
         <div class="row ">
@@ -31,45 +30,32 @@
     </div>
     </div>
 
-
-
-
-
-
-
     {% if cart_list %}
     {% for cart_item in cart_list %}
 
-
-    <div class="row border-bottom border-gray mb-10">
-            <div class="col-md-2">
-
-                <img class="bd-placeholder-img card-img-top" width="100%" height="100" src="/{{cart_item.product.product_image}}" role="img" >
-
-          </div>
-
+    <div class="row border-bottom border-gray mb-10" id="one_good">
+        <div class="col-md-2">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="100" src="/{{cart_item.product.product_image}}" role="img" >
+        </div>
 
         <div class="col-md-1">
             <div class="card-body">
-
                      <p class="card-text">{{cart_item.product.product_name}}</p>
-                <input type="checkbox">
+                <input class="checkbox" type="checkbox">
              </div>
         </div>
 
-
-            <div class="col-md-2">
+        <div class="col-md-2">
             <div class="card-body">
-                     <p class="card-text">{{cart_item.product.price}}</p>
-             </div>
+                <p class="card-text" id="price">{{cart_item.product.price}}</p>
+            </div>
         </div>
 
-            <div class="col-md-2">
+        <div class="col-md-2">
             <div class="card-body">
-      <input class="form-control" type="number"  min="1" placeholder="{{cart_item.number}}" required>
-             </div>
+                <input class="form-control" id="num" type="number"  min="1" placeholder="{{cart_item.number}}" required>
+            </div>
         </div>
-
 
          <div class="col-md-3">
             <div class="card-body">
@@ -77,30 +63,18 @@
              </div>
             </div>
 
-
-
             <div class="col-md-2">
             <div class="card-body">
                 <p class="card-text">Delete</p>
                 <p class="card-text">Collect</p>
              </div>
         </div>
-
               </div>
-
-
-
-
 
             {% endfor %}
           {% else %}
                 <p>Sorry... No products in cart.</p>
           {% endif %}
-
-
-
-
-
 
   </div>
       </div>
@@ -112,7 +86,7 @@
 
       <div class="col-md-5 " >
 
-        <h3 style="color: #e3b058">￥460 </h3>
+        <h3 class="total_price" style="color: #e3b058">￥0 </h3>
         </div>
 
           <div class="col-md-2 align-items-end ">
@@ -121,6 +95,47 @@
         </div>
         </div>
 
+<script>
+  $(function() {
+    // 加载完页面时,计算总计
+    showTotal();
+    $('.checkbox').on('click', function () {
+      // 选择多选框后,再重新计算
+      showTotal();
+    });
+  });
+  // 计算总计
+  function showTotal() {
+    var total = 0;
+    var number = 0;
+    // 1. 获取所有的被勾选的条目复选框！循环遍历
+    $(".checkbox").each(function () {
+      var isChecked = $(this).prop("checked");
+      // 如果多选框被选中
+      if(isChecked == true) {
+        // 2. 获取复选框的值，即其他元素的前缀
+        // alert("id" + id);
+        //3. 再通过前缀找到小计元素，获取其文本
+          var price = parseFloat($(this).parents("#one_good").find("#price").html()); //得到商品的单价
+          var num =  parseInt($(this).parents("#one_good").find("#num").attr("placeholder")); //得到商品的数量
+          var tot = num * price
+        // alert(text);
+        //4. 累加计算
+          total += tot;
+          console.log(tot)
+          console.log(price)
+          console.log(num)
+          number += 1;
+        // alert(total);
+      }
+    });
+    // 5. 把总计显示在总计元素上
+    $(".txts").text(number);//toFixed(2)函数的作用是把total保留2位
+    $(".total_price").text(total.toFixed(2));//toFixed(2)函数的作用是把total保留2位
+  }
+</script>
+
 {% endblock %}
+
 
 
