@@ -51,7 +51,7 @@
     <div class="lower shadow-sm">
 
 
-<p>{{product.product_desc}}</p>
+<p><img class="bd-placeholder-img card-img-top" height="65%"  src="/media/{{product.product_image}}" role="img" ></p>
          <a class="btn btn-sm btn-outline-success "  href="{% url 'shop_app:detail' product.product_id %}"   >See Detail</a>
          <button type="button" class="btn btn-sm btn-outline-success">
                       <img width="20px" src="https://img.icons8.com/color/50/000000/shopping-cart--v1.png"/>
@@ -60,11 +60,10 @@
     <div class="upper shadow-sm">
 
 
-        <img class="bd-placeholder-img card-img-top" height="65%"  src="{{product.product_image}}" role="img" >
+        <img class="bd-placeholder-img card-img-top" height="65%"  src="/media/{{product.product_image}}" role="img" >
 
         <p class="card-text" style="font-family: 'Playfair Display'">{{ product.product_name }}</p>
-                <h3 class="card-text" id="price" style="font-family: 'Sitka Banner'">{{ product.price }}</h3>
-   <a class="btn btn-sm btn-outline-success "  href="{% url 'shop_app:detail' product.product_id %}"   >See Detail</a>
+                <h3 class="card-text" id="price" style="font-family: 'Sitka Banner'">{{ product.price }} ￥</h3>
 
     </div>
 </div>

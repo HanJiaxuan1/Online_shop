@@ -88,9 +88,7 @@
       <div class="row ">
 
            <div class="col-md-3 mt-lg-5">
-               <h1>{{ product.product_name }}</h1>
-            <h2>{{ product.price }}</h2>
-               <img width="100%" src="/{{product.product_image}}" alt="My image">
+               <img width="100%" src="/media/{{product.product_image}}" alt="My image">
            </div>
 
         <div class="col-md-9 mt-lg-5">
@@ -100,77 +98,61 @@
     <tbody>
 
         <tr>
-          <th width="20%"   >Flower Language</th>
-            <td style="color: #5a6268;    '">We are all beasts in the urban jungle, searching for shelter, searching for company, searching for love, moving from place to place. Love like a beast.</td>
+            <h2>
+                {{ product.product_name }}
+            </h2>
 
         </tr>
       <tr>
-          <th width="15%"   >Ingredients</th>
-            <td style="color: #5a6268;    ' ">Ecuador imported rose, imported hydrangea, imported Cymbidium, imported broom plum, pod riddle, bird plum and so on.</td>
+          <th width="15%"   >Type</th>
+            <td style="color: #5a6268;    ' ">
+                {{ product.type }}
+            </td>
 
         </tr>
 
      <tr>
-          <th width="15%"   >Package</th>
-            <td style="color: #5a6268;    '">5 sheets of red/gold gilt paper, 3 sheets of transparent mist surface paper, 2 meters of wine-red ribbed bronzing ribbon</td>
+          <th width="15%"   >Color</th>
+            <td style="color: #5a6268;    '">
+                {{ product.color }}
+            </td>
 
         </tr>
 
      <tr>
           <th width="15%"   >Description</th>
             <td style="color: #5a6268;    '"> {{ product.product_desc }}
-        </tr>
-
-     <tr>
-          <th width="15%"   >Category</th>
-            <td style="color: #5a6268;    '"> {{ product.category }}
-        </tr>
-
-     <tr>
-          <th width="15%"   >Sub_category </th>
-            <td style="color: #5a6268;    '"> {{ product.sub_category }}
+            </td>
         </tr>
 
 
-    <th width="15%"   >Ship from</th>
-            <td> <p class="card-text" style="color: #94a74a"  >Japan</p></td>
+        <tr>
+          <th width="15%"   ></th>
+
 
         </tr>
+
+
     </tbody>
+
+
+                <form method="post" >
+
+                {% csrf_token %}
+                {{ form }}
+
+                <div class="box one" >
+                    <button class="item" type="submit" value="Add to Cart">Add to Cart</button>
+                </div>
+
+                </form>
+
 
 </table>
-                   <table class="table-borderless m-2">
-    <tbody>
-        <tr>
-          <th width="15%"   >Deliver to</th>
-            <td  width="40%" >
-                <select class="custom-select d-block w-100" id="country" required>
-              <option value="">Choose...</option>
-              <option>United States</option>
-            </select>
-
-            </td>
-
-        </tr>
 
 
-    </tbody>
-
-                   </table>
         </div>
 
-<div align="center">
-<form method="post" >
-
-                                {% csrf_token %}
-                                {{ form }}
-<div class="box one" >
-    <button class="item" type="submit" value="Add to Cart">Add to Cart</button>
-
-</div>
-
-</form>
-</div>
 
         </div>
             </div>
