@@ -66,7 +66,8 @@
         <div class="col-md-2">
             <div class="card-body">
                 <p class="card-text">Delete</p>
-                <p class="card-text">Collect</p>
+                <button  class="btn btn-lg btn-outline-success" onclick="deleteCart('{{cart_item.cart_id}}', this)">Delete</button>
+<!--                <p class="card-text">Collect</p>-->
              </div>
         </div>
     </div>
@@ -139,11 +140,29 @@
             // console.log("i_num: ",num)
             let item_sum = item_price * num;
             // console.log("i_sum: ",item_sum)
-            $(".cart-list #calculated_price").eq(index).text(item_sum);
+            $(".cart-list #calculated_price").eq(index).text("￥"+item_sum);
 
         })
 
     }
+
+function deleteCart(getId, obj) {
+    let item = $(obj).parents("#one_good")
+    // console.log(item.html())
+    // console.log("getId="+getId);
+    item.remove()
+    $.ajax({
+        type : 'post',
+        url : '/delete',
+        data:{'getId':getId},
+        async : false,
+        success : function(result){
+
+        },
+        error : function(result){
+        }
+    });
+}
 
 </script>
 
