@@ -68,3 +68,9 @@ def cart(request):
     login_user = request.user
     cart_list = Cart.objects.filter(user=login_user)
     return render(request, 'cart.html', {'user': login_user, 'cart_list': cart_list})
+
+def about_us(request):
+
+    login_user = request.user
+
+    return render(request, 'about_us.html',{'user': request.user})
