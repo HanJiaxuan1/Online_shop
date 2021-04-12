@@ -146,9 +146,9 @@ opacity: 60%;
       }
 
       .nav-scroller{
-          font-family:"Segoe UI Black";
-
-          font-size: 1.15rem;
+          font-family:"Malgun Gothic Semilight";
+         font-weight: lighter;
+          font-size: 1.00rem;
 
       }
 
@@ -339,12 +339,21 @@ body.sub_is_visible .nav_wrap {
      .at-section__title {
     margin: 0 0 70px;
     color: #000;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Arial Narrow";
     font-size: 3.5rem;
     font-weight: 300;
     line-height: 2.625rem;
     text-align: center;
+
 }
+     .at-user__name{
+         font-family: "Bookman Old Style";
+     }
+
+     at-user__title{
+         font-family: "Kristen ITC";
+     }
+
 .at-grid {
     display: -webkit-box;
     display: -webkit-flex;
@@ -360,6 +369,7 @@ body.sub_is_visible .nav_wrap {
     flex-wrap: wrap;
     background: #FFF;
     border: 1px solid #E2E9ED;
+
 }
 .at-grid[data-column="1"] .at-column {
     width: 100%;
