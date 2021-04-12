@@ -506,14 +506,15 @@ body.sub_is_visible .nav_wrap {
 }
 .at-user__name {
     color: #313435;
-    font-family: 'Roboto', sans-serif;
+    font-family:  "Montserrat", sans-serif;
+
     font-size: 1.5rem;
-    font-weight: 500;
+
     line-height: 2.625rem;
 }
 .at-user__title {
     color: #6F808A;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 0.875rem;
     line-height: 2.375rem;
 }
@@ -604,4 +605,141 @@ body.sub_is_visible .nav_wrap {
 .one:hover .item:after {
     width: 100%;
     transition: 0.4s all ease;
+}
+
+main {
+
+    display: flex;
+    flex-direction: column;
+}
+.section {
+
+    margin: 20px;
+
+}
+.section h2 {
+   font-family: "Montserrat";
+    line-height: 50px;
+}
+
+.section h3 {
+    font-family:"Raleway";
+
+    font-size: 2em;
+    line-height: 1.5em;
+
+    font-weight: 500;
+}
+
+.section p{
+    font-family: "Montserrat";
+    line-height: 30px;
+}
+
+.section ul{
+    font-family: "Montserrat";
+    line-height: 40px;
+}
+.section .button {
+    margin: 1em 0;
+}
+.section.intro {
+
+    margin-top: 50px;
+    text-align: left;
+    padding: 6em  0;
+}
+.section.teaser {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+.sectionImg{
+    box-shadow: #5a6268;
+}
+.section.teaser.teaserYarns .sectionImg {
+    background: url("shop.jpg") no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 450px;
+    grid-column: 1/7;
+
+}
+.section.teaser.teaserYarns .sectionCopy {
+    grid-column: 8/12;
+}
+.section.teaser.teaserAccessories .sectionImg {
+    background: url("store.jpg") no-repeat;
+    background-size: cover;
+    background-position: center 10%;
+    width: 100%;
+    height: 450px;
+    grid-column: 1/7;
+
+}
+.section.teaser.teaserAccessories .sectionCopy {
+    grid-column: 8/12;
+}
+.section.teaser.teaserPatterns .sectionImg {
+    background: url("service.jpg") no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 450px;
+    grid-column: 7/13;
+    grid-row: 1/2;
+}
+
+.valueProps{
+   text-align: center;
+}
+.section.teaser.teaserPatterns .sectionCopy {
+    grid-column: 2/6;
+}
+.section.valueProps {
+
+}
+.section.valueProps h3 {
+     font-family:"Raleway";
+    text-align: center;
+}
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2.5em;
+}
+.grid-3 .grid-3-item h4 {
+
+    font-weight: 500;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.075em;
+}
+.grid-3 .grid-3-item .grid-3-img {
+    margin: 2em 0;
+    width: 100%;
+    height: 250px;
+}
+.grid-3 .grid-3-item:nth-of-type(1) .grid-3-img {
+    background: url("store.jpg") no-repeat;
+    background-size: cover;
+    background-size: 125%;
+    background-position: -5% top;
+}
+.grid-3 .grid-3-item:nth-of-type(2) .grid-3-img {
+    background: url("open.jpg") no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.grid-3 .grid-3-item:nth-of-type(3) .grid-3-img {
+    background: url("nav1.jpg") no-repeat;
+    background-size: cover;
+    background-position: right bottom;
+}
+.section.shopCTA {
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

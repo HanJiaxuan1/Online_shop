@@ -14,6 +14,7 @@
     <!-- Bootstrap core CSS -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link href="../../static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
       <link href="store/store.css" rel="stylesheet">
 
 
@@ -113,7 +114,9 @@
         <nav class='top'>
 
         <ul>
-
+ <li class="nav-item active ">
+          <a class="nav-link" href="{% url 'shop_app:about_us' %}">About Us<span class="sr-only">current</span></a>
+        </li>
     <li class="nav-item active ">
           <a class="nav-link" href="{% url 'shop_app:index' %}">Store<span class="sr-only">current</span></a>
         </li>
@@ -155,6 +158,9 @@
         </nav>
         <nav class='sub'>
          <ul>
+               <li class="nav-item active ">
+          <a class="nav-link" href="{% url 'shop_app:about_us' %}">About Us<span class="sr-only">current</span></a>
+        </li>
     <li class="nav-item active ">
           <a class="nav-link" href="{% url 'shop_app:index' %}">Store<span class="sr-only"></span></a>
         </li>

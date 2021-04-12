@@ -9,13 +9,13 @@ from .models import Product, Cart, Order
 from .forms import CartForm
 
 
+
 def index(request):
     price_p_list = Product.objects.order_by('price')
     context = {
         'price_p_list': price_p_list,
     }
     return render(request, 'index.html', context)
-
 
 def product(request, product_id):
 
@@ -43,6 +43,8 @@ def product(request, product_id):
             else:
                 has_cart_item.number += p_number
                 has_cart_item.save()
+
+
             # redirect to a new URL:
             return cart(request)
 
@@ -59,7 +61,6 @@ def profile(request):
     #     logedin_user = get_object_or_404(Profile, request.user.username)
     return render(request, 'profile.html', {'user': request.user})
 
-
 def cart(request):
     # global logedin_user
     # if request.user.is_authenticated:
@@ -68,8 +69,8 @@ def cart(request):
     cart_list = Cart.objects.filter(user=login_user)
     return render(request, 'cart.html', {'user': login_user, 'cart_list': cart_list})
 
+def about_us(request):
 
-# def delete(request):
-#
-#
-#     return
+    login_user = request.user
+
+    return render(request, 'about_us.html',{'user': request.user})
