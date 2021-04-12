@@ -462,6 +462,7 @@ body.sub_is_visible .nav_wrap {
 .at-column:hover .at-social {
     margin: 16px 0 0;
     opacity: 1;
+
 }
 @media (max-width: 800px) {
     .at-column {
