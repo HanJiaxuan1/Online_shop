@@ -72,6 +72,10 @@
     transition: 0.4s all ease;
 }
 
+#id{
+
+}
+
 </style>
 {% extends "_base.html" %}
 
@@ -133,23 +137,23 @@
         </tr>
 
 
+
     </tbody>
 
 
-                <form method="post" >
-
-                {% csrf_token %}
-                {{ form }}
-
-                <div class="box one" >
-                    <button class="item" type="submit" value="Add to Cart">Add to Cart</button>
-                </div>
-
-                </form>
-
 
 </table>
+ <div align="center">
+                       <div class="btn-group">
 
+                           <form  method="post">
+                                {% csrf_token %}
+                                {{ form }}
+                                <input type="submit" value="Add to Cart">
+                            </form>
+
+                </div>
+                </div>
 
         </div>
 
