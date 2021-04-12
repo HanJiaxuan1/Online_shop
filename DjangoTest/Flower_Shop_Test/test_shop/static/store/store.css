@@ -346,13 +346,7 @@ body.sub_is_visible .nav_wrap {
     text-align: center;
 
 }
-     .at-user__name{
-         font-family: "Bookman Old Style";
-     }
 
-     at-user__title{
-         font-family: "Kristen ITC";
-     }
 
 .at-grid {
     display: -webkit-box;
@@ -499,8 +493,8 @@ body.sub_is_visible .nav_wrap {
     text-align: center;
 }
 .at-user__avatar {
-    width: 180px;
-    height: 160px;
+    width: 140px;
+    height: 130px;
 
     margin: 0 auto 10px;
     overflow: hidden;
