@@ -69,30 +69,31 @@ def cart(request):
     cart_list = Cart.objects.filter(user=login_user)
     return render(request, 'cart.html', {'user': login_user, 'cart_list': cart_list})
 
+
 def about_us(request):
 
     login_user = request.user
 
-    return render(request, 'about_us.html',{'user': request.user})
+    return render(request, 'about_us.html', {'user': request.user})
+
 
 def addToOrder(request):
     user = request.user
-    try:
-        choices = request.POST.getlist('choice')
-        selected_choice = []
-        for choice in choices:
-            selected_choice.append(Cart.objects.filter(user=user).get(pk=choice))
-    except (KeyError, Cart.DoesNotExist):
+    choices = request.POST.getlist('choice')
+    if not choices:
         # Redisplay the cart form.
         return render(request, 'cart.html', {
             'user': user,
             'cart_list': Cart.objects.filter(user=user),
         })
     else:
+        selected_choice = []
+        for choice in choices:
+            selected_choice.append(Cart.objects.filter(user=user).get(pk=choice))
         s = ''
         for item in selected_choice:
             s = s + str(item.product_id) + ':' + str(item.number) + ';'
-            # item.delete()
+            item.delete()
         selected_order = Order(user=request.user, order_list=s)
         selected_order.save()
         return HttpResponseRedirect(reverse('shop_app:order', args=(selected_order.order_id,)))
@@ -116,9 +117,6 @@ def order(request, order_id):
     plist = []
     for detail in product_details:
         if detail != '':
-            print(detail)
-            print(detail.split(':')[0])
-            print(detail.split(':')[1])
             product_name = Product.objects.get(pk=int(detail.split(':')[0])).product_name
             product_price = Product.objects.get(pk=int(detail.split(':')[0])).price
             product_num = detail.split(':')[1]
