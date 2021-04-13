@@ -2,12 +2,12 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
+from django.urls import reverse
 
 from .models import Product, Cart, Order
 from .forms import CartForm
-
 
 
 def index(request):
@@ -17,8 +17,8 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-def product(request, product_id):
 
+def product(request, product_id):
     selected_p = get_object_or_404(Product, pk=product_id)
     login_user = request.user
     cart_list = Cart.objects.filter(user=login_user)
@@ -44,7 +44,6 @@ def product(request, product_id):
                 has_cart_item.number += p_number
                 has_cart_item.save()
 
-
             # redirect to a new URL:
             return cart(request)
 
@@ -61,6 +60,7 @@ def profile(request):
     #     logedin_user = get_object_or_404(Profile, request.user.username)
     return render(request, 'profile.html', {'user': request.user})
 
+
 def cart(request):
     # global logedin_user
     # if request.user.is_authenticated:
@@ -74,3 +74,60 @@ def about_us(request):
     login_user = request.user
 
     return render(request, 'about_us.html',{'user': request.user})
+
+def addToOrder(request):
+    user = request.user
+    try:
+        choices = request.POST.getlist('choice')
+        selected_choice = []
+        for choice in choices:
+            selected_choice.append(Cart.objects.filter(user=user).get(pk=choice))
+    except (KeyError, Cart.DoesNotExist):
+        # Redisplay the cart form.
+        return render(request, 'cart.html', {
+            'user': user,
+            'cart_list': Cart.objects.filter(user=user),
+        })
+    else:
+        s = ''
+        for item in selected_choice:
+            s = s + str(item.product_id) + ':' + str(item.number) + ';'
+            # item.delete()
+        selected_order = Order(user=request.user, order_list=s)
+        selected_order.save()
+        return HttpResponseRedirect(reverse('shop_app:order', args=(selected_order.order_id,)))
+
+
+class ProductInfo:
+    product_name = 'name'
+    product_num = 'num'
+    product_price = 'price'
+
+    def __init__(self, name, num, price):
+        self.product_num = num
+        self.product_name = name
+        self.product_price = price
+
+
+def order(request, order_id):
+    selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
+    info = selected_order.order_list;
+    product_details = info.split(';')
+    plist = []
+    for detail in product_details:
+        if detail != '':
+            print(detail)
+            print(detail.split(':')[0])
+            print(detail.split(':')[1])
+            product_name = Product.objects.get(pk=int(detail.split(':')[0])).product_name
+            product_price = Product.objects.get(pk=int(detail.split(':')[0])).price
+            product_num = detail.split(':')[1]
+            plist.append(ProductInfo(product_name, product_num, product_price))
+    return render(request, 'order.html', {'product_list': plist, 'order_id': order_id})
+
+
+def payOrder(request, order_id):
+    selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
+    selected_order.status = 'paid'
+    selected_order.save()
+    return index(request)

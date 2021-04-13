@@ -2,7 +2,7 @@
 {% extends "_base.html" %}
 
 
-{% block title %}Cart{% endblock %}
+{% block title %}Order{% endblock %}
 
 {% block content %}
    <div class="my-3 p-3 bg-white rounded shadow-sm">
@@ -16,33 +16,35 @@
         <span class="badge badge-secondary badge-pill">4</span>
       </h4>
       <ul class="list-group mb-3">
+      {% for item in product_list %}
         <li class="list-group-item d-flex justify-content-between lh-condensed">
 
               <img  width="120px"  src="store/1.jpg"/>
-              <span><h6 class="my-0">product 1</h6></span>
+              <span><h6 class="my-0">{{ item.product_name }}</h6></span>
 
 
-            <span class="text-muted">1</span>
-          <span class="text-muted">$7</span>
+            <span class="text-muted">{{ item.product_num }}</span>
+          <span class="text-muted">${{ item.product_price }}</span>
         </li>
-           <li class="list-group-item d-flex justify-content-between lh-condensed">
+      {% endfor %}
+<!--           <li class="list-group-item d-flex justify-content-between lh-condensed">-->
 
-              <img  width="120px"  src="store/nav2.jpg"/>
-              <span><h6 class="my-0">product 2</h6></span>
-
-
-            <span class="text-muted">1</span>
-          <span class="text-muted">$10</span>
-        </li>
-         <li class="list-group-item d-flex justify-content-between lh-condensed">
-
-              <img  width="120px"  src="store/nav1.jpg"/>
-              <span><h6 class="my-0">product 3</h6></span>
+<!--              <img  width="120px"  src="store/nav2.jpg"/>-->
+<!--              <span><h6 class="my-0">product 2</h6></span>-->
 
 
-            <span class="text-muted">2</span>
-          <span class="text-muted">$16</span>
-        </li>
+<!--            <span class="text-muted">1</span>-->
+<!--          <span class="text-muted">$10</span>-->
+<!--        </li>-->
+<!--         <li class="list-group-item d-flex justify-content-between lh-condensed">-->
+
+<!--              <img  width="120px"  src="store/nav1.jpg"/>-->
+<!--              <span><h6 class="my-0">product 3</h6></span>-->
+
+
+<!--            <span class="text-muted">2</span>-->
+<!--          <span class="text-muted">$16</span>-->
+<!--        </li>-->
 
         <li class="list-group-item d-flex justify-content-between">
           <span>Total </span>
@@ -54,8 +56,8 @@
     </div>
             <div class="col-md-7 order-md-2">
       <h4 class="mb-3">Receiver Information</h4>
-      <form class="needs-validation" novalidate>
-
+      <form class="needs-validation" action="{% url 'shop_app:payOrder' order_id %}" method="post">
+          {% csrf_token %}
 
         <div class="mb-3">
           <label for=""receiver>Receiver Name</label>
