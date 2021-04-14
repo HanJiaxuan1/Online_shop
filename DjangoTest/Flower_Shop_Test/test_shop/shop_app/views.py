@@ -109,28 +109,26 @@ def addToOrder(request):
 
 
 class ProductInfo:
-    product_name = 'name'
+    product_obj = 'obj'
     product_num = 'num'
-    product_price = 'price'
 
-    def __init__(self, name, num, price):
+    def __init__(self, obj, num):
         self.product_num = num
-        self.product_name = name
-        self.product_price = price
+        self.product_obj = obj
+
 
 
 def order(request, order_id):
     selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
-    info = selected_order.order_list;
+    info = selected_order.order_list
     product_details = info.split(';')
-    plist = []
+    p_list = []
     for detail in product_details:
         if detail != '':
-            product_name = Product.objects.get(pk=int(detail.split(':')[0])).product_name
-            product_price = Product.objects.get(pk=int(detail.split(':')[0])).price
+            product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
             product_num = detail.split(':')[1]
-            plist.append(ProductInfo(product_name, product_num, product_price))
-    return render(request, 'order.html', {'product_list': plist, 'order_id': order_id})
+            p_list.append(ProductInfo(product_obj, product_num))
+    return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id})
 
 
 def payOrder(request, order_id):
