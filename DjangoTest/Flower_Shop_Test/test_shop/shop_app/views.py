@@ -2,8 +2,10 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
+from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
+from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 
 from .models import Product, Cart, Order
@@ -43,7 +45,6 @@ def product(request, product_id):
             else:
                 has_cart_item.number += p_number
                 has_cart_item.save()
-
             # redirect to a new URL:
             return cart(request)
 
@@ -71,10 +72,18 @@ def cart(request):
 
 
 def about_us(request):
-
     login_user = request.user
-
     return render(request, 'about_us.html', {'user': request.user})
+
+
+@csrf_exempt
+def delete(request):
+    data = request.POST
+    getid = request.POST.get("getId")
+    deleteObject = Cart.objects.get(cart_id = getid)
+    deleteObject.delete()
+    response = JsonResponse({"getId": getid})
+    return response
 
 
 def addToOrder(request):

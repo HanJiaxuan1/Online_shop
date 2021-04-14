@@ -128,7 +128,7 @@
             }
         });
     // 4. 把总计显示在总计元素上
-        console.log("total: ",total)
+    //     console.log("total: ",total)
         $("#total_number").text(number+"  Bouquets");
         $("#total_price").text("￥"+total.toFixed(2));//toFixed(2)函数的作用是把total保留2位
     }
@@ -156,13 +156,11 @@ function deleteCart(getId, obj) {
     item.remove()
     $.ajax({
         type : 'post',
-        url : '/delete',
+        url : '/delete/',
         data:{'getId':getId},
         async : false,
-        success : function(result){
-
-        },
-        error : function(result){
+        success : function(data){
+            alert("success delete " + data["getId"]);
         }
     });
 }
