@@ -25,34 +25,58 @@ def product(request, product_id):
     login_user = request.user
     cart_list = Cart.objects.filter(user=login_user)
 
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = CartForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            p_number = form.cleaned_data['number']
+    data = request.POST
+    p_id = request.POST.get("p_id")
+    p_num = request.POST.get("p_id")
+    newCartObject = Cart.objects.get(cart_id=p_id)
 
-            has_cart_item = False
-            for old_cart_item in cart_list:
-                if old_cart_item.product == selected_p:
-                    has_cart_item = old_cart_item
+    has_cart_item = False
+    for old_cart_item in cart_list:
+        if old_cart_item.product == selected_p:
+            has_cart_item = old_cart_item
 
-            if not has_cart_item:
-                new_cart_item = Cart(product=selected_p, user=login_user, number=p_number)
-                # save changes
-                new_cart_item.save()
-            else:
-                has_cart_item.number += p_number
-                has_cart_item.save()
-            # redirect to a new URL:
-            return cart(request)
-
-    # if a GET (or any other method) we'll create a blank form
+    if not has_cart_item:
+        new_cart_item = Cart(product=selected_p, user=login_user, number=p_number)
+        # save changes
+        new_cart_item.save()
     else:
-        form = CartForm()
+        has_cart_item.number += p_number
+        has_cart_item.save()
+    # redirect to a new URL:
+    return cart(request)
 
-    return render(request, 'product.html', {'form': form, 'product': selected_p})
+    deleteObject.delete()
+    response = JsonResponse({"getId": getid})
+    return response
+
+    # # if this is a POST request we need to process the form data
+    # if request.method == 'POST':
+    #     # create a form instance and populate it with data from the request:
+    #     form = CartForm(request.POST)
+    #     # check whether it's valid:
+    #     if form.is_valid():
+    #         p_number = form.cleaned_data['number']
+    #
+    #         has_cart_item = False
+    #         for old_cart_item in cart_list:
+    #             if old_cart_item.product == selected_p:
+    #                 has_cart_item = old_cart_item
+    #
+    #         if not has_cart_item:
+    #             new_cart_item = Cart(product=selected_p, user=login_user, number=p_number)
+    #             # save changes
+    #             new_cart_item.save()
+    #         else:
+    #             has_cart_item.number += p_number
+    #             has_cart_item.save()
+    #         # redirect to a new URL:
+    #         return cart(request)
+    #
+    # # if a GET (or any other method) we'll create a blank form
+    # else:
+    #     form = CartForm()
+    #
+    # return render(request, 'product.html', {'form': form, 'product': selected_p})
 
 
 def profile(request):
@@ -80,7 +104,7 @@ def about_us(request):
 def delete(request):
     data = request.POST
     getid = request.POST.get("getId")
-    deleteObject = Cart.objects.get(cart_id = getid)
+    deleteObject = Cart.objects.get(cart_id=getid)
     deleteObject.delete()
     response = JsonResponse({"getId": getid})
     return response
@@ -109,28 +133,25 @@ def addToOrder(request):
 
 
 class ProductInfo:
-    product_name = 'name'
+    product_obj = 'obj'
     product_num = 'num'
-    product_price = 'price'
 
-    def __init__(self, name, num, price):
+    def __init__(self, obj, num):
         self.product_num = num
-        self.product_name = name
-        self.product_price = price
+        self.product_obj = obj
 
 
 def order(request, order_id):
     selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
-    info = selected_order.order_list;
+    info = selected_order.order_list
     product_details = info.split(';')
-    plist = []
+    p_list = []
     for detail in product_details:
         if detail != '':
-            product_name = Product.objects.get(pk=int(detail.split(':')[0])).product_name
-            product_price = Product.objects.get(pk=int(detail.split(':')[0])).price
+            product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
             product_num = detail.split(':')[1]
-            plist.append(ProductInfo(product_name, product_num, product_price))
-    return render(request, 'order.html', {'product_list': plist, 'order_id': order_id})
+            p_list.append(ProductInfo(product_obj, product_num))
+    return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id})
 
 
 def payOrder(request, order_id):

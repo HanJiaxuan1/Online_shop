@@ -1,30 +1,35 @@
-
 {% extends "_base.html" %}
-
 
 {% block title %}Order{% endblock %}
 
+
+
 {% block content %}
+
+    <link href="/static/store/store.css" rel="stylesheet">
+
    <div class="my-3 p-3 bg-white rounded shadow-sm">
       <div class="row ">
 
 
 
-           <div class="col-md-5 order-md-1 mb-4">
+           <div class="col-md-7 order-md-1 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Order Verification</span>
         <span class="badge badge-secondary badge-pill">4</span>
       </h4>
       <ul class="list-group mb-3">
       {% for item in product_list %}
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
 
-              <img  width="120px"  src="store/1.jpg"/>
-              <span><h6 class="my-0">{{ item.product_name }}</h6></span>
+              <img  width="120px"  src="/media/{{item.product_obj.product_image}}"/>
+              <span><h6 class="my-0">{{ item.product_obj.product_name }}</h6></span>
 
+            <span class="text-muted" id="i_num">{{ item.product_num }}</span>
 
-            <span class="text-muted">{{ item.product_num }}</span>
-          <span class="text-muted">${{ item.product_price }}</span>
+            <span class="text-muted" id="i_price">{{ item.product_obj.price }}</span>
+
+            <span class="text-muted" id="i_cal-price">calculated</span>
         </li>
       {% endfor %}
 <!--           <li class="list-group-item d-flex justify-content-between lh-condensed">-->
@@ -46,21 +51,26 @@
 <!--          <span class="text-muted">$16</span>-->
 <!--        </li>-->
 
-        <li class="list-group-item d-flex justify-content-between">
+        <li class="list-group-item d-flex justify-content-between order-sum">
           <span>Total </span>
-          <strong>$33</strong>
+          <strong id="sum_all"></strong>
         </li>
       </ul>
 
 
     </div>
-            <div class="col-md-7 order-md-2">
+
+
+
+
+
+            <div class="col-md-5 order-md-2">
       <h4 class="mb-3">Receiver Information</h4>
       <form class="needs-validation" action="{% url 'shop_app:payOrder' order_id %}" method="post">
           {% csrf_token %}
 
         <div class="mb-3">
-          <label for=""receiver>Receiver Name</label>
+          <label for="receiver">Receiver Name</label>
           <div class="input-group">
 
             <input type="text" class="form-control" id="receivername" placeholder="Receiver name" required>
@@ -107,8 +117,49 @@
         <button class="btn btn-outline-success btn-sm align-items-sm-end" type="submit">Checkout</button>
       </form>
     </div>
-            </div>
+
+    </div>
 
         </div>
+
+
+
+
+
+
+<script>
+    $(function() {
+        // 加载完页面时,计算总计
+        calculateItemSum();
+
+    });
+
+
+    function calculateItemSum(){
+
+        let sum_all = 0
+
+        let each_item = $(".order-list").each(function (index) {
+
+            let item_price = Number($(".order-list #i_price").eq(index).text());
+             console.log("i_price: ",item_price)
+            let num = Number($(".order-list #i_num").eq(index).text());
+             console.log("i_num: ",num)
+            let item_sum = item_price * num;
+             sum_all += item_sum
+             console.log("i_sum: ",item_sum)
+            $(".order-list #i_cal-price").eq(index).text("￥"+item_sum);
+
+        })
+
+        $(".order-sum #sum_all").text("￥"+sum_all);
+
+    }
+
+
+</script>
+
+
+
 
 {% endblock %}
