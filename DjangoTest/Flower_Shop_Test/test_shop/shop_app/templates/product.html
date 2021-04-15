@@ -132,9 +132,19 @@
 
 
         <tr>
-          <th width="15%"   ></th>
+            <th width="15%"   >Quantity</th>
+            <td style="color: #5a6268;    '">
+                <input type="number" min="0" max="100" id="p_num"/>
+            </td>
+        </tr>
 
 
+        <tr>
+
+            <td style="color: #5a6268;    '">
+                <button  class="btn btn-lg btn-outline-success" onclick="addToCart('{{ product.product_id }}', this)">Add To Cart</button>
+
+            </td>
         </tr>
 
 
@@ -143,18 +153,9 @@
 
 
 
+
 </table>
- <div align="center">
-                       <div class="btn-group">
 
-                           <form  method="post">
-                                {% csrf_token %}
-                                {{ form }}
-                                <input type="submit" value="Add to Cart">
-                            </form>
-
-                </div>
-                </div>
 
         </div>
 
@@ -163,6 +164,27 @@
             </div>
 
         </div>
+
+
+<script>
+
+    function addToCart(id, obj) {
+    let num = Number($("#p_num").text())
+        // console.log("Id="+id);
+        // console.log("num="+num);
+    $.ajax({
+        type : 'post',
+        url : '/addToCart/',
+        data:{'p_id':id, 'p_num':num},
+        async : false,
+        success : function(data){
+            alert("success added :product id" + data["id"]);
+        }
+    });
+}
+
+
+</script>
 
 
 {% endblock %}

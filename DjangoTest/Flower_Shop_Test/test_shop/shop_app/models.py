@@ -73,11 +73,6 @@ class Order(models.Model):
                 str_p_id = str(product_obj.product_id)
                 str_p_name = product_obj.product_name
 
-                # p_list = p_list + "//" + product_num
-
                 p_list = p_list + "    |Id: " + str_p_id + "|    |Name: " + str_p_name + "|    |Number: " + product_num + "|\n"
 
-
-        #         str_p_name = product_obj.prodict_name
-        #         p_list = p_list + "Product id: " + str_p_id + "Product name: " + str_p_name + "Product number: " + product_num + "\n"
         return p_list
