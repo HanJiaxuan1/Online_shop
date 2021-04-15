@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'account.apps.AccountConfig',
     'shop_app.apps.ShopAppConfig',
     'django.contrib.admin',

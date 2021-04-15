@@ -7,6 +7,15 @@ import django.utils.timezone as timezone
 from django.conf import settings
 
 
+class AdminProductInfo:
+    product_obj = 'obj'
+    product_num = 'num'
+
+    def __init__(self, obj, num):
+        self.product_num = num
+        self.product_obj = obj
+
+
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=255)
@@ -43,9 +52,32 @@ class Order(models.Model):
     )
     order_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    order_list = models.CharField(max_length=255,)
+    order_list = models.CharField(max_length=255, )
     date = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='unpaid')
 
     def __str__(self):
         return f" Order: {self.order_id} - {self.user} - {self.order_list}"
+
+    def admin_retrieve_order(self):
+
+        info = self.order_list
+        product_details = info.split(';')
+
+        p_list = ""
+        for detail in product_details:
+            if detail != '':
+
+                product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
+                product_num = detail.split(':')[1]
+                str_p_id = str(product_obj.product_id)
+                str_p_name = product_obj.product_name
+
+                # p_list = p_list + "//" + product_num
+
+                p_list = p_list + "    |Id: " + str_p_id + "|    |Name: " + str_p_name + "|    |Number: " + product_num + "|\n"
+
+
+        #         str_p_name = product_obj.prodict_name
+        #         p_list = p_list + "Product id: " + str_p_id + "Product name: " + str_p_name + "Product number: " + product_num + "\n"
+        return p_list
