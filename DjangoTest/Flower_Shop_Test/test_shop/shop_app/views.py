@@ -110,6 +110,22 @@ def delete(request):
     return response
 
 
+@csrf_exempt
+def changenumber(request):
+    data = request.POST
+    changenumber = request.POST.get("changenumber")
+    getid = request.POST.get("getId")
+    # changeObject = Cart.objects.get(cart_id = getid)
+    # changeObject.update(number=changenumber)
+    changeObject = Cart.objects.get(cart_id=getid)
+    changeObject.number = changenumber
+    changeObject.save()
+    print(changeObject)
+    # Cart.objects.filter(cart_id=getid).update(number=changenumber)
+    response = JsonResponse({"getId": getid})
+    return response
+
+
 def addToOrder(request):
     user = request.user
     choices = request.POST.getlist('choice')

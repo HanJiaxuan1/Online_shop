@@ -54,7 +54,7 @@
 
         <div class="col-md-2">
             <div class="card-body">
-                <input class="form-control" id="num" type="number"  min="1" value="{{cart_item.number}}" required>
+                <input class="form-control" id="num" type="number"  min="1" onchange="changeNumber('{{cart_item.cart_id}}',value)" value="{{cart_item.number}}" required>
             </div>
         </div>
 
@@ -78,10 +78,8 @@
         <p>Sorry... No products in cart.</p>
     {% endif %}
 
-
-
-      </div>
 </div>
+      </div>
 
 <div class="row">
     <div class="col-md-3 " >
@@ -167,6 +165,19 @@ function deleteCart(getId, obj) {
     });
 }
 
+function changeNumber(getId,value){
+    calculateItemSum();
+    showTotal();
+    $.ajax({
+        type : 'post',
+        url : '/changenumber/',
+        data:{'getId':getId,"changenumber":value},
+        async : false,
+        success : function(data){
+            // alert("success change " + data["getId"]);
+        }
+    });
+}
 </script>
 
 {% endblock %}
