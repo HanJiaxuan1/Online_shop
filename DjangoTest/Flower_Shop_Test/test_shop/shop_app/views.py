@@ -22,32 +22,8 @@ def index(request):
 
 def product(request, product_id):
     selected_p = get_object_or_404(Product, pk=product_id)
-    login_user = request.user
-    cart_list = Cart.objects.filter(user=login_user)
-
-    data = request.POST
-    p_id = request.POST.get("p_id")
-    p_num = request.POST.get("p_id")
-    newCartObject = Cart.objects.get(cart_id=p_id)
-
-    has_cart_item = False
-    for old_cart_item in cart_list:
-        if old_cart_item.product == selected_p:
-            has_cart_item = old_cart_item
-
-    if not has_cart_item:
-        new_cart_item = Cart(product=selected_p, user=login_user, number=p_number)
-        # save changes
-        new_cart_item.save()
-    else:
-        has_cart_item.number += p_number
-        has_cart_item.save()
-    # redirect to a new URL:
-    return cart(request)
-
-    deleteObject.delete()
-    response = JsonResponse({"getId": getid})
-    return response
+    # login_user = request.user
+    # cart_list = Cart.objects.filter(user=login_user)
 
     # # if this is a POST request we need to process the form data
     # if request.method == 'POST':
@@ -75,8 +51,41 @@ def product(request, product_id):
     # # if a GET (or any other method) we'll create a blank form
     # else:
     #     form = CartForm()
-    #
-    # return render(request, 'product.html', {'form': form, 'product': selected_p})
+
+    return render(request, 'product.html', {'product': selected_p})
+
+
+@csrf_exempt
+def add_to_cart(request):
+    data = request.POST
+    p_id = request.POST.get("p_id")
+    p_num = request.POST.get("p_num")
+    login_user = request.user
+    selected_p = Product.objects.get(product_id=p_id)
+    cart_list = Cart.objects.filter(user=login_user)
+
+    # new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
+    # new_cart_item.save()
+
+    has_cart_item = False
+    for old_cart_item in cart_list:
+        if old_cart_item.product.product_id == p_id:
+            has_cart_item = old_cart_item
+
+    if not has_cart_item:
+        new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
+        # save changes
+        new_cart_item.save()
+    else:
+        has_cart_item.number += p_num
+        has_cart_item.save()
+
+    response = JsonResponse({"p_id": p_id, "p_num": p_num})
+    return response
+
+
+
+
 
 
 def profile(request):
