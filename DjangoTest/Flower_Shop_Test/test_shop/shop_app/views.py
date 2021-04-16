@@ -67,30 +67,34 @@ def add_to_cart(request):
     # new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
     # new_cart_item.save()
 
-    print("p_id: ")
-    print(p_id)
+    if selected_p.inventory >= p_num:
+        # selected_p.inventory -= p_num
+        # selected_p.save()
 
-    print("old_id: ")
+        has_cart_item = False
+        for old_cart_item in cart_list:
+            old_cart_id = str(old_cart_item.product.product_id)
+            print(old_cart_id)
+            if old_cart_id == p_id:
+                has_cart_item = old_cart_item
+                print("has_cart_item: ")
+                print(has_cart_item)
 
-    has_cart_item = False
-    for old_cart_item in cart_list:
-        old_cart_id = str(old_cart_item.product.product_id)
-        print(old_cart_id)
-        if old_cart_id == p_id:
-            has_cart_item = old_cart_item
-            print("has_cart_item: ")
-            print(has_cart_item)
+        if not has_cart_item:
+            new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
+            # save changes
+            new_cart_item.save()
+        else:
+            has_cart_item.number += p_num
+            has_cart_item.save()
 
-    if not has_cart_item:
-        new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
-        # save changes
-        new_cart_item.save()
+        response = JsonResponse({"msg": "Product Successfully Added to Cart"})
+        return response
     else:
-        has_cart_item.number += p_num
-        has_cart_item.save()
 
-    response = JsonResponse({"p_id": p_id, "p_num": p_num})
-    return response
+        response = JsonResponse({"msg": "Request is larger than inventory"})
+        return response
+
 
 
 
@@ -110,7 +114,9 @@ def cart(request):
     #     logedin_user = get_object_or_404(Profile, request.user.username)
     login_user = request.user
     cart_list = Cart.objects.filter(user=login_user)
-    return render(request, 'cart.html', {'user': login_user, 'cart_list': cart_list})
+    return render(request, 'cart.html', {'user': login_user,
+                                         'cart_list': cart_list,
+                                         'error': ""},)
 
 
 def about_us(request):
@@ -152,12 +158,22 @@ def addToOrder(request):
         return render(request, 'cart.html', {
             'user': user,
             'cart_list': Cart.objects.filter(user=user),
+            'error': "You have not choose any products yet"
         })
     else:
         selected_choice = []
         for choice in choices:
             selected_choice.append(Cart.objects.filter(user=user).get(pk=choice))
         s = ''
+
+        for item in selected_choice:
+            if int(item.product.inventory) <= int(item.number):
+                return render(request, 'cart.html', {
+                    'user': user,
+                    'cart_list': Cart.objects.filter(user=user),
+                    'error': "Request is larger than inventory"
+                })
+
         for item in selected_choice:
             s = s + str(item.product_id) + ':' + str(item.number) + ';'
             item.delete()
@@ -184,6 +200,11 @@ def order(request, order_id):
         if detail != '':
             product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
             product_num = detail.split(':')[1]
+            int_num = int(product_num)
+
+            product_obj.inventory -= int_num
+            product_obj.save()
+
             p_list.append(ProductInfo(product_obj, product_num))
     return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id})
 

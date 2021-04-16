@@ -132,9 +132,16 @@
 
 
         <tr>
+          <th width="15%"   >Inventory</th>
+            <td style="color: #5a6268;    '" id="p_inventory"> {{ product.inventory }}
+            </td>
+        </tr>
+
+
+        <tr>
             <th width="15%"   >Quantity</th>
             <td style="color: #5a6268;    '">
-                <input type="number" min="0" max="100" id="p_num"/>
+                <input type="number" min="1" max="100" id="p_num"/>
             </td>
         </tr>
 
@@ -172,13 +179,19 @@
     let num = Number($("#p_num").val())
         console.log("Id="+id);
         console.log("num="+num);
+    // let inventory_num = Number($("#p_inventory").text());
+    //     console.log("invent_num="+inventory_num);
     $.ajax({
         type : 'post',
         url : '/add_to_cart/',
         data:{'p_id':id, 'p_num':num},
         async : false,
         success : function(data){
-            alert("success added :product id" + data["id"]);
+            // if (inventory_num >= num){
+            //     $("#p_inventory").text(inventory_num-num);
+            // }
+
+            alert(data["msg"]);
         }
     });
 }

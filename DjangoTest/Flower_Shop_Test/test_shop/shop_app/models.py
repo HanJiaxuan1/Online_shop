@@ -23,6 +23,7 @@ class Product(models.Model):
     type = models.CharField(max_length=255)
     color = models.CharField(max_length=255)
     price = models.IntegerField()
+    inventory = models.IntegerField(default=50)
     publish_date = models.DateField()
     product_image = models.ImageField(upload_to='media/static/product')
     created_at = models.DateTimeField(auto_now_add=True)
