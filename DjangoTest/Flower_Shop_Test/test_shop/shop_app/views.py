@@ -167,7 +167,7 @@ def addToOrder(request):
         s = ''
 
         for item in selected_choice:
-            if int(item.product.inventory) <= int(item.number):
+            if int(item.product.inventory) < int(item.number):
                 return render(request, 'cart.html', {
                     'user': user,
                     'cart_list': Cart.objects.filter(user=user),

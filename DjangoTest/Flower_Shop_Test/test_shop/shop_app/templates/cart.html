@@ -21,11 +21,15 @@
             <h5 class="pb-2 mb-0">Unit Price</h5>
         </div>
 
+        <div class="col-md-1">
+            <h5 class="pb-2 mb-0">Inventory</h5>
+        </div>
+
         <div class="col-md-2">
             <h5 class="pb-2 mb-0">Quantity</h5>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-1">
             <h5 class="pb-2 mb-0">Sum</h5>
         </div>
 
@@ -56,13 +60,20 @@
             </div>
         </div>
 
+        <div class="col-md-1">
+            <div class="card-body">
+                <p class="card-text" id="inventory">{{cart_item.product.inventory}}</p>
+            </div>
+        </div>
+
+
         <div class="col-md-2">
             <div class="card-body">
                 <input class="form-control" id="num" type="number"  min="1" onchange="changeNumber('{{cart_item.cart_id}}',value)" value="{{cart_item.number}}" required>
             </div>
         </div>
 
-         <div class="col-md-2">
+         <div class="col-md-1">
             <div class="card-body">
                 <p class="card-text" id="calculated_price" ></p>
             </div>
