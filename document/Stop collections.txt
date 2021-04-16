@@ -1,0 +1,9 @@
+title Stop collections
+
+actor Staff
+control website
+participant system
+
+Staff ->  website:select stop collections
+
+website ->Staff:display the sale pattern

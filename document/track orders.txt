@@ -1,0 +1,11 @@
+title track order
+
+actor Staff
+control website
+participant system
+
+Staff ->  website:select track order
+
+website->system:get orderDetils()
+website<-system:return orderDetils()
+website ->Staff:display detail of order track

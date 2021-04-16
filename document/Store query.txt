@@ -1,0 +1,11 @@
+title Store query
+
+actor Staff
+control website
+participant system
+
+Staff ->  website:search for one kind of flower
+
+website->system:check in the database
+website<-system:return flowers
+website ->Staff:display the store

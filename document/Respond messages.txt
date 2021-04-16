@@ -1,0 +1,13 @@
+title Respond messages
+actor Staff
+control website
+participant system
+
+Staff ->  website:select respond message
+
+
+Staff<-website:display the communication of one order
+Staff->website:respond
+website->system:updates the details of the communication
+website<-system:return new message
+website ->Staff:display updated

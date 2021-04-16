@@ -1,0 +1,11 @@
+title update order
+
+actor Staff
+control website
+participant system
+
+Staff ->  website:select update order
+
+website->system:update orderDetils()
+website<-system:return new orderDetils()
+website ->Staff:display details
