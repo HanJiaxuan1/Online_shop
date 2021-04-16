@@ -119,7 +119,7 @@
                 // 2. 获取复选框的值，再通过父子关系找到对应元素，获取其文本
                 let price = parseFloat($(this).parents("#one_good").find("#price").html()); //得到商品的单价
                 console.log("i_price: ",price)
-                let num =  parseInt($(this).parents("#one_good").find("#num").attr("value")); //得到商品的数量
+                let num =  parseInt($(this).parents("#one_good").find("#num").val()); //得到商品的数量
                 let calculated_price = num * price
                 //3. 累加计算
                 total += calculated_price;
