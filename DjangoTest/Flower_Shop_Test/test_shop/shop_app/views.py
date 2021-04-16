@@ -58,8 +58,8 @@ def product(request, product_id):
 @csrf_exempt
 def add_to_cart(request):
     data = request.POST
-    p_id = request.POST.get("p_id")
-    p_num = request.POST.get("p_num")
+    p_id = str(request.POST.get("p_id"))
+    p_num = int(request.POST.get("p_num"))
     login_user = request.user
     selected_p = Product.objects.get(product_id=p_id)
     cart_list = Cart.objects.filter(user=login_user)
@@ -67,10 +67,19 @@ def add_to_cart(request):
     # new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
     # new_cart_item.save()
 
+    print("p_id: ")
+    print(p_id)
+
+    print("old_id: ")
+
     has_cart_item = False
     for old_cart_item in cart_list:
-        if old_cart_item.product.product_id == p_id:
+        old_cart_id = str(old_cart_item.product.product_id)
+        print(old_cart_id)
+        if old_cart_id == p_id:
             has_cart_item = old_cart_item
+            print("has_cart_item: ")
+            print(has_cart_item)
 
     if not has_cart_item:
         new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
