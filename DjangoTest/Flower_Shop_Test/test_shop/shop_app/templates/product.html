@@ -7,7 +7,7 @@
 
 
 
-<div class="my-3 p-3 border bg-white rounded shadow-sm">
+<div class="my-3 p-3 bg-white rounded shadow-sm">
       <div class="row ">
 
            <div class="col-md-3 mt-lg-5">
@@ -41,6 +41,7 @@
             </td>
 
         </tr>
+
      <tr>
           <th width="15%"   >Description</th>
             <td style="color: #5a6268;    '"> {{ product.product_desc }}
@@ -49,9 +50,26 @@
 
 
         <tr>
-          <th width="15%"   ></th>
+          <th width="15%"   >Inventory</th>
+            <td style="color: #5a6268;    '" id="p_inventory"> {{ product.inventory }}
+            </td>
+        </tr>
 
 
+        <tr>
+            <th width="15%"   >Quantity</th>
+            <td style="color: #5a6268;    '">
+                <input type="number" min="1" max="100" id="p_num"/>
+            </td>
+        </tr>
+
+
+        <tr>
+
+            <td style="color: #5a6268;    '">
+                <button  class="btn btn-lg btn-outline-success" onclick="addToCart('{{ product.product_id }}', this)">Add To Cart</button>
+
+            </td>
         </tr>
 
 
@@ -60,18 +78,9 @@
 
 
 
+
 </table>
- <div align="center">
-                       <div class="btn-group">
 
-                           <form  method="post">
-                                {% csrf_token %}
-                                {{ form }}
-                                <input type="submit" value="Add to Cart">
-                            </form>
-
-                </div>
-                </div>
 
         </div>
 
@@ -82,5 +91,33 @@
         </div>
 
 
+<script>
+
+    function addToCart(id, obj) {
+    let num = Number($("#p_num").val())
+        console.log("Id="+id);
+        console.log("num="+num);
+    // let inventory_num = Number($("#p_inventory").text());
+    //     console.log("invent_num="+inventory_num);
+    $.ajax({
+        type : 'post',
+        url : '/add_to_cart/',
+        data:{'p_id':id, 'p_num':num},
+        async : false,
+        success : function(data){
+            // if (inventory_num >= num){
+            //     $("#p_inventory").text(inventory_num-num);
+            // }
+
+            alert(data["msg"]);
+        }
+    });
+}
+
+
+</script>
+
+
 {% endblock %}
+
 
