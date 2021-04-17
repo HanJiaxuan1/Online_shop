@@ -1,231 +1,207 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.80.0">
-   <title>{% block title %} {% endblock %}</title>
+<!DOCTYPE html>
+<html>
+<head>
 
+  <!-- Site made with Mobirise Website Builder v4.8.8, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.8.8, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="https://img.icons8.com/color/50/000000/ikebana.png" type="image/x-icon">
+  <meta name="description" content="Best Bootstrap HTML eCommerce Template  - Download Now">
 
+    <title>{% block title %} {% endblock %}</title>
+  <link rel="stylesheet" href="../../static/store/static/css/mobirise-icons1.css">
+  <link rel="stylesheet" href="../../static/store/static/css/bootstrap.min10.css">
+  <link rel="stylesheet" href="../../static/store/static/css/bootstrap-grid.min7.css">
+  <link rel="stylesheet" href="../../static/store/static/css/bootstrap-reboot.min7.css">
+  <link rel="stylesheet" href="../../static/store/static/css/styles.css">
+  <link rel="stylesheet" href="../../static/store/static/css/style45.css">
+  <link rel="stylesheet" href="../../static/store/static/css/style51.css">
+  <link rel="stylesheet" href="../../static/store/static/css/style50.css">
 
+  <link rel="stylesheet" href="../../static/store/static/css/mbr-additional79.css" type="text/css">
 
-    <!-- Bootstrap core CSS -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link href="/static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="/static/store/store.css" rel="stylesheet">
 
 
-    <style>
+</head>
+<body>
+<section class="menu cid-rbb1P7Oggj" once="menu" id="menu1-5" data-sortbtn="btn-primary">
 
 
-    </style>
-
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/static/store/store.css" rel="stylesheet">
-
-  </head>
-
-<header>
-    <div class='nav_wrap'>
-
-        <nav class='top'>
-
-        <ul>
- <li class="nav-item active ">
-          <a class="nav-link" href="{% url 'shop_app:about_us' %}">About Us<span class="sr-only">current</span></a>
-        </li>
-    <li class="nav-item active ">
-          <a class="nav-link" href="{% url 'shop_app:index' %}">Store<span class="sr-only">current</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'shop_app:profile' %}">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'shop_app:cart' %}">Cart</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="#">Service</a>
-        </li>
 
 
-        {% if request.user.is_authenticated %}
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="navbar-brand">
 
-          <li class="nav-item">
-              <p class="nav-link"> Hello {{ request.user.first_name }}</p>
-          </li>
+            <span class="navbar-caption-wrap">
+                <img src="https://img.icons8.com/color/50/000000/ikebana.png"/>
+                <a class="navbar-caption text-black display-2" >
+                    Bouquet Pickup
+                </a>
 
+         </span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
 
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+            {% if request.user.is_authenticated %}
+<li >
+              <p > Welcome, {{ request.user.first_name }}</p>
           </li>
 
           {% else %}
 
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'account:login' %}">Log-in</a>
-          </li>
 
           {% endif %}
+                <li class="nav-item ">
+					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:about_us' %}">
+						About Us</a>
+
+				</li>
+
+                       <li class="nav-item ">
+					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:cart' %}">
+						Cart</a>
+
+				</li>
+
+                <li class="nav-item ">
+					<a class="nav-link link text-black display-4 " href="#">
+						Service</a>
+
+				</li>
+                    	<li class="nav-item dropdown open">
+					<a class="nav-link link text-black display-4 dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">
+						Store</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item text-black display-4"  href="{% url 'shop_app:index' %}">Home</a>
+                        <a class="dropdown-item text-black display-4" href="#">New Coming</a>
+                        <a class="dropdown-item text-black display-4" href="#">Flower Set</a>
+                        <a class="dropdown-item text-black display-4" href="#">DIY</a>
+
+					</div>
+				</li>
+         <li class="nav-item dropdown open">
+					<a class="nav-link link text-black display-4 dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">
+						Profile</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item text-black display-4" href="{% url 'shop_app:profile' %}">My Account</a>
+                        <a class="dropdown-item text-black display-4" href="#">My Order</a>
+                        <a class="dropdown-item text-black display-4" href="#">My Service</a>
+
+					</div>
+				</li>
+            </ul>
+   {% if request.user.is_authenticated %}
+
+       <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4 " href="{% url 'account:logout' %}" >
+                  Logout</a></div>
 
 
 
-
-
-      </ul>
-        </nav>
-        <nav class='sub'>
-         <ul>
-               <li class="nav-item active ">
-          <a class="nav-link" href="{% url 'shop_app:about_us' %}">About Us<span class="sr-only">current</span></a>
-        </li>
-    <li class="nav-item active ">
-          <a class="nav-link" href="{% url 'shop_app:index' %}">Store<span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'shop_app:profile' %}">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'shop_app:cart' %}">Cart</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="#">Service</a>
-        </li>
-
-
-        {% if request.user.is_authenticated %}
-
-          <li class="nav-item">
-              <p class="nav-link"> Hello {{ request.user.first_name }}</p>
-          </li>
-
-
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
-          </li>
 
           {% else %}
 
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'account:login' %}">Log-in</a>
-          </li>
+
+       <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4 " href="{% url 'account:login' %}" >
+                  Login</a></div>
+
+
 
           {% endif %}
 
 
+      </div>
+    </nav>
+</section>
+<div style="margin-right: 100px; margin-left: 100px; margin-top: 100px">
+{% block content %}{% endblock %}
+</div>
+<section class="features8 cid-rbaKgiAJ5r" id="features8-1" data-sortbtn="btn-primary">
 
 
 
-      </ul>
-        </nav>
+    <div class="mbr-overlay" style="opacity: 0.9; background-color: rgb(255, 255, 255);">
     </div>
-    <div class='menu_toggle'>
-        <i class='fa fa-bars'></i>
-    </div>
-</header>
-  <body>
+    <div class="container-fluid justify-content-center">
 
 
-<div class="container">
+        <div class="row content-row pt-5">
+            <div class="card pl-3 pr-3 col-12 col-md-6 col-lg-4">
+                <div class="media pb-3">
+                    <div class="card-img align-self-center">
+                        <span class="mbr-iconfont mbri-delivery"></span>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="card-title py-2 align-left mbr-fonts-style display-2">
+                            Delivery</h4>
+                    </div>
+                </div>
+                <div class="card-box align-left">
+                    <p class="mbr-text mbr-fonts-style display-7">
+                      We offer good delivery service.</div>
+            </div>
 
-  <div class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-between align-items-center" id="logo">
- <div class="col-4 ">
+            <div class="card pl-3 pr-3 col-12 col-md-6 col-lg-4">
+                <div class="media pb-3">
+                    <div class="card-img align-self-center">
+                        <span class="mbr-iconfont mbri-refresh"></span>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="card-title py-2 align-left mbr-fonts-style display-2">
+                            Service</h4>
+                    </div>
+                </div>
+                <div class="card-box align-left">
+                    <p class="mbr-text mbr-fonts-style display-7">
+                       We bring you love and happiness.</div>
+            </div>
 
-        <a class="blog-header-logo " href="#"><img src="https://img.icons8.com/color/50/000000/ikebana.png"/>
-         Bouquet Pickup</a></div>
+            <div class="card pl-3 pr-3 col-12 col-md-6 col-lg-4">
+                <div class="media pb-3">
+                    <div class="card-img align-self-center">
+                        <span class="mbr-iconfont mbri-cash"></span>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="card-title py-2 align-left mbr-fonts-style display-2">
+                            Payment</h4>
+                    </div>
+                </div>
+                <div class="card-box align-left">
+                    <p class="mbr-text mbr-fonts-style display-7">
+                Many payment options are available.</div>
+            </div>
 
-
-    </div>
-  </div>
-
-
-
-
-
-
-    <div class="row">
-    <div class="col-md-2 ">
-      <div class="row    overflow-hidden flex-md-row  position-relative"  >
-        <div class="col p-4 d-flex flex-column">
- <aside class=" col-md-10 blog-sidebar" >
-
-
-
-
-    </aside>
 
         </div>
 
-      </div>
 
     </div>
-
-
-        {% block content %}{% endblock %}
-
-
-    </div>
+</section>
 
 
 
-</div>
-
-<footer class="blog-footer">
-    <p> - Welcome to Bouquet Pickup -</p>
-  <p>    Happiness & Joy
-  </p>
-</footer>
-
-<script>
-    $('.menu_toggle').on('click', function() {
-    $('body').toggleClass('sub_is_visible');
-    $('.menu_toggle .fa').toggleClass('fa-bars fa-arrow-left');
-
-});
-
-$(document).ready(function() {
-    $(window).scroll(function() {
-        if ($(window).scrollTop() >=100) {
-            $('body').addClass('off_top');
-        } else {
-            $('body').removeClass('off_top sub_is_visible');
-            $('.menu_toggle .fa').addClass('fa-bars').removeClass('fa-arrow-left');
-
-        }
-    });
-});
+  <script src="../../static/store/static/js/jquery.min1.js"></script>
+  <script src="../../static/store/static/js/popper.min1.js"></script>
+  <script src="../../static/store/static/js/bootstrap.min9.js"></script>
+  <script src="../../static/store/static/js/smooth-scroll5.js"></script>
+  <script src="../../static/store/static/js/jquery.touch-swipe.min1.js"></script>
+  <script src="../../static/store/static/js/script47.js"></script>
+  <script src="../../static/store/static/js/script.min.js"></script>
+  <script src="../../static/store/static/js/script42.js"></script>
+  <script src="../../static/store/static/js/player.min.js"></script>
+  <script src="../../static/store/static/js/script48.js"></script>
 
 
-$(document).ready(function() {
-    $(window).bind('scroll', function() {
-        let navHeight = $(window).height() - 400;
-        if ($(window).scrollTop() > navHeight) {
-            $('.blog-sidebar').addClass('fixed');
-        } else {
-            $('.blog-sidebar').removeClass('fixed');
-        }
-    });
-});
-
-
-$(document).ready(function() {
-    $(window).bind('scroll', function() {
-        let navHeight = $(window).height() - 80;
-        if ($(window).scrollTop() > navHeight) {
-            $('.blog-sidebar').addClass('fixed');
-        } else {
-            $('.blog-sidebar').removeClass('fixed');
-        }
-    });
-});
-</script>
-
-  </body>
+</body>
 </html>
-
-</div>
-
