@@ -1,15 +1,60 @@
 
-{% extends "_profile_base.html" %}
+{% extends "_base.html" %}
 
 {% block title %}Account{% endblock %}
 
-
 {% block content %}
+    <div class="row">
 
-    <link href="../../static/store/store.css" rel="stylesheet">
+
+ <div class="col-md-3 ">
+      <div class="row    overflow-hidden flex-md-row  position-relative"  >
+        <div class="col p-4 d-flex flex-column">
+ <aside class=" col-md-12 blog-sidebar ">
+
+      <div class="p-1">
+        <h4 class="font-italic">Account</h4>
+       <ol class="list-unstyled ">
+          <li><a href="#" style="color: gray">User Info</a></li>
+          <li><a href="#" style="color: gray">Receipt Info</a></li>
+          <li><a href="#" style="color: gray">Collections</a></li>
+          <li><a href="#" style="color: gray">My Cart</a></li>
+        </ol>
+
+      </div>
 
 
-   <div class="col-md-10">
+      <div class="p-1">
+        <h4 class="font-italic">Order</h4>
+        <ol class="list-unstyled ">
+          <li><a href="#" style="color: gray">My Orders</a></li>
+          <li><a href="#" style="color: gray">Cancelled</a></li>
+          <li><a href="#" style="color: gray">My Comments</a></li>
+
+        </ol>
+
+      </div>
+
+      <div class="p-1">
+        <h4 class="font-italic">Service</h4>
+        <ol class="list-unstyled">
+          <li><a href="#" style="color: gray">Messages</a></li>
+          <li><a href="#" style="color: gray">Replies</a></li>
+
+
+        </ol>
+
+      </div>
+
+
+    </aside>
+
+        </div>
+
+      </div>
+
+    </div>
+ <div class="col-md-9">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-800 position-static">
         <div class="col p-1 d-flex flex-column position-static">
             <div class="row">
@@ -23,41 +68,41 @@
                   <table class="table table-borderless">
     <tbody>
         <tr>
-          <th width="15%" style="font-family: Playfair Display">Username</th>
+          <th width="15%"      >Username</th>
             <td> <p class="card-text" style="color: #ff9c07"  >{{user.username}}</p></td>
 
         </tr>
 
         <tr>
-          <th width="20%" style="font-family: Playfair Display">Email</th>
-            <td style="color: #5a6268; font-family: 'Sitka Small'">{{user.email}}</td>
+          <th width="20%"      >Email</th>
+            <td style="color: #5a6268;     ">{{user.email}}</td>
 
         </tr>
       <tr>
-          <th width="15%" style="font-family: Playfair Display">Phone</th>
-            <td style="color: #5a6268; font-family: 'Sitka Small' ">{{user.phone}}</td>
+          <th width="15%"      >Phone</th>
+            <td style="color: #5a6268;      ">{{user.phone}}</td>
 
         </tr>
 
      <tr>
-          <th width="15%" style="font-family: Playfair Display">Address</th>
-            <td style="color: #5a6268; font-family: 'Sitka Small'">{{user.address}}</td>
+          <th width="15%"      >Address</th>
+            <td style="color: #5a6268;     ">{{user.address}}</td>
 
         </tr>
 
      <tr>
-          <th width={{user.city}}"15%" style="font-family: Playfair Display">City</th>
-            <td style="color: #5a6268; font-family: 'Sitka Small'"> {{user.city}}
+          <th width={{user.city}}"15%"      >City</th>
+            <td style="color: #5a6268;     "> {{user.city}}
         </tr>
 
     <tr>
-          <th width={{user.city}}"15%" style="font-family: Playfair Display">State</th>
-            <td style="color: #5a6268; font-family: 'Sitka Small'"> {{user.state}}
+          <th width={{user.city}}"15%"      >State</th>
+            <td style="color: #5a6268;     "> {{user.state}}
         </tr>
 
          <tr>
-          <th width={{user.city}}"15%" style="font-family: Playfair Display">Zip Code</th>
-            <td style="color: #5a6268; font-family: 'Sitka Small'"> {{user.zip_code}}
+          <th width={{user.city}}"15%"      >Zip Code</th>
+            <td style="color: #5a6268;     "> {{user.zip_code}}
         </tr>
 
 
@@ -67,7 +112,7 @@
 
                    <div align="center">
 
-                  <button type="button" class="btn btn-lg btn-outline-success ">Edit</button>
+                  <button type="button" class="btn btn-sm btn-outline-success ">Edit</button>
 
                 </div>
                 </div>
@@ -79,6 +124,7 @@
    </div>
 
 
+    </div>
 
 
 {% endblock %}

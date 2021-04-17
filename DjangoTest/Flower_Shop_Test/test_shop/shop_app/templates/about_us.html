@@ -1,14 +1,14 @@
-{% extends "_about_us_base.html" %}
+{% extends "_base.html" %}
 
 {% block title %}About Us{% endblock %}
 
 {% block content %}
 
 
-<main>
-
-    <section class="section teaser teaserYarns mobileCenter">
-        <div class="sectionImg"></div>
+    <section class="section teaser teaserYarns mobileCenter" style="background: none">
+        <div class="sectionImg">
+<img src="../../static/store/shop.jpg" height="500"  >
+        </div>
         <div class="sectionCopy" >
 
             <h3>Our Store</h3>
@@ -25,8 +25,10 @@
 </p>
         </div>
     </section>
-    <section class="section teaser teaserPatterns mobileCenter">
-        <div class="sectionImg"></div>
+    <section class="section teaser teaserPatterns mobileCenter" style="background: none">
+        <div class="sectionImg" >
+        <img src="../../static/store/service.jpg " height="500">
+        </div>
        <div class="sectionCopy" >
 
             <h3>Special Services</h3>
@@ -44,27 +46,33 @@
         </div>
     </section>
 
-    <section class="valueProps section">
+    <section class="valueProps section " style="background: none">
         <h3>Store Hours</h3>
         <div class="grid-3">
             <div class="grid-3-item">
-                <div class="grid-3-img quality" data-aos="zoom-in"></div>
+                <div class="grid-3-img quality" data-aos="zoom-in">
+                    <img src="../../static/store/open.jpg " height="240">
+                </div>
                 <h4>Monday - Friday</h4>
                 <p>8am – 4pm (Phones answered until 3:45pm)</p>
             </div>
             <div class="grid-3-item">
-                <div class="grid-3-img" data-aos="zoom-in" data-aos-delay="150"></div>
+                <div class="grid-3-img" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="../../static/store/store.jpg " height="240">
+                </div>
                 <h4>Saturday</h4>
                 <p>8am – Noon (Phones answered until 11:45am)</p>
             </div>
             <div class="grid-3-item">
-                <div class="grid-3-img" data-aos="zoom-in" data-aos-delay="300"></div>
+                <div class="grid-3-img" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="../../static/store/nav1.jpg " height="240">
+                </div>
                 <h4>Sunday</h4>
                 <p>Closed</p>
             </div>
         </div>
     </section>
-       <section class="section intro">
+       <section class="section intro" style="background: none">
            <h3>Contact Us</h3>
 
            <p>To PICK UP your preorder TEXT US 512-520-1314</p>
@@ -74,12 +82,8 @@
            <p>For any questions or concerns please EMAIL US at <a href="#">customerservice@flowerpickup.com</a></p>
 ,
     </section>
-    <section class="shopCTA section">
-        <h3>Free shipping when you spend $50 or more.</h3>
 
-    </section>
 
-</main>
 
-</div>
+
 {% endblock %}

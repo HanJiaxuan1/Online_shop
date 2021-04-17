@@ -1,95 +1,13 @@
-<style>
-    .box {
-    position: relative;
-    width: 120px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:25px;
-    color: #036a03;
-}
-.item {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 14px;
-    z-index: 99;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s all ease;
-    background: white;
-    border: none;
-}
-.one:before,
-.one:after {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: #098716;
-    transition: 0.4s all ease;
-}
-.one:before {
-    top: 0;
-}
-.one:after {
-    bottom: 0;
-}
-.one .item:before,
-.one .item:after {
-    position: absolute;
-    top: 0;
-    content: '';
-    height: 100%;
-    width: 2px;
-    background: #098716;
-    transition: 0.4s all ease;
-    z-index: -1;
-}
-.one .item:before {
-    left: 0;
-}
-.one .item:after {
-    right: 0;
-}
-.one:hover:before,
-.one:hover:after {
-    transition: 0.4s all ease;
-}
-.one:hover:before {
-    transform: translateY(-10px);
-}
-.one:hover:after {
-    transform: translateY(10px);
-}
-.one:hover .item {
-    color: white;
-}
-.one:hover .item:before,
-.one:hover .item:after {
-    width: 100%;
-    transition: 0.4s all ease;
-}
-
-#id{
-
-}
-
-</style>
 
 {% extends "_base.html" %}
 
 {% block title %}Product{% endblock %}
 
 {% block content %}
-    {% load static %}
-    <link href="{% static 'store/store.css' %}" rel="stylesheet">
 
 
 
-
-<div class="my-3 p-3 bg-white rounded shadow-sm">
+<div class="my-3 p-3 border bg-white rounded shadow-sm">
       <div class="row ">
 
            <div class="col-md-3 mt-lg-5">
@@ -123,7 +41,6 @@
             </td>
 
         </tr>
-
      <tr>
           <th width="15%"   >Description</th>
             <td style="color: #5a6268;    '"> {{ product.product_desc }}
@@ -132,26 +49,9 @@
 
 
         <tr>
-          <th width="15%"   >Inventory</th>
-            <td style="color: #5a6268;    '" id="p_inventory"> {{ product.inventory }}
-            </td>
-        </tr>
+          <th width="15%"   ></th>
 
 
-        <tr>
-            <th width="15%"   >Quantity</th>
-            <td style="color: #5a6268;    '">
-                <input type="number" min="1" max="100" id="p_num"/>
-            </td>
-        </tr>
-
-
-        <tr>
-
-            <td style="color: #5a6268;    '">
-                <button  class="btn btn-lg btn-outline-success" onclick="addToCart('{{ product.product_id }}', this)">Add To Cart</button>
-
-            </td>
         </tr>
 
 
@@ -160,9 +60,18 @@
 
 
 
-
 </table>
+ <div align="center">
+                       <div class="btn-group">
 
+                           <form  method="post">
+                                {% csrf_token %}
+                                {{ form }}
+                                <input type="submit" value="Add to Cart">
+                            </form>
+
+                </div>
+                </div>
 
         </div>
 
@@ -171,33 +80,6 @@
             </div>
 
         </div>
-
-
-<script>
-
-    function addToCart(id, obj) {
-    let num = Number($("#p_num").val())
-        console.log("Id="+id);
-        console.log("num="+num);
-    // let inventory_num = Number($("#p_inventory").text());
-    //     console.log("invent_num="+inventory_num);
-    $.ajax({
-        type : 'post',
-        url : '/add_to_cart/',
-        data:{'p_id':id, 'p_num':num},
-        async : false,
-        success : function(data){
-            // if (inventory_num >= num){
-            //     $("#p_inventory").text(inventory_num-num);
-            // }
-
-            alert(data["msg"]);
-        }
-    });
-}
-
-
-</script>
 
 
 {% endblock %}

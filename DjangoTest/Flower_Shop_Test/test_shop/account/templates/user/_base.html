@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- Site made with Mobirise Website Builder v4.8.8, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.8.8, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="https://img.icons8.com/color/50/000000/ikebana.png" type="image/x-icon">
+  <meta name="description" content="Best Bootstrap HTML eCommerce Template  - Download Now">
+
+    <title>{% block title %} {% endblock %}</title>
+  <link rel="stylesheet" href="../../../static/store/static/css/mobirise-icons1.css">
+  <link rel="stylesheet" href="../../../static/store/static/css/bootstrap.min10.css">
+  <link rel="stylesheet" href="../../../static/store/static/css/bootstrap-grid.min7.css">
+  <link rel="stylesheet" href="../../../static/store/static/css/bootstrap-reboot.min7.css">
+  <link rel="stylesheet" href="../../../static/store/static/css/styles.css">
+  <link rel="stylesheet" href="../../../static/store/static/css/style45.css">
+  <link rel="stylesheet" href="../../../static/store/static/css/style51.css">
+  <link rel="stylesheet" href="../../../static/store/static/css/style50.css">
+
+  <link rel="stylesheet" href="../../../static/store/static/css/mbr-additional79.css" type="text/css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+</head>
+<body>
+<section class="menu cid-rbb1P7Oggj" once="menu" id="menu1-5" data-sortbtn="btn-primary">
+
+
+
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="navbar-brand">
+
+            <span class="navbar-caption-wrap">
+                <img src="https://img.icons8.com/color/50/000000/ikebana.png"/>
+                <a class="navbar-caption text-black display-2" >
+                    Bouquet Pickup
+                </a>
+
+         </span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+            {% if request.user.is_authenticated %}
+<li >
+              <p > Welcome, {{ request.user.first_name }}</p>
+          </li>
+
+          {% else %}
+
+
+          {% endif %}
+                <li class="nav-item ">
+					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:about_us' %}">
+						About Us</a>
+
+				</li>
+
+                       <li class="nav-item ">
+					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:cart' %}">
+						Cart</a>
+
+				</li>
+
+                <li class="nav-item ">
+					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:service' %}">
+						Service</a>
+
+				</li>
+                    	<li class="nav-item dropdown open">
+					<a class="nav-link link text-black display-4 dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">
+						Store</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item text-black display-4"  href="{% url 'shop_app:index' %}">Home</a>
+                        <a class="dropdown-item text-black display-4" href="#">New Coming</a>
+                        <a class="dropdown-item text-black display-4" href="#">Flower Set</a>
+                        <a class="dropdown-item text-black display-4" href="#">DIY</a>
+
+					</div>
+				</li>
+         <li class="nav-item dropdown open">
+					<a class="nav-link link text-black display-4 dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">
+						Profile</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item text-black display-4" href="{% url 'shop_app:profile' %}">My Account</a>
+                        <a class="dropdown-item text-black display-4" href="#">My Order</a>
+                        <a class="dropdown-item text-black display-4" href="#">My Service</a>
+
+					</div>
+				</li>
+            </ul>
+   {% if request.user.is_authenticated %}
+
+       <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4 " href="{% url 'account:logout' %}" >
+                  Logout</a></div>
+
+
+
+
+          {% else %}
+
+
+       <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4 " href="{% url 'account:login' %}" >
+                  Login</a></div>
+
+
+
+          {% endif %}
+
+
+      </div>
+    </nav>
+</section>
+<div style="margin-right: 100px; margin-left: 100px; margin-top: 100px">
+{% block content %}{% endblock %}
+</div>
+<section class="features8 cid-rbaKgiAJ5r" id="features8-1" data-sortbtn="btn-primary">
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.9; background-color: rgb(255, 255, 255);">
+    </div>
+    <div class="container-fluid justify-content-center">
+
+
+        <div class="row content-row pt-5">
+            <div class="card pl-3 pr-3 col-12 col-md-6 col-lg-4">
+                <div class="media pb-3">
+                    <div class="card-img align-self-center">
+                        <span class="mbr-iconfont mbri-delivery"></span>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="card-title py-2 align-left mbr-fonts-style display-2">
+                            Delivery</h4>
+                    </div>
+                </div>
+                <div class="card-box align-left">
+                    <p class="mbr-text mbr-fonts-style display-7">
+                      We offer good delivery service.</div>
+            </div>
+
+            <div class="card pl-3 pr-3 col-12 col-md-6 col-lg-4">
+                <div class="media pb-3">
+                    <div class="card-img align-self-center">
+                        <span class="mbr-iconfont mbri-refresh"></span>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="card-title py-2 align-left mbr-fonts-style display-2">
+                            Service</h4>
+                    </div>
+                </div>
+                <div class="card-box align-left">
+                    <p class="mbr-text mbr-fonts-style display-7">
+                       We bring you love and happiness.</div>
+            </div>
+
+            <div class="card pl-3 pr-3 col-12 col-md-6 col-lg-4">
+                <div class="media pb-3">
+                    <div class="card-img align-self-center">
+                        <span class="mbr-iconfont mbri-cash"></span>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="card-title py-2 align-left mbr-fonts-style display-2">
+                            Payment</h4>
+                    </div>
+                </div>
+                <div class="card-box align-left">
+                    <p class="mbr-text mbr-fonts-style display-7">
+                Many payment options are available.</div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</section>
+
+
+
+  <script src="../../../static/store/static/js/jquery.min1.js"></script>
+  <script src="../../../static/store/static/js/popper.min1.js"></script>
+  <script src="../../../static/store/static/js/bootstrap.min9.js"></script>
+  <script src="../../../static/store/static/js/smooth-scroll5.js"></script>
+  <script src="../../../static/store/static/js/jquery.touch-swipe.min1.js"></script>
+  <script src="../../../static/store/static/js/script47.js"></script>
+  <script src="../../../static/store/static/js/script.min.js"></script>
+  <script src="../../../static/store/static/js/script42.js"></script>
+  <script src="../../../static/store/static/js/player.min.js"></script>
+  <script src="../../../static/store/static/js/script48.js"></script>
+
+
+</body>
+</html>
