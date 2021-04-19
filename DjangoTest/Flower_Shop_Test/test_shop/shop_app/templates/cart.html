@@ -5,111 +5,139 @@
 
 {% block content %}
 
-       <div class="row ">
+   <section class="cart_area " style="background: none">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th align="center" width="40%">Product</th>
+                <th align="center" width="15%">Unit Price</th>
 
-<div class="row border-bottom border-gray align-content-between" >
-    {{error}}
-</div>
+                  <th align="center" width="5%">Inventory</th>
+                <th  align="center"width="15%">Quantity</th>
+                <th  align="center" width="10%">Sum</th>
+                 <th ></th>
 
-<div class="my-3 p-3 bg-white rounded shadow-sm">
-    <div class="row border-bottom border-gray align-content-between">
-        <div class="col-md-4 ">
-            <h5 class="pb-2 mb-0">Product Name</h5>
-        </div>
+                 <th ></th>
+                  <th ></th>
+                  <th align="center" width="25%">Operation</th>
+              </tr>
+            </thead>
+            <tbody>
 
-        <div class="col-md-2">
-            <h5 class="pb-2 mb-0">Unit Price</h5>
-        </div>
-
-        <div class="col-md-1">
-            <h5 class="pb-2 mb-0">Inventory</h5>
-        </div>
-
-        <div class="col-md-2">
-            <h5 class="pb-2 mb-0">Quantity</h5>
-        </div>
-
-        <div class="col-md-1">
-            <h5 class="pb-2 mb-0">Sum</h5>
-        </div>
-
-        <div class="col-md-2">
-            <h5 class="pb-2 mb-0">Operations</h5>
-        </div>
-    </div>
     <form action="{% url 'shop_app:addToOrder' %}" method="post">
         {% csrf_token %}
-    {% if cart_list %}
-    {% for cart_item in cart_list %}
+                {% if cart_list %}
+                {% for cart_item in cart_list %}
 
-    <div class="row border-bottom border-gray mb-10 cart-list" id="one_good">
-        <div class="col-md-2">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="100%" src="/media/{{cart_item.product.product_image}}" role="img" >
-        </div>
+                <tr  class="cart-list" id="one_good">
+                <td>
+                 <div class="media">
+                    <div class="d-flex">
+                      <img src="/media/{{cart_item.product.product_image}}" width="180px" alt="" />
+                    </div>
+                    <div class="media-body" style="margin-left: 10px">
+                      <h6>{{cart_item.product.product_name}}</h6>
 
-        <div class="col-md-2">
-            <div class="card-body">
-                     <p class="card-text">{{cart_item.product.product_name}}</p>
-                <input class="checkbox" type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ cart_item.cart_id }}">
-             </div>
-        </div>
+                    <input class="checkbox" type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ cart_item.cart_id }}">
 
-        <div class="col-md-2">
-            <div class="card-body">
-                <p class="card-text" id="price">{{cart_item.product.price}}</p>
-            </div>
-        </div>
-
-        <div class="col-md-1">
-            <div class="card-body">
-                <p class="card-text" id="inventory">{{cart_item.product.inventory}}</p>
-            </div>
-        </div>
+                  </div>
+                </td>
 
 
-        <div class="col-md-2">
-            <div class="card-body">
-                <input class="form-control" id="num" type="number"  min="1" onchange="changeNumber('{{cart_item.cart_id}}',value)" value="{{cart_item.number}}" required>
-            </div>
-        </div>
+                  <td >
+                  <h6 id="price">{{cart_item.product.price}}</h6>
+                </td>
+                  <td>
+                  <h6 align="center"id="inventory">{{cart_item.product.inventory}}</h6>
+                </td>
+                <td>
+                    <div class="col-xl-8 product_count">
 
-         <div class="col-md-1">
-            <div class="card-body">
+          <input class="form-control" id="num" type="number"  min="1" onchange="changeNumber('{{cart_item.cart_id}}',value)" value="{{cart_item.number}}" required>
+
+  </div>
+
+                </td>
+
+                <td>
+
                 <p class="card-text" id="calculated_price" ></p>
-            </div>
-         </div>
 
-        <div class="col-md-2">
-            <div class="card-body">
-                <button  class="btn btn-sm btn-outline-success" onclick="deleteCart('{{cart_item.cart_id}}', this)">Delete</button>
-<!--                <p class="card-text">Collect</p>-->
-             </div>
-        </div>
-    </div>
+                </td>
+                  <td>
+                  </td>
+                  <td>
+                   </td>
+                    <td>
+                   </td>
+                  <td>
+                   <button  align="center" class="btn btn-sm btn-light border-0" onclick="deleteCart('{{cart_item.cart_id}}', this)">Delete</button>
 
-    {% endfor %}
+                </td>
+
+              </tr>
+{% endfor %}
     {% else %}
-        <p>Sorry... No products in cart.</p>
+
+        <p align="center">Sorry... No products in cart.</p>
     {% endif %}
 
-</div>
+              <tr>
+                <td></td>
+                <td></td>
+                  <td></td>
+                   <td>
+                       <div class="badge badge-secondary badge-pill" id="total_number"></div>
+
+                </td>
+                   <td>
+                  <h6 id="total_price">￥0
+                 </h6>
+                </td>
+                  <td></td>
+
+                  <td></td>
+
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+              </tr>
+    <tr>
+        <td></td>
+        <td><td>
+        <td>
+    </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+      <div class="checkout_btn_inner float-lg-right">
+          <button type="submit" class="btn btn-sm btn-primary" >Checkout</button>
+          </div>
+        </td>
+    </tr>
+
+    </form>
+            </tbody>
+          </table>
+
+
+
+        </div>
+
+        </div>
       </div>
 
-<div class="row">
-    <div class="col-md-3 " >
-        <h4>Total </h4>
-    </div>
-    <div class="col-md-3 " >
-        <h3 id="total_number" style="color: #e3b058">0 </h3>
-    </div>
-    <div class="col-md-3 " >
-        <h3 id="total_price" style="color: #e3b058">￥0 </h3>
-    </div>
-    <div class="col-md-3 align-items-end ">
-        <button type="submit" class="btn btn-sm btn-outline-success" >Checkout</button>
-    </div>
-</div>
-</form>
+  </section>
+
+
+
 
 <script>
     $(function() {
@@ -129,7 +157,7 @@
         $(".checkbox").each(function () {
             let isChecked = $(this).prop("checked");
             // 如果多选框被选中
-            if(isChecked == true) {
+            if(isChecked === true) {
                 // 2. 获取复选框的值，再通过父子关系找到对应元素，获取其文本
                 let price = parseFloat($(this).parents("#one_good").find("#price").html()); //得到商品的单价
                 console.log("i_price: ",price)
@@ -137,7 +165,7 @@
                 let calculated_price = num * price
                 //3. 累加计算
                 total += calculated_price;
-                number += 1;
+                number += num;
                 // $("#calculated_price").text("￥"+calculated_price.toFixed(2));
             }
         });
@@ -198,7 +226,7 @@
             let num = $(".cart-list #num").eq(index).val();
             // console.log("i_num: ",num)
             let item_sum = item_price * num;
-            // console.log("i_sum: ",item_sum)
+             console.log("i_sum: ",item_sum)
             $(".cart-list #calculated_price").eq(index).text("￥"+item_sum);
 
         })
