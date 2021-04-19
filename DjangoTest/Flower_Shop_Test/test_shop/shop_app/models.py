@@ -68,6 +68,7 @@ class Order(models.Model):
         p_list = ""
         for detail in product_details:
             if detail != '':
+
                 product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
                 product_num = detail.split(':')[1]
                 str_p_id = str(product_obj.product_id)
@@ -76,34 +77,3 @@ class Order(models.Model):
                 p_list = p_list + "    |Id: " + str_p_id + "|    |Name: " + str_p_name + "|    |Number: " + product_num + "|\n"
 
         return p_list
-
-
-class QuestionAnswer(models.Model):
-    STATUS_CHOICES = (
-        ('unread', 'UNREAD'),
-        ('viewed', 'VIEWED'),
-        ('answered', 'ANSWERED'),
-        ('solved', 'SOLVED'),
-    )
-    SATISFACTION_CHOICE = (
-        ('disappointed', 0),
-        ('not really satisfied', 1),
-        ('okay', 2),
-        ('satisfied', 3),
-        ('very satisfied', 4),
-    )
-    TYPE_CHOICE = (
-        ('questions', 'QUESTION' ),
-        ('trace', 'TRACE'),
-        ('answer', 'ANSWER'),
-    )
-    qa_id = models.AutoField(primary_key=True)
-    poster = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    content = models.CharField(max_length=1024, )
-    date = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='unread')
-    satisfaction = models.IntegerField(choices=SATISFACTION_CHOICE, default='very satisfied')
-    type = models.CharField(max_length=255, choices=TYPE_CHOICE, default='questions')
-
-    def __str__(self):
-        return f" QuestionAnswer: {self.qa_id} - {self.poster} - {self.content}"
