@@ -12,6 +12,7 @@ from .models import Product, Cart, Order
 from .forms import CartForm
 
 
+
 def index(request):
     price_p_list = Product.objects.order_by('price')
     context = {
@@ -57,43 +58,48 @@ def product(request, product_id):
 
 @csrf_exempt
 def add_to_cart(request):
-    data = request.POST
-    p_id = str(request.POST.get("p_id"))
-    p_num = int(request.POST.get("p_num"))
-    login_user = request.user
-    selected_p = Product.objects.get(product_id=p_id)
-    cart_list = Cart.objects.filter(user=login_user)
+    if request.user.is_authenticated:
+        data = request.POST
+        p_id = str(request.POST.get("p_id"))
+        p_num = int(request.POST.get("p_num"))
+        login_user = request.user
+        selected_p = Product.objects.get(product_id=p_id)
+        cart_list = Cart.objects.filter(user=login_user)
 
-    # new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
-    # new_cart_item.save()
+        # new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
+        # new_cart_item.save()
 
-    if selected_p.inventory >= p_num:
-        # selected_p.inventory -= p_num
-        # selected_p.save()
+        if selected_p.inventory >= p_num:
+            # selected_p.inventory -= p_num
+            # selected_p.save()
 
-        has_cart_item = False
-        for old_cart_item in cart_list:
-            old_cart_id = str(old_cart_item.product.product_id)
-            print(old_cart_id)
-            if old_cart_id == p_id:
-                has_cart_item = old_cart_item
-                print("has_cart_item: ")
-                print(has_cart_item)
+            has_cart_item = False
+            for old_cart_item in cart_list:
+                old_cart_id = str(old_cart_item.product.product_id)
+                print(old_cart_id)
+                if old_cart_id == p_id:
+                    has_cart_item = old_cart_item
+                    print("has_cart_item: ")
+                    print(has_cart_item)
 
-        if not has_cart_item:
-            new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
-            # save changes
-            new_cart_item.save()
+            if not has_cart_item:
+                new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
+                # save changes
+                new_cart_item.save()
+            else:
+                has_cart_item.number += p_num
+                has_cart_item.save()
+
+            response = JsonResponse({"msg": "Product Successfully Added to Cart"})
+            return response
         else:
-            has_cart_item.number += p_num
-            has_cart_item.save()
 
-        response = JsonResponse({"msg": "Product Successfully Added to Cart"})
-        return response
+            response = JsonResponse({"msg": "Request is larger than inventory"})
+            return response
     else:
-
-        response = JsonResponse({"msg": "Request is larger than inventory"})
+        response = JsonResponse({"msg": "Please login first"})
         return response
+
 
 
 
@@ -105,18 +111,24 @@ def profile(request):
     # global logedin_user
     # if request.user.is_authenticated:
     #     logedin_user = get_object_or_404(Profile, request.user.username)
-    return render(request, 'profile.html', {'user': request.user})
+    if request.user.is_authenticated:
+        return render(request, 'profile.html', {'user': request.user})
+    else:
+        return HttpResponseRedirect(reverse('account:login'))
+
 
 
 def cart(request):
     # global logedin_user
-    # if request.user.is_authenticated:
+    if request.user.is_authenticated:
     #     logedin_user = get_object_or_404(Profile, request.user.username)
-    login_user = request.user
-    cart_list = Cart.objects.filter(user=login_user)
-    return render(request, 'cart.html', {'user': login_user,
+        login_user = request.user
+        cart_list = Cart.objects.filter(user=login_user)
+        return render(request, 'cart.html', {'user': login_user,
                                          'cart_list': cart_list,
                                          'error': ""},)
+    else:
+        return HttpResponseRedirect(reverse('account:login'))
 
 
 def about_us(request):
