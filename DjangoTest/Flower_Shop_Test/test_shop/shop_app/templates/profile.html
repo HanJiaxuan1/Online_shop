@@ -4,11 +4,167 @@
 {% block title %}Account{% endblock %}
 
 {% block content %}
+    <style>
+
+.content-area {
+    background: #fff;
+
+    width: 500px;
+    margin: 0 auto;
+}
+.row {
+    border-bottom: 1px solid #d8d8d8;
+    padding: 5px 0;
+    width: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.row:first-of-type {
+    margin-top: 0;
+}
+.row:last-of-type {
+    border-bottom: 1px solid #fff;
+}
+.row .field {
+    display: inline-block;
+    position: relative;
+
+    margin-left: 20px;
+    padding-right: 20px;
+    -webkit-transition: all 80ms ease-in-out;
+    -moz-transition: all 80ms ease-in-out;
+    -o-transition: all 80ms ease-in-out;
+    transition: all 80ms ease-in-out;
+}
+.row .field:first-of-type {
+    margin-left: 0;
+}
+
+.row .field label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #9aa9aa;
+    -webkit-transition: all 80ms ease-in-out;
+    -moz-transition: all 80ms ease-in-out;
+    -o-transition: all 80ms ease-in-out;
+    transition: all 80ms ease-in-out;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+.row .field input {
+    background: transparent;
+    font-size: 16px;
+    color: #444;
+    border: 1px solid rgba(150, 150, 150, 0);
+    margin: 0 0 0 -2px;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    -webkit-transition: all 80ms ease-in-out;
+    -moz-transition: all 80ms ease-in-out;
+    -o-transition: all 80ms ease-in-out;
+    transition: all 80ms ease-in-out;
+}
+.row .field input[type=email] {
+    text-decoration: underline;
+    color: #369;
+    cursor: pointer;
+}
+.button {
+    margin-bottom: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.button a {
+    display: inline-block;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+}
+.button a.edit {
+
+    color: #3e4550;
+
+    border: 1px solid #dae0e1;
+    -webkit-transition: all 80ms ease-in-out;
+    -moz-transition: all 80ms ease-in-out;
+    -o-transition: all 80ms ease-in-out;
+    transition: all 80ms ease-in-out;
+}
+.button a.edit:hover {
+    background:skyblue;
+
+}
+.button a.edit:active {
+    background-image: linear-gradient(-179deg, #e6ecf1 0%, #f2f6fa 100%);
+    border: 1px solid #d5dadb;
+}
+.button a.save {
+    display: none;
+    background: slateblue;
+    color: #fff;}
+
+
+
+html.active .row {
+    border-bottom: 1px solid #fff;
+}
+html.active .row .field {
+    margin-left: 13px;
+    padding-right: 13px;
+    border-right: 1px solid #fff;
+}
+html.active .row .field:first-of-type {
+    margin-left: 0;
+}
+html.active .row .field:last-of-type {
+    border: none;
+    padding-right: 0;
+}
+html.active .row .field label {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+html.active .row .field input {
+    margin-left: -16px;
+    padding: 0 15px;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    -moz-box-shadow: inset 1px 1px 4px 0px rgba(220, 220, 220, 0.5);
+    box-shadow: inset 1px 1px 4px 0px rgba(220, 220, 220, 0.5);
+    height: 40px;
+    line-height: 40px;
+}
+html.active .row .field input:focus {
+    outline: none;
+    border: 1px solid #b28dd7;
+}
+html.active .row .field input[type=email] {
+    cursor: text;
+    color: #444;
+    text-decoration: none;
+}
+html.active .button a.edit {
+    display: none;
+}
+html.active .button a.save {
+    display: inline-block;
+}
+    </style>
     <div class="row">
 
 
  <div class="col-md-3 ">
-      <div class="row    overflow-hidden flex-md-row  position-relative"  >
+      <div class="row  overflow-hidden flex-md-row  position-relative"  >
         <div class="col p-4 d-flex flex-column">
  <aside class=" col-md-12 blog-sidebar ">
 
@@ -55,77 +211,89 @@
 
     </div>
  <div class="col-md-9">
+
       <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-800 position-static">
-        <div class="col p-1 d-flex flex-column position-static">
-            <div class="row">
-                       <div class="col-md-3 mt-lg-5">
-               <img width="100%" src="../../static/store/photo.jpg" alt="My photo">
-           </div>
+       <div class="col-md-4">
+           <img class="rounded"  width="100%" src="../../static/store/photo.jpg" alt="My photo">
+           <div align="center">
+     <button  class="btn btn-sm btn-light border-0"> Edit Photo</button>
+               </div>
+       </div>
+          <div class="col-md-8">
+          <div class="content-area">
 
-        <div class="col-md-9">
-
-               <div class="card-body">
-                  <table class="table table-borderless">
-    <tbody>
-        <tr>
-          <th width="15%"      >Username</th>
-            <td> <p class="card-text" style="color: #ff9c07"  >{{user.username}}</p></td>
-
-        </tr>
-
-        <tr>
-          <th width="20%"      >Email</th>
-            <td style="color: #5a6268;     ">{{user.email}}</td>
-
-        </tr>
-      <tr>
-          <th width="15%"      >Phone</th>
-            <td style="color: #5a6268;      ">{{user.phone}}</td>
-
-        </tr>
-
-     <tr>
-          <th width="15%"      >Address</th>
-            <td style="color: #5a6268;     ">{{user.address}}</td>
-
-        </tr>
-
-     <tr>
-          <th width={{user.city}}"15%"      >City</th>
-            <td style="color: #5a6268;     "> {{user.city}}
-        </tr>
-
-    <tr>
-          <th width={{user.city}}"15%"      >State</th>
-            <td style="color: #5a6268;     "> {{user.state}}
-        </tr>
-
-         <tr>
-          <th width={{user.city}}"15%"      >Zip Code</th>
-            <td style="color: #5a6268;     "> {{user.zip_code}}
-        </tr>
-
-
-    </tbody>
-
-</table>
-
-                   <div align="center">
-
-                  <button type="button" class="btn btn-sm btn-outline-success ">Edit</button>
-
-                </div>
-                </div>
-                   </div>
+    <div class="fieldset">
+        <div class="row">
+            <div class="field">
+                <label>Username</label>
+                <input type="text" value="{{ user.username }}" />
+            </div>
+            <div class="field">
+                <label>First</label>
+                <input type="text" value="{{ user.first_name }}" />
+            </div>
+            <div class="field">
+                <label>Lastname</label>
+                <input type="text" value="{{ user.last_name }}" />
             </div>
         </div>
-  </div>
+        <div class="row">
 
+            <div class="field">
+                <label>Birthday</label>
+                <input type="date" value="2000-01-01" />
+            </div>
+            <div class="field">
+                <label>Phone</label>
+                <input type="text" value="{{ user.phone }}" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <label>Email</label>
+                <input type="email" value="{{ user.email }}" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <label>Address</label>
+                <input type="text" value="Beijing, China" />
+            </div>
+
+        </div>
+    </div>
+              <div class="button" align="center">
+        <a class="btn-primary edit" href="#">Edit Fields</a>
+        <a class="btn-secondary save" href="#">Save Changes</a>
+    </div>
+</div>
+  </div>
+</div>
    </div>
 
 
     </div>
+<script>
+$(function() {
+    $('input').prop('disabled', true);
+    $('.edit').click(function() {
+        $('html').addClass('active');
+        $('input').prop('disabled', false);
+    });
+    $('.save').click(function() {
+        $('html').removeClass('active');
+        $('input').prop('disabled', true);
+    });
 
+    function resizeInput() {
+        $(this).attr('size', $(this).val().length + 2);
+    }
+
+    $('input')
+        .keyup(resizeInput)
+        .each(resizeInput);
+});
+</script>
 
 {% endblock %}
 
