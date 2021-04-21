@@ -16,5 +16,6 @@ urlpatterns = [
     path('changenumber/', views.changenumber, name='changenumber'),
     path('commitorder/', views.addToOrder, name='addToOrder'),
     path('<int:order_id>/order/', views.order, name='order'),
-    path('<int:order_id>/payOrder/', views.payOrder, name='payOrder'),
+    # path('<int:order_id>/payOrder/', views.payOrder, name='payOrder'),
+    path('add_order/', views.add_order, name='add_order'),
 ]

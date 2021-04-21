@@ -11,8 +11,8 @@ from .models import Product, Cart, Order
 
 
 class OrderAdmin(admin.ModelAdmin):
-    fields = ('order_id', 'user',  'admin_retrieve_order', 'date', 'status',)
-    readonly_fields = ('order_id', 'user',  'admin_retrieve_order', 'date',)
+    fields = ('order_id', 'user',  'admin_retrieve_order', 'date', 'status', 'receiver', 'phone', 'address')
+    readonly_fields = ('order_id', 'user',  'admin_retrieve_order', 'date', 'receiver', 'phone', 'address')
 
 
 admin.site.register(Product)

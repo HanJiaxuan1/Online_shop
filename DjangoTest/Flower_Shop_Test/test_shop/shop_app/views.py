@@ -101,6 +101,36 @@ def add_to_cart(request):
         return response
 
 
+@csrf_exempt
+def add_order(request):
+    if request.user.is_authenticated:
+        data = request.POST
+        order_id = str(request.POST.get("o_id"))
+        receiver = str(request.POST.get("receiver"))
+        phone = int(request.POST.get("phone"))
+        address = str(request.POST.get("address"))
+
+        selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
+        selected_order.status = 'paid'
+        selected_order.receiver = receiver
+        selected_order.phone = phone
+        selected_order.address = address
+        selected_order.save()
+        response = JsonResponse({"msg": "The order has been set, thank you for purchase!"})
+        return response
+
+
+
+#
+# def payOrder(request, order_id):
+#     selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
+#     selected_order.status = 'paid'
+#     selected_order.save()
+#     return index(request)
+
+
+
+
 
 
 
@@ -221,8 +251,3 @@ def order(request, order_id):
     return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id})
 
 
-def payOrder(request, order_id):
-    selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
-    selected_order.status = 'paid'
-    selected_order.save()
-    return index(request)
