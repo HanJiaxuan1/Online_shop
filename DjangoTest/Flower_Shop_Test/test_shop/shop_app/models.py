@@ -80,3 +80,29 @@ class Order(models.Model):
                 p_list = p_list + "    |Id: " + str_p_id + "|    |Name: " + str_p_name + "|    |Number: " + product_num + "|\n"
 
         return p_list
+
+
+class Question(models.Model):
+    STATUS_CHOICES = (
+        ('unread', 'UNREAD'),
+        ('read', 'READ'),
+        ('answered', 'ANSWERED'),
+    )
+    question_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    question_text = models.CharField(max_length=255, )
+    date = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='unread')
+    satisfaction = models.IntegerField(default="5")
+
+
+class QuestionDetails(models.Model):
+    STATUS_CHOICES = (
+        ('user', 'USER'),
+        ('staff', 'STAFF'),
+    )
+    detail_id = models.AutoField(primary_key=True)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answer_text = models.CharField(max_length=255, )
+    source = models.CharField(max_length=20, choices=STATUS_CHOICES, default='user')
+    date = models.DateTimeField(default=timezone.now)
