@@ -12,7 +12,6 @@ from .models import Product, Cart, Order
 from .forms import CartForm
 
 
-
 def index(request):
     price_p_list = Product.objects.order_by('price')
     context = {
@@ -120,21 +119,12 @@ def add_order(request):
         return response
 
 
-
 #
 # def payOrder(request, order_id):
 #     selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
 #     selected_order.status = 'paid'
 #     selected_order.save()
 #     return index(request)
-
-
-
-
-
-
-
-
 
 
 def profile(request):
@@ -147,16 +137,15 @@ def profile(request):
         return HttpResponseRedirect(reverse('account:login'))
 
 
-
 def cart(request):
     # global logedin_user
     if request.user.is_authenticated:
-    #     logedin_user = get_object_or_404(Profile, request.user.username)
+        #     logedin_user = get_object_or_404(Profile, request.user.username)
         login_user = request.user
         cart_list = Cart.objects.filter(user=login_user)
         return render(request, 'cart.html', {'user': login_user,
-                                         'cart_list': cart_list,
-                                         'error': ""},)
+                                             'cart_list': cart_list,
+                                             'error': ""}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -164,6 +153,16 @@ def cart(request):
 def about_us(request):
     login_user = request.user
     return render(request, 'about_us.html', {'user': request.user})
+
+
+def service(request):
+    login_user = request.user
+    return render(request, 'service.html', {'user': request.user})
+
+
+def communication(request):
+    login_user = request.user
+    return render(request, 'communication.html', {'user': request.user})
 
 
 @csrf_exempt
@@ -249,5 +248,3 @@ def order(request, order_id):
 
             p_list.append(ProductInfo(product_obj, product_num))
     return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id})
-
-

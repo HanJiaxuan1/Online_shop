@@ -1,5 +1,5 @@
 
-{% extends "_base.html" %}
+{% extends "_profile_base.html" %}
 
 {% block title %}Account{% endblock %}
 
@@ -160,59 +160,10 @@ html.active .button a.save {
     display: inline-block;
 }
     </style>
-    <div class="row">
 
-
- <div class="col-md-3 ">
-      <div class="row  overflow-hidden flex-md-row  position-relative"  >
-        <div class="col p-4 d-flex flex-column">
- <aside class=" col-md-12 blog-sidebar ">
-
-      <div class="p-1">
-        <h4 class="font-italic">Account</h4>
-       <ol class="list-unstyled ">
-          <li><a href="#" style="color: gray">User Info</a></li>
-          <li><a href="#" style="color: gray">Receipt Info</a></li>
-          <li><a href="#" style="color: gray">Collections</a></li>
-          <li><a href="#" style="color: gray">My Cart</a></li>
-        </ol>
-
-      </div>
-
-
-      <div class="p-1">
-        <h4 class="font-italic">Order</h4>
-        <ol class="list-unstyled ">
-          <li><a href="#" style="color: gray">My Orders</a></li>
-          <li><a href="#" style="color: gray">Cancelled</a></li>
-          <li><a href="#" style="color: gray">My Comments</a></li>
-
-        </ol>
-
-      </div>
-
-      <div class="p-1">
-        <h4 class="font-italic">Service</h4>
-        <ol class="list-unstyled">
-          <li><a href="#" style="color: gray">Messages</a></li>
-          <li><a href="#" style="color: gray">Replies</a></li>
-
-
-        </ol>
-
-      </div>
-
-
-    </aside>
-
-        </div>
-
-      </div>
-
-    </div>
  <div class="col-md-9">
 
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-800 position-static">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-800">
        <div class="col-md-4">
            <img class="rounded"  width="100%" src="../../static/store/photo.jpg" alt="My photo">
            <div align="center">
@@ -262,7 +213,7 @@ html.active .button a.save {
 
         </div>
     </div>
-              <div class="button" align="center">
+              <div class="button">
         <a class="btn-primary edit" href="#">Edit Fields</a>
         <a class="btn-secondary save" href="#">Save Changes</a>
     </div>
@@ -270,9 +221,6 @@ html.active .button a.save {
   </div>
 </div>
    </div>
-
-
-    </div>
 <script>
 $(function() {
     $('input').prop('disabled', true);
@@ -294,6 +242,8 @@ $(function() {
         .each(resizeInput);
 });
 </script>
+
+
 
 {% endblock %}
 

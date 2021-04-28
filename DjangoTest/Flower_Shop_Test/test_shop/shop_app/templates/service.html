@@ -1,78 +1,157 @@
 
-{% extends "_base.html" %}
+{% extends "_profile_base.html" %}
 {% block title %}Service{% endblock %}
 
 
 {% block content %}
-     <div class="col-md-12">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm position-static">
-        <div class="col p-4 d-flex flex-column position-static">
 
-<form class="needs-validation" novalidate>
-    <h4 class="mb-3">Information</h4>
-        <div class="row">
+     <div class="col-md-8">
 
-          <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid first name is required.
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-800">
+<div class="container md-pb">
+<div class="main-body p-0">
+    <div class="inner-wrapper">
+        <!-- Inner sidebar -->
+        <div class="inner-sidebar">
+            <!-- Inner sidebar header -->
+            <div class="inner-sidebar-header justify-content-center" style="width: 8rem;height: 8rem;position: fixed;bottom: 4rem;right: 4rem;z-index: 9999;"  >
+                <button class="btn btn-social btn-primary " type="button" data-toggle="modal" data-target="#threadModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" alignment-baseline="central" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus mr-2">
+                        <line x1="16" y1="2" x2="16" y2="18"></line>
+                        <line x1="8" y1="10" x2="24" y2="10"></line>
+                    </svg>
+
+                </button>
             </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid last name is required.
+
+            <!-- Inner sidebar body -->
+
+            <!-- /Inner sidebar body -->
+        </div>
+        <!-- /Inner sidebar -->
+
+        <!-- Inner main -->
+        <div class="inner-main">
+            <!-- Inner main header -->
+            <div class="inner-main-header">
+                <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
+
+                <span class="input-icon input-icon-sm ml-auto w-auto">
+                    <input type="text" class="form-control form-control-sm bg-gray-200 border-gray-200 shadow-none mb-4 mt-4" placeholder="Search Problems" />
+                </span>
             </div>
-          </div>
-        </div>
+            <!-- /Inner main header -->
+
+            <!-- Inner main body -->
+
+            <!-- Forum List -->
+            <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
+                <div class="card mb-2 border-bottom">
+                    <div class="card-body p-2 p-sm-3">
+                        <div class="media forum-item">
+                             <div class="media-body">
+                                <h4><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h4>
+
+                                    <p class="text-primary">
+                                   Problem Category Here
+                                </p>
+                                <p class="text-muted-sm">replied by customer service <span class="text-success ">7 hours ago</span></p></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-2 border-bottom">
+                    <div class="card-body p-2 p-sm-3">
+                        <div class="media forum-item">
+                             <div class="media-body">
+                                <h4><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h4>
+
+                                    <p class="text-primary">
+                                   Problem Category Here
+                                </p>
+                                <p class="text-muted-sm">replied by customer service <span class="text-success ">4 hours ago</span></p></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-2 border-bottom">
+                    <div class="card-body p-2 p-sm-3">
+                        <div class="media forum-item">
+                             <div class="media-body">
+                                <h4><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h4>
+
+                                    <p class="text-primary">
+                                   Problem Category Here
+                                </p>
+                                <p class="text-muted-sm">replied by customer service <span class="text-success ">2 hours ago</span></p></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-2 border-bottom">
+                <div class="card-body p-2 p-sm-3">
+                        <div class="media forum-item">
+                             <div class="media-body">
+                                <h4><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h4>
+
+                                    <p class="text-primary">
+                                   Problem Category Here
+                                </p>
+                                <p class="text-muted-sm">replied by customer service <span class="text-success ">5 hours ago</span></p></div>
+
+                        </div>
+                    </div>
+                </div>
 
 
-
-
-
-        <div class="mb-3">
-          <label for="phone_number">Phone Number</label>
-          <input type="text" class="form-control" id="phone" placeholder=" " required>
-          <div class="invalid-feedback">
-                Format is wrong!
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="country">Matters</label>
-            <select class="custom-select d-block w-100" id="country" required>
-              <option value="">Choose...</option>
-              <option>Consult</option>
-                <option>Report</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid option.
             </div>
-          </div>
 
         </div>
-        <hr class="mb-4">
+        <!-- /Inner main -->
+    </div>
 
-        <h4 class="mb-3">Content</h4>
+    <!-- New Thread Modal -->
+    <div class="modal fade" id="threadModal" tabindex="-1" role="dialog" aria-labelledby="threadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header d-flex align-items-center bg-light text-black">
+                        <h4 class="modal-title mb-0" id="threadModalLabel">New Problem</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="threadTitle">Problem Title</label>
+                            <input type="text" class="form-control" id="threadTitle" placeholder="Enter title" autofocus="" />
+                        </div>
+                        <textarea class="form-control summernote" style="display: none;"></textarea>
 
+                        <div class="custom-file form-control-sm mt-3" style="max-width: 300px;">
 
-             <div class="row  ">
-          <div class="col-md-12 h-md-250 align-content-center">
-             <input type="text" height="50px" class="form-control" id="content" placeholder="" value="" required>
+                            <label class="custom-select-label" for="customSelect">Category</label>
+                            <select id="customSelect" class="custom-select custom-select-lg w-auto mr-1" >
+                    <option selected="">Quality</option>
+                    <option value="1">Delivery</option>
+                    <option value="2">Service</option>
+                    <option value="2">Order</option>
+                   <option value="2">Product</option>
+                </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Post</button>
 
-          </div>
-
+                    </div>
+                </form>
+            </div>
         </div>
-        <button type="submit" class="btn btn-sm btn-outline-success">Submit</button>
-      </form>
-
-        </div>
-  </div>
-
+    </div>
+</div>
+</div>
+      </div>
    </div>
 
 
