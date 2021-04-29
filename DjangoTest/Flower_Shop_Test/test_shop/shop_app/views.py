@@ -185,6 +185,15 @@ def history_order(request):
         return HttpResponseRedirect(reverse('account:login'))
 
 
+def collection(request):
+    if request.user.is_authenticated:
+        #     logedin_user = get_object_or_404(Profile, request.user.username)
+        login_user = request.user
+        cart_list = Cart.objects.filter(user=login_user)
+        return render(request, 'collection.html')
+    else:
+        return HttpResponseRedirect(reverse('account:login'))
+
 @csrf_exempt
 def delete(request):
     data = request.POST
