@@ -43,7 +43,7 @@
                                         </div>
 
                                         <div class="mbr-section-btn" buttons="0" style="display: none;"><a href="{% url 'shop_app:detail' product.product_id %}" class="btn btn-info display-7">View Detail</a></div>
-                                        <div class="mbr-section-btn" buttons="0" style="display: none;"><a href="#" class="btn btn-danger display-7">Order Now</a></div>
+                                        <div class="mbr-section-btn" buttons="0" style="display: none;"><a href="{% url 'shop_app:order_now' product.product_id %}" class="btn btn-danger display-7">Order Now</a></div>
                                     </div>
                                 </div>
                             </div>

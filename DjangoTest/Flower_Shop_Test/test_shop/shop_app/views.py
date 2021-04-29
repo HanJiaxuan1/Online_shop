@@ -268,3 +268,10 @@ def order(request, order_id):
 
             p_list.append(ProductInfo(product_obj, product_num))
     return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id})
+
+
+def orderNow(request, product_id):
+    s = str(product_id)+':'+'1'+';'
+    selected_order = Order(user=request.user, order_list=s)
+    selected_order.save()
+    return HttpResponseRedirect(reverse('shop_app:order', args=(selected_order.order_id,)))
