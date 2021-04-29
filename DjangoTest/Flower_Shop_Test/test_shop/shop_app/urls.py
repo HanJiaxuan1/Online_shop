@@ -18,6 +18,7 @@ urlpatterns = [
     path('commitorder/', views.addToOrder, name='addToOrder'),
     path('<int:order_id>/order/', views.order, name='order'),
     # path('<int:order_id>/payOrder/', views.payOrder, name='payOrder'),
+    path('history_order/', views.history_order, name='history_order'),
     path('add_order/', views.add_order, name='add_order'),
     path('communication/', views.communication, name='communication'),
 ]

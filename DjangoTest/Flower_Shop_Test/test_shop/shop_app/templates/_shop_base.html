@@ -93,8 +93,8 @@
 						Profile</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item text-black display-4" href="{% url 'shop_app:profile' %}">My Account</a>
-                        <a class="dropdown-item text-black display-4" href="#">My Order</a>
-                        <a class="dropdown-item text-black display-4" href="#">My Collections</a>
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:history_order' %}">My Orders</a>
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:service' %}">My Service</a>
 
 					</div>
 				</li>

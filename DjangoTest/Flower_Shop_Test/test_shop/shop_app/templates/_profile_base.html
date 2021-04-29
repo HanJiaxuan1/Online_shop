@@ -19,15 +19,6 @@
   <link rel="stylesheet" href="../../static/store/static/css/style45.css">
   <link rel="stylesheet" href="../../static/store/static/css/style51.css">
   <link rel="stylesheet" href="../../static/store/static/css/style50.css">
-<link rel="stylesheet" href="../../static/store/static/css/mobirise-icons1.css">
-  <link rel="stylesheet" href="../../static/store/static/css/tether.min.css">
-  <link rel="stylesheet" href="../../static/store/static/css/bootstrap.min1.css">
-  <link rel="stylesheet" href="../../static/store/static/css/bootstrap-grid.min1.css">
-  <link rel="stylesheet" href="../../static/store/static/css/bootstrap-reboot.min1.css">
-  <link rel="stylesheet" href="../../static/store/static/css/style2.css">
-  <link rel="stylesheet" href="../../static/store/static/css/style3.css">
-  <link rel="stylesheet" href="../../static/store/static/css/mbr-additional1.css" type="text/css">
-
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
   <link rel="stylesheet" href="../../static/store/static/css/mbr-additional79.css" type="text/css">
 
@@ -105,8 +96,8 @@
 						Profile</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item text-black display-4" href="{% url 'shop_app:profile' %}">My Account</a>
-                        <a class="dropdown-item text-black display-4" href="#">My Order</a>
-                        <a class="dropdown-item text-black display-4" href="#">My Collections</a>
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:history_order' %}">My Orders</a>
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:service' %}">My Service</a>
 
 					</div>
 				</li>
@@ -134,11 +125,10 @@
     </nav>
 </section>
 <div style="margin-right: 100px; margin-left: 100px; margin-top: 100px">
+    <div class="row">
 
- <div class="row">
 
-
- <div class="col-md-3">
+ <div class="col-md-3 ">
       <div class="row  overflow-hidden flex-md-row  position-relative"  >
         <div class="col p-4 d-flex flex-column">
  <aside class=" col-md-12 blog-sidebar ">
@@ -147,7 +137,7 @@
         <h4 class="font-italic">Account</h4>
        <ol class="list-unstyled ">
           <li><a href="#" style="color: gray">User Info</a></li>
-          <li><a href="#" style="color: gray">Address</a></li>
+          <li><a href="#" style="color: gray">Receipt Info</a></li>
           <li><a href="#" style="color: gray">Collections</a></li>
           <li><a href="#" style="color: gray">My Cart</a></li>
         </ol>
@@ -158,7 +148,7 @@
       <div class="p-1">
         <h4 class="font-italic">Order</h4>
         <ol class="list-unstyled ">
-          <li><a href="#" style="color: gray">My Orders</a></li>
+          <li><a href="{% url 'shop_app:history_order' %}" style="color: gray">My Orders</a></li>
           <li><a href="#" style="color: gray">Cancelled</a></li>
           <li><a href="#" style="color: gray">My Comments</a></li>
 
@@ -185,13 +175,8 @@
       </div>
 
     </div>
-     {% block content %}{% endblock %}
-
-
-
-    </div>
-
-
+{% block content %}{% endblock %}
+</div>
 </div>
 <section class="features8 cid-rbaKgiAJ5r" id="features8-1" data-sortbtn="btn-primary">
 
@@ -269,15 +254,5 @@
   <script src="../../static/store/static/js/script48.js"></script>
 
 
-  <script src="../../static/store/static/js/jquery.min1.js"></script>
-  <script src="../../static/store/static/js/popper.min1.js"></script>
-  <script src="../../static/store/static/js/tether.min.js"></script>
-  <script src="../../static/store/static/js/bootstrap.min1.js"></script>
-  <script src="../../static/store/static/js/smooth-scroll1.js"></script>
-  <script src="../../static/store/static/js/script.min.js"></script>
-  <script src="../../static/store/static/js/jquery.touch-swipe.min1.js"></script>
-  <script src="../../static/store/static/js/script1.js"></script>
-  
-  
 </body>
 </html>

@@ -156,13 +156,33 @@ def about_us(request):
 
 
 def service(request):
-    login_user = request.user
-    return render(request, 'service.html', {'user': request.user})
+    if request.user.is_authenticated:
+        #     logedin_user = get_object_or_404(Profile, request.user.username)
+        login_user = request.user
+        cart_list = Cart.objects.filter(user=login_user)
+        return render(request, 'service.html')
+    else:
+        return HttpResponseRedirect(reverse('account:login'))
 
 
 def communication(request):
-    login_user = request.user
-    return render(request, 'communication.html', {'user': request.user})
+    if request.user.is_authenticated:
+        #     logedin_user = get_object_or_404(Profile, request.user.username)
+        login_user = request.user
+        cart_list = Cart.objects.filter(user=login_user)
+        return render(request, 'communication.html')
+    else:
+        return HttpResponseRedirect(reverse('account:login'))
+
+
+def history_order(request):
+    if request.user.is_authenticated:
+        #     logedin_user = get_object_or_404(Profile, request.user.username)
+        login_user = request.user
+        cart_list = Cart.objects.filter(user=login_user)
+        return render(request, 'history_order.html')
+    else:
+        return HttpResponseRedirect(reverse('account:login'))
 
 
 @csrf_exempt
