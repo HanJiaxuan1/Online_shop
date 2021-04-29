@@ -20,4 +20,5 @@ urlpatterns = [
     # path('<int:order_id>/payOrder/', views.payOrder, name='payOrder'),
     path('add_order/', views.add_order, name='add_order'),
     path('communication/', views.communication, name='communication'),
+    path('<int:product_id>/tempOrder', views.orderNow, name='order_now'),
 ]
