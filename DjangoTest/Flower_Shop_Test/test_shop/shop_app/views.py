@@ -172,21 +172,17 @@ class QuestionInfo:
 
 def time_delta(date_time):
     delta = (datetime.datetime.now() - date_time).seconds
+    day = delta // 84600
     hour = delta // 3600
-    minute = (delta - 3600 * hour) // 60
-    second = (delta - 3600 * hour - 60 * minute)
-    if 0 < delta < 60:
-        return str(delta) + ' seconds ago'
-    elif 60 < delta < 3600:
-        if minute == 1:
-            return str(minute) + ' minute ' + str(second) + ' seconds ago'
-        else:
-            return str(minute) + ' minutes ' + str(second) + ' seconds ago'
+    minute = delta // 60
+    if 0 <= delta < 60:
+        return 'just now'
+    elif 60 <= delta < 3600:
+        return str(minute) + 'm ago'
+    elif 3600 <= delta < 86400:
+        return str(hour) + 'h ago'
     else:
-        if hour == 1:
-            return str(hour) + ' hour ' + str(minute) + ' minutes ' + str(second) + ' seconds ago '
-        else:
-            return str(hour) + ' hours ' + str(minute) + ' minutes ' + str(second) + ' seconds ago '
+        return str(day) + 'd ago'
 
 
 def service(request):
