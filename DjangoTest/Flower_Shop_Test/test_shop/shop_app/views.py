@@ -8,7 +8,7 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 
-from .models import Product, Cart, Order
+from .models import Product, Cart, Order, Question
 from .forms import CartForm
 
 
@@ -284,3 +284,11 @@ def orderNow(request, product_id):
     selected_order = Order(user=request.user, order_list=s)
     selected_order.save()
     return HttpResponseRedirect(reverse('shop_app:order', args=(selected_order.order_id,)))
+
+
+def createQuestion(request):
+    question_text = request.POST.get('question_text')
+    category = request.POST.get('category')
+    new_question = Question(user=request.user, question_text=question_text, category=category)
+    new_question.save()
+    return render(request, 'service.html')

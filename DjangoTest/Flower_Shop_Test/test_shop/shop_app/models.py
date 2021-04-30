@@ -83,16 +83,24 @@ class Order(models.Model):
 
 
 class Question(models.Model):
-    STATUS_CHOICES = (
+    STATUS_CHOICES1 = (
         ('unread', 'UNREAD'),
         ('read', 'READ'),
         ('answered', 'ANSWERED'),
     )
+    STATUS_CHOICES2 = (
+        ("quality", 'QUALITY'),
+        ('delivery', 'DELIVERY'),
+        ('service', 'SERVICE'),
+        ('order', 'ORDER'),
+        ('product', 'PRODUCT'),
+    )
     question_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=255, )
+    category = models.CharField(max_length=255, choices=STATUS_CHOICES2, default='quality')
     date = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='unread')
+    status = models.CharField(max_length=255, choices=STATUS_CHOICES1, default='unread')
     satisfaction = models.IntegerField(default="5")
 
 
