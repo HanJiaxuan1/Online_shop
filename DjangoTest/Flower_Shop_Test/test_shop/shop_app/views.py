@@ -10,7 +10,7 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 
-from .models import Product, Cart, Order, Question
+from .models import Product, Cart, Order, Question, QuestionDetails
 from .forms import CartForm
 
 
@@ -172,21 +172,17 @@ class QuestionInfo:
 
 def time_delta(date_time):
     delta = (datetime.datetime.now() - date_time).seconds
+    day = delta // 84600
     hour = delta // 3600
-    minute = (delta - 3600 * hour) // 60
-    second = (delta - 3600 * hour - 60 * minute)
-    if 0 < delta < 60:
-        return str(delta) + ' seconds ago'
-    elif 60 < delta < 3600:
-        if minute == 1:
-            return str(minute) + ' minute ' + str(second) + ' seconds ago'
-        else:
-            return str(minute) + ' minutes ' + str(second) + ' seconds ago'
+    minute = delta // 60
+    if 0 <= delta < 60:
+        return 'just now'
+    elif 60 <= delta < 3600:
+        return str(minute) + 'm ago'
+    elif 3600 <= delta < 86400:
+        return str(hour) + 'h ago'
     else:
-        if hour == 1:
-            return str(hour) + ' hour ' + str(minute) + ' minutes ' + str(second) + ' seconds ago '
-        else:
-            return str(hour) + ' hours ' + str(minute) + ' minutes ' + str(second) + ' seconds ago '
+        return str(day) + 'd ago'
 
 
 def service(request):
@@ -203,12 +199,13 @@ def service(request):
         return HttpResponseRedirect(reverse('account:login'))
 
 
-def communication(request):
+def communication(request, question_id):
     if request.user.is_authenticated:
         #     logedin_user = get_object_or_404(Profile, request.user.username)
         login_user = request.user
-        cart_list = Cart.objects.filter(user=login_user)
-        return render(request, 'communication.html')
+        question = Question.objects.get(user=login_user, question_id=question_id)
+        question_detail = QuestionDetails.objects.filter(question=question)
+        return render(request, 'communication.html', {'question': question, 'question_detail': question_detail})
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -331,3 +328,12 @@ def createQuestion(request):
     new_question = Question(user=request.user, question_text=question_text, category=category)
     new_question.save()
     return HttpResponseRedirect(reverse('shop_app:service'))
+
+
+def userMessage(request, question_id):
+    message_text = request.POST.get('message_text')
+    question = Question.objects.get(user=request.user, question_id=question_id)
+    new_message = QuestionDetails(question=question, answer_text=message_text,
+                                  date=datetime.datetime.now().strftime('%I:%M %p, %m.%d'))
+    new_message.save()
+    return HttpResponseRedirect(reverse('shop_app:communication', args=(question.question_id,)))

@@ -113,4 +113,4 @@ class QuestionDetails(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer_text = models.CharField(max_length=255, )
     source = models.CharField(max_length=20, choices=STATUS_CHOICES, default='user')
-    date = models.DateTimeField(default=timezone.now)
+    date = models.CharField(max_length=50, default=timezone.now)

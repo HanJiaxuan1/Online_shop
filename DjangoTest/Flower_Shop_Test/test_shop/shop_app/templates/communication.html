@@ -266,8 +266,8 @@
                         <div class="col-lg-6">
 
                             <div class="chat-about">
-                                <h4 class="m-b-0">Problem Title</h4>
-                                <small> Problem Type</small>
+                                <h4 class="m-b-0">{{ question.question_text }}</h4>
+                                <small> {{ question.category }}</small>
 
 
                             </div>
@@ -278,38 +278,61 @@
                 </div>
                 <div class="chat-history">
                     <ul class="m-b-0">
-
-                        <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">10:12 AM, Today</span>
-                                   <img src="../../static/store/avatar.jpg" alt="avatar">
-                            </div>
-                            <div class="message my-message">How can I help you?</div>
-                        </li>
-                         <li class="clearfix">
+                        {% for message in question_detail %}
+                            {% if message.source == 'user' %}
+                                <li class="clearfix">
                             <div class="message-data text-right">
-                                <span class="message-data-time">10:14 AM, Today</span>
+                                <span class="message-data-time">{{ message.date }}</span>
                                 <img src="../../static/store/photo.jpg" alt="avatar">
                             </div>
-                            <div class="message other-message float-right"> My flowers are not fresh.</div>
+                            <div class="message other-message float-right"> {{ message.answer_text }}</div>
                         </li>
-                        <li class="clearfix">
+                            {% endif %}
+
+                            {% if message.source == 'staff' %}
+                                <li class="clearfix">
                             <div class="message-data">
-                                <span class="message-data-time">10:15 AM, Today</span>
-                                 <img src="../../static/store/avatar.jpg" alt="avatar">
+                                <span class="message-data-time">{{ message.date }}</span>
+                                   <img src="../../static/store/avatar.jpg" alt="avatar">
                             </div>
-                            <div class="message my-message">Sorry for your bad shopping experience, we are going to find a way to compensate you.</div>
+                            <div class="message my-message">{{ message.answer_text }}</div>
                         </li>
+                            {% endif %}
+{#                        <li class="clearfix">#}
+{#                            <div class="message-data">#}
+{#                                <span class="message-data-time">10:12 AM, Today</span>#}
+{#                                   <img src="../../static/store/avatar.jpg" alt="avatar">#}
+{#                            </div>#}
+{#                            <div class="message my-message">How can I help you?</div>#}
+{#                        </li>#}
+{#                         <li class="clearfix">#}
+{#                            <div class="message-data text-right">#}
+{#                                <span class="message-data-time">10:14 AM, Today</span>#}
+{#                                <img src="../../static/store/photo.jpg" alt="avatar">#}
+{#                            </div>#}
+{#                            <div class="message other-message float-right"> My flowers are not fresh.</div>#}
+{#                        </li>#}
+{#                        <li class="clearfix">#}
+{#                            <div class="message-data">#}
+{#                                <span class="message-data-time">10:15 AM, Today</span>#}
+{#                                 <img src="../../static/store/avatar.jpg" alt="avatar">#}
+{#                            </div>#}
+{#                            <div class="message my-message">Sorry for your bad shopping experience, we are going to find a way to compensate you.</div>#}
+{#                        </li>#}
+{% endfor %}
                     </ul>
                 </div>
+            <form action="{% url 'shop_app:newMessage' question.question_id %}" method="post">
+                    {% csrf_token %}
                 <div class="chat-message clearfix">
                     <div class="input-group mb-0">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-send"></i></span>
+                            <button type="submit" class="input-group-text"><i class="fa fa-send"></i></button>
                         </div>
-                        <input type="text" class="form-control" placeholder="Enter text here...">
+                        <input type="text" name="message_text" class="form-control" placeholder="Enter text here...">
                     </div>
                 </div>
+            </form>
             </div>
         </div>
     </div>

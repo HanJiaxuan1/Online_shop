@@ -21,7 +21,8 @@ urlpatterns = [
     # path('<int:order_id>/payOrder/', views.payOrder, name='payOrder'),
     path('history_order/', views.history_order, name='history_order'),
     path('add_order/', views.add_order, name='add_order'),
-    path('communication/', views.communication, name='communication'),
+    path('<int:question_id>/communication/', views.communication, name='communication'),
     path('<int:product_id>/tempOrder', views.orderNow, name='order_now'),
-    path('question_create/', views.createQuestion, name='createQuestion')
+    path('question_create/', views.createQuestion, name='createQuestion'),
+    path('<int:question_id>/message/', views.userMessage, name='newMessage'),
 ]
