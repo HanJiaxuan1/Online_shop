@@ -333,6 +333,7 @@ def createQuestion(request):
 def userMessage(request, question_id):
     message_text = request.POST.get('message_text')
     question = Question.objects.get(user=request.user, question_id=question_id)
-    new_message = QuestionDetails(question=question, answer_text=message_text)
+    new_message = QuestionDetails(question=question, answer_text=message_text,
+                                  date=datetime.datetime.now().strftime('%I:%M %p, %m.%d'))
     new_message.save()
     return HttpResponseRedirect(reverse('shop_app:communication', args=(question.question_id,)))

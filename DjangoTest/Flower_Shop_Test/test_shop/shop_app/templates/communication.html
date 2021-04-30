@@ -282,7 +282,7 @@
                             {% if message.source == 'user' %}
                                 <li class="clearfix">
                             <div class="message-data text-right">
-                                <span class="message-data-time">10:14 AM, Today</span>
+                                <span class="message-data-time">{{ message.date }}</span>
                                 <img src="../../static/store/photo.jpg" alt="avatar">
                             </div>
                             <div class="message other-message float-right"> {{ message.answer_text }}</div>
@@ -292,7 +292,7 @@
                             {% if message.source == 'staff' %}
                                 <li class="clearfix">
                             <div class="message-data">
-                                <span class="message-data-time">10:12 AM, Today</span>
+                                <span class="message-data-time">{{ message.date }}</span>
                                    <img src="../../static/store/avatar.jpg" alt="avatar">
                             </div>
                             <div class="message my-message">{{ message.answer_text }}</div>
