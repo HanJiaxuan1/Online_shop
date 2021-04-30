@@ -5,6 +5,167 @@
 
 
 {% block content %}
+     <style type="text/css">
+    	.contact-title{
+    margin-bottom: 15px !important;
+}
+.icons-container ul li {
+    display: inline-block;
+    width: 4.2em;
+    height: 4.2em;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 50%;
+    margin: 0.25em;
+    line-height: 3.5em;
+    color: #999;
+    transition: 1s 0s linear;
+    text-decoration: none;
+}
+
+.icon-list{
+    padding:0px;
+}
+
+#facebook-circle{
+    border:1px solid #3B5998;
+}
+#facebook-icon{
+    color:#3B5998;
+}
+#twitter-circle{
+    border:1px solid #42ACC4;
+}
+#twitter-icon{
+    color:#42ACC4;
+}
+
+#youtube-circle{
+    border:1px solid #E62117;
+}
+#youtube-icon{
+    color:#E62117;
+}
+#btn-send-message{
+    width: 100%;
+}
+
+.line-separator{
+    border-bottom:1px solid #CDC1C5;
+}
+.box-separator{
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.icon-separator{
+    border-bottom: 2px solid orange;
+}
+
+.modal-body{
+ }
+    </style>
+
+            <div aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                             <h3 class="modal-title" id="exampleModalLabel">
+                               Order Confirm
+                            </h3>
+                            <button aria-label="Close" class="close" data-dismiss="modal" data-toggle="tooltip" title="Exit" type="button">
+                                <span aria-hidden="true">
+                                    ×
+                                </span>
+                            </button>
+
+                        </div>
+                            <div class="modal-body">
+                             <div class="row ">
+
+
+
+           <div class="col-md-7 order-md-1 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Order Info</span>
+
+      </h4>
+      <ul class="list-group mb-3">
+      {% for item in product_list %}
+        <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
+
+              <img  width="80px"  src="/media/{{item.product_obj.product_image}}"/>
+              <span><p class="my-0">{{ item.product_obj.product_name }}</p></span>
+
+            <span class="text-muted" id="i_num">   {{ item.product_num }}</span>
+
+        </li>
+      {% endfor %}
+
+
+        <li class="list-group-item d-flex justify-content-between order-sum">
+          <span>Total </span>
+          <strong id="sum_all"></strong>
+        </li>
+      </ul>
+
+
+    </div>
+
+
+
+
+
+            <div class="col-md-5 order-md-2">
+      <h4 class="mb-3">Receiver Info</h4>
+
+
+
+        <div class="mb-3">
+       <p >Receiver Name: </p>
+            <span class="text-muted">xxx</span>
+
+        </div>
+
+        <div class="mb-3">
+      <p>Receiver Phone Number: </p>
+            <span class="text-muted">74567456</span>
+
+        </div>
+
+        <div class="mb-3">
+          <p>Receiver Phone Address: </p>
+            <span class="text-muted">Pingleyuan No.100</span>
+
+        </div>
+
+
+
+
+    </div>
+
+
+    </div>
+
+                            <div class="row" >
+                                    <div class="col-md-6 ">
+
+             <button type="button" class="btn btn-light align-center" data-dismiss="modal" data-toggle="modal" data-target="#modal-info">Cancel</button>
+                                </div>
+                                <div class="col-md-6">
+
+                          <button class="btn btn-primary btn-sm align-items-sm-end" data-dismiss="modal" data-toggle="modal" data-target="#modal-success" >Confirm</button>
+                            </div>
+
+
+                            </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
 
 
     <div class="my-3 p-3 bg-white rounded shadow-sm">
@@ -31,24 +192,7 @@
             <span class="text-muted" id="i_cal-price">calculated</span>
         </li>
       {% endfor %}
-<!--           <li class="list-group-item d-flex justify-content-between lh-condensed">-->
 
-<!--              <img  width="120px"  src="store/nav2.jpg"/>-->
-<!--              <span><h6 class="my-0">product 2</h6></span>-->
-
-
-<!--            <span class="text-muted">1</span>-->
-<!--          <span class="text-muted">$10</span>-->
-<!--        </li>-->
-<!--         <li class="list-group-item d-flex justify-content-between lh-condensed">-->
-
-<!--              <img  width="120px"  src="store/nav1.jpg"/>-->
-<!--              <span><h6 class="my-0">product 3</h6></span>-->
-
-
-<!--            <span class="text-muted">2</span>-->
-<!--          <span class="text-muted">$16</span>-->
-<!--        </li>-->
 
         <li class="list-group-item d-flex justify-content-between order-sum">
           <span>Total </span>
@@ -99,20 +243,134 @@
 
 
 
-        <button class="btn btn-primary btn-sm align-items-sm-end" onclick="addOrder('{{ order_id }}', this)">Checkout</button>
-
-
+          <button class="btn btn-info" data-target="#exampleModal" onclick="addOrder('{{ order_id }}', this)" data-toggle="modal" data-whatever="@getbootstrap" type="button">
+                <i aria-hidden="true" class="fa fa-angle-double-right">
+                </i>
+               Checkout
+            </button>
 
 
 
     </div>
 
     </div>
+ <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="glyphicon glyphicon-check"></i>
+                </div>
+                <div class="modal-title text-black">Order Placed </div>
+                <div class="modal-body">Thanks for your purchase!</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-success " data-dismiss="modal">OK</button>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+      <div id="modal-info" class="modal modal-message modal-info fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <div class="modal-title text-black">Your order has been canceled.</div>
 
+                <div class="modal-body">Add items to cart again? </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal-warning">Yes</button>
+                    <span>
+                        <button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">No</button>
+                    </span>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+     <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa fa-warning"></i>
+                </div>
+                <div class="modal-title"></div>
+
+                <div class="modal-body">The products have been added to cart.</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
         </div>
 
 
+<style type="text/css">
+    	.modal-content {
+    -webkit-border-radius: 0;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 0;
+    -moz-background-clip: padding;
+    border-radius: 6px;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    box-shadow: 0 0 40px rgba(0,0,0,.5);
+    color: #000;
+    background-color: #fff;
+    border: rgba(0,0,0,0);
+}
+.modal-message .modal-dialog {
+    width: 300px;
+}
+.modal-message .modal-body, .modal-message .modal-footer, .modal-message .modal-header, .modal-message .modal-title {
+    background: 0 0;
+    border: none;
+    margin: 0;
+    padding: 0 20px;
+    text-align: center!important;
+}
 
+.modal-message .modal-title {
+    font-size: 17px;
+    color: #737373;
+    margin-bottom: 3px;
+}
+
+.modal-message .modal-body {
+    color: #737373;
+}
+
+.modal-message .modal-header {
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 15px 0 8px;
+}
+.modal-message .modal-header .fa,
+.modal-message .modal-header
+.glyphicon, .modal-message
+.modal-header .typcn, .modal-message .modal-header .wi {
+    font-size: 30px;
+}
+
+.modal-message .modal-footer {
+    margin: 25px 0 20px;
+    padding-bottom: 10px;
+}
+
+.modal-backdrop.in {
+    zoom: 1;
+    filter: alpha(opacity=75);
+    -webkit-opacity: .75;
+    -moz-opacity: .75;
+    opacity: .75;
+}
+.modal-backdrop {
+    background-color: #fff;
+}
+
+
+
+    </style>
 
 
 
@@ -166,7 +424,7 @@
         },
         async : false,
         success : function(data){
-            alert(data["msg"]);
+
         }
     });
 }
