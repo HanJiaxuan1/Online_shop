@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
@@ -155,12 +157,48 @@ def about_us(request):
     return render(request, 'about_us.html', {'user': request.user})
 
 
+class QuestionInfo:
+    question_id = "id"
+    question_text = 'text'
+    question_category = 'cate'
+    time_differ = 'delta'
+
+    def __init__(self, ide, text, cate, delta):
+        self.question_id = ide
+        self.question_text = text
+        self.question_category = cate
+        self.time_differ = delta
+
+
+def time_delta(date_time):
+    delta = (datetime.datetime.now() - date_time).seconds
+    hour = delta // 3600
+    minute = (delta - 3600 * hour) // 60
+    second = (delta - 3600 * hour - 60 * minute)
+    if 0 < delta < 60:
+        return str(delta) + ' seconds ago'
+    elif 60 < delta < 3600:
+        if minute == 1:
+            return str(minute) + ' minute ' + str(second) + ' seconds ago'
+        else:
+            return str(minute) + ' minutes ' + str(second) + ' seconds ago'
+    else:
+        if hour == 1:
+            return str(hour) + ' hour ' + str(minute) + ' minutes ' + str(second) + ' seconds ago '
+        else:
+            return str(hour) + ' hours ' + str(minute) + ' minutes ' + str(second) + ' seconds ago '
+
+
 def service(request):
     if request.user.is_authenticated:
         #     logedin_user = get_object_or_404(Profile, request.user.username)
         login_user = request.user
-        cart_list = Cart.objects.filter(user=login_user)
-        return render(request, 'service.html')
+        question_all_list = Question.objects.filter(user=login_user).order_by('question_id')
+        question_list = []
+        for question in question_all_list:
+            question_list.append(QuestionInfo(question.question_id, question.question_text, question.category,
+                                              time_delta(question.date)))
+        return render(request, 'service.html', {'question_list': question_list})
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -193,6 +231,7 @@ def favorites(request):
         return render(request, 'favorites.html')
     else:
         return HttpResponseRedirect(reverse('account:login'))
+
 
 @csrf_exempt
 def delete(request):
@@ -280,7 +319,7 @@ def order(request, order_id):
 
 
 def orderNow(request, product_id):
-    s = str(product_id)+':'+'1'+';'
+    s = str(product_id) + ':' + '1' + ';'
     selected_order = Order(user=request.user, order_list=s)
     selected_order.save()
     return HttpResponseRedirect(reverse('shop_app:order', args=(selected_order.order_id,)))
@@ -291,4 +330,4 @@ def createQuestion(request):
     category = request.POST.get('category')
     new_question = Question(user=request.user, question_text=question_text, category=category)
     new_question.save()
-    return render(request, 'service.html')
+    return HttpResponseRedirect(reverse('shop_app:service'))

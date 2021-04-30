@@ -35,62 +35,69 @@
             
 
             <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
+                {% if question_list %}
+                {% for question in question_list %}
                 <div class="card mb-2 border-bottom">
                     <div class="card-body p-2 p-sm-3">
                         <div class="media forum-item">
                              <div class="media-body">
-                                <h5><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h5>
+                                <h5><a href="{% url 'shop_app:communication' %}" class="text-black">{{ question.question_text }}</a></h5>
 
                                     <small class="text-primary">
-                                   Problem Category Here
+                                        {{ question.category }}
                                     </small></br>
-                                <small class="text-muted-sm">replied by customer service <span class="text-success ">7 hours ago</span></small></div>
+                                <small class="text-muted-sm">replied by customer service <span class="text-success ">{{ question.time_differ }}</span></small></div>
 
                         </div>
                     </div>
                 </div>
-                <div class="card mb-2 border-bottom">
-                    <div class="card-body p-2 p-sm-3">
-                        <div class="media forum-item">
-                             <div class="media-body">
-                                <h5><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h5>
+                {% endfor %}
+    {% else %}
 
-                                    <small class="text-primary">
-                                   Problem Category Here
-                                    </small></br>
-                                <small class="text-muted-sm">replied by customer service <span class="text-success ">4 hours ago</span></small></div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-2 border-bottom">
-                    <div class="card-body p-2 p-sm-3">
-                        <div class="media forum-item">
-                             <div class="media-body">
-                                <h5><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h5>
-
-                                    <small class="text-primary">
-                                   Problem Category Here
-                                    </small></br>
-                                <small class="text-muted-sm">replied by customer service <span class="text-success ">2 hours ago</span></small></div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-2 border-bottom">
-                <div class="card-body p-2 p-sm-3">
-                        <div class="media forum-item">
-                             <div class="media-body">
-                                <h5><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h5>
-
-                                    <small class="text-primary">
-                                   Problem Category Here
-                                    </small></br>
-                                <small class="text-muted-sm">replied by customer service <span class="text-success ">5 hours ago</span></small></div>
-
-                        </div>
-                    </div>
-                </div>
+        <p align="center">Sorry... No products in cart.</p>
+    {% endif %}
+{#                <div class="card mb-2 border-bottom">#}
+{#                    <div class="card-body p-2 p-sm-3">#}
+{#                        <div class="media forum-item">#}
+{#                             <div class="media-body">#}
+{#                                <h5><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h5>#}
+{##}
+{#                                    <small class="text-primary">#}
+{#                                   Problem Category Here#}
+{#                                    </small></br>#}
+{#                                <small class="text-muted-sm">replied by customer service <span class="text-success ">4 hours ago</span></small></div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card mb-2 border-bottom">#}
+{#                    <div class="card-body p-2 p-sm-3">#}
+{#                        <div class="media forum-item">#}
+{#                             <div class="media-body">#}
+{#                                <h5><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h5>#}
+{##}
+{#                                    <small class="text-primary">#}
+{#                                   Problem Category Here#}
+{#                                    </small></br>#}
+{#                                <small class="text-muted-sm">replied by customer service <span class="text-success ">2 hours ago</span></small></div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="card mb-2 border-bottom">#}
+{#                <div class="card-body p-2 p-sm-3">#}
+{#                        <div class="media forum-item">#}
+{#                             <div class="media-body">#}
+{#                                <h5><a href="{% url 'shop_app:communication' %}" class="text-black">Problem Title Here</a></h5>#}
+{##}
+{#                                    <small class="text-primary">#}
+{#                                   Problem Category Here#}
+{#                                    </small></br>#}
+{#                                <small class="text-muted-sm">replied by customer service <span class="text-success ">5 hours ago</span></small></div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
 
 
             </div>
