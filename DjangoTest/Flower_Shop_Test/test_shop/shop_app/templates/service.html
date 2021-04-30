@@ -41,7 +41,7 @@
                     <div class="card-body p-2 p-sm-3">
                         <div class="media forum-item">
                              <div class="media-body">
-                                <h5><a href="{% url 'shop_app:communication' %}" class="text-black">{{ question.question_text }}</a></h5>
+                                <h5><a href="{% url 'shop_app:communication' question.question_id %}" class="text-black">{{ question.question_text }}</a></h5>
 
                                     <small class="text-primary">
                                         {{ question.category }}

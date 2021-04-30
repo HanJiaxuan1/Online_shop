@@ -10,7 +10,7 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 
-from .models import Product, Cart, Order, Question
+from .models import Product, Cart, Order, Question, QuestionDetails
 from .forms import CartForm
 
 
@@ -199,12 +199,13 @@ def service(request):
         return HttpResponseRedirect(reverse('account:login'))
 
 
-def communication(request):
+def communication(request, question_id):
     if request.user.is_authenticated:
         #     logedin_user = get_object_or_404(Profile, request.user.username)
         login_user = request.user
-        cart_list = Cart.objects.filter(user=login_user)
-        return render(request, 'communication.html')
+        question = Question.objects.get(user=login_user, question_id=question_id)
+        question_detail = QuestionDetails.objects.filter(question=question)
+        return render(request, 'communication.html', {'question': question, 'question_detail': question_detail})
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -327,3 +328,11 @@ def createQuestion(request):
     new_question = Question(user=request.user, question_text=question_text, category=category)
     new_question.save()
     return HttpResponseRedirect(reverse('shop_app:service'))
+
+
+def userMessage(request, question_id):
+    message_text = request.POST.get('message_text')
+    question = Question.objects.get(user=request.user, question_id=question_id)
+    new_message = QuestionDetails(question=question, answer_text=message_text)
+    new_message.save()
+    return HttpResponseRedirect(reverse('shop_app:communication', args=(question.question_id,)))
