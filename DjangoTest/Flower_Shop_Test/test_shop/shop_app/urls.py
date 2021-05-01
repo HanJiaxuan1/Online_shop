@@ -25,4 +25,5 @@ urlpatterns = [
     path('<int:product_id>/tempOrder', views.orderNow, name='order_now'),
     path('question_create/', views.createQuestion, name='createQuestion'),
     path('<int:question_id>/message/', views.userMessage, name='newMessage'),
+    path('address/', views.address, name='address'),
 ]

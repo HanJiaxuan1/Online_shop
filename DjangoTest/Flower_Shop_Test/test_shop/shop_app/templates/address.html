@@ -1,0 +1,325 @@
+
+{% extends "_profile_base.html" %}
+
+{% block title %}Account{% endblock %}
+
+{% block content %}
+
+
+ <div class="col-md-9">
+ <style type="text/css">
+
+     .addresses-item{
+         height: 200px;
+     }
+/* My Account */
+.payments-item img.mr-3 {
+    width: 47px;
+}
+.order-list .btn {
+    border-radius: 2px;
+    min-width: 121px;
+    font-size: 13px;
+    padding: 7px 0 7px 0;
+}
+.osahan-account-page-left .nav-link {
+    padding: 18px 20px;
+    border: none;
+    font-weight: 600;
+    color: #535665;
+}
+.osahan-account-page-left .nav-link i {
+    width: 28px;
+    height: 28px;
+    background: #535665;
+    display: inline-block;
+    text-align: center;
+    line-height: 29px;
+    font-size: 15px;
+    border-radius: 50px;
+    margin: 0 7px 0 0px;
+    color: #fff;
+}
+.osahan-account-page-left .nav-link.active {
+    background: #f3f7f8;
+    color: #282c3f !important;
+}
+.osahan-account-page-left .nav-link.active i {
+    background: #282c3f !important;
+}
+.osahan-user-media img {
+    width: 90px;
+}
+.card offer-card h5.card-title {
+    border: 2px dotted #000;
+}
+.card.offer-card h5 {
+    border: 1px dotted #daceb7;
+    display: inline-table;
+    color: #17a2b8;
+    margin: 0 0 19px 0;
+    font-size: 15px;
+    padding: 6px 10px 6px 6px;
+    border-radius: 2px;
+    background: #fffae6;
+    position: relative;
+}
+.card.offer-card h5 img {
+    height: 22px;
+    object-fit: cover;
+    width: 22px;
+    margin: 0 8px 0 0;
+    border-radius: 2px;
+}
+.card.offer-card h5:after {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #daceb7;
+    content: "";
+    left: 30px;
+    position: absolute;
+    bottom: 0;
+}
+.card.offer-card h5:before {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #daceb7;
+    content: "";
+    left: 30px;
+    position: absolute;
+    top: 0;
+}
+.payments-item .media {
+    align-items: center;
+}
+.payments-item .media img {
+    margin: 0 40px 0 11px !important;
+}
+.reviews-members .media .mr-3 {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+}
+.order-list img.mr-4 {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    border-radius: 2px;
+}
+.osahan-cart-item p.text-gray.float-right {
+    margin: 3px 0 0 0;
+    font-size: 12px;
+}
+.osahan-cart-item .food-item {
+    vertical-align: bottom;
+}
+
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
+.rounded-pill {
+    border-radius: 50rem!important;
+}
+a:hover{
+    text-decoration:none;
+}
+    </style>
+
+
+
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row  shadow-sm h-md-800 position-static">
+            <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade  active show" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
+                        <h4 class="font-weight-bold mt-0 mb-4">Manage Addresses</h4>
+                        <span>
+                            <button class="btn btn-sm btn-primary" data-target="#exampleModal" data-toggle="modal" data-whatever="@getbootstrap" type="button">
+                <i aria-hidden="true" class="fa fa-angle-double-right">
+                </i>
+                                <svg xmlns="http://www.w3.org/2000/svg" alignment-baseline="central" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus mr-2">
+                        <line x1="16" y1="2" x2="16" y2="18"></line>
+                        <line x1="8" y1="10" x2="24" y2="10"></line>
+                    </svg>
+
+                Add a New Address
+            </button>
+</span>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                   <div class="bg-white card addresses-item mb-4 shadow-sm">
+                                    <div class="gold-members p-4">
+                                         <div class="media">
+                                            <div class="mr-3"><i class="icofont-ui-home icofont-3x"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">Home</h6>
+                                                <label>
+                                                    <input style="color: #5a6268" type="checkbox" value="">Set as default
+                                                    </label>
+
+                                                <p class="text-black">Osahan House, Jawaddi Kalan, Ludhiana, Punjab 141002, India
+                                                </p>
+                                                <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#add-address-modal" href="#"><i class="icofont-ui-edit"></i> EDIT</a> <a class="text-danger" data-toggle="modal" data-target="#delete-address-modal" href="#"><i class="icofont-ui-delete"></i> DELETE</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-white card addresses-item mb-4 shadow-sm">
+                                    <div class="gold-members p-4">
+                                        <div class="media">
+                                            <div class="mr-3"><i class="icofont-briefcase icofont-3x"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">Work</h6>
+                                                 <label>
+                                                    <input style="color: #5a6268" type="checkbox" value="">Set as default
+                                                    </label>
+
+                                                <p>NCC, Model Town Rd, Pritm Nagar, Model Town, Ludhiana, Punjab 141002, India
+                                                </p>
+                                                <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#add-address-modal" href="#"><i class="icofont-ui-edit"></i> EDIT</a> <a class="text-danger" data-toggle="modal" data-target="#delete-address-modal" href="#"><i class="icofont-ui-delete"></i> DELETE</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="bg-white card addresses-item mb-4  shadow-sm">
+                                    <div class="gold-members p-4">
+                                        <div class="media">
+                                            <div class="mr-3"><i class="icofont-location-pin icofont-3x"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">Other</h6>
+                                                 <label>
+                                                    <input style="color: #5a6268" type="checkbox" value="">Set as default
+                                                    </label>
+
+                                                <p>Delhi Bypass Rd, Jawaddi Taksal, Ludhiana, Punjab 141002, India
+                                                </p>
+                                                <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#add-address-modal" href="#"><i class="icofont-ui-edit"></i> EDIT</a> <a class="text-danger" data-toggle="modal" data-target="#delete-address-modal" href="#"><i class="icofont-ui-delete"></i> DELETE</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-white card addresses-item mb-4  shadow-sm">
+                                    <div class="gold-members p-4">
+                                        <div class="media">
+                                            <div class="mr-3"><i class="icofont-location-pin icofont-3x"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">Other</h6>
+                                                 <label>
+                                                    <input style="color: #5a6268" type="checkbox" value="">Set as default
+                                                    </label>
+
+                                                <p>MT, Model Town Rd, Pritm Nagar, Model Town, Ludhiana, Punjab 141002, India
+                                                </p>
+                                                <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#add-address-modal" href="#"><i class="icofont-ui-edit"></i> EDIT</a> <a class="text-danger" data-toggle="modal" data-target="#delete-address-modal" href="#"><i class="icofont-ui-delete"></i> DELETE</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="bg-white card addresses-item shadow-sm">
+                                    <div class="gold-members p-4">
+                                        <div class="media">
+                                            <div class="mr-3"><i class="icofont-location-pin icofont-3x"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">Other</h6>
+                                                 <label>
+                                                    <input style="color: #5a6268" type="checkbox" value="">Set as default
+                                                    </label>
+
+                                                <p>GNE Rd, Jawaddi Taksal, Ludhiana, Punjab 141002, India
+                                                </p>
+                                                <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#add-address-modal" href="#"><i class="icofont-ui-edit"></i> EDIT</a> <a class="text-danger" data-toggle="modal" data-target="#delete-address-modal" href="#"><i class="icofont-ui-delete"></i> DELETE</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-white card addresses-item shadow-sm">
+                                    <div class="gold-members p-4">
+                                        <div class="media">
+
+                                            <div class="mr-3"><i class="icofont-location-pin icofont-3x"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">Other</h6>
+                                                 <label>
+                                                    <input style="color: #5a6268" type="checkbox" value="">Set as default
+                                                    </label>
+
+                                                <p>GTTT, Model Town Rd, Pritm Nagar, Model Town, Ludhiana, Punjab 141002, India
+                                                </p>
+                                                <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#add-address-modal" href="#"><i class="icofont-ui-edit"></i> EDIT</a> <a class="text-danger" data-toggle="modal" data-target="#delete-address-modal" href="#"><i class="icofont-ui-delete"></i> DELETE</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
+
+            <div aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header d-flex align-items-center bg-light text-black">
+                        <h5 class="modal-title mb-0" id="threadModalLabel">New Address</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="threadTitle">Address</label>
+                            <input type="text" name="question_text" class="form-control" id="threadTitle" placeholder="Enter a new address" autofocus="" />
+                        </div>
+                        <textarea class="form-control summernote" style="display: none;"></textarea>
+
+                        <div class="custom-file form-control-sm mt-3" style="max-width: 300px;">
+
+                            <label class="custom-select-label" for="customSelect">Category</label>
+                            <select id="customSelect" name="category" class="custom-select custom-select-lg w-auto mr-1" >
+
+                    <option value="delivery">Home</option>
+                    <option value="service">Work</option>
+                    <option value="order">Other</option>
+
+                </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+{% endblock %}
+
