@@ -12,7 +12,10 @@
           <table class="table">
             <thead>
               <tr>
-                <th align="center" width="40%">Product</th>
+                <th align="center" width="40%">Product &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+                    <input type="checkbox" id="selectall">
+                    Select All
+                </th>
                 <th align="center" width="15%">Unit Price</th>
 
                   <th align="center" width="5%">Inventory</th>
@@ -40,9 +43,7 @@
                     </div>
                     <div class="media-body" style="margin-left: 10px">
                       <h6>{{cart_item.product.product_name}}</h6>
-
                     <input class="checkbox" type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ cart_item.cart_id }}">
-
                   </div>
                 </td>
 
@@ -169,6 +170,8 @@
                 total += calculated_price;
                 number += num;
                 // $("#calculated_price").text("￥"+calculated_price.toFixed(2));
+            } else {
+                $('#selectall').prop("checked",false)
             }
         });
     // 4. 把总计显示在总计元素上
@@ -176,7 +179,6 @@
         $("#total_number").text(number+"  Bouquets");
         $("#total_price").text("￥"+total.toFixed(2));//toFixed(2)函数的作用是把total保留2位
     }
-
 
     function setOrder() {
         let total = 0;
@@ -202,6 +204,18 @@
         $("#total_number").text(number+"  Bouquets");
         $("#total_price").text("￥"+total.toFixed(2));//toFixed(2)函数的作用是把total保留2位
     }
+
+    {#全选#}
+    $('#selectall').click(function (){
+        if ($('#selectall').is(":checked")) {
+            $('.checkbox').prop("checked",true)
+            showTotal();
+         }
+        else{
+            $('#selectall').prop("checked",false)
+            showTotal();
+        }
+    });
 
 
 
