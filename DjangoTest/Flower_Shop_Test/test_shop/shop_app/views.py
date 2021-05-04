@@ -10,7 +10,7 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 
-from .models import Product, Cart, Order, Question, QuestionDetails
+from .models import Product, Cart, Order, Question, QuestionDetails, Favorite
 from .forms import CartForm
 
 
@@ -97,6 +97,36 @@ def add_to_cart(request):
 
             response = JsonResponse({"msg": "Request is larger than inventory"})
             return response
+    else:
+        response = JsonResponse({"msg": "Please login first"})
+        return response
+
+
+@csrf_exempt
+def add_to_favorite(request):
+    if request.user.is_authenticated:
+        data = request.POST
+        p_id = str(request.POST.get("p_id"))
+        login_user = request.user
+        selected_p = Product.objects.get(product_id=p_id)
+        favorite_list = Favorite.objects.filter(user=login_user)
+        has_favorite_item = False
+        for old_favorite_item in favorite_list:
+            old_favorite_id = str(old_favorite_item.product.product_id)
+            print(old_favorite_id)
+            if old_favorite_id == p_id:
+                has_favorite_item = old_favorite_item
+                print("has_cart_item: ")
+                print(has_favorite_item)
+
+        if not has_favorite_item:
+            new_favorite_item = Favorite(product=selected_p, user=login_user)
+            # save changes
+            new_favorite_item.save()
+
+        response = JsonResponse({"msg": "Product Successfully Added to Cart"})
+        return response
+
     else:
         response = JsonResponse({"msg": "Please login first"})
         return response
@@ -234,8 +264,9 @@ def favorites(request):
     if request.user.is_authenticated:
         #     logedin_user = get_object_or_404(Profile, request.user.username)
         login_user = request.user
-        cart_list = Cart.objects.filter(user=login_user)
-        return render(request, 'favorites.html')
+        favorite_list = Favorite.objects.filter(user=login_user)
+        return render(request, 'favorites.html', {'user': login_user,
+                                             'favorite_list': favorite_list}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -245,6 +276,15 @@ def delete(request):
     data = request.POST
     getid = request.POST.get("getId")
     deleteObject = Cart.objects.get(cart_id=getid)
+    deleteObject.delete()
+    response = JsonResponse({"getId": getid})
+    return response
+
+
+@csrf_exempt
+def delete_favorite(request):
+    getid = request.POST.get("getId")
+    deleteObject = Favorite.objects.get(favorite_id=getid)
     deleteObject.delete()
     response = JsonResponse({"getId": getid})
     return response

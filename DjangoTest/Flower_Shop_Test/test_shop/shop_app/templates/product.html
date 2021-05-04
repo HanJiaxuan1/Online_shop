@@ -78,7 +78,7 @@
 
 
 </table>
-<img src="https://img.icons8.com/color/50/000000/like--v1.png"/>
+<img src="https://img.icons8.com/color/50/000000/like--v1.png" onclick="addToFavorite('{{ product.product_id }}', this)"/>
 <button  class="btn btn-sm btn-outline-dark" onclick="addToCart('{{ product.product_id }}', this)">Add To Cart</button>
 
         </div>
@@ -94,8 +94,8 @@
 
     function addToCart(id, obj) {
     let num = Number($("#p_num").val())
-        console.log("Id="+id);
-        console.log("num="+num);
+        {#console.log("Id="+id);#}
+        {#console.log("num="+num);#}
     // let inventory_num = Number($("#p_inventory").text());
     //     console.log("invent_num="+inventory_num);
     $.ajax({
@@ -113,7 +113,17 @@
     });
 }
 
-
+function addToFavorite(id, obj) {
+    $.ajax({
+        type : 'post',
+        url : '/add_to_favorite/',
+        data:{'p_id':id},
+        async : false,
+        success : function(data){
+            alert(data["msg"]);
+        }
+    });
+}
 </script>
 
 

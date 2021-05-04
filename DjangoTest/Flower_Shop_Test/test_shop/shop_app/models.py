@@ -6,6 +6,7 @@ import django.utils.timezone as timezone
 # Create your models here.
 from django.conf import settings
 
+
 class AdminProductInfo:
     product_obj = 'obj'
     product_num = 'num'
@@ -58,7 +59,6 @@ class Order(models.Model):
     receiver = models.CharField(max_length=255, default="user")
     phone = models.IntegerField(default="1234567890")
     address = models.CharField(max_length=512, default="Beijing")
-
 
     def __str__(self):
         return f" Order: {self.order_id} - {self.user} - {self.order_list}"
@@ -114,3 +114,12 @@ class QuestionDetails(models.Model):
     answer_text = models.CharField(max_length=255, )
     source = models.CharField(max_length=20, choices=STATUS_CHOICES, default='user')
     date = models.CharField(max_length=50, default=timezone.now)
+
+
+class Favorite(models.Model):
+    favorite_id = models.AutoField(primary_key=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f" Favorite: {self.favorite_id} - {self.user} - {self.product}"
