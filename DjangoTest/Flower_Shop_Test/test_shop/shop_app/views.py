@@ -9,7 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
-
+from django.contrib.auth.models import User
 from .models import Product, Cart, Order, Question, QuestionDetails, Favorite
 from .forms import CartForm
 

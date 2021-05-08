@@ -123,3 +123,15 @@ class Favorite(models.Model):
 
     def __str__(self):
         return f" Favorite: {self.favorite_id} - {self.user} - {self.product}"
+
+
+class Profile(models.Model):
+    profile_id = models.AutoField(primary_key=True)
+    userinfo = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_id')
+    phone = models.CharField(max_length=100)
+    region = models.CharField(max_length=100)
+    date_of_birth = models.DateField(blank=True, null=True)
+    photo = models.ImageField(upload_to='user/%Y/%m/%d', blank=True)
+
+    def __str__(self):
+        return 'Profile for user {}'.format('self.user.username')
