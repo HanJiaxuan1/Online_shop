@@ -21,10 +21,197 @@
   <link rel="stylesheet" href="../../static/store/static/css/style50.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
   <link rel="stylesheet" href="../../static/store/static/css/mbr-additional79.css" type="text/css">
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ <style type="text/css">
 
 
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 300px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 300px;
+    width: 0;
+    height: 100%;
+    margin-left: -300px;
+    overflow-y: auto;
+    background:#fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper {
+    box-shadow: inset -1px 0px 0px 0px #DDDDDD;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 300px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -300px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 300px;
+
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 300px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 300px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+#sidebar-wrapper li.active > a:after {
+    border-right: 17px solid #f4f3ef;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: -1px;
+}
+
+.sidebar-brand {
+    border-bottom: 1px solid rgba(102, 97, 91, 0.3);
+}
+
+.sidebar-brand {
+    padding: 18px 0px;
+    margin: 0 20px;
+}
+
+.navbar .navbar-nav > li > a p {
+    display: inline-block;
+    margin: 0;
+}
+p {
+    font-size: 16px;
+    line-height: 1.4em;
+}
+
+
+
+
+    </style>
+
+<style>
+ @media screen and (max-width: 767px) {
+            #content {
+                margin-top: 100px
+            }
+        }
+        /* min-width:768px */
+
+        @media screen and (min-width: 768px) {
+            #content {
+             margin-top: 100px
+            }
+        }
+        /* min-width:970px */
+
+        @media screen and (min-width: 992px) {
+            #content {
+                margin-top: 100px
+            }
+        }
+        /* min-width:1200px */
+
+        @media screen and (min-width:1200px) {
+            #content {
+                margin-top: 100px
+            }
+        }
+
+
+</style>
 </head>
 <body>
 <section class="menu cid-rbb1P7Oggj" once="menu" id="menu1-5" data-sortbtn="btn-primary">
@@ -124,15 +311,11 @@
       </div>
     </nav>
 </section>
-<div style="margin-right: 100px; margin-left: 100px; margin-top: 100px">
-    <div class="row">
 
+<div id="content">
 
- <div class="col-md-3 ">
-      <div class="row  overflow-hidden flex-md-row  position-relative"  >
-        <div class="col p-4 d-flex flex-column">
- <aside class=" col-md-12 blog-sidebar ">
-
+<div id="wrapper" class="wrapper-content">
+    <div id="sidebar-wrapper">
       <div class="p-1">
         <h4 class="font-italic">Account</h4>
        <ol class="list-unstyled ">
@@ -166,19 +349,45 @@
         </ol>
 
       </div>
+    </div>
 
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button class="btn-menu btn btn-sm btn-success btn-toggle-menu" type="button">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-panel"></i>
+        						<p>Stats</p>
+                            </a>
+                        </li>
+        				<li>
+                            <a href="#">
+        						<i class="ti-settings"></i>
+        						<p>Settings</p>
+                            </a>
+                        </li>
+                    </ul>
 
-    </aside>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
 
+{% block content %}{% endblock %}
+                </div>
+            </div>
         </div>
 
-      </div>
-
-    </div>
-{% block content %}{% endblock %}
-</div>
-</div>
-<section class="features8 cid-rbaKgiAJ5r" id="features8-1" data-sortbtn="btn-primary">
+ <section class="features8 cid-rbaKgiAJ5r" id="features8-1" data-sortbtn="btn-primary">
 
 
 
@@ -239,9 +448,20 @@
 
     </div>
 </section>
+</div>
+
+
+<script type="text/javascript">
 
 
 
+
+$(function(){
+    $(".btn-toggle-menu").click(function() {
+        $("#wrapper").toggleClass("toggled");
+    });
+})
+</script>
   <script src="../../static/store/static/js/jquery.min1.js"></script>
   <script src="../../static/store/static/js/popper.min1.js"></script>
   <script src="../../static/store/static/js/bootstrap.min9.js"></script>
