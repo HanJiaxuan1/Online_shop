@@ -5,25 +5,51 @@
 
 {% block content %}
 
-   <section class="cart_area " style="background: none">
-    <div class="container">
+<style>
+ @media screen and (max-width: 767px) {
+            #pic {
+              width:50px
+            }
+        }
+        /* min-width:768px */
+
+        @media screen and (min-width: 768px) {
+          #pic {
+              width:50px
+            }
+        }
+        /* min-width:970px */
+
+        @media screen and (min-width: 992px) {
+            #pic {
+              width:160px
+            }
+        }
+        /* min-width:1200px */
+
+        @media screen and (min-width:1200px) {
+             #pic {
+              width:180px
+            }
+        }
+
+
+</style>
+   <section class="cart_area " style="background: none" >
+
       <div class="cart_inner">
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-borderless" >
             <thead>
               <tr>
-                <th align="center" width="40%">Product &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
-                    <input type="checkbox" id="selectall">
+                  <input type="checkbox" id="selectall">
                     Select All
-                </th>
-                    <th align="center" width="15%">Unit Price</th>
-                    <th align="center" width="5%">Inventory</th>
-                    <th  align="center"width="15%">Quantity</th>
-                    <th  align="center" width="10%">Sum</th>
-                 <th ></th>
-                 <th ></th>
-                  <th ></th>
-                  <th align="center" width="25%">Operation</th>
+
+                    <th width="30%"></th>
+                    <th width="15%">Inventory</th>
+                    <th width="15%" >Quantity</th>
+                    <th width="15%"  >Sum</th>
+
               </tr>
             </thead>
             <tbody>
@@ -37,18 +63,20 @@
                 <td>
                  <div class="media">
                     <div class="d-flex">
-                      <img src="/media/{{cart_item.product.product_image}}" width="180px" alt="" />
+                      <img id="pic" src="/media/{{cart_item.product.product_image}}" width="180px" alt="" />
                     </div>
                     <div class="media-body" style="margin-left: 10px">
-                      <h6>{{cart_item.product.product_name}}</h6>
+                      <p>{{cart_item.product.product_name}}</p>
+                        <p id="price">{{cart_item.product.price}}</p>
                     <input class="checkbox" type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ cart_item.cart_id }}">
-                  </div>
+                   <button  align="center" class="btn btn-sm btn-light border-0" onclick="deleteCart('{{cart_item.cart_id}}', this)">
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                   </button>
+
+                    </div>
+                 </div>
                 </td>
 
-
-                  <td >
-                  <h6 id="price">{{cart_item.product.price}}</h6>
-                </td>
                   <td>
                   <h6 align="center"id="inventory">{{cart_item.product.inventory}}</h6>
                 </td>
@@ -66,16 +94,8 @@
                 <p class="card-text" id="calculated_price" ></p>
 
                 </td>
-                  <td>
-                  </td>
-                  <td>
-                   </td>
-                    <td>
-                   </td>
-                  <td>
-                   <button  align="center" class="btn btn-sm btn-light border-0" onclick="deleteCart('{{cart_item.cart_id}}', this)">Delete</button>
 
-                </td>
+
 
               </tr>
 {% endfor %}
@@ -85,43 +105,36 @@
     {% endif %}
 
               <tr>
-                <td></td>
-                <td></td>
-                  <td></td>
+
+                    <td></td>
                    <td>
-                       <div class="badge badge-secondary badge-pill" id="total_number"></div>
 
                 </td>
-                   <td>
-                  <h6 id="total_price">￥0
+                    <td>
+   <div class="badge badge-secondary badge-pill" id="total_number"></div>
+
+                </td>
+
+                  <td>
+                      <h6 id="total_price">￥0
                  </h6>
-                </td>
-                  <td></td>
+                  </td>
 
-                  <td></td>
-
-                  <td></td>
-                  <td></td>
-                  <td></td>
 
               </tr>
     <tr>
-        <td></td>
-        <td><td>
-        <td>
-    </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-
-        <td>
-      <div class="checkout_btn_inner float-lg-right">
-          <button type="submit" class="btn btn-sm btn-primary"  >Checkout</button>
 
 
-          </div>
-        </td>
+
+ <td> <div class="checkout_btn_inner float-lg-right">
+          <button type="submit" class="btn btn-sm btn-primary"  >Check out</button>
+
+
+          </div></td>
+<td></td>
+ <td></td>
+        <td></td>
+
     </tr>
 
     </form>
@@ -130,7 +143,7 @@
         </div>
 
         </div>
-      </div>
+
 
   </section>
 
