@@ -24,7 +24,44 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+<style>
+ @media screen and (max-width: 767px) {
+            #content {
+                margin-top: 100px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
+        /* min-width:768px */
 
+        @media screen and (min-width: 768px) {
+            #content {
+                margin-top: 100px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
+        /* min-width:970px */
+
+        @media screen and (min-width: 992px) {
+            #content {
+                margin-top: 100px;
+                margin-left: 80px;
+                margin-right: 80px;
+            }
+        }
+        /* min-width:1200px */
+
+        @media screen and (min-width:1200px) {
+            #content {
+                margin-top: 100px;
+                margin-left: 100px;
+                margin-right: 100px;
+            }
+        }
+
+
+</style>
 </head>
 <body>
 <section class="menu cid-rbb1P7Oggj" once="menu" id="menu1-5" data-sortbtn="btn-primary">
@@ -124,7 +161,7 @@
       </div>
     </nav>
 </section>
-<div style="margin-right: 100px; margin-left: 100px; margin-top: 100px">
+<div id="content">
 {% block content %}{% endblock %}
 </div>
 <section class="features8 cid-rbaKgiAJ5r" id="features8-1" data-sortbtn="btn-primary">
