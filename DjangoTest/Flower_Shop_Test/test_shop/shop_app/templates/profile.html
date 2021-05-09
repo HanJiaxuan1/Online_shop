@@ -177,45 +177,45 @@ html.active .button a.save {
         <div class="row">
             <div class="field">
                 <label>Username</label>
-                <input type="text" value="{{ user.username }}" />
+                <input id = "username" type="text" value="{{ user.username }}" />
             </div>
             <div class="field">
-                <label>First</label>
-                <input type="text" value="{{ user.first_name }}" />
+                <label>Firstname</label>
+                <input id = "firstname" type="text" value="{{ user.first_name }}" />
             </div>
             <div class="field">
                 <label>Lastname</label>
-                <input type="text" value="{{ user.last_name }}" />
+                <input id = "lastname" type="text" value="{{ user.last_name }}" />
             </div>
         </div>
         <div class="row">
 
             <div class="field">
                 <label>Birthday</label>
-                <input type="date" value="2000-01-01" />
+                <input id = "birthday" type="date" value="{{ profile.date_of_birth | date:'Y-m-d' }}" />
             </div>
             <div class="field">
                 <label>Phone</label>
-                <input type="text" value="{{ user.phone }}" />
+                <input id = "phone" type="text" value="{{ profile.phone }}" />
             </div>
         </div>
         <div class="row">
             <div class="field">
                 <label>Email</label>
-                <input type="email" value="{{ user.email }}" />
+                <input id = "email" type="email" value="{{ user.email }}" />
             </div>
         </div>
         <div class="row">
             <div class="field">
-                <label>Address</label>
-                <input type="text" value="Beijing, China" />
+                <label>Region</label>
+                <input id = "region" type="text" value="{{ profile.region }}" />
             </div>
 
         </div>
     </div>
               <div class="button" align="center">
         <a class="btn-primary edit" href="#">Edit Fields</a>
-        <a class="btn-secondary save" href="#">Save Changes</a>
+        <a class="btn-secondary save" href="#" onclick="changeProfile({{ user.id }})">Save Changes</a>
     </div>
 </div>
   </div>
@@ -244,6 +244,28 @@ $(function() {
         .keyup(resizeInput)
         .each(resizeInput);
 });
+
+//给后台传改后的数据
+function changeProfile(getId){
+    var username =  $("#username").val()
+    var firstname =  $("#firstname").val()
+    var lastname =  $("#lastname").val()
+    var birthday =  $("#birthday").val()
+    var phone =  $("#phone").val()
+    var email =  $("#email").val()
+    var region =  $("#region").val()
+    $.ajax({
+        type : 'post',
+        url : '/change_profile/',
+        data:{'getId':getId,"username":username, "firstname":firstname,
+            "lastname":lastname, "birthday":birthday, "phone":phone,
+            "email":email, "region":region},
+        async : false,
+        success : function(data){
+            alert("Change saved successfully!")
+        }
+    });
+}
 </script>
 
 {% endblock %}

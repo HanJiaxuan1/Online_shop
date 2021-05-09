@@ -126,7 +126,7 @@ class Favorite(models.Model):
 
 
 class Profile(models.Model):
-    subscriptable    profile_id = models.AutoField(primary_key=True)
+    profile_id = models.AutoField(primary_key=True)
     userinfo = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_id')
     phone = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
