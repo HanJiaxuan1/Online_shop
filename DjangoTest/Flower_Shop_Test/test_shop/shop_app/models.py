@@ -126,7 +126,7 @@ class Favorite(models.Model):
 
 
 class Profile(models.Model):
-    profile_id = models.AutoField(primary_key=True)
+    subscriptable    profile_id = models.AutoField(primary_key=True)
     userinfo = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_id')
     phone = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
@@ -134,4 +134,4 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to='user/%Y/%m/%d', blank=True)
 
     def __str__(self):
-        return 'Profile for user {}'.format('self.user.username')
+        return 'Profile for {}'.format(self.profile_id)

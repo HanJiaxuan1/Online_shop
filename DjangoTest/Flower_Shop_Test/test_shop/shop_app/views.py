@@ -10,7 +10,7 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Product, Cart, Order, Question, QuestionDetails, Favorite
+from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile
 from .forms import CartForm
 
 
@@ -164,7 +164,10 @@ def profile(request):
     # if request.user.is_authenticated:
     #     logedin_user = get_object_or_404(Profile, request.user.username)
     if request.user.is_authenticated:
-        return render(request, 'profile.html', {'user': request.user})
+        uid = request.user.id
+        profile = Profile.objects.filter(userinfo_id=uid).all()
+        print(profile[0].date_of_birth)
+        return render(request, 'profile.html', {'user': request.user, 'profile': profile[0]},)
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -269,6 +272,29 @@ def favorites(request):
                                              'favorite_list': favorite_list}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
+
+
+@csrf_exempt
+def change_profile(request):
+    data = request.POST
+    getid = request.POST.get("getId")
+    username = request.POST.get("username")
+    firstname = request.POST.get("firstname")
+    lastname = request.POST.get("lastname")
+    birthday = request.POST.get("birthday")
+    phone = request.POST.get("phone")
+    email = request.POST.get("email")
+    region = request.POST.get("region")
+    changeObject = Profile.objects.filter(userinfo_id=getid)
+    changeUserObject = User.objects.filter(id=getid)
+    if not changeObject:
+        Profile.objects.create(userinfo_id=getid, date_of_birth=birthday, phone=phone, region=region)
+        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email )
+    else:
+        changeObject.update(userinfo_id=getid, date_of_birth=birthday, phone=phone, region=region)
+        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email )
+    response = JsonResponse({"getId": getid})
+    return response
 
 
 @csrf_exempt
