@@ -116,15 +116,12 @@ def add_to_favorite(request):
             print(old_favorite_id)
             if old_favorite_id == p_id:
                 has_favorite_item = old_favorite_item
-                print("has_cart_item: ")
-                print(has_favorite_item)
-
         if not has_favorite_item:
             new_favorite_item = Favorite(product=selected_p, user=login_user)
             # save changes
             new_favorite_item.save()
 
-        response = JsonResponse({"msg": "Product Successfully Added to Cart"})
+        response = JsonResponse({"msg": "Product Successfully Added to Your Favorite"})
         return response
 
     else:
