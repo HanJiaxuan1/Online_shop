@@ -166,7 +166,6 @@ def profile(request):
     if request.user.is_authenticated:
         uid = request.user.id
         profile = Profile.objects.filter(userinfo_id=uid).all()
-        print(profile[0].date_of_birth)
         return render(request, 'profile.html', {'user': request.user, 'profile': profile[0]},)
     else:
         return HttpResponseRedirect(reverse('account:login'))
