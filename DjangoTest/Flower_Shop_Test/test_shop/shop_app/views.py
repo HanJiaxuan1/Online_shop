@@ -162,8 +162,8 @@ def profile(request):
     #     logedin_user = get_object_or_404(Profile, request.user.username)
     if request.user.is_authenticated:
         uid = request.user.id
-        profile = Profile.objects.filter(userinfo_id=uid).all()
-        return render(request, 'profile.html', {'user': request.user, 'profile': profile[0]},)
+        profile = Profile.objects.filter(userinfo_id=uid)
+        return render(request, 'profile.html', {'user': request.user, 'profile': profile},)
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
