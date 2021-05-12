@@ -1,0 +1,19 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}test{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+  {% for answer in detail_list %}
+
+      <div>
+        {{ answer.source }}-----------{{ answer.answer_text }}
+    </div>
+
+  {% endfor %}
+
+
+
+</div>
+{% endblock %}

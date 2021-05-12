@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}admin question{% endblock %}
+
+{% block content %}
+<div id="content-main">
+  <h1>Question:</h1>
+  {% for question in question_list %}
+      <div>
+      <a href="{% url 'shop_app_question:question_detail' question.question_id %}" >
+          {{ question.question_text }}
+      </a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
