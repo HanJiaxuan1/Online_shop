@@ -200,6 +200,9 @@ class QuestionInfo:
 
 
 def time_delta(date_time):
+    day_delta = (datetime.datetime.now() - date_time).days
+    if day_delta > 0:
+        return str(day_delta) + 'd ago'
     delta = (datetime.datetime.now() - date_time).seconds
     day = delta // 84600
     hour = delta // 3600
@@ -218,7 +221,7 @@ def service(request):
     if request.user.is_authenticated:
         #     logedin_user = get_object_or_404(Profile, request.user.username)
         login_user = request.user
-        question_all_list = Question.objects.filter(user=login_user).order_by('question_id')
+        question_all_list = Question.objects.filter(user=login_user).order_by('-question_id')
         question_list = []
         for question in question_all_list:
             question_list.append(QuestionInfo(question.question_id, question.question_text, question.category,
