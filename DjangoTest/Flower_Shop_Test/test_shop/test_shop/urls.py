@@ -18,10 +18,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from DjangoTest.Flower_Shop_Test.test_shop import shop_app
+
 urlpatterns = [
+    path('admin/shop_app/question/', include('shop_app.admin_question_urls')),
     path('admin/', admin.site.urls),
     path('', include('shop_app.urls')),
     path('account/', include('account.urls')),
+
+
 
 
 ]

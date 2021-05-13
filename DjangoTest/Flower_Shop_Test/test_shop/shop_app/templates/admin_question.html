@@ -1,0 +1,30 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}admin question{% endblock %}
+
+{% block content %}
+<div id="content-main">
+  <h1>Question:</h1>
+  {% if question_list %}
+                {% for question in question_list %}
+                <div class="card mb-2 border-bottom">
+                    <div class="card-body p-2 p-sm-3">
+                        <div class="media forum-item">
+                             <div class="media-body">
+                                <h5><a href="{% url 'shop_app_question:question_detail' question.question_id %}" >{{ question.question_text }}</a></h5>
+
+                                    <small class="text-primary">
+                                        {{ question.category }}
+                                    </small></br>
+                                <small class="text-muted-sm">replied by customer service <span class="text-success ">{{ question.time_differ }}</span></small></div>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+    {% else %}
+
+        <p align="center">Sorry... No products in cart.</p>
+    {% endif %}
+</div>
+{% endblock %}

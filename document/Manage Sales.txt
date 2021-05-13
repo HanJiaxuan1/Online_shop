@@ -1,9 +1,0 @@
-title Manage Sales
-
-actor Staff
-control website
-participant system
-
-Staff -  websiteselect manage sales
-
-website -Staffdisplay operation and store
