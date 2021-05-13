@@ -412,3 +412,7 @@ def userMessage(request, question_id):
                                   date=datetime.datetime.now().strftime('%I:%M %p, %m.%d'))
     new_message.save()
     return HttpResponseRedirect(reverse('shop_app:communication', args=(question.question_id,)))
+
+
+def classifier(request):
+    return render(request, 'classifier.html')
