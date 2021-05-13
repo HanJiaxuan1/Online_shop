@@ -3,14 +3,14 @@ import datetime
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
-
+import random
 from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile ,Address
+from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile
 from .forms import CartForm
 
 
@@ -103,37 +103,6 @@ def add_to_cart(request):
 
 
 @csrf_exempt
-def add_address(request):
-    if request.user.is_authenticated:
-        data = request.POST
-        login_user = request.user
-        category = str(request.POST.get("category"))
-        address = str(request.POST.get("address"))
-        address_list = Address.objects.filter(user=login_user)
-        if not address_list:
-            new_address = Address(user_id=login_user.id, address=address, category=category)
-            new_address.save()
-            response = JsonResponse({"msg": "New Address Successfully Added to Your Address"})
-            return response
-        else:
-            for old_address_item in address_list:
-                old_address = str(old_address_item.address)
-                old_category = str(old_address_item.category)
-                print(old_address)
-                print(old_category)
-                if old_category == category and old_address == address:
-                    response = JsonResponse({"msg": "This Address already existed!"})
-                else:
-                    new_address = Address(user_id=login_user.id, address=address, category=category)
-                    new_address.save()
-                    response = JsonResponse({"msg": "New Address Successfully Added to Your Address"})
-                return response
-    else:
-        response = JsonResponse({"msg": "Please login first"})
-        return response
-
-
-@csrf_exempt
 def add_to_favorite(request):
     if request.user.is_authenticated:
         data = request.POST
@@ -193,11 +162,7 @@ def profile(request):
     #     logedin_user = get_object_or_404(Profile, request.user.username)
     if request.user.is_authenticated:
         uid = request.user.id
-        profile = Profile.objects.filter(userinfo_id=uid).all()
-        if not profile:
-            profile = Profile.objects.create(userinfo_id=uid)
-        else:
-            profile = profile[0]
+        profile = Profile.objects.filter(userinfo_id=uid)
         return render(request, 'profile.html', {'user': request.user, 'profile': profile},)
     else:
         return HttpResponseRedirect(reverse('account:login'))
@@ -291,7 +256,7 @@ def address(request):
     if request.user.is_authenticated:
         #     logedin_user = get_object_or_404(Profile, request.user.username)
         login_user = request.user
-        address_list = Address.objects.filter(user=login_user)
+        cart_list = Cart.objects.filter(user=login_user)
         return render(request, 'address.html')
     else:
         return HttpResponseRedirect(reverse('account:login'))
@@ -451,3 +416,16 @@ def userMessage(request, question_id):
 
 def classifier(request):
     return render(request, 'classifier.html')
+
+def prediction(request):
+    login_user = request.user
+    return render(request, 'prediction.html', {'user': request.user})
+
+
+def result(request):
+
+
+    result = random.randint(4,15)
+    result_p=get_object_or_404(Product, pk=result)
+    login_user = request.user
+    return render(request, 'result.html', {'user': request.user, 'product': result_p} )
