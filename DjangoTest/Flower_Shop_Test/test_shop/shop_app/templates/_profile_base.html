@@ -58,6 +58,10 @@
     box-shadow: inset -1px 0px 0px 0px #DDDDDD;
 }
 
+.p-1 {
+  margin-left: 80px;
+}
+
 #wrapper.toggled #sidebar-wrapper {
     width: 300px;
 }
@@ -85,7 +89,7 @@
 }
 
 .sidebar-nav li {
-
+    margin-left: 40px;
     text-indent: 20px;
     line-height: 40px;
 }
@@ -272,8 +276,8 @@ p {
 						Store</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item text-black display-4"  href="{% url 'shop_app:index' %}">Home</a>
-                        <a class="dropdown-item text-black display-4" href="#">New Coming</a>
-                        <a class="dropdown-item text-black display-4" href="#">Flower Set</a>
+
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:prediction' %}">Prediction</a>
                         <a class="dropdown-item text-black display-4" href="#">DIY</a>
 
 					</div>
@@ -319,8 +323,8 @@ p {
       <div class="p-1">
         <h4 class="font-italic">Account</h4>
        <ol class="list-unstyled ">
-          <li><a href="#" style="color: gray">User Info</a></li>
-          <li><a href="#" style="color: gray">Receipt Info</a></li>
+          <li><a href="{% url 'shop_app:profile' %}" style="color: gray">User Info</a></li>
+
           <li><a href="{% url 'shop_app:favorites' %}" style="color: gray">Favorites</a></li>
           <li><a href="{% url 'shop_app:address' %}" style="color: gray">My Address</a></li>
         </ol>
@@ -332,8 +336,6 @@ p {
         <h4 class="font-italic">Order</h4>
         <ol class="list-unstyled ">
           <li><a href="{% url 'shop_app:history_order' %}" style="color: gray">My Orders</a></li>
-          <li><a href="#" style="color: gray">Cancelled</a></li>
-          <li><a href="#" style="color: gray">My Comments</a></li>
 
         </ol>
 
@@ -342,9 +344,7 @@ p {
       <div class="p-1">
         <h4 class="font-italic">Service</h4>
         <ol class="list-unstyled">
-          <li><a href="#" style="color: gray">Messages</a></li>
-          <li><a href="#" style="color: gray">Replies</a></li>
-
+        <li><a href="{% url 'shop_app:service' %}" style="color: gray">My Problems</a></li>
 
         </ol>
 

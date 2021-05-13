@@ -3,7 +3,7 @@ import datetime
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
-
+import random
 from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
@@ -416,3 +416,16 @@ def userMessage(request, question_id):
 
 def classifier(request):
     return render(request, 'classifier.html')
+
+def prediction(request):
+    login_user = request.user
+    return render(request, 'prediction.html', {'user': request.user})
+
+
+def result(request):
+
+
+    result = random.randint(4,15)
+    result_p=get_object_or_404(Product, pk=result)
+    login_user = request.user
+    return render(request, 'result.html', {'user': request.user, 'product': result_p} )
