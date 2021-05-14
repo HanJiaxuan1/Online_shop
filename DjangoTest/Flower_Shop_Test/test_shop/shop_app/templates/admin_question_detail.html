@@ -5,43 +5,15 @@
 {% block content %}
 <div id="content-main">
 
+  {% for answer in detail_list %}
 
-<div class="float-right"><a href="{% url 'shop_app_question:question_detail' question.question_id %}" class="text-black">
-                                Check Replies</a></div>
-                           </div>
-{% for message in detail_list %}
-    {% if message.source == 'user' %}
-            <li class="clearfix">
-        <div class="message-data text-right">
-            <span class="message-data-time">{{ message.date }}</span>
-            <img src="../../static/store/photo.jpg" alt="user">
-        </div>
-        <div class="message other-message float-right"> {{ message.answer_text }}</div>
-        </li>
-    {% endif %}
-
-    {% if message.source == 'staff' %}
-            <li class="clearfix">
-        <div class="message-data">
-            <span class="message-data-time">{{ message.date }}</span>
-               <img src="../../static/store/avatar.jpg" alt="admin">
-        </div>
-        <div class="message my-message">{{ message.answer_text }}</div>
-        </li>
-    {% endif %}
-{% endfor %}
-
-<form action="{% url 'shop_app_question:adminNewMessage' question.question_id %}" method="post">
-        {% csrf_token %}
-    <div class="chat-message clearfix">
-        <div class="input-group mb-0">
-            <div class="input-group-prepend">
-                <button type="submit" class="input-group-text"><i class="fa fa-send"></i></button>
-            </div>
-            <input type="text" name="message_text" class="form-control" placeholder="Enter text here...">
-        </div>
+      <div>
+        {{ answer.source }}-----------{{ answer.answer_text }}
     </div>
-</form>
+
+  {% endfor %}
+
+
 
 </div>
 {% endblock %}

@@ -135,3 +135,14 @@ class Profile(models.Model):
 
     def __str__(self):
         return 'Profile for {}'.format(self.profile_id)
+
+
+class Address(models.Model):
+    address_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    address = models.CharField(max_length=500)
+    set_default = models.BooleanField(default=False)
+    category = models.CharField(max_length=50)
+
+    def __str__(self):
+        return 'Address for {}'.format(self.user)
