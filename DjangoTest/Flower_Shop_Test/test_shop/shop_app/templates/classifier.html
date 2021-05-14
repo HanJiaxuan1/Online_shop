@@ -5,10 +5,23 @@
 {% block content %}
 
 
-<div>Teachable Machine Image Model</div>
-    <button type="button" onclick="init()">Start</button>
-    <button type="button" onclick="pause()">Pause</button>
-    <button type="button" onclick="stop()">Stop</button>
+ <link rel="stylesheet" href="../../static/style/prediction.css">
+    <link rel="stylesheet" href="../../../static/style/button.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<h1 class="title">Flower Identifier</h1>
+    <p class="description">
+        Have no idea what kind of flower it is?
+    </p>
+
+    <p class="description">
+        <span class="bold">Open your web camera and let our Machine Learning Model tell you</span>
+    </p>
+
+
+
+    <button class="btn btn-success" onclick="init()">Start</button>
+    <button class="btn btn-success" onclick="stop()">Stop</button>
 <div id="webcam-container"></div>
 <div id="label-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
