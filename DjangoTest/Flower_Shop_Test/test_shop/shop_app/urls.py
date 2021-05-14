@@ -31,4 +31,7 @@ urlpatterns = [
     path('<int:question_id>/message/', views.userMessage, name='newMessage'),
     path('address/', views.address, name='address'),
     path('classifier/', views.classifier, name='classifier'),
+    path('prediction/', views.prediction, name='prediction'),
+    path('result/', views.result, name='result'),
+    path('DIY/', views.DIY, name='DIY')
 ]

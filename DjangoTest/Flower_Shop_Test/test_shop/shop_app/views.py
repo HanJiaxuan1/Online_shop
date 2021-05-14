@@ -451,3 +451,20 @@ def userMessage(request, question_id):
 
 def classifier(request):
     return render(request, 'classifier.html')
+
+
+def prediction(request):
+    login_user = request.user
+    return render(request, 'prediction.html', {'user': request.user})
+
+
+def result(request):
+    result = random.randint(4,15)
+    result_p=get_object_or_404(Product, pk=result)
+    login_user = request.user
+    return render(request, 'result.html', {'user': request.user, 'product': result_p} )
+
+
+def DIY(request):
+    login_user = request.user
+    return render(request, 'DIY.html', {'user': request.user})

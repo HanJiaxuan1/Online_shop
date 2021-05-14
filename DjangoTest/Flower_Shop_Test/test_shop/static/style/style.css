@@ -1,0 +1,37 @@
+
+
+
+.container {
+	width: 100%;
+	top: 0px;
+    position: relative;
+
+}
+
+.plant-holder {
+	position: relative;
+	height: 100%;
+	left: -10px;
+}
+
+.plant {
+    position: relative;
+	max-width: 150%;
+	max-height: 150%;
+	z-index: 2;
+}
+
+
+.jar-top {
+	width: 50%;
+	height: 5%;
+	background: #d1e1df;
+	bottom: 80.5%;
+	left: 25%;
+	opacity: 0.7;
+	z-index: 1;
+	border-radius: 2rem 2rem 2rem 2rem;
+}
+
+
+
