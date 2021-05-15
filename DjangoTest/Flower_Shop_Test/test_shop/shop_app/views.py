@@ -1,4 +1,5 @@
 import datetime
+from random import random
 
 from django.shortcuts import render, get_object_or_404
 
@@ -290,11 +291,24 @@ def history_order(request):
 def address(request):
     if request.user.is_authenticated:
         #     logedin_user = get_object_or_404(Profile, request.user.username)
-        login_user = request.user
-        address_list = Address.objects.filter(user=login_user)
-        return render(request, 'address.html')
+        login_user = request.user.id
+        address_list = Address.objects.filter(user_id=login_user)
+        # print("userid",login_user,"address_list",address_list)
+        return render(request, 'address.html', {'user': login_user,
+                                             'address_list': address_list}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
+
+
+@csrf_exempt
+def delete_address(request):
+    data = request.POST
+    getid = request.POST.get("getId")
+    deleteObject = Address.objects.get(address_id=getid)
+    print(deleteObject)
+    deleteObject.delete()
+    response = JsonResponse({"msg": "You have successfully deleted an address"})
+    return response
 
 
 def favorites(request):
