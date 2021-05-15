@@ -4,7 +4,7 @@ from random import random
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
-
+import random
 from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
