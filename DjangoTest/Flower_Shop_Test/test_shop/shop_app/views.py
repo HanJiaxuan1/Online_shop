@@ -439,6 +439,7 @@ def order(request, order_id):
     info = selected_order.order_list
     product_details = info.split(';')
     p_list = []
+    defaultAddress = DefaultAddress.objects.filter(user_id=request.user.id)
     for detail in product_details:
         if detail != '':
             product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
@@ -449,7 +450,9 @@ def order(request, order_id):
             product_obj.save()
 
             p_list.append(ProductInfo(product_obj, product_num))
-    return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id})
+
+    return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id,
+                                          'default_address':defaultAddress})
 
 
 def orderNow(request, product_id):

@@ -2,8 +2,6 @@
 
 {% block title %}Order{% endblock %}
 
-
-
 {% block content %}
      <style type="text/css">
     	.contact-title{
@@ -65,244 +63,177 @@
 .modal-body{
  }
     </style>
-
+{#下单确认模态框#}
             <div aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog" tabindex="-1">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                             <h3 class="modal-title" id="exampleModalLabel">
-                               Order Confirm
+                            <h3 class="modal-title" id="exampleModalLabel">
+                                Order Confirm
                             </h3>
                             <button aria-label="Close" class="close" data-dismiss="modal" data-toggle="tooltip" title="Exit" type="button">
                                 <span aria-hidden="true">
                                     ×
                                 </span>
                             </button>
-
                         </div>
-                            <div class="modal-body">
+                        <div class="modal-body">
                              <div class="row ">
-
-
-
-           <div class="col-md-7 order-md-1 mb-4">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Order Info</span>
-
-      </h4>
-      <ul class="list-group mb-3">
-      {% for item in product_list %}
-        <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
-
-              <img  width="80px"  src="/media/{{item.product_obj.product_image}}"/>
-              <span><p class="my-0">{{ item.product_obj.product_name }}</p></span>
-
-            <span class="text-muted" id="i_num">   {{ item.product_num }}</span>
-
-        </li>
-      {% endfor %}
-
-
-        <li class="list-group-item d-flex justify-content-between order-sum">
-          <span>Total </span>
-          <strong id="sum_all"></strong>
-        </li>
-      </ul>
-
-
-    </div>
-
-
-
-
-
-            <div class="col-md-5 order-md-2">
-      <h4 class="mb-3">Receiver Info</h4>
-
-
-
-        <div class="mb-3">
-       <p >Receiver Name: </p>
-            <span class="text-muted">xxx</span>
-
-        </div>
-
-        <div class="mb-3">
-      <p>Receiver Phone Number: </p>
-            <span class="text-muted">74567456</span>
-
-        </div>
-
-        <div class="mb-3">
-          <p>Receiver Phone Address: </p>
-            <span class="text-muted">Pingleyuan No.100</span>
-
-        </div>
-
-
-
-
-    </div>
-
-
-    </div>
-
+                                 <div class="col-md-7 order-md-1 mb-4">
+                                     <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                         <span class="text-muted">Order Info</span>
+                                     </h4>
+                                     <ul class="list-group mb-3">
+                                         {% for item in product_list %}
+                                             <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
+                                                 <img  width="80px"  src="/media/{{item.product_obj.product_image}}"/>
+                                                 <span>
+                                                     <p class="my-0">{{ item.product_obj.product_name }}</p></span>
+                                                 <span class="text-muted" id="i_num">   {{ item.product_num }}</span>
+                                             </li>
+                                         {% endfor %}
+                                         <li class="list-group-item d-flex justify-content-between order-sum">
+                                             <span>Total </span>
+                                             <strong id="sum_all"></strong>
+                                         </li>
+                                     </ul>
+                                 </div>
+                                 <div class="col-md-5 order-md-2">
+                                     <h4 class="mb-3">Receiver Info</h4>
+                                     <div class="mb-3">
+                                         <p >Receiver Name: </p>
+                                         <span class="text-muted">xxx</span>
+                                     </div>
+                                     <div class="mb-3">
+                                         <p>Receiver Phone Number: </p>
+                                         <span class="text-muted">74567456</span>
+                                     </div>
+                                     <div class="mb-3">
+                                         <p>Receiver Phone Address: </p>
+                                         <span class="text-muted">Pingleyuan No.100</span>
+                                     </div>
+                                 </div>
+                             </div>
                             <div class="row" >
-                                    <div class="col-md-6 ">
-
-             <button type="button" class="btn btn-light align-center" data-dismiss="modal" data-toggle="modal" data-target="#modal-info">Cancel</button>
+                                <div class="col-md-6 ">
+                                    <button type="button" class="btn btn-light align-center" data-dismiss="modal" data-toggle="modal" >Cancel</button>
                                 </div>
                                 <div class="col-md-6">
-
-                          <button class="btn btn-primary btn-sm align-items-sm-end" data-dismiss="modal" data-toggle="modal" data-target="#modal-success" >Confirm</button>
-                            </div>
-
-
-                            </div>
-
+                                    <button class="btn btn-primary btn-sm align-items-sm-end" data-dismiss="modal" data-toggle="modal" data-target="#modal-success" >Confirm</button>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
-
-
-    <div class="my-3 p-3 bg-white rounded shadow-sm">
-      <div class="row ">
-
-
-
-           <div class="col-md-7 order-md-1 mb-4">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Order Verification</span>
-
-      </h4>
-      <ul class="list-group mb-3">
-      {% for item in product_list %}
-        <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
-
-              <img  width="120px"  src="/media/{{item.product_obj.product_image}}"/>
-              <span><h6 class="my-0">{{ item.product_obj.product_name }}</h6></span>
-
-            <span class="text-muted" id="i_num">{{ item.product_num }}</span>
-
-            <span class="text-muted" id="i_price">{{ item.product_obj.price }}</span>
-
-            <span class="text-muted" id="i_cal-price">calculated</span>
-        </li>
-      {% endfor %}
-
-
-        <li class="list-group-item d-flex justify-content-between order-sum">
-          <span>Total </span>
-          <strong id="sum_all"></strong>
-        </li>
-      </ul>
-
-
-    </div>
-
-
-
-
-
-            <div class="col-md-5 order-md-2">
-      <h4 class="mb-3">Receiver Information</h4>
-
-
-
-        <div class="mb-3">
-          <label for="receiver">Receiver Name</label>
-          <div class="input-group">
-
-            <input type="text" class="form-control" id="r_name" placeholder="Receiver name" required>
-            <div class="invalid-feedback" style="width: 100%;">
-              Receiver name is required.
             </div>
-          </div>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <div class="row ">
+            <div class="col-md-7 order-md-1 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Order Verification</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    {% for item in product_list %}
+                        <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
+                            <img  width="120px"  src="/media/{{item.product_obj.product_image}}"/>
+                            <span><h6 class="my-0">{{ item.product_obj.product_name }}</h6></span>
+                            <span class="text-muted" id="i_num">{{ item.product_num }}</span>
+                            <span class="text-muted" id="i_price">{{ item.product_obj.price }}</span>
+                            <span class="text-muted" id="i_cal-price">calculated</span>
+                        </li>
+                    {% endfor %}
+                    <li class="list-group-item d-flex justify-content-between order-sum">
+                        <span>Total </span>
+                        <strong id="sum_all"></strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-5 order-md-2">
+                <h4 class="mb-3">Receiver Information</h4>
+                <div class="mb-3">
+                    <label for="receiver">Receiver Name</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="r_name" placeholder="Name" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Receiver name is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="receiverphone">Receiver Phone Number <span class="text-muted"></span></label>
+                    <input type="text" class="form-control" id="p_number" placeholder="Phone number">
+                    <div class="invalid-feedback">
+                        Please enter a valid phone number.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="address">Receiver Address</label>
+                    {% for default_item in default_address %}
+                    <input type="text" class="form-control" id="address"  placeholder="Please enter your address here."
+                           required  value="{{default_item.default_address.address}}" >
+                    {% endfor %}
+                    <div class="invalid-feedback">
+                        Please enter your delivery address.
+                    </div>
+                </div>
+                <button style="margin-right:100px" class="btn btn-info" data-target="#exampleModal" onclick="addOrder('{{ order_id }}', this)" data-toggle="modal" data-whatever="@getbootstrap" type="button">
+                    <i aria-hidden="true" class="fa fa-angle-double-right"></i>
+                    Checkout
+                </button>
+                <button class="btn btn-info" data-target="#modal-info" data-toggle="modal" data-whatever="@getbootstrap" type="button">
+                    <i aria-hidden="true" class="fa fa-angle-double-right"></i>
+                    Cancel
+                </button>
+            </div>
         </div>
-
-        <div class="mb-3">
-          <label for="receiverphone">Receiver Phone Number <span class="text-muted"></span></label>
-
-          <input type="text" class="form-control" id="p_number" placeholder="+86 ">
-
-          <div class="invalid-feedback">
-            Please enter a valid phone number.
-          </div>
+{#    订单成功模态框#}
+        <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="glyphicon glyphicon-check"></i>
+                    </div>
+                    <div class="modal-title text-black">Order Placed </div>
+                    <div class="modal-body">Thanks for your purchase!</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-success " data-dismiss="modal">OK</button>
+                    </div>
+                </div> <!-- / .modal-content -->
+            </div> <!-- / .modal-dialog -->
         </div>
-
-        <div class="mb-3">
-          <label for="address">Receiver Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-          <div class="invalid-feedback">
-            Please enter your delivery address.
-          </div>
+{#    取消订单模态框#}
+        <div id="modal-info" class="modal modal-message modal-info fade" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="modal-title text-black">Your order has been canceled.</div>
+                    <div class="modal-body">Add items to cart again? </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal-warning">Yes</button>
+                        <span>
+                            <button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">No</button>
+                        </span>
+                    </div>
+                </div> <!-- / .modal-content -->
+            </div> <!-- / .modal-dialog -->
         </div>
-
-
-
-          <button class="btn btn-info" data-target="#exampleModal" onclick="addOrder('{{ order_id }}', this)" data-toggle="modal" data-whatever="@getbootstrap" type="button">
-                <i aria-hidden="true" class="fa fa-angle-double-right">
-                </i>
-               Checkout
-            </button>
-
-
-
-    </div>
-
-    </div>
- <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="glyphicon glyphicon-check"></i>
-                </div>
-                <div class="modal-title text-black">Order Placed </div>
-                <div class="modal-body">Thanks for your purchase!</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-success " data-dismiss="modal">OK</button>
-                </div>
-            </div> <!-- / .modal-content -->
-        </div> <!-- / .modal-dialog -->
-    </div>
-      <div id="modal-info" class="modal modal-message modal-info fade" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="fa fa-envelope"></i>
-                </div>
-                <div class="modal-title text-black">Your order has been canceled.</div>
-
-                <div class="modal-body">Add items to cart again? </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal-warning">Yes</button>
-                    <span>
-                        <button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">No</button>
-                    </span>
-                </div>
-            </div> <!-- / .modal-content -->
-        </div> <!-- / .modal-dialog -->
-    </div>
-     <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="fa fa-warning"></i>
-                </div>
-                <div class="modal-title"></div>
-
-                <div class="modal-body">The products have been added to cart.</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
-                </div>
-            </div> <!-- / .modal-content -->
-        </div> <!-- / .modal-dialog -->
-    </div>
+        <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa fa-warning"></i>
+                    </div>
+                    <div class="modal-title"></div>
+                    <div class="modal-body">The products have been added to cart.</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                    </div>
+                </div> <!-- / .modal-content -->
+            </div> <!-- / .modal-dialog -->
         </div>
-
+    </div>
 
 <style type="text/css">
     	.modal-content {
@@ -367,27 +298,15 @@
 .modal-backdrop {
     background-color: #fff;
 }
-
-
-
-    </style>
-
-
-
+</style>
 <script>
     $(function() {
         // 加载完页面时,计算总计
         calculateItemSum();
-
     });
-
-
     function calculateItemSum(){
-
         let sum_all = 0
-
         let each_item = $(".order-list").each(function (index) {
-
             let item_price = Number($(".order-list #i_price").eq(index).text());
              console.log("i_price: ",item_price)
             let num = Number($(".order-list #i_num").eq(index).text());
@@ -396,23 +315,16 @@
              sum_all += item_sum
              console.log("i_sum: ",item_sum)
             $(".order-list #i_cal-price").eq(index).text("￥"+item_sum);
-
         })
-
         $(".order-sum #sum_all").text("￥"+sum_all);
-
     }
-
-
     function addOrder(order_id, obj) {
         let receiver = $("#r_name").val()
         let phone = Number($("#p_number").val())
         let address = $("#address").val()
-
         console.log("receiver = "+ receiver );
         console.log("phone = "+phone);
         console.log("address = "+ address);
-
     $.ajax({
         type : 'post',
         url : '/add_order/',
@@ -424,20 +336,8 @@
         },
         async : false,
         success : function(data){
-
         }
     });
 }
-
-
-
-
-
-
-
 </script>
-
-
-
-
 {% endblock %}
