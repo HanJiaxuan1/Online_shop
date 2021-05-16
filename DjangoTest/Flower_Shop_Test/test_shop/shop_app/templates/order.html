@@ -213,7 +213,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal-warning">Yes</button>
                         <span>
-                            <button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-sm btn-dark" data-dismiss="modal"  onclick="goBack()">No</button>
                         </span>
                     </div>
                 </div> <!-- / .modal-content -->
@@ -300,6 +300,11 @@
 }
 </style>
 <script>
+function goBack() {
+    {#window.history.back()#}
+    window.location.href = document.referrer;
+}
+
     $(function() {
         // 加载完页面时,计算总计
         calculateItemSum();
