@@ -146,3 +146,12 @@ class Address(models.Model):
 
     def __str__(self):
         return 'Address for {}'.format(self.user)
+
+
+class DefaultAddress(models.Model):
+    default_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    default_address = models.ForeignKey(Address, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'Default address for {}'.format(self.user)

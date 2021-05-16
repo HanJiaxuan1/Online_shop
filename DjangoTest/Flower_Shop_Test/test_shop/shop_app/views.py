@@ -11,7 +11,7 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile ,Address
+from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile, Address, DefaultAddress
 from .forms import CartForm
 
 
@@ -290,12 +290,12 @@ def history_order(request):
 
 def address(request):
     if request.user.is_authenticated:
-        #     logedin_user = get_object_or_404(Profile, request.user.username)
         login_user = request.user.id
         address_list = Address.objects.filter(user_id=login_user)
-        # print("userid",login_user,"address_list",address_list)
+        defaultAddress = DefaultAddress.objects.filter(user_id=login_user)
         return render(request, 'address.html', {'user': login_user,
-                                             'address_list': address_list}, )
+                                             'address_list': address_list,
+                                             'default_address':defaultAddress},)
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -308,6 +308,19 @@ def delete_address(request):
     print(deleteObject)
     deleteObject.delete()
     response = JsonResponse({"msg": "You have successfully deleted an address"})
+    return response
+
+
+@csrf_exempt
+def default_address(request):
+    getuserid = request.POST.get("getUserId")
+    getaddressid = request.POST.get("getAddressId")
+    defaultAddress = DefaultAddress.objects.filter(user_id=getuserid)
+    if not defaultAddress:
+        DefaultAddress.objects.create(user_id=getuserid, default_address_id=getaddressid)
+    else:
+        defaultAddress.update(user_id=getuserid, default_address_id=getaddressid)
+    response = JsonResponse({"msg": "You have successfully update your default address"})
     return response
 
 
@@ -426,6 +439,7 @@ def order(request, order_id):
     info = selected_order.order_list
     product_details = info.split(';')
     p_list = []
+    defaultAddress = DefaultAddress.objects.filter(user_id=request.user.id)
     for detail in product_details:
         if detail != '':
             product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
@@ -436,7 +450,9 @@ def order(request, order_id):
             product_obj.save()
 
             p_list.append(ProductInfo(product_obj, product_num))
-    return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id})
+
+    return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id,
+                                          'default_address':defaultAddress})
 
 
 def orderNow(request, product_id):

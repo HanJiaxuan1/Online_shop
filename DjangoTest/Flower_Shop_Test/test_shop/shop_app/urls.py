@@ -20,6 +20,7 @@ urlpatterns = [
     path('add_to_favorite/', views.add_to_favorite, name='add_to_favorite'),
     path('add_address/', views.add_address, name='add_address'),
     path('delete_address/', views.delete_address, name='delete_address'),
+    path('default_address/', views.default_address, name='default_address'),
     path('changenumber/', views.changenumber, name='changenumber'),
     path('commitorder/', views.addToOrder, name='addToOrder'),
     path('<int:order_id>/order/', views.order, name='order'),
