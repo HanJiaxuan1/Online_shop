@@ -452,7 +452,7 @@ def order(request, order_id):
             p_list.append(ProductInfo(product_obj, product_num))
 
     return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id,
-                                          'default_address':defaultAddress})
+                                          'default_address': defaultAddress})
 
 
 def orderNow(request, product_id):

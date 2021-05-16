@@ -102,15 +102,15 @@
                                      <h4 class="mb-3">Receiver Info</h4>
                                      <div class="mb-3">
                                          <p >Receiver Name: </p>
-                                         <span class="text-muted">xxx</span>
+                                         <p class="text-muted" id="mo_name" value=""></p>
                                      </div>
                                      <div class="mb-3">
                                          <p>Receiver Phone Number: </p>
-                                         <span class="text-muted">74567456</span>
+                                         <p class="text-muted" id="mo_phone" value=""></p>
                                      </div>
                                      <div class="mb-3">
-                                         <p>Receiver Phone Address: </p>
-                                         <span class="text-muted">Pingleyuan No.100</span>
+                                         <p>Receiver Address: </p>
+                                         <p class="text-muted" id="mo_address" value=""> </p>
                                      </div>
                                  </div>
                              </div>
@@ -148,7 +148,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-5 order-md-2">
+            <div class="col-md-5 order-md-2" id="reciver_info">
                 <h4 class="mb-3">Receiver Information</h4>
                 <div class="mb-3">
                     <label for="receiver">Receiver Name</label>
@@ -322,6 +322,11 @@
         let receiver = $("#r_name").val()
         let phone = Number($("#p_number").val())
         let address = $("#address").val()
+
+        $("#mo_name").html(receiver);	      //赋值给模态框中的input
+        $("#mo_phone").html(phone);
+        $("#mo_address").html(address);
+
         console.log("receiver = "+ receiver );
         console.log("phone = "+phone);
         console.log("address = "+ address);
