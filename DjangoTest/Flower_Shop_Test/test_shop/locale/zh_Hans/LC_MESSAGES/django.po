@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-15 21:42+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\shop_app\templates\_base.html:113
+#: .\shop_app\templates\_profile_base.html:256
+#: .\shop_app\templates\_shop_base.html:66
+msgid "About Us"
+msgstr "关于我们"
+
+#: .\shop_app\templates\_base.html:120
+#: .\shop_app\templates\_profile_base.html:263
+#: .\shop_app\templates\_shop_base.html:73
+msgid "Cart"
+msgstr "购物车"
+
+#: .\shop_app\templates\_base.html:127 .\shop_app\templates\_base.html:250
+#: .\shop_app\templates\_profile_base.html:270
+#: .\shop_app\templates\_profile_base.html:391
+#: .\shop_app\templates\_profile_base.html:465
+#: .\shop_app\templates\_shop_base.html:80
+#: .\shop_app\templates\_shop_base.html:195
+msgid "Service"
+msgstr "客服"
+
+#: .\shop_app\templates\_base.html:133
+#: .\shop_app\templates\_profile_base.html:276
+#: .\shop_app\templates\_shop_base.html:86
+msgid "Store"
+msgstr "商店"
+
+#: .\shop_app\templates\_base.html:137
+#: .\shop_app\templates\_profile_base.html:280
+#: .\shop_app\templates\_shop_base.html:90
+msgid "Home"
+msgstr "主页"
+
+#: .\shop_app\templates\_base.html:140
+#: .\shop_app\templates\_profile_base.html:283
+#: .\shop_app\templates\_shop_base.html:93
+msgid "Lucky Flower"
+msgstr "幸运花朵"
+
+#: .\shop_app\templates\_base.html:142
+#: .\shop_app\templates\_profile_base.html:285
+#: .\shop_app\templates\_shop_base.html:95
+msgid "DIY"
+msgstr "DIY花篮"
+
+#: .\shop_app\templates\_base.html:144
+#: .\shop_app\templates\_profile_base.html:287
+#: .\shop_app\templates\_shop_base.html:97
+msgid "Flower Identifier"
+msgstr "花朵智能识别"
+
+#: .\shop_app\templates\_base.html:150
+#: .\shop_app\templates\_profile_base.html:293
+#: .\shop_app\templates\_shop_base.html:103
+msgid "Profile"
+msgstr "个人主页"
+
+#: .\shop_app\templates\_base.html:153
+#: .\shop_app\templates\_profile_base.html:296
+#: .\shop_app\templates\_shop_base.html:106
+msgid "My Account"
+msgstr "我的账号"
+
+#: .\shop_app\templates\_base.html:155
+#: .\shop_app\templates\_profile_base.html:298
+#: .\shop_app\templates\_profile_base.html:379
+#: .\shop_app\templates\_shop_base.html:108
+msgid "My Orders"
+msgstr "我的订单"
+
+#: .\shop_app\templates\_base.html:157
+#: .\shop_app\templates\_profile_base.html:300
+#: .\shop_app\templates\_shop_base.html:110
+msgid "My Service"
+msgstr "我的服务"
+
+#: .\shop_app\templates\_base.html:165
+#: .\shop_app\templates\_profile_base.html:308
+#: .\shop_app\templates\_shop_base.html:118
+msgid "Logout"
+msgstr "登出"
+
+#: .\shop_app\templates\_base.html:174
+#: .\shop_app\templates\_profile_base.html:317
+#: .\shop_app\templates\_shop_base.html:127
+msgid "Login"
+msgstr "登录"
+
+#: .\shop_app\templates\_base.html:199
+#: .\shop_app\templates\_profile_base.html:342
+msgid "Select"
+msgstr "选择"
+
+#: .\shop_app\templates\_base.html:235
+#: .\shop_app\templates\_profile_base.html:450
+#: .\shop_app\templates\_shop_base.html:180
+msgid "Delivery"
+msgstr "外送"
+
+#: .\shop_app\templates\_base.html:240
+#: .\shop_app\templates\_profile_base.html:455
+#: .\shop_app\templates\_shop_base.html:185
+msgid "We offer good delivery service."
+msgstr "我们致力于提供最优质的服务"
+
+#: .\shop_app\templates\_base.html:255
+#: .\shop_app\templates\_profile_base.html:470
+#: .\shop_app\templates\_shop_base.html:200
+msgid "We bring you love and happiness."
+msgstr "我们带给您爱与快乐"
+
+#: .\shop_app\templates\_base.html:265
+#: .\shop_app\templates\_profile_base.html:480
+#: .\shop_app\templates\_shop_base.html:210
+msgid "Payment"
+msgstr "支付"
+
+#: .\shop_app\templates\_base.html:270
+#: .\shop_app\templates\_profile_base.html:485
+#: .\shop_app\templates\_shop_base.html:215
+msgid "Many payment options are available."
+msgstr "支持多种支付方式"
+
+#: .\shop_app\templates\_profile_base.html:363
+#, fuzzy
+#| msgid "My Account"
+msgid "Account"
+msgstr "我的账号"
+
+#: .\shop_app\templates\_profile_base.html:366
+msgid "Favorites"
+msgstr "收藏夹"
+
+#: .\shop_app\templates\_profile_base.html:368
+msgid "My Address"
+msgstr "我的地址"
+
+#: .\shop_app\templates\_profile_base.html:376
+#, fuzzy
+#| msgid "My Orders"
+msgid "Order"
+msgstr "我的订单"
+
+#: .\shop_app\templates\_profile_base.html:381
+msgid "Cancelled Order"
+msgstr "取消订单"
+
+#: .\shop_app\templates\_profile_base.html:383
+msgid "My Comments"
+msgstr "我的评论"
+
+#: .\shop_app\templates\_shop_base.html:153
+msgid "Life Blooms Like Flowers"
+msgstr "今天是个好日子啊"
+
+#: .\test_shop\settings.py:118
+msgid "English"
+msgstr "英语"
+
+#: .\test_shop\settings.py:119
+msgid "Simplified Chinese"
+msgstr "中文"

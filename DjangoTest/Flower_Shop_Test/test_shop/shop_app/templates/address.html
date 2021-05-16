@@ -292,7 +292,7 @@ function addAddress (getId){
     var threadTitle =  $("#threadTitle").val()
     $.ajax({
         type : 'post',
-        url : '/add_address/',
+        url : '../add_address/',
         data:{'getId':getId, "category":customSelect, "address":threadTitle},
         async : false,
         success : function(data){
@@ -307,7 +307,7 @@ function deleteAddress(getId, obj) {
     item.remove()
     $.ajax({
         type : 'post',
-        url : '/delete_address/',
+        url : '../delete_address/',
         data:{'getId':getId},
         async : false,
         success : function(data){

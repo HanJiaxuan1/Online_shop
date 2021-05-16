@@ -100,7 +100,7 @@
     //     console.log("invent_num="+inventory_num);
     $.ajax({
         type : 'post',
-        url : '/add_to_cart/',
+        url : '../add_to_cart/',
         data:{'p_id':id, 'p_num':num},
         async : false,
         success : function(data){
@@ -116,7 +116,7 @@
 function addToFavorite(id, obj) {
     $.ajax({
         type : 'post',
-        url : '/add_to_favorite/',
+        url : '../add_to_favorite/',
         data:{'p_id':id},
         async : false,
         success : function(data){
