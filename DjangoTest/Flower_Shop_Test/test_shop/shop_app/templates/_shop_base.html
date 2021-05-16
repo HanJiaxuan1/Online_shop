@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load i18n %}
 <html>
 <head>
   <!-- Site made with Mobirise Website Builder v4.8.8, https://mobirise.com -->
@@ -11,15 +10,15 @@
   <meta name="description" content="Best Bootstrap HTML eCommerce Template  - Download Now">
 
     <title>{% block title %} {% endblock %}</title>
-  <link rel="stylesheet" href="/static/store/static/css/mobirise-icons1.css">
-  <link rel="stylesheet" href="/static/store/static/css/bootstrap.min10.css">
-  <link rel="stylesheet" href="/static/store/static/css/bootstrap-grid.min7.css">
-  <link rel="stylesheet" href="/static/store/static/css/bootstrap-reboot.min7.css">
-  <link rel="stylesheet" href="/static/store/static/css/styles.css">
-  <link rel="stylesheet" href="/static/store/static/css/style45.css">
-  <link rel="stylesheet" href="/static/store/static/css/style51.css">
-  <link rel="stylesheet" href="/static/store/static/css/style50.css">
-  <link rel="stylesheet" href="/static/store/static/css/mbr-additional79.css" type="text/css">
+  <link rel="stylesheet" href="../../static/store/static/css/mobirise-icons1.css">
+  <link rel="stylesheet" href="../../static/store/static/css/bootstrap.min10.css">
+  <link rel="stylesheet" href="../../static/store/static/css/bootstrap-grid.min7.css">
+  <link rel="stylesheet" href="../../static/store/static/css/bootstrap-reboot.min7.css">
+  <link rel="stylesheet" href="../../static/store/static/css/styles.css">
+  <link rel="stylesheet" href="../../static/store/static/css/style45.css">
+  <link rel="stylesheet" href="../../static/store/static/css/style51.css">
+  <link rel="stylesheet" href="../../static/store/static/css/style50.css">
+  <link rel="stylesheet" href="../../static/store/static/css/mbr-additional79.css" type="text/css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -64,51 +63,40 @@
           {% endif %}
                 <li class="nav-item ">
 					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:about_us' %}">
-						{% trans "About Us" %}
-                    </a>
+						About Us</a>
 
 				</li>
 
                        <li class="nav-item ">
 					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:cart' %}">
-						{% trans "Cart" %}
-                    </a>
+						Cart</a>
 
 				</li>
 
                 <li class="nav-item ">
 					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:service' %}">
-						{% trans "Service" %}
-                    </a>
+						Service</a>
 
 				</li>
                     	<li class="nav-item dropdown open">
 					<a class="nav-link link text-black display-4 dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">
-						{% trans "Store" %}
-                    </a>
+						Store</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item text-black display-4"  href="{% url 'shop_app:index' %}">
-                            {% trans "Home" %}
-                        </a>
-                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:prediction' %}">
-                            {% trans "Lucky Flower" %}</a>
-                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:DIY' %}">
-                            {% trans "DIY" %}</a>
-                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:classifier' %}">
-                            {% trans "Flower Identifier" %}</a>
+						<a class="dropdown-item text-black display-4"  href="{% url 'shop_app:index' %}">Home</a>
+
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:prediction' %}">Prediction</a>
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:DIY' %}">DIY</a>
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:classifier' %}">Machine Learning Flower Identifier</a>
 
 					</div>
 				</li>
          <li class="nav-item dropdown open">
 					<a class="nav-link link text-black display-4 dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">
-						{% trans "Profile" %}</a>
+						Profile</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item text-black display-4" href="{% url 'shop_app:profile' %}">
-                            {% trans "My Account" %}</a>
-                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:history_order' %}">
-                            {% trans "My Orders" %}</a>
-                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:service' %}">
-                            {% trans "My Service" %}</a>
+						<a class="dropdown-item text-black display-4" href="{% url 'shop_app:profile' %}">My Account</a>
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:history_order' %}">My Orders</a>
+                        <a class="dropdown-item text-black display-4" href="{% url 'shop_app:service' %}">My Service</a>
 
 					</div>
 				</li>
@@ -116,7 +104,7 @@
    {% if request.user.is_authenticated %}
 
        <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4 " href="{% url 'account:logout' %}" >
-                  {% trans "Logout" %}</a></div>
+                  Logout</a></div>
 
 
 
@@ -125,39 +113,11 @@
 
 
        <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4 " href="{% url 'account:login' %}" >
-                  {% trans "Login" %}</a></div>
+                  Login</a></div>
 
 
 
           {% endif %}
-
-            <div>
-          <form class="form-inline ml-3-md" action="{% url 'set_language' %}" method="post">
-               {% csrf_token %}
-            <div class="input-group">
-                <input name="next" type="hidden" value="{{ redirect_to }}" />
-            <select name="language" class="form-control">
-                        {% get_current_language as LANGUAGE_CODE %}
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_language_info_list for LANGUAGES as languages %}
-                        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                                {{ language.name_local }}
-            </option>
-
-                        {% endfor %}
-            </select>
-            <div class="input-group-append">
-            <button type="submit" class="btn btn-inline btn-sm bg-warning">
-                        {% trans "Select" %}
-            </button>
-            </div>
-            </div>
-            </form>
-      </div>
-
-
-
 
 
       </div>
@@ -179,7 +139,7 @@
             <div class="media-container-column mbr-white col-md-10">
 
                 <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-1">
-                    {% trans "Life Blooms Like Flowers" %}</h3>
+                    Life Blooms Like Flowers</h3>
 
 
                 <div class="mbr-section-btn align-center pt-3"><a class="btn btn-md btn-info display-4" href="#shop6-2">Shop now</a></div>
@@ -206,12 +166,12 @@
                     </div>
                     <div class="media-body">
                         <h4 class="card-title py-2 align-left mbr-fonts-style display-2">
-                            {% trans "Delivery" %}</h4>
+                            Delivery</h4>
                     </div>
                 </div>
                 <div class="card-box align-left">
                     <p class="mbr-text mbr-fonts-style display-7">
-                      {% trans "We offer good delivery service." %}</div>
+                      We offer good delivery service.</div>
             </div>
 
             <div class="card pl-3 pr-3 col-12 col-md-6 col-lg-4">
@@ -221,12 +181,12 @@
                     </div>
                     <div class="media-body">
                         <h4 class="card-title py-2 align-left mbr-fonts-style display-2">
-                            {% trans "Service" %}</h4>
+                            Service</h4>
                     </div>
                 </div>
                 <div class="card-box align-left">
                     <p class="mbr-text mbr-fonts-style display-7">
-                       {% trans "We bring you love and happiness." %}</div>
+                       We bring you love and happiness.</div>
             </div>
 
             <div class="card pl-3 pr-3 col-12 col-md-6 col-lg-4">
@@ -236,12 +196,12 @@
                     </div>
                     <div class="media-body">
                         <h4 class="card-title py-2 align-left mbr-fonts-style display-2">
-                            {% trans "Payment" %}</h4>
+                            Payment</h4>
                     </div>
                 </div>
                 <div class="card-box align-left">
                     <p class="mbr-text mbr-fonts-style display-7">
-                {% trans "Many payment options are available." %}</div>
+                Many payment options are available.</div>
             </div>
 
 
@@ -253,16 +213,16 @@
 
 
 
-  <script src="/static/store/static/js/jquery.min1.js"></script>
-  <script src="/static/store/static/js/popper.min1.js"></script>
-  <script src="/static/store/static/js/bootstrap.min9.js"></script>
-  <script src="/static/store/static/js/smooth-scroll5.js"></script>
-  <script src="/static/store/static/js/jquery.touch-swipe.min1.js"></script>
-  <script src="/static/store/static/js/script47.js"></script>
-  <script src="/static/store/static/js/script.min.js"></script>
-  <script src="/static/store/static/js/script42.js"></script>
-  <script src="/static/store/static/js/player.min.js"></script>
-  <script src="/static/store/static/js/script48.js"></script>
+  <script src="../../static/store/static/js/jquery.min1.js"></script>
+  <script src="../../static/store/static/js/popper.min1.js"></script>
+  <script src="../../static/store/static/js/bootstrap.min9.js"></script>
+  <script src="../../static/store/static/js/smooth-scroll5.js"></script>
+  <script src="../../static/store/static/js/jquery.touch-swipe.min1.js"></script>
+  <script src="../../static/store/static/js/script47.js"></script>
+  <script src="../../static/store/static/js/script.min.js"></script>
+  <script src="../../static/store/static/js/script42.js"></script>
+  <script src="../../static/store/static/js/player.min.js"></script>
+  <script src="../../static/store/static/js/script48.js"></script>
 
 
 </body>
