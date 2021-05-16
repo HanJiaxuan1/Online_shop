@@ -132,18 +132,20 @@ a:hover{
   <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
 
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade  active show" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
-                        <h4 class="font-weight-bold mt-0 mb-4">Manage Addresses</h4>
-                        <span>
-                            <button class="btn btn-sm btn-primary" data-target="#exampleModal" data-toggle="modal" data-whatever="@getbootstrap" type="button">
+                    <div class="tab-pane fade  active show"  id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
+                        <button class="btn btn-sm btn-primary" style="margin-bottom: 20px" data-target="#exampleModal" data-toggle="modal" data-whatever="@getbootstrap" type="button">
                                 <i aria-hidden="true" class="fa fa-angle-double-right"></i>
                                 Add a New Address
                             </button>
-                        </span>
+
+
+                             <h5 class="font-weight-bold mt-0 mb-4">Default Address</h5>
+
+
 
                         {% if default_address %}
                             {% for default_item in default_address %}
-                        <div class="row" id="default_address">
+                              <div class="row" id="default_address">
                             <div class="col-md-12">
                                    <div class="bg-white card addresses-item mb-4 shadow-sm">
                                     <div class="gold-members p-4">
@@ -178,12 +180,16 @@ a:hover{
                     {% else %}
                         <p align="center">Sorry... You haven't added an default address yet.</p>
                     {% endif %}
-                    <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=2)" width="80%" color=#5a6268 SIZE=10>
+
+
+
+  <h5 class="font-weight-bold mt-0 mb-4">My Addresses</h5>
+                    <div class="row">
+
                         {% if address_list %}
                         {% for address_item in address_list %}
 
-                        <div class="row" id="one_address">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                    <div class="bg-white card addresses-item mb-4 shadow-sm">
                                     <div class="gold-members p-4">
                                          <div class="media">
@@ -224,13 +230,15 @@ a:hover{
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        </div>
-                    </div>
-                    {% endfor %}
+
+
+                {% endfor %}
                     {% else %}
                         <p align="center">Sorry... You haven't added address yet.</p>
                     {% endif %}
+                    </div>
+                </div>
+                </div>
 
 
      <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
