@@ -320,7 +320,7 @@ function changeProfile(getId){
     var region =  $("#region").val()
     $.ajax({
         type : 'post',
-        url : '/change_profile/',
+        url : '../change_profile/',
         data:{'getId':getId,"username":username, "firstname":firstname,
             "lastname":lastname, "birthday":birthday, "phone":phone,
             "email":email, "region":region},

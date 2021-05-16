@@ -246,7 +246,7 @@ function deleteCart(getId, obj) {
     item.remove()
     $.ajax({
         type : 'post',
-        url : '/delete/',
+        url : '../delete/',
         data:{'getId':getId},
         async : false,
         success : function(data){
@@ -260,7 +260,7 @@ function changeNumber(getId,value){
     showTotal();
     $.ajax({
         type : 'post',
-        url : '/changenumber/',
+        url : '../changenumber/',
         data:{'getId':getId,"changenumber":value},
         async : false,
         success : function(data){
