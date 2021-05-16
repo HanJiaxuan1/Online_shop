@@ -181,7 +181,6 @@ a:hover{
                     <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=2)" width="80%" color=#5a6268 SIZE=10>
                         {% if address_list %}
                         {% for address_item in address_list %}
-                            {% for default_item in default_address %}
 
                         <div class="row" id="one_address">
                             <div class="col-md-12">
@@ -201,9 +200,15 @@ a:hover{
                                                 <h6 class="mb-1">{{address_item.category}}</h6>
                                                 <label>
 {#                                                    <input style="color: #5a6268" type="checkbox" value="" onclick="defaultAddress({{ user }}, {{ address_item.address_id }})">Set as default#}
+                                                    {% if default_address %}
+                                                        {% for default_item in default_address %}
                                                     {% if address_item.address_id == default_item.default_address_id %}
                                                     <input style="color: #5a6268" type="checkbox" value="" checked  onclick="defaultAddress({{user}}, {{ address_item.address_id }})">Set as default
                                                     {% elif address_item.address_id != default_item.default_address_id %}
+                                                    <input style="color: #5a6268" type="checkbox" value="" onclick="defaultAddress({{user}}, {{ address_item.address_id }})">Set as default
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {% else %}
                                                     <input style="color: #5a6268" type="checkbox" value="" onclick="defaultAddress({{user}}, {{ address_item.address_id }})">Set as default
                                                     {% endif %}
                                                 </label>
@@ -222,7 +227,6 @@ a:hover{
                         </div>
                         </div>
                     </div>
-                            {% endfor %}
                     {% endfor %}
                     {% else %}
                         <p align="center">Sorry... You haven't added address yet.</p>
