@@ -96,7 +96,7 @@
                 </div>
                 <div class="modal-title"></div>
 
-                <div class="modal-body" id="modal-centent"></div>
+                <div class="modal-body" id="modal-content"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
                 </div>
@@ -188,7 +188,7 @@
             // if (inventory_num >= num){
             //     $("#p_inventory").text(inventory_num-num);
             // }
-            $("#modal-centent").html(data["msg"]);
+            $("#modal-content").html(data["msg"]);
 
         }
     });
@@ -201,7 +201,7 @@ function addToFavorite(id, obj) {
         data:{'p_id':id},
         async : false,
         success : function(data){
-             $("#modal-centent").html(data["msg"]);
+             $("#modal-content").html(data["msg"]);
         }
     });
 }
