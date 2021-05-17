@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'werkzeug_debugger_runserver',
+    'django_extensions',
     'simpleui',
     'account.apps.AccountConfig',
     'shop_app.apps.ShopAppConfig',
