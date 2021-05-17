@@ -300,6 +300,25 @@
 }
 </style>
 <script>
+window.onload=function(){
+    $.ajax({
+        type : 'POST',
+        url : '../../check_mode/',
+        async : false,
+        data : {},
+        success : function(data){
+            if(data["msg"] === 'True'){
+                alert("Epidemic mode on")
+            }else{
+                alert("Epidemic mode off")
+            }
+
+        }
+    });
+}
+
+
+
 function goBack() {
     {#window.history.back()#}
     window.location.href = document.referrer;
@@ -348,6 +367,8 @@ function goBack() {
         success : function(data){
         }
     });
+
 }
+
 </script>
 {% endblock %}

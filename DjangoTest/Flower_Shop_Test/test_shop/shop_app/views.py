@@ -11,7 +11,8 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile, Address, DefaultAddress
+from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile, Address, DefaultAddress, \
+    EpidemicMode
 from .forms import CartForm
 
 
@@ -287,7 +288,6 @@ class ProductInfo:
         self.product_obj = obj
 
 
-
 class OrderInfo:
     products = []
     total_price = '1'
@@ -320,7 +320,7 @@ def history_order(request):
             total_price = 0
             order_date = a_order.date.strftime('%y/%m/%d')
             p_list = []
-            i=1
+            i = 1
             pic1 = ''
             pic2 = ''
             for detail in product_details:
@@ -333,7 +333,7 @@ def history_order(request):
                     if i == 2:
                         pic2 = product_obj.product_image
                     p_list.append(ProductInfo(product_obj, product_num))
-                i = i+1
+                i = i + 1
             print(pic1, pic2)
             o_list.append(OrderInfo(p_list, total_price, order_date, a_order.status, pic1, pic2))
         return render(request, 'history_order.html', {'order_list': o_list})
@@ -542,3 +542,10 @@ def result(request):
 def DIY(request):
     login_user = request.user
     return render(request, 'DIY.html', {'user': request.user})
+
+
+@csrf_exempt
+def checkMode(request):
+    mode = EpidemicMode.objects.get(pk=1).mode
+    print(str(mode))
+    return JsonResponse({"msg": str(mode)})
