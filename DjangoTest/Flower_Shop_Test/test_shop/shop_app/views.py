@@ -79,11 +79,10 @@ def add_to_cart(request):
             has_cart_item = False
             for old_cart_item in cart_list:
                 old_cart_id = str(old_cart_item.product.product_id)
-                print(old_cart_id)
+
                 if old_cart_id == p_id:
                     has_cart_item = old_cart_item
-                    print("has_cart_item: ")
-                    print(has_cart_item)
+
 
             if not has_cart_item:
                 new_cart_item = Cart(product=selected_p, user=login_user, number=p_num)
