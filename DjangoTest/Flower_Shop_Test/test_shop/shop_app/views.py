@@ -199,7 +199,7 @@ def profile(request):
             profile = Profile.objects.create(userinfo_id=uid)
         else:
             profile = profile[0]
-        return render(request, 'profile.html', {'user': request.user, 'profile': profile},)
+        return render(request, 'profile.html', {'user': request.user, 'profile': profile}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -278,12 +278,65 @@ def communication(request, question_id):
         return HttpResponseRedirect(reverse('account:login'))
 
 
+class ProductInfo:
+    product_obj = 'obj'
+    product_num = 'num'
+
+    def __init__(self, obj, num):
+        self.product_num = num
+        self.product_obj = obj
+
+
+
+class OrderInfo:
+    products = []
+    total_price = '1'
+    order_date = 'today'
+    status = 'null'
+    pic1 = ''
+    pic2 = ''
+
+    def __init__(self, product_info, price, date, status, pic1, pic2):
+        self.products = product_info
+        self.total_price = price
+        self.order_date = date
+        self.status = status
+        self.pic1 = pic1
+        self.pic2 = pic2
+
+    def __str__(self):
+        return '%s  %s  %s' % (self.total_price, self.order_date, self.status)
+
+
 def history_order(request):
     if request.user.is_authenticated:
         #     logedin_user = get_object_or_404(Profile, request.user.username)
         login_user = request.user
-        cart_list = Cart.objects.filter(user=login_user)
-        return render(request, 'history_order.html')
+        order_list = Order.objects.filter(user=login_user).order_by('-order_id')
+
+        o_list = []
+        for a_order in order_list:
+            product_details = a_order.order_list.split(';')
+            total_price = 0
+            order_date = a_order.date.strftime('%y/%m/%d')
+            p_list = []
+            i=1
+            pic1 = ''
+            pic2 = ''
+            for detail in product_details:
+                if detail != '':
+                    product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
+                    product_num = detail.split(':')[1]
+                    total_price = total_price + int(product_obj.price) * int(product_num)
+                    if i == 1:
+                        pic1 = product_obj.product_image
+                    if i == 2:
+                        pic2 = product_obj.product_image
+                    p_list.append(ProductInfo(product_obj, product_num))
+                i = i+1
+            print(pic1, pic2)
+            o_list.append(OrderInfo(p_list, total_price, order_date, a_order.status, pic1, pic2))
+        return render(request, 'history_order.html', {'order_list': o_list})
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -294,8 +347,8 @@ def address(request):
         address_list = Address.objects.filter(user_id=login_user)
         defaultAddress = DefaultAddress.objects.filter(user_id=login_user)
         return render(request, 'address.html', {'user': login_user,
-                                             'address_list': address_list,
-                                             'default_address':defaultAddress},)
+                                                'address_list': address_list,
+                                                'default_address': defaultAddress}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -330,7 +383,7 @@ def favorites(request):
         login_user = request.user
         favorite_list = Favorite.objects.filter(user=login_user)
         return render(request, 'favorites.html', {'user': login_user,
-                                             'favorite_list': favorite_list}, )
+                                                  'favorite_list': favorite_list}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
 
@@ -350,10 +403,10 @@ def change_profile(request):
     changeUserObject = User.objects.filter(id=getid)
     if not changeObject:
         Profile.objects.create(userinfo_id=getid, date_of_birth=birthday, phone=phone, region=region)
-        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email )
+        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email)
     else:
         changeObject.update(userinfo_id=getid, date_of_birth=birthday, phone=phone, region=region)
-        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email )
+        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email)
     response = JsonResponse({"getId": getid})
     return response
 
@@ -425,15 +478,6 @@ def addToOrder(request):
         return HttpResponseRedirect(reverse('shop_app:order', args=(selected_order.order_id,)))
 
 
-class ProductInfo:
-    product_obj = 'obj'
-    product_num = 'num'
-
-    def __init__(self, obj, num):
-        self.product_num = num
-        self.product_obj = obj
-
-
 def order(request, order_id):
     selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
     info = selected_order.order_list
@@ -489,10 +533,10 @@ def prediction(request):
 
 
 def result(request):
-    result = random.randint(4,15)
-    result_p=get_object_or_404(Product, pk=result)
+    result = random.randint(4, 15)
+    result_p = get_object_or_404(Product, pk=result)
     login_user = request.user
-    return render(request, 'result.html', {'user': request.user, 'product': result_p} )
+    return render(request, 'result.html', {'user': request.user, 'product': result_p})
 
 
 def DIY(request):
