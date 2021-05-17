@@ -155,3 +155,8 @@ class DefaultAddress(models.Model):
 
     def __str__(self):
         return 'Default address for {}'.format(self.user)
+
+
+class EpidemicMode(models.Model):
+    id = models.AutoField(primary_key=True)
+    mode = models.BooleanField(default=False)
