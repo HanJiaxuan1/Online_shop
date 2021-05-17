@@ -16,7 +16,7 @@
 <div id="container">
     <div class="lower">
         <h1> {{ product.product_name }}</h1>
-        <p>{{ product.product_desc }}</p>
+        <p style="font-size: smaller">{{ product.product_desc }}</p>
 
     </div>
     <div class="upper">
@@ -26,6 +26,7 @@
 
 </div>
 
+<a href="{% url 'shop_app:order_now' product.product_id %}" class="btn btn-success display-7">Order Now</a>
 
 </div>
 
