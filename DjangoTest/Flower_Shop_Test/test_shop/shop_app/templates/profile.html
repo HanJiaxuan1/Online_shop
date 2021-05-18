@@ -69,7 +69,11 @@
     -o-transition: all 80ms ease-in-out;
     transition: all 80ms ease-in-out;
 }
-
+.row .field input[type=email] {
+    text-decoration: underline;
+    color: #369;
+    cursor: pointer;
+}
 .button {
     margin-bottom: 20px;
     -webkit-user-select: none;
@@ -157,7 +161,7 @@ html.active .button a.save {
     display: inline-block;
 }
     </style>
-    <style type="text/css">
+   <style type="text/css">
 
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
@@ -283,7 +287,10 @@ html.active .button a.save {
 </div>
 </div>
 </div>
- <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
+
+ </div>
+
+    <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -298,7 +305,6 @@ html.active .button a.save {
             </div> <!-- / .modal-content -->
         </div> <!-- / .modal-dialog -->
     </div>
- </div>
     <style type="text/css">
     	.modal-content {
     -webkit-border-radius: 0;
