@@ -365,23 +365,18 @@ def edit_address(request):
         login_user = request.user
         category = str(request.POST.get("category"))
         address = str(request.POST.get("address"))
-        changeObject = Address.objects.get(address_id=getid)
         address_list = Address.objects.filter(user=login_user)
         for old_address_item in address_list:
             old_address = str(old_address_item.address)
             old_category = str(old_address_item.category)
-            # print(address_list)
-            # print(old_address)
-            # print(old_category)
-            # print(address)
-            # print(category)
             if old_category == category and old_address == address:
                 print("存在")
                 response = JsonResponse({"msg": "This Address already existed!"})
                 return response
-
         print("不存在")
-        changeObject.update(address=address, category=category)
+        editobject = Address.objects.filter(address_id=getid)
+        # print(editobject)
+        editobject.update(address=address, category=category)
         response = JsonResponse({"msg": "The address was updated successfully!"})
         return response
     else:

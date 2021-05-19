@@ -145,7 +145,7 @@ class Address(models.Model):
     category = models.CharField(max_length=50)
 
     def __str__(self):
-        return 'Address for {}'.format(self.user)
+        return 'Address for {}'.format(self.address_id)
 
 
 class DefaultAddress(models.Model):
