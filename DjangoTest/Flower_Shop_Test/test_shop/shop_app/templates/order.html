@@ -180,7 +180,7 @@
                     <i aria-hidden="true" class="fa fa-angle-double-right"></i>
                     Checkout
                 </button>
-                <button class="btn btn-info" data-target="#modal-info" data-toggle="modal" data-whatever="@getbootstrap" type="button">
+                <button class="btn btn-info" data-target="#modal-info" data-toggle="modal" data-whatever="@getbootstrap" type="button" >
                     <i aria-hidden="true" class="fa fa-angle-double-right"></i>
                     Cancel
                 </button>
@@ -211,9 +211,10 @@
                     <div class="modal-title text-black">Your order has been canceled.</div>
                     <div class="modal-body">Add items to cart again? </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal-warning">Yes</button>
+                        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal"
+                                data-target="#modal-warning" onclick="addtocart('{{ order_id }}')">Yes</button>
                         <span>
-                            <button type="button" class="btn btn-sm btn-dark" data-dismiss="modal"  onclick="goBack()">No</button>
+                            <button type="button" class="btn btn-sm btn-dark" data-dismiss="modal"  onclick="cancelOrder()">No</button>
                         </span>
                     </div>
                 </div> <!-- / .modal-content -->
@@ -228,7 +229,7 @@
                     <div class="modal-title"></div>
                     <div class="modal-body">The products have been added to cart.</div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"  onclick="goBack()">OK</button>
                     </div>
                 </div> <!-- / .modal-content -->
             </div> <!-- / .modal-dialog -->
@@ -313,12 +314,12 @@ function goBack() {
         let sum_all = 0
         let each_item = $(".order-list").each(function (index) {
             let item_price = Number($(".order-list #i_price").eq(index).text());
-             console.log("i_price: ",item_price)
+             {#console.log("i_price: ",item_price)#}
             let num = Number($(".order-list #i_num").eq(index).text());
-             console.log("i_num: ",num)
+             {#console.log("i_num: ",num)#}
             let item_sum = item_price * num;
              sum_all += item_sum
-             console.log("i_sum: ",item_sum)
+             {#console.log("i_sum: ",item_sum)#}
             $(".order-list #i_cal-price").eq(index).text("￥"+item_sum);
         })
         $(".order-sum #sum_all").text("￥"+sum_all);
@@ -328,13 +329,13 @@ function goBack() {
         let phone = Number($("#p_number").val())
         let address = $("#address").val()
 
-        $("#mo_name").html(receiver);	      //赋值给模态框中的input
+        $("#mo_name").html(receiver);	      //赋值给模态框
         $("#mo_phone").html(phone);
         $("#mo_address").html(address);
 
-        console.log("receiver = "+ receiver );
-        console.log("phone = "+phone);
-        console.log("address = "+ address);
+        {#console.log("receiver = "+ receiver );#}
+        {#console.log("phone = "+phone);#}
+        {#console.log("address = "+ address);#}
     $.ajax({
         type : 'post',
         url : '../add_order/',
@@ -349,5 +350,30 @@ function goBack() {
         }
     });
 }
+function addtocart(order_id) {
+    {#console.log("order_id = "+ order_id );#}
+    $.ajax({
+        type : 'post',
+        url : '../add_cart_again/',
+        data:{'order_id':order_id},
+        async : false,
+        success : function(data){
+        }
+    });
+}
+
+function cancelOrder(order_id) {
+    {#console.log("order_id = "+ order_id );#}
+    $.ajax({
+        type : 'post',
+        url : '../cancel_order/',
+        data:{'order_id':order_id},
+        async : false,
+        success : function(data){
+        }
+    });
+    window.location.href = document.referrer;
+}
+
 </script>
 {% endblock %}

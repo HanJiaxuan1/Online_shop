@@ -435,6 +435,7 @@ class ProductInfo:
 
 
 def order(request, order_id):
+    user = request.user
     selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
     info = selected_order.order_list
     product_details = info.split(';')
@@ -450,9 +451,40 @@ def order(request, order_id):
             product_obj.save()
 
             p_list.append(ProductInfo(product_obj, product_num))
+    # print(p_list)
 
     return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id,
                                           'default_address': defaultAddress})
+
+
+@csrf_exempt
+def add_cart_again(request, order_id):
+    # order_id = request.POST.get('order_id')
+    user = request.user.id
+    selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
+    product_list = selected_order.order_list
+    product_details = product_list.split(';')
+    for detail in product_details:
+        if detail != '':
+            product_obj = detail.split(':')[0]
+            product_num = detail.split(':')[1]
+            int_num = int(product_num)
+            changeObject = Cart.objects.create(user_id=user, product_id=product_obj,
+                                               number=int_num)
+            selected_order.delete()
+            print(changeObject)
+    response = JsonResponse({"getId": user})
+    return response
+
+
+@csrf_exempt
+def cancel_order(request, order_id):
+    # order_id = request.POST.get('order_id')
+    user = request.user.id
+    selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
+    selected_order.delete()
+    response = JsonResponse({"getId": user})
+    return response
 
 
 def orderNow(request, product_id):
