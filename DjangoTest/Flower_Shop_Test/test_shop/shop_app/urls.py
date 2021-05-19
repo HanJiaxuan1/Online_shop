@@ -21,6 +21,7 @@ urlpatterns = [
     path('<int:order_id>/add_cart_again/', views.add_cart_again, name='add_cart_again'),
     path('add_to_favorite/', views.add_to_favorite, name='add_to_favorite'),
     path('add_address/', views.add_address, name='add_address'),
+    path('edit_address/', views.edit_address, name='edit_address'),
     path('delete_address/', views.delete_address, name='delete_address'),
     path('default_address/', views.default_address, name='default_address'),
     path('changenumber/', views.changenumber, name='changenumber'),

@@ -104,37 +104,6 @@ def add_to_cart(request):
 
 
 @csrf_exempt
-def add_address(request):
-    if request.user.is_authenticated:
-        data = request.POST
-        login_user = request.user
-        category = str(request.POST.get("category"))
-        address = str(request.POST.get("address"))
-        address_list = Address.objects.filter(user=login_user)
-        if not address_list:
-            new_address = Address(user_id=login_user.id, address=address, category=category)
-            new_address.save()
-            response = JsonResponse({"msg": "New Address Successfully Added to Your Address"})
-            return response
-        else:
-            for old_address_item in address_list:
-                old_address = str(old_address_item.address)
-                old_category = str(old_address_item.category)
-                print(old_address)
-                print(old_category)
-                if old_category == category and old_address == address:
-                    response = JsonResponse({"msg": "This Address already existed!"})
-                else:
-                    new_address = Address(user_id=login_user.id, address=address, category=category)
-                    new_address.save()
-                    response = JsonResponse({"msg": "New Address Successfully Added to Your Address"})
-                return response
-    else:
-        response = JsonResponse({"msg": "Please login first"})
-        return response
-
-
-@csrf_exempt
 def add_to_favorite(request):
     if request.user.is_authenticated:
         data = request.POST
@@ -350,6 +319,74 @@ def address(request):
                                                 'default_address': defaultAddress}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
+
+
+@csrf_exempt
+def add_address(request):
+    if request.user.is_authenticated:
+        data = request.POST
+        login_user = request.user
+        category = str(request.POST.get("category"))
+        address = str(request.POST.get("address"))
+        address_list = Address.objects.filter(user=login_user)
+        if not address_list:
+            new_address = Address(user_id=login_user.id, address=address, category=category)
+            new_address.save()
+            response = JsonResponse({"msg": "New Address Successfully Added to Your Address"})
+            return response
+        else:
+            for old_address_item in address_list:
+                old_address = str(old_address_item.address)
+                old_category = str(old_address_item.category)
+                # print(address_list)
+                # print(old_address)
+                # print(old_category)
+                # print(address)
+                # print(category)
+                if old_category == category and old_address == address:
+                    print("存在")
+                    response = JsonResponse({"msg": "This Address already existed!"})
+                    return response
+
+            print("不存在")
+            new_address = Address(user_id=login_user.id, address=address, category=category)
+            new_address.save()
+            response = JsonResponse({"msg": "New Address Successfully Added to Your Address"})
+            return response
+    else:
+        response = JsonResponse({"msg": "Please login first"})
+        return response
+
+
+@csrf_exempt
+def edit_address(request):
+    if request.user.is_authenticated:
+        getid = request.POST.get("getId")
+        login_user = request.user
+        category = str(request.POST.get("category"))
+        address = str(request.POST.get("address"))
+        changeObject = Address.objects.get(address_id=getid)
+        address_list = Address.objects.filter(user=login_user)
+        for old_address_item in address_list:
+            old_address = str(old_address_item.address)
+            old_category = str(old_address_item.category)
+            # print(address_list)
+            # print(old_address)
+            # print(old_category)
+            # print(address)
+            # print(category)
+            if old_category == category and old_address == address:
+                print("存在")
+                response = JsonResponse({"msg": "This Address already existed!"})
+                return response
+
+        print("不存在")
+        changeObject.update(address=address, category=category)
+        response = JsonResponse({"msg": "The address was updated successfully!"})
+        return response
+    else:
+        response = JsonResponse({"msg": "Please login first"})
+        return response
 
 
 @csrf_exempt
