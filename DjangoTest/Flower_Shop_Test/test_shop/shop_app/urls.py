@@ -37,5 +37,6 @@ urlpatterns = [
     path('classifier/', views.classifier, name='classifier'),
     path('prediction/', views.prediction, name='prediction'),
     path('result/', views.result, name='result'),
-    path('DIY/', views.DIY, name='DIY')
+    path('DIY/', views.DIY, name='DIY'),
+    path('check_mode/', views.checkMode, name='check_mode')
 ]

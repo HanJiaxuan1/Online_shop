@@ -58,11 +58,17 @@
         </div>
 
         <div class="panel-body">
+
+{% for order in order_list %}
             <div class="row">
                 <div class="col-md-1">
                     <td style="position:relative;">
-    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="../../static/store/b.jpg" />
-     <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80" src="../../static/store/a.jpg" />
+    <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80" src="/media/{{order.pic1}}" />
+
+
+    {% if order.pic2 %}
+     <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="/media/{{order.pic2}}" />
+    {% endif %}
 
 </td>
                 </div>
@@ -70,98 +76,99 @@
                 <div class="col-md-11">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="pull-right"><label class="label label-danger">delivery</label></div>
+                            <div class="pull-right"><label class="label label-danger">{{ order.status }}</label></div>
 
-                             <small>Product 1
-                                 <span>Quantity : 4 </span>
+                             <small>
+                             {% for product in order.products  %}
+                                 {{ product.product_obj.product_name }}
+                                 <span> * {{ product.product_num }} </span>
                                  <br />
-                            Product 2
-                                 <span>Quantity : 3 </span>
-                                 <br />
-                                 Cost: $358 <br /></small>
+                             {% endfor %}
+                                 Cost: {{ order.total_price }} <br />
+                            </small>
                         </div>
-                        <div class="col-md-12">order made on:  <a href="#">2021/04/01</a></div>
+                        <div class="col-md-12">order made on:  <a href="#">{{ order.order_date }}</a></div>
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-1">
-                    <td style="position:relative;">
-    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="../../static/store/c.jpg" />
-     <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80" src="../../static/store/d.jpg" />
-
-</td>
-                </div>
-
-                <div class="col-md-11">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="pull-right"><label class="label label-danger">received</label></div>
-
-                             <small>Product 1
-                                 <span>Quantity : 2 </span>
-                                 <br />
-                            Product 2
-                                 <span>Quantity : 3 </span>
-                                 <br />
-                                 Cost: $725 <br /></small>
-                        </div>
-                        <div class="col-md-12">order made on:  <a href="#">2021/03/23</a></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-1">
-                    <td style="position:relative;">
-    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="../../static/store/e.jpg" />
-     <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80" src="../../static/store/f.jpg" />
-
-</td>
-                </div>
-
-                <div class="col-md-11">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="pull-right"><label class="label label-danger">received</label></div>
-
-                             <small>Product 1
-                                 <span>Quantity : 9 </span>
-                                 <br />
-                            Product 2
-                                 <span>Quantity : 3 </span>
-                                 <br />
-                                 Cost: $980 <br /></small>
-                        </div>
-                        <div class="col-md-12">order made on:  <a href="#">2021/03/01</a></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-1">
-                    <td style="position:relative;">
-    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="../../static/store/g.jpg" />
-
-</td>
-                </div>
-
-                <div class="col-md-11">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="pull-right"><label class="label label-danger">received</label></div>
-
-                             <small>Product 1
-                                 <span>Quantity : 4 </span>
-                                 <br />
-
-                                 Cost: $323 <br /></small>
-                        </div>
-                        <div class="col-md-12">order made on:  <a href="#">2021/03/01</a></div>
-                    </div>
-                </div>
-            </div>
+{% endfor %}
+{#            <div class="row">#}
+{#                <div class="col-md-1">#}
+{#                    <td style="position:relative;">#}
+{#    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="../../static/store/c.jpg" />#}
+{#     <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80" src="../../static/store/d.jpg" />#}
+{##}
+{#</td>#}
+{#                </div>#}
+{##}
+{#                <div class="col-md-11">#}
+{#                    <div class="row">#}
+{#                        <div class="col-md-12">#}
+{#                            <div class="pull-right"><label class="label label-danger">received</label></div>#}
+{##}
+{#                             <small>Product 1#}
+{#                                 <span>Quantity : 2 </span>#}
+{#                                 <br />#}
+{#                            Product 2#}
+{#                                 <span>Quantity : 3 </span>#}
+{#                                 <br />#}
+{#                                 Cost: $725 <br /></small>#}
+{#                        </div>#}
+{#                        <div class="col-md-12">order made on:  <a href="#">2021/03/23</a></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="row">#}
+{#                <div class="col-md-1">#}
+{#                    <td style="position:relative;">#}
+{#    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="../../static/store/e.jpg" />#}
+{#     <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80" src="../../static/store/f.jpg" />#}
+{##}
+{#</td>#}
+{#                </div>#}
+{##}
+{#                <div class="col-md-11">#}
+{#                    <div class="row">#}
+{#                        <div class="col-md-12">#}
+{#                            <div class="pull-right"><label class="label label-danger">received</label></div>#}
+{##}
+{#                             <small>Product 1#}
+{#                                 <span>Quantity : 9 </span>#}
+{#                                 <br />#}
+{#                            Product 2#}
+{#                                 <span>Quantity : 3 </span>#}
+{#                                 <br />#}
+{#                                 Cost: $980 <br /></small>#}
+{#                        </div>#}
+{#                        <div class="col-md-12">order made on:  <a href="#">2021/03/01</a></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="row">#}
+{#                <div class="col-md-1">#}
+{#                    <td style="position:relative;">#}
+{#    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="../../static/store/g.jpg" />#}
+{##}
+{#</td>#}
+{#                </div>#}
+{##}
+{#                <div class="col-md-11">#}
+{#                    <div class="row">#}
+{#                        <div class="col-md-12">#}
+{#                            <div class="pull-right"><label class="label label-danger">received</label></div>#}
+{##}
+{#                             <small>Product 1#}
+{#                                 <span>Quantity : 4 </span>#}
+{#                                 <br />#}
+{##}
+{#                                 Cost: $323 <br /></small>#}
+{#                        </div>#}
+{#                        <div class="col-md-12">order made on:  <a href="#">2021/03/01</a></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
 
         </div>
        </div>

@@ -6,6 +6,8 @@
 {% block content %}
 
 
+   <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
+
 
  <style type="text/css">
 
@@ -75,6 +77,7 @@
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-bottom: 4px solid #daceb7;
+
     content: "";
     left: 30px;
     position: absolute;
@@ -132,18 +135,20 @@ a:hover{
   <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
 
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade  active show" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
-                        <h4 class="font-weight-bold mt-0 mb-4">Manage Addresses</h4>
-                        <span>
-                            <button class="btn btn-sm btn-primary" data-target="#exampleModal" data-toggle="modal" data-whatever="@getbootstrap" type="button">
+                    <div class="tab-pane fade  active show"  id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
+                        <button class="btn btn-sm btn-primary" style="margin-bottom: 20px" data-target="#exampleModal" data-toggle="modal" data-whatever="@getbootstrap" type="button">
                                 <i aria-hidden="true" class="fa fa-angle-double-right"></i>
                                 Add a New Address
                             </button>
-                        </span>
+
+
+                             <h5 class="font-weight-bold mt-0 mb-4">Default Address</h5>
+
+
 
                         {% if default_address %}
                             {% for default_item in default_address %}
-                        <div class="row" id="default_address">
+                              <div class="row" id="default_address">
                             <div class="col-md-12">
                                    <div class="bg-white card addresses-item mb-4 shadow-sm">
                                     <div class="gold-members p-4">
@@ -178,12 +183,16 @@ a:hover{
                     {% else %}
                         <p align="center">Sorry... You haven't added an default address yet.</p>
                     {% endif %}
-                    <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=2)" width="80%" color=#5a6268 SIZE=10>
+
+
+
+  <h5 class="font-weight-bold mt-0 mb-4">My Addresses</h5>
+                    <div class="row">
+
                         {% if address_list %}
                         {% for address_item in address_list %}
 
-                        <div class="row" id="one_address">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                    <div class="bg-white card addresses-item mb-4 shadow-sm">
                                     <div class="gold-members p-4">
                                          <div class="media">
@@ -205,37 +214,38 @@ a:hover{
                                                     {% if address_item.address_id == default_item.default_address_id %}
                                                     <input style="color: #5a6268" type="checkbox" value="" checked  onclick="defaultAddress({{user}}, {{ address_item.address_id }})">Set as default
                                                     {% elif address_item.address_id != default_item.default_address_id %}
-                                                    <input style="color: #5a6268" type="checkbox" value="" onclick="defaultAddress({{user}}, {{ address_item.address_id }})">Set as default
+                                                    <input style="color: #5a6268" data-target="#modal-warning" data-toggle="modal" type="checkbox" value="" onclick="defaultAddress({{user}}, {{ address_item.address_id }})">Set as default
                                                     {% endif %}
                                                     {% endfor %}
                                                     {% else %}
-                                                    <input style="color: #5a6268" type="checkbox" value="" onclick="defaultAddress({{user}}, {{ address_item.address_id }})">Set as default
+                                                        <div></div>
+                                                    <input style="color: #5a6268" type="checkbox" value=""   onclick="defaultAddress({{user}}, {{ address_item.address_id }} )">Set as default
                                                     {% endif %}
                                                 </label>
                                                 <p class="text-black">{{address_item.address}}
                                                 </p>
                                                 <p class="mb-3 text-black font-weight-bold">
                                                     <a class="text-primary mr-3" data-toggle="modal" data-target="#add-address-modal" href="#">
-                                                    <i class="icofont-ui-edit"></i> EDIT</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <a class="text-danger" data-toggle="modal" data-target="#delete-address-modal" href="#" onclick="deleteAddress({{address_item.address_id}}, this)">
+                                                    <i class="icofont-ui-edit"></i> EDIT</a>
+                                                    <a class="text-danger" data-target="#exampleModal" data-toggle="modal" href="#" onclick="deleteAddress({{address_item.address_id}}, this)">
                                                         <i class="icofont-ui-delete" onclick="deleteAddress({{address_item.address_id}}, this)"></i> DELETE</a></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        </div>
-                    </div>
-                    {% endfor %}
+
+
+                {% endfor %}
                     {% else %}
                         <p align="center">Sorry... You haven't added address yet.</p>
                     {% endif %}
+                    </div>
+                </div>
+                </div>
 
 
-     <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
-
-            <div aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog" tabindex="-1">
+          <div aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog" tabindex="-1">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                     <div class="modal-header d-flex align-items-center bg-light text-black">
@@ -263,14 +273,89 @@ a:hover{
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"  onclick="addAddress({{ user.id }})" >Add</button>
-                    </div>
+                        <button type="button" class="btn btn-light" data-dismiss="modal" >Cancel</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="#modal-warning" data-toggle="modal" onclick="addAddress({{ user.id }})" href="#">Add</button>
                     </div>
                     </div>
                 </div>
             </div>
+  <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-title"></div>
+                    <div class="modal-body" id="msg_content"></div>
+                    <div class="modal-footer">
+                        <button type="button" onclick = "window.location.reload();" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                    </div>
+                </div> <!-- / .modal-content -->
+            </div> <!-- / .modal-dialog -->
+        </div>
+</div>
+<style type="text/css">
+    	.modal-content {
+    -webkit-border-radius: 0;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 0;
+    -moz-background-clip: padding;
+    border-radius: 6px;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    box-shadow: 0 0 40px rgba(0,0,0,.5);
+    color: #000;
+    background-color: #fff;
+    border: rgba(0,0,0,0);
+}
+.modal-message .modal-dialog {
+    width: 300px;
+}
+.modal-message .modal-body, .modal-message .modal-footer, .modal-message .modal-header, .modal-message .modal-title {
+    background: 0 0;
+    border: none;
+    margin: 0;
+    padding: 0 20px;
+    text-align: center!important;
+}
 
+.modal-message .modal-title {
+    font-size: 17px;
+    color: #737373;
+    margin-bottom: 3px;
+}
+
+.modal-message .modal-body {
+    color: #737373;
+}
+
+.modal-message .modal-header {
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 15px 0 8px;
+}
+.modal-message .modal-header .fa,
+.modal-message .modal-header
+.glyphicon, .modal-message
+.modal-header .typcn, .modal-message .modal-header .wi {
+    font-size: 30px;
+}
+
+.modal-message .modal-footer {
+    margin: 25px 0 20px;
+    padding-bottom: 10px;
+}
+
+.modal-backdrop.in {
+    zoom: 1;
+    filter: alpha(opacity=75);
+    -webkit-opacity: .75;
+    -moz-opacity: .75;
+    opacity: .75;
+}
+.modal-backdrop {
+    background-color: #fff;
+}
+</style>
     <script>
 
     function defaultAddress(getUserId, getAddressId){
@@ -281,10 +366,13 @@ a:hover{
         data:{'getUserId':getUserId,'getAddressId':getAddressId},
         async : false,
         success : function(data){
-            alert(data["msg"])
-            window.location.reload()  //刷新页面
-        }
+             $("#msg_content").html(data["msg"]);
+
+
+        },
+
     });
+
 }
 
 function addAddress (getId){
@@ -296,10 +384,11 @@ function addAddress (getId){
         data:{'getId':getId, "category":customSelect, "address":threadTitle},
         async : false,
         success : function(data){
-            alert(data["msg"])
-            window.location.reload()  //刷新页面
+           $("#msg_content").html(data["msg"]);
+
         }
     });
+
 }
 
 function deleteAddress(getId, obj) {
@@ -311,10 +400,13 @@ function deleteAddress(getId, obj) {
         data:{'getId':getId},
         async : false,
         success : function(data){
-            alert(data["msg"])
-            window.location.reload()  //刷新页面
+            $("#msg_content").html(data["msg"]);
+
         }
+
     });
+
 }
     </script>
+
 {% endblock %}
