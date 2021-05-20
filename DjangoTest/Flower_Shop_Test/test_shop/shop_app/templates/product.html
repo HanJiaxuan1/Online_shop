@@ -91,7 +91,7 @@
 <div class="my-3 p-3 bg-white rounded shadow-sm">
 <div class="row bootstrap snippets bootdeys">
     <div class="col-md-12 col-sm-12">
-        <div class="comment-wrapper">
+        <div class="comment-wrapper" id="comment" >
             <div class="panel panel-info">
 
                 <div class="panel-body">
@@ -103,48 +103,33 @@
                     <ul class="media-list">
                         <li class="media">
                             <a href="#" class="pull-left">
-                                <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                <img src="/static/store/avatar.jpg" alt="" class="img-circle">
                             </a>
                             <div class="media-body">
                                 <span class="text-muted pull-right">
                                     <small class="text-muted">30 min ago</small>
                                 </span>
-                                <strong class="text-success">@MartinoMont</strong>
+                                <strong class="text-success">@Rei</strong>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Lorem ipsum dolor sit amet, <a href="#">#consecteturadipiscing </a>.
+                                    Beautiful flowers.
                                 </p>
                             </div>
                         </li>
                         <li class="media">
                             <a href="#" class="pull-left">
-                                <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                <img src="/static/store/photo.jpg" alt="" class="img-circle">
                             </a>
                             <div class="media-body">
                                 <span class="text-muted pull-right">
                                     <small class="text-muted">30 min ago</small>
                                 </span>
-                                <strong class="text-success">@LaurenceCorreil</strong>
+                                <strong class="text-success">@Shiji</strong>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Lorem ipsum dolor <a href="#">#ipsumdolor </a>adipiscing elit.
+                                    Super great! I love it.
                                 </p>
                             </div>
                         </li>
-                        <li class="media">
-                            <a href="#" class="pull-left">
-                                <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
-                            </a>
-                            <div class="media-body">
-                                <span class="text-muted pull-right">
-                                    <small class="text-muted">30 min ago</small>
-                                </span>
-                                <strong class="text-success">@JohnNida</strong>
-                                <p>
-                                    Lorem ipsum dolor <a href="#">#sitamet</a> sit amet, consectetur adipiscing elit.
-                                </p>
-                            </div>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -170,6 +155,24 @@
             </div> <!-- / .modal-content -->
         </div> <!-- / .modal-dialog -->
     </div>
+     <style type="text/css">
+
+.comment-wrapper .panel-body {
+    max-height:650px;
+    overflow:auto;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+    </style>
 <style type="text/css">
     	.modal-content {
     -webkit-border-radius: 0;
@@ -272,6 +275,18 @@ function addToFavorite(id, obj) {
         }
     });
 }
+
+$(document).ready(function() {
+    $(window).bind('scroll', function() {
+        var height = $(window).height()-100 ;
+        if ($(window).scrollTop() > 100) {
+          $('#comment').show()
+        } else {
+             $('#comment').hide()
+        }
+    });
+    $('#comment').hide()
+});
 </script>
 
 
