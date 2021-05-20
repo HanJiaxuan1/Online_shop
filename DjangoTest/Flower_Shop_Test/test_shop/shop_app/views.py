@@ -563,10 +563,18 @@ def cancel_order(request, order_id):
 
 
 def orderNow(request, product_id):
-    s = str(product_id) + ':' + '1' + ';'
-    selected_order = Order(user=request.user, order_list=s)
-    selected_order.save()
-    return HttpResponseRedirect(reverse('shop_app:order', args=(selected_order.order_id,)))
+    if request.user.is_authenticated:
+        #     logedin_user = get_object_or_404(Profile, request.user.username)
+        login_user = request.user
+
+        s = str(product_id) + ':' + '1' + ';'
+        selected_order = Order(user=request.user, order_list=s)
+        selected_order.save()
+        return HttpResponseRedirect(reverse('shop_app:order', args=(selected_order.order_id,)))
+
+    else:
+        return HttpResponseRedirect(reverse('account:login'))
+
 
 
 def createQuestion(request):
