@@ -64,6 +64,20 @@
  }
     </style>
 {#下单确认模态框#}
+     <div id="msg" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa fa-warning"></i>
+                    </div>
+                    <div class="modal-title"></div>
+                    <div class="modal-body" id="msg_content"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                    </div>
+                </div> <!-- / .modal-content -->
+            </div> <!-- / .modal-dialog -->
+        </div>
             <div aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog" tabindex="-1">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -128,7 +142,9 @@
             </div>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <div class="row ">
+
             <div class="col-md-7 order-md-1 mb-4">
+
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Order Verification</span>
                 </h4>
@@ -313,9 +329,9 @@ window.onload=function(){
         data : {},
         success : function(data){
             if(data["msg"] === 'True'){
-                 alert("Epidemic mode on")
+                  $("#msg_content").html("Epidemic mode on")
             }else{
-                alert("Epidemic mode off")
+                 $("#msg_content").html("Epidemic mode off, delivery is ")
             }
 
         }
@@ -323,6 +339,21 @@ window.onload=function(){
 }
 
 
+
+  $(document).ready(function() {
+
+   $("#pickup").click(function() {
+
+    $("#receiver_address").hide();
+
+   });
+      $("#delivery").click(function() {
+
+    $("#receiver_address").show();
+
+   });
+
+  });
 
 function goBack() {
     {#window.history.back()#}
@@ -397,6 +428,18 @@ function cancelOrder(order_id) {
     });
     window.location.href = document.referrer;
 }
+
+
+        function showAd(){
+            $("#msg").hidden;
+            setTimeout("hideAd()",4000);
+			}
+        function hideAd(){
+            $("#msg").visible;
+			}
+			$(function(){
+				setTimeout("showAd()",1000);
+			});
 
 </script>
 {% endblock %}
