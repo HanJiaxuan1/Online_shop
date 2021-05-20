@@ -64,20 +64,7 @@
  }
     </style>
 {#下单确认模态框#}
-     <div id="msg" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <i class="fa fa-warning"></i>
-                    </div>
-                    <div class="modal-title"></div>
-                    <div class="modal-body" id="msg_content"></div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
-                    </div>
-                </div> <!-- / .modal-content -->
-            </div> <!-- / .modal-dialog -->
-        </div>
+
             <div aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog" tabindex="-1">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -141,6 +128,7 @@
                 </div>
             </div>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
+
         <div class="row ">
 
             <div class="col-md-7 order-md-1 mb-4">
@@ -166,7 +154,8 @@
             </div>
             <div class="col-md-5 order-md-2" id="reciver_info">
                 <h4 class="mb-3">Receiver Information</h4>
-             <div class="btn-group btn-toggle">
+             <div class="text-primary" id="msg" style=""></div>
+             <div class="btn-group btn-toggle" id="service">
     <button class="btn btn-default" id="pickup">Pickup</button>
     <button class="btn btn-primary active" id="delivery">Delivery</button>
   </div>
@@ -329,9 +318,11 @@ window.onload=function(){
         data : {},
         success : function(data){
             if(data["msg"] === 'True'){
-                  $("#msg_content").html("Epidemic mode on")
+                  $("#msg").html("Due to the epidemic, no pick-up service will be provided temporarily.")
+                   $("#service").hide();
+
             }else{
-                 $("#msg_content").html("Epidemic mode off, delivery is ")
+                 $("#msg").html("Pick-up and delivery are both available!")
             }
 
         }
@@ -428,18 +419,6 @@ function cancelOrder(order_id) {
     });
     window.location.href = document.referrer;
 }
-
-
-        function showAd(){
-            $("#msg").hidden;
-            setTimeout("hideAd()",4000);
-			}
-        function hideAd(){
-            $("#msg").visible;
-			}
-			$(function(){
-				setTimeout("showAd()",1000);
-			});
 
 </script>
 {% endblock %}
