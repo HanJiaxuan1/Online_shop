@@ -150,6 +150,10 @@
             </div>
             <div class="col-md-5 order-md-2" id="reciver_info">
                 <h4 class="mb-3">Receiver Information</h4>
+             <div class="btn-group btn-toggle">
+    <button class="btn btn-default" id="pickup">Pickup</button>
+    <button class="btn btn-primary active" id="delivery">Delivery</button>
+  </div>
                 <div class="mb-3">
                     <label for="receiver">Receiver Name</label>
                     <div class="input-group">
@@ -166,7 +170,7 @@
                         Please enter a valid phone number.
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" id="receiver_address">
                     <label for="address">Receiver Address</label>
                     {% for default_item in default_address %}
                     <input type="text" class="form-control" id="address"  placeholder="Please enter your address here."
@@ -180,7 +184,7 @@
                     <i aria-hidden="true" class="fa fa-angle-double-right"></i>
                     Checkout
                 </button>
-                <button class="btn btn-info" data-target="#modal-info" data-toggle="modal" data-whatever="@getbootstrap" type="button" >
+                <button class="btn btn-info" data-target="#modal-info" data-toggle="modal" data-whatever="@getbootstrap" type="button">
                     <i aria-hidden="true" class="fa fa-angle-double-right"></i>
                     Cancel
                 </button>
@@ -309,7 +313,7 @@ window.onload=function(){
         data : {},
         success : function(data){
             if(data["msg"] === 'True'){
-                alert("Epidemic mode on")
+                 alert("Epidemic mode on")
             }else{
                 alert("Epidemic mode off")
             }
