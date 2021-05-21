@@ -160,3 +160,11 @@ class DefaultAddress(models.Model):
 class EpidemicMode(models.Model):
     id = models.AutoField(primary_key=True)
     mode = models.BooleanField(default=False)
+
+
+class ProductComment(models.Model):
+    id = models.AutoField(primary_key=True)
+    text = models.CharField(max_length=1000)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=timezone.now)

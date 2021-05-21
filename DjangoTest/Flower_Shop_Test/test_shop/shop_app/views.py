@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile, Address, DefaultAddress, \
-    EpidemicMode
+    EpidemicMode, ProductComment
 from .forms import CartForm
 
 
@@ -24,8 +24,46 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+def time_delta(date_time):
+    day_delta = (datetime.datetime.now() - date_time).days
+    if day_delta > 0:
+        return str(day_delta) + 'd ago'
+    delta = (datetime.datetime.now() - date_time).seconds
+    day = delta // 84600
+    hour = delta // 3600
+    minute = delta // 60
+    if 0 <= delta < 60:
+        return 'just now'
+    elif 60 <= delta < 3600:
+        return str(minute) + 'm ago'
+    elif 3600 <= delta < 86400:
+        return str(hour) + 'h ago'
+    else:
+        return str(day) + 'd ago'
+
+
+class Comment:
+    text = ''
+    username = ''
+    user_portrait = ''
+    time_d = ''
+
+    def __init__(self, t, n, p, d):
+        self.text = t
+        self.username = n
+        self.user_portrait = p
+        self.time_d = d
+
+
 def product(request, product_id):
     selected_p = get_object_or_404(Product, pk=product_id)
+    s_comment = ProductComment.objects.filter(product=selected_p).order_by('-date')
+    comments = []
+    print(Profile.objects.get(userinfo_id=s_comment[0].user.id).photo)
+    for comment in s_comment:
+        comments.append(Comment(comment.text, comment.user.username,
+                                Profile.objects.get(userinfo_id=comment.user.id).photo,
+                                time_delta(comment.date)))
     # login_user = request.user
     # cart_list = Cart.objects.filter(user=login_user)
 
@@ -56,8 +94,16 @@ def product(request, product_id):
     # else:
     #     form = CartForm()
 
-    return render(request, 'product.html', {'product': selected_p})
+    return render(request, 'product.html', {'product': selected_p, 'comments': comments})
 
+
+def add_comment(request, product_id):
+    comment_text = request.POST.get('comment_text')
+    s_product = Product.objects.get(pk=product_id)
+    user = request.user
+    new_comment = ProductComment(text=comment_text, product=s_product, user=user)
+    new_comment.save()
+    return HttpResponseRedirect(reverse('shop_app:detail', args=(product_id,)))
 
 @csrf_exempt
 def add_to_cart(request):
@@ -204,22 +250,7 @@ class QuestionInfo:
         self.time_differ = delta
 
 
-def time_delta(date_time):
-    day_delta = (datetime.datetime.now() - date_time).days
-    if day_delta > 0:
-        return str(day_delta) + 'd ago'
-    delta = (datetime.datetime.now() - date_time).seconds
-    day = delta // 84600
-    hour = delta // 3600
-    minute = delta // 60
-    if 0 <= delta < 60:
-        return 'just now'
-    elif 60 <= delta < 3600:
-        return str(minute) + 'm ago'
-    elif 3600 <= delta < 86400:
-        return str(hour) + 'h ago'
-    else:
-        return str(day) + 'd ago'
+
 
 
 def service(request):

@@ -39,5 +39,6 @@ urlpatterns = [
     path('prediction/', views.prediction, name='prediction'),
     path('result/', views.result, name='result'),
     path('DIY/', views.DIY, name='DIY'),
-    path('check_mode/', views.checkMode, name='check_mode')
+    path('check_mode/', views.checkMode, name='check_mode'),
+    path('<int:product_id>/add_comment/', views.add_comment, name='comment')
 ]

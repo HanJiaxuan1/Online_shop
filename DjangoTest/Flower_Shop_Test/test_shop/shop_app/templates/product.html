@@ -101,11 +101,14 @@
             <div class="panel panel-info">
 
                 <div class="panel-body">
-                    <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>
+<form action="{% url 'shop_app:comment' product.product_id %}" method="post">
+        {% csrf_token %}
+                    <textarea class="form-control" name='comment_text' placeholder="write a comment..." rows="3"></textarea>
                     <br>
-                    <button type="button" class="btn btn-info pull-right">Post</button>
+                    <button type="submit" class="btn btn-info pull-right">Post</button>
                     <div class="clearfix"></div>
                     <hr>
+</form>
                     <ul class="media-list">
                         <li class="media">
                             <a href="#" class="pull-left">
@@ -135,7 +138,26 @@
                                 </p>
                             </div>
                         </li>
-
+                        {% for comment in comments %}
+                        <li class="media">
+                            <a href="#" class="pull-left">
+                                {% if not comment.user_portrait %}
+                                    <img src="/static/store/photo.jpg" alt="" class="img-circle">
+                                {% else %}
+                                    <img src="/media/{{ comment.user_portrait }}" alt="" class="img-circle">
+                                {% endif %}
+                            </a>
+                            <div class="media-body">
+                                <span class="text-muted pull-right">
+                                    <small class="text-muted">{{ comment.time_d }}</small>
+                                </span>
+                                <strong class="text-success">{{ comment.username }}</strong>
+                                <p>
+                                    {{ comment.text }}
+                                </p>
+                            </div>
+                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
