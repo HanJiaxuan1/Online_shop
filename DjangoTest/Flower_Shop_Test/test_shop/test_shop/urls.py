@@ -25,7 +25,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-
+    path('account/password_reset', include('password_reset.urls')),
     path('admin/shop_app/question/', include('shop_app.admin_question_urls')),
     path('admin/', admin.site.urls),
     path('', include('shop_app.urls')),
