@@ -177,10 +177,15 @@
                 </div>
                 <div class="mb-3" id="receiver_address">
                     <label for="address">Receiver Address</label>
+                    {% if default_address %}
                     {% for default_item in default_address %}
                     <input type="text" class="form-control" id="address"  placeholder="Please enter your address here."
                            required  value="{{default_item.default_address.address}}" >
                     {% endfor %}
+                      {% else %}
+                         <input type="text" class="form-control" id="address"  placeholder="Please enter your address here."
+                           required >
+                        {% endif %}
                     <div class="invalid-feedback">
                         Please enter your delivery address.
                     </div>
