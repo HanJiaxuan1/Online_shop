@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'password_reset',
     'simpleui',
     'account.apps.AccountConfig',
     'shop_app.apps.ShopAppConfig',
@@ -141,17 +142,17 @@ LOGOUT_URL = 'logout'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# # SMTP服务器，改为你的邮箱的smtp
-# EMAIL_HOST = 'smtp.163.com'
-# # 邮箱名
-# EMAIL_HOST_USER = 'g14_flowershop@163.com'
-# # 邮箱密码
-# EMAIL_HOST_PASSWORD = 'GHWXURVCUAECGVHF'
-# # 发送邮件的端口
-# EMAIL_PORT = 587
-# # 是否使用 TLS
-# EMAIL_USE_TLS = True
-# # 默认的发件人
-# DEFAULT_FROM_EMAIL = 'g14_flowershop'
+# SMTP服务器，改为你的邮箱的smtp
+EMAIL_HOST = 'smtp.163.com'
+# 邮箱名
+EMAIL_HOST_USER = 'g14_flowershop@163.com'
+# 邮箱密码
+EMAIL_HOST_PASSWORD = 'WQHMXCBWOQKTIZVK'
+# 发送邮件的端口
+EMAIL_PORT = 25
+# 是否使用 TLS
+EMAIL_USE_TLS = False
+# 默认的发件人
+DEFAULT_FROM_EMAIL = 'g14_flowershop@163.com'

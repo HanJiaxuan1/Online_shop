@@ -59,7 +59,7 @@ def product(request, product_id):
     selected_p = get_object_or_404(Product, pk=product_id)
     s_comment = ProductComment.objects.filter(product=selected_p).order_by('-date')
     comments = []
-    print(Profile.objects.get(userinfo_id=s_comment[0].user.id).photo)
+    # print(Profile.objects.get(userinfo_id=s_comment[0].user.id).photo)
     for comment in s_comment:
         comments.append(Comment(comment.text, comment.user.username,
                                 Profile.objects.get(userinfo_id=comment.user.id).photo,
