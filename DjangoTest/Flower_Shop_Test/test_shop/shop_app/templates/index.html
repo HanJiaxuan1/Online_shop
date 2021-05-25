@@ -99,7 +99,8 @@
           <div class="shop-items" >
           {% if price_p_list %}
             {% for product in price_p_list %}
-                
+                {% if product.product_id == 1 %}
+                {% else %}
                     <div class="mbr-gallery-item"  data-tags="{{ product.type }}" data-slide-to="0" data-seller="false" data-price="{{ product.price }}" >
                                 <div class="item_overlay" ></div>
                                 <div class="galleryItem" data-toggle="modal">
@@ -121,6 +122,9 @@
                                     </div>
                                 </div>
                             </div>
+                {% endif %}
+                
+
 
 
 
