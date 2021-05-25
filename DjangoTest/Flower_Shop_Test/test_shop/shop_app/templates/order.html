@@ -86,12 +86,22 @@
                                      </h4>
                                      <ul class="list-group mb-3">
                                          {% for item in product_list %}
-                                             <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
+                                             {% if item.product_obj.product_id == 1 %}
+                                                 <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
+                                                 <img  width="80px"  src="/media/media/static/product/{{ user.id }}_DIY.png"/>
+                                                 <span>
+                                                     <p class="my-0">{{ item.product_obj.product_name }}</p></span>
+                                                 <span class="text-muted" id="i_num">   {{ item.product_num }}</span>
+                                             </li>
+                                             {% else %}
+                                                 <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
                                                  <img  width="80px"  src="/media/{{item.product_obj.product_image}}"/>
                                                  <span>
                                                      <p class="my-0">{{ item.product_obj.product_name }}</p></span>
                                                  <span class="text-muted" id="i_num">   {{ item.product_num }}</span>
                                              </li>
+                                             {% endif %}
+
                                          {% endfor %}
                                          <li class="list-group-item d-flex justify-content-between order-sum">
                                              <span>Total </span>
@@ -138,13 +148,24 @@
                 </h4>
                 <ul class="list-group mb-3">
                     {% for item in product_list %}
-                        <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
+                        {% if item.product_obj.product_id == 1 %}
+                            <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
+                            <img  width="120px"  src="/media/media/static/product/{{ user.id }}_DIY.png"/>
+                            <span><h6 class="my-0">{{ item.product_obj.product_name }}</h6></span>
+                            <span class="text-muted" id="i_num">{{ item.product_num }}</span>
+                            <span class="text-muted" id="i_price">{{ item.product_obj.price }}</span>
+                            <span class="text-muted" id="i_cal-price">calculated</span>
+                        </li>
+                        {% else %}
+                             <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
                             <img  width="120px"  src="/media/{{item.product_obj.product_image}}"/>
                             <span><h6 class="my-0">{{ item.product_obj.product_name }}</h6></span>
                             <span class="text-muted" id="i_num">{{ item.product_num }}</span>
                             <span class="text-muted" id="i_price">{{ item.product_obj.price }}</span>
                             <span class="text-muted" id="i_cal-price">calculated</span>
                         </li>
+                        {% endif %}
+
                     {% endfor %}
                     <li class="list-group-item d-flex justify-content-between order-sum">
                         <span>Total </span>

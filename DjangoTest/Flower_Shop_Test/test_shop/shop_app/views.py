@@ -561,6 +561,7 @@ def order(request, order_id):
     # print(p_list)
 
     return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id,
+                                          'user': request.user,
                                           'default_address': defaultAddress})
 
 
