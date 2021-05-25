@@ -40,5 +40,6 @@ urlpatterns = [
     path('result/', views.result, name='result'),
     path('DIY/', views.DIY, name='DIY'),
     path('check_mode/', views.checkMode, name='check_mode'),
-    path('<int:product_id>/add_comment/', views.add_comment, name='comment')
+    path('<int:product_id>/add_comment/', views.add_comment, name='comment'),
+    path('diy_pic/', views.savePic, name='diy_pic')
 ]

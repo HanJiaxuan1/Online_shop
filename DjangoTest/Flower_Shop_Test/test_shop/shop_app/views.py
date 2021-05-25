@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile, Address, DefaultAddress, \
     EpidemicMode, ProductComment
 from .forms import CartForm
+import base64
 
 
 def index(request):
@@ -651,3 +652,13 @@ def checkMode(request):
     mode = EpidemicMode.objects.get(pk=1).mode
     print(str(mode))
     return JsonResponse({"msg": str(mode)})
+
+
+@csrf_exempt
+def savePic(request):
+    data = request.POST.get('dataURL')
+    pic_name = str(request.user.id)+'_DIY.png'
+    imagedata = base64.b64decode(data)
+    with open('./media/media/static/product/'+pic_name, 'wb') as f:
+        f.write(imagedata)
+    return JsonResponse({"msg": 'good'})
