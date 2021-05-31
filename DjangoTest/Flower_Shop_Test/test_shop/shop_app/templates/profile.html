@@ -198,6 +198,9 @@ html.active .button a.save {
 .account-settings .about p {
     font-size: 0.825rem;
 }
+{#form{ position:absolute;z-index:100 }#}
+
+ {#* { touch-action: pan-y; }#}
 
 
 
@@ -210,13 +213,24 @@ html.active .button a.save {
 		<div class="account-settings">
 			<div class="user-profile">
 				<div class="user-avatar">
-					<img src="../../static/store/photo.jpg" alt="My photo">
+                    {% if profile.photo %}
+					    <img src="../../media/user/{{ profile.photo }}" alt="My photo">
+                    {% else %}
+                        <img src="../../media/user/user1.jpg" alt="My photo">
+                    {% endif %}
 				</div>
 				<h5 class="user-name">{{ user.username }}</h5>
 				<h6 class="user-email">{{ user.email }}</h6>
 			</div>
 			<div class="about">
-				 <button  class="btn btn-sm btn-light border-0"> Edit Photo</button>
+                    <form method="post" enctype="multipart/form-data" action="{% url 'shop_app:profile' %}">
+                        {% csrf_token %}
+                        {{ msg }}
+                        {{ af.as_p }}
+                        {#<input type="file" name="photo">#}
+                        <input type="submit" value="OK"/>
+                    </form>
+{#				 <button  class="btn btn-sm btn-light border-0"> Edit Photo</button>#}
             </div>
 		</div>
 	</div>
@@ -276,9 +290,9 @@ html.active .button a.save {
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="text-right">
 		             <div class="button" align="center">
-        <a class="btn-primary edit" href="#">Edit Fields</a>
-        <a class="btn-secondary save" href="#" data-toggle="modal" data-target="#modal-warning" onclick="changeProfile({{ user.id }})">Save Changes</a>
-    </div>
+                        <a class="btn-primary edit" href="#">Edit Fields</a>
+                        <a class="btn-secondary save" href="#" data-toggle="modal" data-target="#modal-warning" onclick="changeProfile({{ user.id }})">Save Changes</a>
+                    </div>
                 </div>
 			</div>
 		</div>
@@ -412,6 +426,7 @@ function changeProfile(getId){
         }
     });
 }
+
 </script>
 
 {% endblock %}

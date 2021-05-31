@@ -131,7 +131,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
     date_of_birth = models.DateField(blank=True, null=True)
-    photo = models.ImageField(upload_to='user/%Y/%m/%d', blank=True)
+    photo = models.ImageField(upload_to='user', blank=True, default="user1.jpg")
 
     def __str__(self):
         return 'Profile for {}'.format(self.profile_id)
@@ -168,3 +168,7 @@ class ProductComment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
+
+class Statistics(models.Model):
+    id = models.AutoField(primary_key=True)
+    mode = models.BooleanField(default=False)
