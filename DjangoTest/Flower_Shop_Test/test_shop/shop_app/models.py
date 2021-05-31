@@ -71,7 +71,6 @@ class Order(models.Model):
         p_list = ""
         for detail in product_details:
             if detail != '':
-
                 product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
                 product_num = detail.split(':')[1]
                 str_p_id = str(product_obj.product_id)
@@ -168,6 +167,7 @@ class ProductComment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
+
 
 class Statistics(models.Model):
     id = models.AutoField(primary_key=True)
