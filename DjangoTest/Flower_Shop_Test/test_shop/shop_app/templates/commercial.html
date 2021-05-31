@@ -12,11 +12,11 @@
                                 <div class="card mb-3 widget-content bg-midnight-bloom">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
-                                            <div class="widget-heading">Total Orders</div>
+                                            <div class="widget-heading">Week Orders</div>
                                             <div class="widget-subheading">The total number of the orders this week</div>
                                         </div>
                                         <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>1896</span></div>
+                                            <div class="widget-numbers text-white"><span>{{ week_order }}</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -25,11 +25,11 @@
                                 <div class="card mb-3 widget-content bg-arielle-smile">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
-                                            <div class="widget-heading">Total Profits</div>
+                                            <div class="widget-heading">Week Profits</div>
                                             <div class="widget-subheading">The total profits of this week</div>
                                         </div>
                                         <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>$ 5568</span></div>
+                                            <div class="widget-numbers text-white"><span>$ {{ week_profile }}</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -39,27 +39,27 @@
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
                                             <div class="widget-heading">Total Bouquet</div>
-                                            <div class="widget-subheading">The total number of bouquet that have been sold this week</div>
+                                            <div class="widget-subheading">The total number of bouquet that have been sold </div>
                                         </div>
                                         <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>225</span></div>
+                                            <div class="widget-numbers text-white"><span>{{ total_bouquet }}</span></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content bg-premium-dark">
-                                    <div class="widget-content-wrapper text-white">
-                                        <div class="widget-content-left">
-                                            <div class="widget-heading">Products Sold</div>
-                                            <div class="widget-subheading">Revenue streams</div>
-                                        </div>
-                                        <div class="widget-content-right">
-                                            <div class="widget-numbers text-warning"><span>$14M</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{#                            <div class="d-xl-none d-lg-block col-md-6 col-xl-4">#}
+{#                                <div class="card mb-3 widget-content bg-premium-dark">#}
+{#                                    <div class="widget-content-wrapper text-white">#}
+{#                                        <div class="widget-content-left">#}
+{#                                            <div class="widget-heading">Products Sold</div>#}
+{#                                            <div class="widget-subheading">Revenue streams</div>#}
+{#                                        </div>#}
+{#                                        <div class="widget-content-right">#}
+{#                                            <div class="widget-numbers text-warning"><span>$14M</span></div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
                         </div>
     <div class="row">
                             <div class="col-md-12 col-lg-6">
@@ -81,55 +81,55 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Top Purchasers</h6>
-                                                <div class="scroll-area-sm">
-                                                    <div class="scrollbar-container">
-                                                        <ul class="rm-list-borders rm-list-borders-scroll list-group list-group-flush">
-                                                            <li class="list-group-item">
-                                                                <div class="widget-content p-0">
-                                                                    <div class="widget-content-wrapper">
-                                                                        <div class="widget-content-left mr-3">
-                                                                            <img width="42" class="rounded-circle" src="../../static/store/photo.jpg" alt="">
-                                                                        </div>
-                                                                        <div class="widget-content-left">
-                                                                            <div class="widget-heading">Shinji</div>
-
-                                                                        </div>
-                                                                        <div class="widget-content-right">
-                                                                            <div class="font-size-xlg text-muted">
-                                                                                <small class="opacity-5 pr-1">$</small>
-                                                                                <span>129</span>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="list-group-item">
-                                                                <div class="widget-content p-0">
-                                                                    <div class="widget-content-wrapper">
-                                                                        <div class="widget-content-left mr-3">
-                                                                            <img width="42" class="rounded-circle" src="../../static/store/avatar.jpg" alt="">
-                                                                        </div>
-                                                                        <div class="widget-content-left">
-                                                                            <div class="widget-heading">Rei</div>
-
-                                                                        </div>
-                                                                        <div class="widget-content-right">
-                                                                            <div class="font-size-xlg text-muted">
-                                                                                <small class="opacity-5 pr-1">$</small>
-                                                                                <span>54</span>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </div>
-                                                </div>
+{#                                                <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Top Purchasers</h6>#}
+{#                                                <div class="scroll-area-sm">#}
+{#                                                    <div class="scrollbar-container">#}
+{#                                                        <ul class="rm-list-borders rm-list-borders-scroll list-group list-group-flush">#}
+{#                                                            <li class="list-group-item">#}
+{#                                                                <div class="widget-content p-0">#}
+{#                                                                    <div class="widget-content-wrapper">#}
+{#                                                                        <div class="widget-content-left mr-3">#}
+{#                                                                            <img width="42" class="rounded-circle" src="../../static/store/photo.jpg" alt="">#}
+{#                                                                        </div>#}
+{#                                                                        <div class="widget-content-left">#}
+{#                                                                            <div class="widget-heading">Shinji</div>#}
+{##}
+{#                                                                        </div>#}
+{#                                                                        <div class="widget-content-right">#}
+{#                                                                            <div class="font-size-xlg text-muted">#}
+{#                                                                                <small class="opacity-5 pr-1">$</small>#}
+{#                                                                                <span>129</span>#}
+{##}
+{#                                                                            </div>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                            </li>#}
+{#                                                            <li class="list-group-item">#}
+{#                                                                <div class="widget-content p-0">#}
+{#                                                                    <div class="widget-content-wrapper">#}
+{#                                                                        <div class="widget-content-left mr-3">#}
+{#                                                                            <img width="42" class="rounded-circle" src="../../static/store/avatar.jpg" alt="">#}
+{#                                                                        </div>#}
+{#                                                                        <div class="widget-content-left">#}
+{#                                                                            <div class="widget-heading">Rei</div>#}
+{##}
+{#                                                                        </div>#}
+{#                                                                        <div class="widget-content-right">#}
+{#                                                                            <div class="font-size-xlg text-muted">#}
+{#                                                                                <small class="opacity-5 pr-1">$</small>#}
+{#                                                                                <span>54</span>#}
+{##}
+{#                                                                            </div>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                            </li>#}
+{##}
+{##}
+{#                                                        </ul>#}
+{#                                                    </div>#}
+{#                                                </div>#}
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@
                                                 <div class="widget-subheading">All of the orders</div>
                                             </div>
                                             <div class="widget-content-right">
-                                                <div class="widget-numbers text-success">1896</div>
+                                                <div class="widget-numbers text-success">{{ total_order }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -187,7 +187,7 @@
                                                 <div class="widget-subheading">All of the income</div>
                                             </div>
                                             <div class="widget-content-right">
-                                                <div class="widget-numbers text-warning">$3M</div>
+                                                <div class="widget-numbers text-warning">${{ total_profile }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -202,7 +202,7 @@
                                                 <div class="widget-subheading">All of the users</div>
                                             </div>
                                             <div class="widget-content-right">
-                                                <div class="widget-numbers text-danger">558</div>
+                                                <div class="widget-numbers text-danger">{{ total_user }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -215,10 +215,10 @@ var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["{{week1}}", "{{week2}}", "{{week3}}", "{{week4}}", "{{week5}}", "{{week6}}"],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'of Bouquet',
+            data: [{{number1}}, {{number2}}, {{number3}}, {{number4}}, {{number5}}, {{number6}}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -253,16 +253,18 @@ var ctx = $('#my_chart');
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['Rose','Carnation',  'Lily'],
+        labels: ['Rose', 'Carnation', 'Lily', 'DIY Basket'],
         datasets: [{
             label: 'Sales',
-            data: [ 70, 50, 90],
+            data: [{{ rose }}, {{ carnation }}, {{ lily }}, {{ diy }}],
             backgroundColor: [
 
 
                 'rgb(241,147,185)',
                 'rgb(172,243,167)',
                 'rgb(162,204,246)',
+                'rgb(255,206,86)',
+
 
             ],
             borderColor:'white',
