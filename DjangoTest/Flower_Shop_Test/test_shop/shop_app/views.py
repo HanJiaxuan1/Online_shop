@@ -1,24 +1,20 @@
 import datetime
-import os
 from random import random
 
-from django.conf import settings
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 import random
 from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
-from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile, Address, DefaultAddress, \
     EpidemicMode, ProductComment
-from .forms import CartForm, AddPhotoForm
+from .forms import CartForm
 import base64
-
 
 
 def index(request):
@@ -109,7 +105,6 @@ def add_comment(request, product_id):
     new_comment = ProductComment(text=comment_text, product=s_product, user=user)
     new_comment.save()
     return HttpResponseRedirect(reverse('shop_app:detail', args=(product_id,)))
-
 
 @csrf_exempt
 def add_to_cart(request):
@@ -220,68 +215,9 @@ def profile(request):
             profile = Profile.objects.create(userinfo_id=uid)
         else:
             profile = profile[0]
-        # return render(request, 'profile.html', {'user': request.user, 'profile': profile}, )
-        if request.method == "POST":
-            af = AddPhotoForm(request.FILES)
-            pic = request.FILES.get('photo')  # 'pic'对应前端表单的name属性值。
-            print(pic)
-            filename = str(uid) + "_" + pic.name
-            print(filename)
-            save_path = '%s/user/%s'%(settings.MEDIA_ROOT,filename) # pic.name 上传文件的源文件名
-
-            # 判断表单值是否和法
-            if af.is_valid():
-                with open(save_path, 'wb') as f:
-                    # 获取上传文件的内容并写到创建的文件中
-                    for content in pic.chunks():  # pic.chunks() 上传文件的内容。
-                        f.write(content)
-                print("yes")
-                # headimg = af.cleaned_data['photo']
-                changeObject = Profile.objects.filter(userinfo_id=uid)
-                photo = changeObject.update(photo=filename)
-                # return render(request, 'profile.html', context={"photo":photo})
-                # return render(request, 'profile.html', {'user': request.user, 'profile': profile,
-                #                                         'photo':photo, 'af':af}, )
-                return redirect('/profile/', {'user': request.user, 'profile': profile,
-                                                        'photo':photo, 'af':af}, )
-            else:
-                print("no")
-                # 打印错误信息
-                print(af.errors.get_json_data())
-                message = af.errors.get_json_data()['photo'][0]
-                message = message['message']
-                return render(request, 'profile.html', {'user': request.user, 'profile': profile,
-                                                        'af':af, 'msg':message}, )
-
-        else:
-            af = AddPhotoForm()
-            return render(request, 'profile.html', {'user': request.user, 'profile': profile, 'af':af}, )
-            # return render(request, 'profile.html', context={"af":af})
+        return render(request, 'profile.html', {'user': request.user, 'profile': profile}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
-
-
-@csrf_exempt
-def change_profile(request):
-    data = request.POST
-    getid = request.POST.get("getId")
-    username = request.POST.get("username")
-    firstname = request.POST.get("firstname")
-    lastname = request.POST.get("lastname")
-    birthday = request.POST.get("birthday")
-    phone = request.POST.get("phone")
-    email = request.POST.get("email")
-    region = request.POST.get("region")
-    changeObject = Profile.objects.filter(userinfo_id=getid)
-    changeUserObject = User.objects.filter(id=getid)
-    if not changeObject:
-        Profile.objects.create(userinfo_id=getid, date_of_birth=birthday, phone=phone, region=region)
-        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email)
-    else:
-        changeObject.update(userinfo_id=getid, date_of_birth=birthday, phone=phone, region=region)
-        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email)
-    response = JsonResponse({"getId": getid})
-    return response
 
 
 def cart(request):
@@ -313,6 +249,9 @@ class QuestionInfo:
         self.question_text = text
         self.question_category = cate
         self.time_differ = delta
+
+
+
 
 
 def service(request):
@@ -510,6 +449,29 @@ def favorites(request):
                                                   'favorite_list': favorite_list}, )
     else:
         return HttpResponseRedirect(reverse('account:login'))
+
+
+@csrf_exempt
+def change_profile(request):
+    data = request.POST
+    getid = request.POST.get("getId")
+    username = request.POST.get("username")
+    firstname = request.POST.get("firstname")
+    lastname = request.POST.get("lastname")
+    birthday = request.POST.get("birthday")
+    phone = request.POST.get("phone")
+    email = request.POST.get("email")
+    region = request.POST.get("region")
+    changeObject = Profile.objects.filter(userinfo_id=getid)
+    changeUserObject = User.objects.filter(id=getid)
+    if not changeObject:
+        Profile.objects.create(userinfo_id=getid, date_of_birth=birthday, phone=phone, region=region)
+        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email)
+    else:
+        changeObject.update(userinfo_id=getid, date_of_birth=birthday, phone=phone, region=region)
+        changeUserObject.update(username=username, first_name=firstname, last_name=lastname, email=email)
+    response = JsonResponse({"getId": getid})
+    return response
 
 
 @csrf_exempt

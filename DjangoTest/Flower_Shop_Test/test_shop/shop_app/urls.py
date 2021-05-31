@@ -1,10 +1,7 @@
 from django.conf.urls import url
 from django.urls import path
-from django.conf.urls import include, url
-from django.conf import settings
-from django.conf.urls.static import static
+
 from . import views
-from .views import *
 
 app_name = 'shop_app'
 
@@ -12,11 +9,10 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<int:product_id>/', views.product, name='detail'),
     path('profile/', views.profile, name='profile'),
-    # path('add_photo/', views.add_photo, name='add_photo'),
     path('cart/', views.cart, name='cart'),
-    path('favvice/', views.service, name='service'),
-    path('aboorites/', views.favorites, name='favorites'),
-    path('serut_us/', views.about_us, name='about_us'),
+    path('favorites/', views.favorites, name='favorites'),
+    path('service/', views.service, name='service'),
+    path('about_us/', views.about_us, name='about_us'),
     path('delete/', views.delete, name='delete'),
     path('delete_favorite/', views.delete_favorite, name='delete_favorite'),
     path('change_profile/', views.change_profile, name='change_profile'),
@@ -46,4 +42,4 @@ urlpatterns = [
     path('check_mode/', views.checkMode, name='check_mode'),
     path('<int:product_id>/add_comment/', views.add_comment, name='comment'),
     path('diy_pic/', views.savePic, name='diy_pic')
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

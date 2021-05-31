@@ -125,7 +125,6 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),  #翻译文件所在目录，请自行创建
 )
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
