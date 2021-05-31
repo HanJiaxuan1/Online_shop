@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import Product, Cart, Order, Question, QuestionDetails, EpidemicMode
+from .models import Product, Cart, Order, Question, QuestionDetails, EpidemicMode, Statistics
 
 
 admin.site.site_header = 'Bouquet Pickup Admin'
@@ -18,5 +18,7 @@ admin.site.register(Product)
 admin.site.register(Question)
 
 admin.site.register(EpidemicMode)
+
+admin.site.register(Statistics)
 
 admin.site.register(Order, OrderAdmin)

@@ -168,3 +168,7 @@ class ProductComment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
+
+class Statistics(models.Model):
+    id = models.AutoField(primary_key=True)
+    mode = models.BooleanField(default=False)
