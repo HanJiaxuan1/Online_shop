@@ -409,7 +409,7 @@ function goBack() {
         {#console.log("address = "+ address);#}
     $.ajax({
         type : 'post',
-        url : '../add_order/',
+        url : '../../add_order/',
         data:{
             'o_id':order_id,
             'receiver':receiver,
@@ -418,6 +418,7 @@ function goBack() {
         },
         async : false,
         success : function(data){
+            console.log("add order ok")
         }
     });
 }
@@ -429,6 +430,7 @@ function addtocart(order_id) {
         data:{'order_id':order_id},
         async : false,
         success : function(data){
+            console.log("add_cart_again ok")
         }
     });
 }
