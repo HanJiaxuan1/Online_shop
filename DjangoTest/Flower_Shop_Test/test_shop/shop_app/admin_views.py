@@ -65,6 +65,8 @@ def statistics(request):
     carnation = 0
     lily = 0
     diy = 0
+    sunflower = 0
+    tulips = 0
     for item in selected_total_order:
         info = item.order_list
         total_product_details = info.split(';')
@@ -81,6 +83,10 @@ def statistics(request):
                     carnation += int(product[1])
                 elif choose_product.type == "Lily":
                     lily += int(product[1])
+                elif choose_product.type == "Sunflower":
+                    sunflower += int(product[1])
+                elif choose_product.type == "Tulips":
+                    tulips += int(product[1])
                 else:
                     diy += int(product[1])
 
@@ -164,7 +170,8 @@ def statistics(request):
                                                'total_profile': total_profile, 'week_profile': week_profile,
                                                'total_bouquet': total_bouquet, 'week_bouquet': week_bouquet,
                                                'total_user': total_user, 'rose': rose, 'carnation': carnation,
-                                               'lily': lily, 'diy': diy, 'week1': week1, 'week2': week2,
+                                               'lily': lily, 'diy': diy, 'sunflower':sunflower,
+                                               'tulips': tulips, 'week1': week1, 'week2': week2,
                                                'week3': week3,'week4': week4,'week5': week5,'week6': week6,
                                                'number1': week_bouquet, 'number2': number2,'number3': number3,
                                                'number4': number4,'number5': number5,'number6': number6})

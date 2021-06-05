@@ -205,10 +205,10 @@ var ctx = $('#my_chart');
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['Rose', 'Carnation', 'Lily', 'DIY Basket'],
+        labels: ['Rose', 'Carnation', 'Lily', 'DIY Basket','Sunflower', 'Tulips'],
         datasets: [{
             label: 'Sales',
-            data: [{{ rose }}, {{ carnation }}, {{ lily }}, {{ diy }}],
+            data: [{{ rose }}, {{ carnation }}, {{ lily }}, {{ diy }}, {{ sunflower }}, {{ tulips }}],
             backgroundColor: [
 
 
@@ -216,7 +216,8 @@ var myChart = new Chart(ctx, {
                 'rgb(172,243,167)',
                 'rgb(162,204,246)',
                 'rgb(255,206,86)',
-
+                'rgba(153, 102, 255)',
+                'rgba(255, 159, 64)'
 
             ],
             borderColor:'white',
