@@ -2,6 +2,7 @@
 {% extends "_base.html" %}
 
 {% block title %}Cart{% endblock %}
+{% load i18n %}
 
 {% block content %}
 
@@ -43,12 +44,12 @@
             <thead>
               <tr>
                   <input type="checkbox" id="selectall">
-                    Select All
+                    {% trans "Select All"%}
 
                     <th width="30%"></th>
-                    <th width="15%">Inventory</th>
-                    <th width="15%" >Quantity</th>
-                    <th width="15%"  >Sum</th>
+                    <th width="15%">{% trans "Inventory"%}</th>
+                    <th width="15%" >{% trans "Quantity"%}</th>
+                    <th width="15%"  >{% trans "Sum"%}</th>
 
               </tr>
             </thead>
@@ -84,59 +85,35 @@
                     <div class="col-xl-8 product_count">
 
           <input class="form-control" id="num" type="number"  data-toggle="modal" data-target="#modal-warning" min="1" onchange="changeNumber('{{cart_item.cart_id}}',value)" value="{{cart_item.number}}" required>
-
   </div>
-
                 </td>
-
                 <td>
-
                 <p class="card-text" id="calculated_price" ></p>
-
                 </td>
-
-
-
               </tr>
 {% endfor %}
     {% else %}
-
-        <p align="center">Sorry... No products in cart.</p>
+        <p align="center">{% trans "Sorry... No products in cart."%}</p>
     {% endif %}
-
               <tr>
-
-                    <td></td>
-                   <td>
-
-                </td>
-                    <td>
-   <div class="badge badge-secondary badge-pill" id="total_number"></div>
-
-                </td>
-
+                  <td></td>
+                  <td></td>
                   <td>
-                      <h6 id="total_price">￥0
-                 </h6>
+                      <div class="badge badge-secondary badge-pill" id="total_number"></div>
                   </td>
-
-
-              </tr>
-    <tr>
-
-
-
- <td> <div class="checkout_btn_inner float-lg-right">
-          <button type="submit" class="btn btn-sm btn-primary"  >Check out</button>
-
-
-          </div></td>
-<td></td>
- <td></td>
-        <td></td>
-
-    </tr>
-
+                  <td>
+                      <h6 id="total_price">￥0</h6>
+                  </td></tr>
+        <tr>
+            <td>
+                <div class="checkout_btn_inner float-lg-right">
+                    <button type="submit" class="btn btn-sm btn-primary"  >{% trans "Check out"%}</button>
+                </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
     </form>
             </tbody>
           </table>
@@ -154,7 +131,7 @@
 
                 <div class="modal-body" id="msg_content"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">{% trans "OK"%}</button>
                 </div>
             </div> <!-- / .modal-content -->
         </div> <!-- / .modal-dialog -->
@@ -284,7 +261,7 @@
         });
     // 4. 把总计显示在总计元素上
     //     console.log("total: ",total)
-        $("#total_number").text(number+"  Bouquets");
+        $("#total_number").text(number+  {% trans "Bouquets"%});
         $("#total_price").text("￥"+total.toFixed(2));//toFixed(2)函数的作用是把total保留2位
     }
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 21:00+0800\n"
+"POT-Creation-Date: 2021-06-05 22:08+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,6 +68,7 @@ msgstr "DIY花篮"
 #: .\account\templates\base.html:144 .\shop_app\templates\_base.html:144
 #: .\shop_app\templates\_profile_base.html:292
 #: .\shop_app\templates\_shop_base.html:98
+#: .\shop_app\templates\classifier.html:26
 msgid "Flower Identifier"
 msgstr "花朵智能识别"
 
@@ -328,9 +329,121 @@ msgstr "修改地址"
 msgid "Confirm"
 msgstr "确认"
 
-#: .\shop_app\templates\address.html:322
+#: .\shop_app\templates\address.html:322 .\shop_app\templates\cart.html:134
 msgid "OK"
 msgstr "好"
+
+#: .\shop_app\templates\admin_question.html:8
+msgid "Question"
+msgstr "问题"
+
+#: .\shop_app\templates\admin_question.html:20
+msgid "replied by customer service"
+msgstr "客服回复"
+
+#: .\shop_app\templates\admin_question.html:28
+msgid "Sorry... No message."
+msgstr "抱歉，没有消息"
+
+#: .\shop_app\templates\admin_question_detail.html:11
+msgid "Check Replies"
+msgstr "点击回复"
+
+#: .\shop_app\templates\cart.html:47
+msgid "Select All"
+msgstr "选择"
+
+#: .\shop_app\templates\cart.html:50
+msgid "Inventory"
+msgstr "库存"
+
+#: .\shop_app\templates\cart.html:51
+msgid "Quantity"
+msgstr "数量"
+
+#: .\shop_app\templates\cart.html:52
+msgid "Sum"
+msgstr "合计"
+
+#: .\shop_app\templates\cart.html:96
+msgid "Sorry... No products in cart."
+msgstr "抱歉，购物车里没有商品"
+
+#: .\shop_app\templates\cart.html:110
+msgid "Check out"
+msgstr "结算"
+
+#: .\shop_app\templates\cart.html:264
+msgid "Bouquets"
+msgstr "枝"
+
+#: .\shop_app\templates\classifier.html:28
+msgid "Have no idea what kind of flower it is?"
+msgstr "不知道它什么花？"
+
+#: .\shop_app\templates\classifier.html:32
+msgid "Let our Machine Learning Model tell you"
+msgstr "让我们的花朵只智能识别版块来告诉你"
+
+#: .\shop_app\templates\classifier.html:37
+msgid "Identify"
+msgstr "识别"
+
+#: .\shop_app\templates\commercial.html:16
+msgid "Week Orders"
+msgstr "本周订单"
+
+#: .\shop_app\templates\commercial.html:17
+msgid "The total number of the orders this week"
+msgstr "本周销售的总枝数"
+
+#: .\shop_app\templates\commercial.html:29
+msgid "Week Profits"
+msgstr "本周收益"
+
+#: .\shop_app\templates\commercial.html:30
+msgid "The total profits of this week"
+msgstr "本周销售总收益"
+
+#: .\shop_app\templates\commercial.html:42
+msgid "Total Bouquet"
+msgstr "总销售枝数"
+
+#: .\shop_app\templates\commercial.html:43
+msgid "The total number of bouquet that have been sold"
+msgstr "卖出的总枝数"
+
+#: .\shop_app\templates\commercial.html:71
+msgid "Sales Report"
+msgstr "销售报告"
+
+#: .\shop_app\templates\commercial.html:95
+msgid "Bandwidth Reports"
+msgstr "品种的报告"
+
+#: .\shop_app\templates\commercial.html:123
+msgid "Total Orders"
+msgstr "总订单数"
+
+#: .\shop_app\templates\commercial.html:124
+msgid "All of the orders"
+msgstr "总订单数"
+
+#: .\shop_app\templates\commercial.html:138
+msgid "Income"
+msgstr "收入"
+
+#: .\shop_app\templates\commercial.html:139
+msgid "All of the income"
+msgstr "总的收入之和"
+
+#: .\shop_app\templates\commercial.html:153
+msgid "Users"
+msgstr "用户"
+
+#: .\shop_app\templates\commercial.html:154
+msgid "All of the users"
+msgstr "总的用户的数量"
 
 #: .\test_shop\settings.py:120
 msgid "English"

@@ -1,6 +1,7 @@
 {% extends "_base.html" %}
 
 {% block title %}Cart{% endblock %}
+{% load i18n %}
 
 {% block content %}
 
@@ -22,18 +23,18 @@
     <link rel="stylesheet" href="../../../static/style/button.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<h1 class="title">Flower Identifier</h1>
+<h1 class="title">{% trans "Flower Identifier"%}</h1>
     <p class="description">
-        Have no idea what kind of flower it is?
+        {% trans "Have no idea what kind of flower it is?"%}
     </p>
 
     <p class="description">
-        <span class="bold">Let our Machine Learning Model tell you</span>
+        <span class="bold">{% trans "Let our Machine Learning Model tell you"%}</span>
     </p>
 
 
 
-    <button class="btn btn-success" onclick="init()">Identify</button>
+    <button class="btn btn-success" onclick="init()">{% trans "Identify"%}</button>
 <input type="file" class="btn btn-success" id="Files" name="files[]" onchange='handleFiles(this.files)' multiple />
 
 
