@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 19:27+0800\n"
+"POT-Creation-Date: 2021-06-05 21:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,6 +49,7 @@ msgstr "商店"
 #: .\account\templates\base.html:137 .\shop_app\templates\_base.html:137
 #: .\shop_app\templates\_profile_base.html:285
 #: .\shop_app\templates\_shop_base.html:91
+#: .\shop_app\templates\address.html:300
 msgid "Home"
 msgstr "主页"
 
@@ -258,6 +259,78 @@ msgstr "如果有任何问题请通过电子邮件联系我们"
 #: .\shop_app\templates\address.html:141
 msgid "Add a New Address"
 msgstr "添加新地址"
+
+#: .\shop_app\templates\address.html:145
+msgid "Default Address"
+msgstr "默认地址"
+
+#: .\shop_app\templates\address.html:164
+msgid "Default address"
+msgstr "默认地址"
+
+#: .\shop_app\templates\address.html:182
+msgid "Sorry... You haven't added an default address yet."
+msgstr "抱歉，你还没有选择默认地址。"
+
+#: .\shop_app\templates\address.html:187
+msgid "My Addresses"
+msgstr "我的地址"
+
+#: .\shop_app\templates\address.html:227
+msgid "EDIT"
+msgstr "编辑"
+
+#: .\shop_app\templates\address.html:229
+msgid "DELETE"
+msgstr "删除"
+
+#: .\shop_app\templates\address.html:239
+msgid "Sorry... You haven't added address yet."
+msgstr "抱歉，你还没有添加收件地址。"
+
+#: .\shop_app\templates\address.html:250
+msgid "New Address"
+msgstr "添加新地址"
+
+#: .\shop_app\templates\address.html:257
+msgid "Address"
+msgstr "地址"
+
+#: .\shop_app\templates\address.html:264
+msgid "Category"
+msgstr "类型"
+
+#: .\shop_app\templates\address.html:266
+msgid "My Home"
+msgstr "家"
+
+#: .\shop_app\templates\address.html:267 .\shop_app\templates\address.html:301
+msgid "Work"
+msgstr "公司"
+
+#: .\shop_app\templates\address.html:268 .\shop_app\templates\address.html:302
+msgid "Other"
+msgstr "其他"
+
+#: .\shop_app\templates\address.html:274 .\shop_app\templates\address.html:307
+msgid "Cancel"
+msgstr "取消"
+
+#: .\shop_app\templates\address.html:275
+msgid "Add"
+msgstr "添加"
+
+#: .\shop_app\templates\address.html:285
+msgid "Edit Address"
+msgstr "修改地址"
+
+#: .\shop_app\templates\address.html:309
+msgid "Confirm"
+msgstr "确认"
+
+#: .\shop_app\templates\address.html:322
+msgid "OK"
+msgstr "好"
 
 #: .\test_shop\settings.py:120
 msgid "English"

@@ -142,9 +142,7 @@ a:hover{
                             </button>
 
 
-                             <h5 class="font-weight-bold mt-0 mb-4">Default Address</h5>
-
-
+                             <h5 class="font-weight-bold mt-0 mb-4">{% trans "Default Address"%}</h5>
 
                         {% if default_address %}
                             {% for default_item in default_address %}
@@ -163,7 +161,7 @@ a:hover{
                                                 {% endif %}
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="mb-1">Default address</h6>
+                                                <h6 class="mb-1"> {% trans "Default address" %}</h6>
                                                 <label>
                                                     <p>{{default_item.default_address.category}}</p>
                                                 </label>
@@ -181,12 +179,12 @@ a:hover{
                         </div>
                             {% endfor %}
                     {% else %}
-                        <p align="center">Sorry... You haven't added an default address yet.</p>
+                        <p align="center">{% trans "Sorry... You haven't added an default address yet." %}</p>
                     {% endif %}
 
 
 
-  <h5 class="font-weight-bold mt-0 mb-4">My Addresses</h5>
+  <h5 class="font-weight-bold mt-0 mb-4">{% trans "My Addresses"%}</h5>
                     <div class="row">
 
                         {% if address_list %}
@@ -226,9 +224,9 @@ a:hover{
                                                 <p class="mb-3 text-black font-weight-bold">
                                                     <a class="text-primary mr-3" data-target="#editModal" data-toggle="modal" data-groupClassId='{{address_item.address_id}}'
                                                        onclick="dataTransfer('{{address_item.address_id}}', '{{ address_item.address }}','{{ address_item.category }}')" id="edit_transfer">
-                                                    <i class="icofont-ui-edit"></i> EDIT</a>
+                                                    <i class="icofont-ui-edit"></i>{% trans "EDIT" %}</a>
                                                     <a class="text-danger" data-target="#modal-warning" data-toggle="modal" onclick="deleteAddress({{address_item.address_id}}, this)">
-                                                        <i class="icofont-ui-delete" ></i> DELETE</a></p>
+                                                        <i class="icofont-ui-delete" ></i>{% trans "DELETE" %}</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -238,7 +236,7 @@ a:hover{
 
                 {% endfor %}
                     {% else %}
-                        <p align="center">Sorry... You haven't added address yet.</p>
+                        <p align="center">{% trans "Sorry... You haven't added address yet." %}</p>
                     {% endif %}
                     </div>
                 </div>
@@ -249,32 +247,32 @@ a:hover{
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                     <div class="modal-header d-flex align-items-center bg-light text-black">
-                        <h5 class="modal-title mb-0" id="threadModalLabel">New Address</h5>
+                        <h5 class="modal-title mb-0" id="threadModalLabel">{% trans "New Address"%}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="threadTitle">Address</label>
+                            <label for="threadTitle">{% trans "Address"%}</label>
                             <input type="text" name="question_text" class="form-control" id="threadTitle" placeholder="Enter a new address" autofocus="" />
                         </div>
                         <textarea class="form-control summernote" style="display: none;"></textarea>
 
                         <div class="custom-file form-control-sm mt-3" style="max-width: 300px;">
 
-                            <label class="custom-select-label" for="customSelect">Category</label>
+                            <label class="custom-select-label" for="customSelect">{% trans "Category"%}</label>
                             <select id="customSelect" name="category" class="custom-select custom-select-lg w-auto mr-1" >
-                                <option value="Home">Home</option>
-                                <option value="Work">Work</option>
-                                <option value="Other">Other</option>
+                                <option value="Home">{% trans "My Home"%}</option>
+                                <option value="Work">{% trans "Work"%}</option>
+                                <option value="Other">{% trans "Other"%}</option>
                             </select>
 
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal" >Cancel</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="#modal-warning" data-toggle="modal" onclick="addAddress({{ user.id }})" href="#">Add</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal" >{% trans "Cancel"%}</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="#modal-warning" data-toggle="modal" onclick="addAddress({{ user.id }})" href="#">{% trans "Add"%}</button>
                     </div>
                     </div>
                 </div>
@@ -284,7 +282,7 @@ a:hover{
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header d-flex align-items-center bg-light text-black">
-                      <h5 class="modal-title mb-0" id="threadModalLabel">Edit Address</h5>
+                      <h5 class="modal-title mb-0" id="threadModalLabel">{% trans "Edit Address"%}</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">×</span>
                       </button>
@@ -299,16 +297,16 @@ a:hover{
                       <div class="custom-file form-control-sm mt-3" style="max-width: 300px;">
                           <label class="custom-select-label" for="customSelect">Category</label>
                           <select id="edit_select" name="category" class="custom-select custom-select-lg w-auto mr-1" >
-                              <option value="Home">Home</option>
-                              <option value="Work">Work</option>
-                              <option value="Other">Other</option>
+                              <option value="Home">{% trans "Home"%}</option>
+                              <option value="Work">{% trans "Work"%}</option>
+                              <option value="Other">{% trans "Other"%}</option>
                           </select>
                       </div>
                   </div>
                   <div class="modal-footer">
-                      <button type="button" class="btn btn-light" data-dismiss="modal" >Cancel</button>
+                      <button type="button" class="btn btn-light" data-dismiss="modal" >{% trans "Cancel"%}</button>
                       <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="#modal-warning" data-toggle="modal"
-                              onclick="editAddress({{ address_item.address_id }})" href="#">Confirm</button>
+                              onclick="editAddress({{ address_item.address_id }})" href="#">{% trans "Confirm"%}</button>
                   </div>
               </div>
           </div>
@@ -321,7 +319,7 @@ a:hover{
                     <div class="modal-title"></div>
                     <div class="modal-body" id="msg_content"></div>
                     <div class="modal-footer">
-                        <button type="button" onclick = "window.location.reload();" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                        <button type="button" onclick = "window.location.reload();" class="btn btn-success btn-sm" data-dismiss="modal">{% trans "OK"%}</button>
                     </div>
                 </div> <!-- / .modal-content -->
             </div> <!-- / .modal-dialog -->
@@ -402,7 +400,7 @@ a:hover{
         async : false,
         success : function(data){
              $("#msg_content").html(data["msg"]);
-            {#window.location.reload();#}
+            window.location.reload();
         },
 
     });
@@ -426,7 +424,7 @@ function addAddress (getId){
         async : false,
         success : function(data){
            $("#msg_content").html(data["msg"]);
-            window.location.reload();
+            {#window.location.reload();#}
         }
     });
 
