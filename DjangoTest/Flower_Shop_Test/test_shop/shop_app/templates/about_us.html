@@ -1,6 +1,7 @@
-{% extends "_base.html" %}
 
-{% block title %}About Us{% endblock %}
+{% extends "_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "About Us" %}{% endblock %}
 
 {% block content %}
 
@@ -19,7 +20,7 @@
 
 
     <div class="container">
-        <h1 class="mbr-fonts-style mb-4 align-center display-2">About Us</h1>
+        <h1 class="mbr-fonts-style mb-4 align-center display-2">{% trans "About Us" %}</h1>
 
         <div class="media-container-row">
             <div class="card col-12 col-md-6 col-lg-6">
@@ -29,12 +30,14 @@
                     <h4 class="card-title mbr-fonts-style align-center display-5">
                         Our Store</h4>
                   <p style="font-family: Raleway">
-    We are proud to offer the finest quality fresh flower arrangements and service!</p>
+                      {% trans "We are proud to offer the finest quality fresh flower arrangements and service!" %}
+    </p>
 
 
-            <p style="font-family: Raleway">Our website is updated daily. All of the images reflected are arrangements we have designed.</p>
 
-<p style="font-family: Raleway">Professional but fun and easy-going staff will take your order and have it delivered in a timely manner.
+<p style="font-family: Raleway">
+    {% trans "Professional but fun and easy-going staff will take your order and have it delivered in a timely manner." %}
+
 </p>
                 </div>
             </div>
@@ -43,15 +46,13 @@
                      <img src="../../static/store/service.jpg " width="150"></div>
                 <div class="card-box">
                     <h4 class="card-title mbr-fonts-style align-center display-5">
-                        Our Services</h4>
+                        {% trans "Our Services" %}
+                        </h4>
                     <ul style="font-family: Raleway">
-    <li>Weekly inexpensive loose flower</li>
-        <li>Pick Up deals</li>
-    <li>Pick Up rose specials</li>
-    <li>Large inventory of fresh flowers</li>
-    <li>Tropical flowers and arrangements</li>
-    <li>Indoor green and blooming plants</li>
-     <li>Traditional arrangements and funeral designs</li>
+    <li>{% trans "DIY designed flower bucket" %}</li>
+    <li>{% trans "Large inventory of fresh flowers" %}</li>
+    <li>{% trans "Tropical flowers and arrangements" %}</li>
+    <li>{% trans "Indoor green and blooming plants" %}</li>
 </ul>
                    </div>
             </div>
@@ -70,7 +71,7 @@
 
 
     <div class="container">
-        <h2 class="mbr-fonts-style mb-4 align-center display-2">Store Hours</h2>
+        <h2 class="mbr-fonts-style mb-4 align-center display-2">{% trans "Store Hours" %}</h2>
 
         <div class="media-container-row">
             <div class="card col-12 col-md-4 col-lg-4">
@@ -78,8 +79,11 @@
                    <img src="../../static/store/open.jpg " width="100">
                 </div>
                 <div class="card-box">
-                     <h4>Monday - Friday</h4>
-                <p style="font-family: Raleway">8am – 4pm (Phones answered until 3:45pm)</p>
+                     <h4>{% trans "Monday - Friday" %}
+                         </h4>
+                <p style="font-family: Raleway">
+                    {% trans "8am – 4pm (Phones answered until 3:45pm)" %}
+                </p>
                 </div>
             </div>
             <div class="card col-12 col-md-4 col-lg-4">
@@ -87,8 +91,8 @@
                     <img src="../../static/store/store.jpg " width="100">
                 </div>
                 <div class="card-box">
-                 <h4>Saturday</h4>
-                <p style="font-family: Raleway">8am – Noon (Phones answered until 11:45am)</p>
+                 <h4>{% trans "Saturday" %}</h4>
+                <p style="font-family: Raleway">{% trans "8am – Noon (Phones answered until 11:45am)" %}</p>
                 </div>
             </div>
             <div class="card col-12 col-md-4 col-lg-4">
@@ -96,8 +100,8 @@
                      <img src="../../static/store/nav1.jpg " width="100">
                 </div>
                 <div class="card-box">
-                     <h4>Sunday</h4>
-                <p style="font-family: Raleway">Closed</p>
+                     <h4>{% trans "Sunday" %}</h4>
+                <p style="font-family: Raleway">{% trans "Closed" %}</p>
                 </div>
             </div>
         </div>
@@ -114,12 +118,10 @@
     <div class="container">
         <div class="row main-row">
             <div class="text-content mb-4 col-lg-12">
-                <h2 class="mb-4 mbr-fonts-style mbr-section-title display-2">Contact with us</h2>
-                           <p style="font-family: Raleway">To PICK UP your preorder TEXT US 512-520-1314</p>
+                <h2 class="mb-4 mbr-fonts-style mbr-section-title display-2">{% trans "Contact with us" %}</h2>
+                           <p style="font-family: Raleway">{% trans "Store location: Pingleyuan 100, Beijing" %}</p>
 
-           <p style="font-family: Raleway">We can make an on-the-spot to go order in roughly ten minutes.</p>
-
-           <p style="font-family: Raleway">For any questions or concerns please EMAIL US at <a href="#">customerservice@flowerpickup.com</a></p>
+           <p style="font-family: Raleway">{% trans "For any questions or concerns please EMAIL US at" %} <a href="#">bouquetpickup@163.com</a></p>
 
             </div>
 

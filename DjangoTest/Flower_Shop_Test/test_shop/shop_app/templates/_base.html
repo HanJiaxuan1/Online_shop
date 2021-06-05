@@ -101,7 +101,7 @@
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
             {% if request.user.is_authenticated %}
 <li >
-              <p > Welcome, {{ request.user.first_name }}</p>
+              <p > {% trans "Welcome" %}, {{ request.user.first_name }}</p>
           </li>
 
           {% else %}
