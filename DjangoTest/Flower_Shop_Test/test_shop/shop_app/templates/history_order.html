@@ -64,12 +64,25 @@
             <div class="row">
                 <div class="col-md-1">
                     <td style="position:relative;">
-    <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80" src="/media/{{order.pic1}}" />
+
+                        {% for product in order.products  %}
+
+                            {% if product.product_obj.product_id == 1 %}
+                                <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80"
+                                     src="/media/user/diy/{{ request.user.id }}_{{ order.order_id }}_DIY.png">
+
+                            {% else %}
+                                <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80"
+                                     src="/media/{{order.pic1}}" />
 
 
-    {% if order.pic2 %}
-     <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="/media/{{order.pic2}}" />
-    {% endif %}
+                                {% if order.pic2 %}
+                                    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="/media/{{order.pic2}}" />
+                                {% endif %}
+
+                            {% endif %}
+
+                        {% endfor %}
 
 </td>
                 </div>

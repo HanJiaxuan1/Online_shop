@@ -353,14 +353,16 @@ class ProductInfo:
 
 class OrderInfo:
     products = []
+    order_id = '0'
     total_price = '1'
     order_date = 'today'
     status = 'null'
     pic1 = ''
     pic2 = ''
 
-    def __init__(self, product_info, price, date, status, pic1, pic2):
+    def __init__(self, product_info, order_id, price, date, status, pic1, pic2):
         self.products = product_info
+        self.order_id = order_id
         self.total_price = price
         self.order_date = date
         self.status = status
@@ -379,6 +381,7 @@ def history_order(request):
 
         o_list = []
         for a_order in order_list:
+            order_id = a_order.order_id
             product_details = a_order.order_list.split(';')
             total_price = 0
             order_date = a_order.date.strftime('%y/%m/%d')
@@ -398,7 +401,7 @@ def history_order(request):
                     p_list.append(ProductInfo(product_obj, product_num))
                 i = i + 1
             print(pic1, pic2)
-            o_list.append(OrderInfo(p_list, total_price, order_date, a_order.status, pic1, pic2))
+            o_list.append(OrderInfo(p_list, order_id, total_price, order_date, a_order.status, pic1, pic2))
         return render(request, 'history_order.html', {'order_list': o_list})
     else:
         return HttpResponseRedirect(reverse('account:login'))
