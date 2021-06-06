@@ -11,7 +11,7 @@ from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.views import View
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile, Address, DefaultAddress, \
@@ -19,7 +19,6 @@ from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, P
 from .forms import CartForm, AddPhotoForm
 import base64
 import shutil
-
 
 
 def index(request):
@@ -210,7 +209,7 @@ def add_order(request):
 #     selected_order.save()
 #     return index(request)
 
-
+@csrf_exempt
 def profile(request):
     # global logedin_user
     # if request.user.is_authenticated:
