@@ -1,6 +1,7 @@
 {% extends "_base.html" %}
 
 {% block title %}Prediction{% endblock %}
+{% load i18n %}
 
 {% block content %}
 
@@ -13,9 +14,9 @@
 
 <div align="center">
 <div class="guid">
-    <h1 class="title">Pick a Card to Get Your Prediction</h1>
+    <h1 class="title">{% trans "Pick a Card to Get Your Prediction"%}</h1>
     <p class="description">
-        <span class="bold">Drag</span> or <span class="bold">Select</span> a card
+        <span class="bold">{% trans "Drag"%}</span>{% trans " or "%}<span class="bold">{% trans "Select"%}</span>{% trans " a card"%}
     </p>
 </div>
 
@@ -54,7 +55,7 @@
 
 
 </div>
- <button class="btn btn-success"   onclick="window.location.href='{% url 'shop_app:result' %}'">Get My Lucky Flower</button>
+ <button class="btn btn-success"   onclick="window.location.href='{% url 'shop_app:result' %}'">{% trans "Get My Lucky Flower"%}</button>
 </div>
 
 <script>

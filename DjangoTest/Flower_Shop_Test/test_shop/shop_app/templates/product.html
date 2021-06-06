@@ -2,6 +2,7 @@
 {% extends "_base.html" %}
 
 {% block title %}{{ product.product_name }}{% endblock %}
+{% load i18n %}
 
 {% block content %}
 
@@ -27,7 +28,7 @@
 
         </tr>
       <tr>
-          <th width="15%"   >Type</th>
+          <th width="15%"   >{% trans "Type"%}</th>
             <td style="color: #5a6268;    ' ">
                 {{ product.type }}
             </td>
@@ -35,7 +36,7 @@
         </tr>
 
      <tr>
-          <th width="15%"   >Color</th>
+          <th width="15%"   >{% trans "Color"%}</th>
             <td style="color: #5a6268;    '">
                 {{ product.color }}
             </td>
@@ -43,21 +44,21 @@
         </tr>
 
      <tr>
-          <th width="15%"   >Description</th>
+          <th width="15%"   >{% trans "Description"%}</th>
             <td style="color: #5a6268;    '"> {{ product.product_desc }}
             </td>
         </tr>
 
 
         <tr>
-          <th width="15%"   >Inventory</th>
+          <th width="15%"   >{% trans "Inventory"%}</th>
             <td style="color: #5a6268;    '" id="p_inventory"> {{ product.inventory }}
             </td>
         </tr>
 
 
         <tr>
-            <th width="15%"   >Quantity</th>
+            <th width="15%"   >{% trans "Quantity"%}</th>
             <td style="color: #5a6268;    '">
                 <input type="number" min="1" max="100" id="p_num" value="1"/>
             </td>
@@ -79,7 +80,7 @@
 
 </table>
 <img src="https://img.icons8.com/color/50/000000/like--v1.png" data-toggle="modal" data-target="#modal-warning" onclick="addToFavorite('{{ product.product_id }}', this)"/>
-<button  class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#modal-warning" onclick="addToCart('{{ product.product_id }}', this)">Add To Cart</button>
+<button  class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#modal-warning" onclick="addToCart('{{ product.product_id }}', this)">{% trans "Add To Cart"%}</button>
 
         </div>
 
@@ -92,7 +93,7 @@
 <div class="row bootstrap snippets bootdeys">
     <div class="col-md-12 col-sm-12">
         <div class="card shadow-sm " style="margin: 30px">
-            <h4 class="text-success">Comments
+            <h4 class="text-success">{% trans "Comments"%}
             <span>
                 <i class="fa fa-arrow-down" aria-hidden="true"></i>
             </span></h4>
@@ -103,9 +104,9 @@
                 <div class="panel-body">
 <form action="{% url 'shop_app:comment' product.product_id %}" method="post">
         {% csrf_token %}
-                    <textarea class="form-control" name='comment_text' placeholder="write a comment..." rows="3"></textarea>
+                    <textarea class="form-control" name='comment_text' placeholder={% trans "write a comment..."%} rows="3"></textarea>
                     <br>
-                    <button type="submit" class="btn btn-info pull-right">Post</button>
+                    <button type="submit" class="btn btn-info pull-right">{% trans "Post"%}</button>
                     <div class="clearfix"></div>
                     <hr>
 </form>
@@ -116,7 +117,7 @@
                             </a>
                             <div class="media-body">
                                 <span class="text-muted pull-right">
-                                    <small class="text-muted">30 min ago</small>
+                                    <small class="text-muted">3 days ago</small>
                                 </span>
                                 <strong class="text-success">@Rei</strong>
                                 <p>
@@ -130,7 +131,7 @@
                             </a>
                             <div class="media-body">
                                 <span class="text-muted pull-right">
-                                    <small class="text-muted">30 min ago</small>
+                                    <small class="text-muted">3 days ago</small>
                                 </span>
                                 <strong class="text-success">@Shiji</strong>
                                 <p>
@@ -178,7 +179,7 @@
 
                 <div class="modal-body" id="modal-content"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">{% trans "OK"%}</button>
                 </div>
             </div> <!-- / .modal-content -->
         </div> <!-- / .modal-dialog -->

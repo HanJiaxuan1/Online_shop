@@ -2,6 +2,7 @@
 {% extends "_profile_base.html" %}
 
 {% block title %}Chat{% endblock %}
+{% load i18n %}
 
 {% block content %}
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -272,7 +273,7 @@
 
                             </div>
                             <div class="float-right"><a href="{% url 'shop_app:communication' question.question_id %}" class="text-black">
-                                Check Replies</a></div>
+                                {% trans "Check Replies"%}</a></div>
                            </div>
 
                     </div>

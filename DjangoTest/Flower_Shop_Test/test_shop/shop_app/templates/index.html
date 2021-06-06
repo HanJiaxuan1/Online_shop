@@ -2,6 +2,8 @@
 {% extends "_shop_base.html" %}
 <style>
 
+{% load i18n %}
+
 </style>
 {% block title %}Bouquet Pickup{% endblock %}
 
@@ -133,7 +135,7 @@
 
             {% endfor %}
           {% else %}
-                <p>No polls are available.</p>
+                <p>{% trans "No polls are available."%}</p>
           {% endif %}
 
 

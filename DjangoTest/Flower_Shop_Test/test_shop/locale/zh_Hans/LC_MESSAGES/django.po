@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 22:08+0800\n"
+"POT-Creation-Date: 2021-06-06 12:19+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,6 +37,7 @@ msgstr "购物车"
 #: .\shop_app\templates\_profile_base.html:468
 #: .\shop_app\templates\_shop_base.html:81
 #: .\shop_app\templates\_shop_base.html:227
+#: .\shop_app\templates\service.html:133
 msgid "Service"
 msgstr "客服"
 
@@ -112,12 +113,14 @@ msgstr "登录"
 #: .\account\templates\base.html:200 .\shop_app\templates\_base.html:200
 #: .\shop_app\templates\_profile_base.html:348
 #: .\shop_app\templates\_shop_base.html:154
+#: .\shop_app\templates\prediction.html:19
 msgid "Select"
 msgstr "选择"
 
 #: .\account\templates\base.html:237 .\shop_app\templates\_base.html:237
 #: .\shop_app\templates\_profile_base.html:453
 #: .\shop_app\templates\_shop_base.html:212
+#: .\shop_app\templates\order.html:182 .\shop_app\templates\service.html:132
 msgid "Delivery"
 msgstr "外送"
 
@@ -145,13 +148,35 @@ msgstr "支付"
 msgid "Many payment options are available."
 msgstr "支持多种支付方式"
 
+#: .\shop_app\templates\DIY.html:21
+msgid "Design Your Bouquet!"
+msgstr "设计你自己的花束！"
+
+#: .\shop_app\templates\DIY.html:23
+msgid "Drag Flowers to your bouquet"
+msgstr "请拖拽花朵到你的花束中"
+
+#: .\shop_app\templates\DIY.html:26
+msgid "Done!"
+msgstr "完成！"
+
+#: .\shop_app\templates\DIY.html:134
+msgid "Your bouquet has been saved."
+msgstr "你的花束已经保存"
+
+#: .\shop_app\templates\DIY.html:136 .\shop_app\templates\address.html:322
+#: .\shop_app\templates\cart.html:134 .\shop_app\templates\order.html:235
+#: .\shop_app\templates\order.html:268 .\shop_app\templates\product.html:182
+#: .\shop_app\templates\profile.html:318
+msgid "OK"
+msgstr "好"
+
 #: .\shop_app\templates\_base.html:104
 msgid "Welcome"
-msgstr ""
+msgstr "欢迎"
 
 #: .\shop_app\templates\_profile_base.html:370
-#, fuzzy
-#| msgid "My Account"
+#: .\shop_app\templates\profile.html:5
 msgid "Account"
 msgstr "我的账号"
 
@@ -164,10 +189,9 @@ msgid "My Address"
 msgstr "我的地址"
 
 #: .\shop_app\templates\_profile_base.html:385
-#, fuzzy
-#| msgid "My Orders"
+#: .\shop_app\templates\service.html:134
 msgid "Order"
-msgstr "我的订单"
+msgstr "订单信息"
 
 #: .\shop_app\templates\_profile_base.html:390
 msgid "Cancelled Order"
@@ -297,7 +321,7 @@ msgstr "添加新地址"
 msgid "Address"
 msgstr "地址"
 
-#: .\shop_app\templates\address.html:264
+#: .\shop_app\templates\address.html:264 .\shop_app\templates\service.html:129
 msgid "Category"
 msgstr "类型"
 
@@ -314,6 +338,8 @@ msgid "Other"
 msgstr "其他"
 
 #: .\shop_app\templates\address.html:274 .\shop_app\templates\address.html:307
+#: .\shop_app\templates\order.html:131 .\shop_app\templates\order.html:221
+#: .\shop_app\templates\service.html:140
 msgid "Cancel"
 msgstr "取消"
 
@@ -325,13 +351,9 @@ msgstr "添加"
 msgid "Edit Address"
 msgstr "修改地址"
 
-#: .\shop_app\templates\address.html:309
+#: .\shop_app\templates\address.html:309 .\shop_app\templates\order.html:134
 msgid "Confirm"
 msgstr "确认"
-
-#: .\shop_app\templates\address.html:322 .\shop_app\templates\cart.html:134
-msgid "OK"
-msgstr "好"
 
 #: .\shop_app\templates\admin_question.html:8
 msgid "Question"
@@ -346,6 +368,7 @@ msgid "Sorry... No message."
 msgstr "抱歉，没有消息"
 
 #: .\shop_app\templates\admin_question_detail.html:11
+#: .\shop_app\templates\communication.html:276
 msgid "Check Replies"
 msgstr "点击回复"
 
@@ -353,13 +376,13 @@ msgstr "点击回复"
 msgid "Select All"
 msgstr "选择"
 
-#: .\shop_app\templates\cart.html:50
+#: .\shop_app\templates\cart.html:50 .\shop_app\templates\product.html:54
 msgid "Inventory"
 msgstr "库存"
 
-#: .\shop_app\templates\cart.html:51
+#: .\shop_app\templates\cart.html:51 .\shop_app\templates\product.html:61
 msgid "Quantity"
-msgstr "数量"
+msgstr "商品质量"
 
 #: .\shop_app\templates\cart.html:52
 msgid "Sum"
@@ -444,6 +467,262 @@ msgstr "用户"
 #: .\shop_app\templates\commercial.html:154
 msgid "All of the users"
 msgstr "总的用户的数量"
+
+#: .\shop_app\templates\favorites.html:29
+msgid "Product Name &amp; Details"
+msgstr "商品名称和细节"
+
+#: .\shop_app\templates\favorites.html:30
+msgid "Price"
+msgstr "价格"
+
+#: .\shop_app\templates\favorites.html:55
+msgid "Sorry... No products in favorite list."
+msgstr "抱歉，收藏夹里没有商品"
+
+#: .\shop_app\templates\history_order.html:57
+msgid "Order History"
+msgstr "订单历史"
+
+#: .\shop_app\templates\history_order.html:91
+msgid "order made on: "
+msgstr "订单创建于："
+
+#: .\shop_app\templates\index.html:138
+msgid "No polls are available."
+msgstr "没有合适的筛选结果"
+
+#: .\shop_app\templates\order.html:74
+msgid "Order Confirm"
+msgstr "订单确认"
+
+#: .\shop_app\templates\order.html:86
+msgid "Order Info"
+msgstr "订单信息"
+
+#: .\shop_app\templates\order.html:108 .\shop_app\templates\order.html:172
+msgid "Total"
+msgstr "合计"
+
+#: .\shop_app\templates\order.html:114
+msgid "Receiver Info"
+msgstr "收件人信息"
+
+#: .\shop_app\templates\order.html:116
+msgid "Receiver Name:"
+msgstr "收件人名字"
+
+#: .\shop_app\templates\order.html:120
+msgid "Receiver Phone Number:"
+msgstr "收件人电话"
+
+#: .\shop_app\templates\order.html:124
+msgid "Receiver Address:"
+msgstr "收件人地址"
+
+#: .\shop_app\templates\order.html:148
+msgid "Order Verification"
+msgstr "订单确认"
+
+#: .\shop_app\templates\order.html:158 .\shop_app\templates\order.html:166
+msgid "calculated"
+msgstr "合计"
+
+#: .\shop_app\templates\order.html:178
+msgid "Receiver Information"
+msgstr "收件人信息"
+
+#: .\shop_app\templates\order.html:181
+msgid "Pickup"
+msgstr "自提"
+
+#: .\shop_app\templates\order.html:185
+msgid "Receiver Name"
+msgstr "收件人姓名"
+
+#: .\shop_app\templates\order.html:187
+msgid "Name"
+msgstr "姓名"
+
+#: .\shop_app\templates\order.html:189
+msgid "Receiver name is required."
+msgstr "收件人名字是必填项"
+
+#: .\shop_app\templates\order.html:194
+msgid "Receiver Phone Number "
+msgstr "收件人电话"
+
+#: .\shop_app\templates\order.html:195
+msgid "Phone number"
+msgstr "收件人电话"
+
+#: .\shop_app\templates\order.html:197
+msgid "Please enter a valid phone number."
+msgstr "请输入合法的手机号"
+
+#: .\shop_app\templates\order.html:201
+msgid "Receiver Address"
+msgstr "收件人地址地址"
+
+#: .\shop_app\templates\order.html:204 .\shop_app\templates\order.html:208
+msgid "Please enter your address here."
+msgstr "请在这里输入你的地址"
+
+#: .\shop_app\templates\order.html:212
+msgid "Please enter your delivery address."
+msgstr "请输入你的收件地址"
+
+#: .\shop_app\templates\order.html:217
+msgid "Checkout"
+msgstr "结算"
+
+#: .\shop_app\templates\order.html:232
+msgid "Order Placed"
+msgstr "下单成功"
+
+#: .\shop_app\templates\order.html:233
+msgid "Thanks for your purchase!"
+msgstr "感谢你的购买！"
+
+#: .\shop_app\templates\order.html:247
+msgid "Your order has been canceled."
+msgstr "你的订单已经取消"
+
+#: .\shop_app\templates\order.html:248
+msgid "Add items to cart again?"
+msgstr "是否要将商品加入购物车？"
+
+#: .\shop_app\templates\order.html:251
+msgid "Yes"
+msgstr "是"
+
+#: .\shop_app\templates\order.html:253
+msgid "No"
+msgstr "否"
+
+#: .\shop_app\templates\order.html:266
+msgid "The products have been added to cart."
+msgstr "商品已经被加入购物车"
+
+#: .\shop_app\templates\prediction.html:17
+msgid "Pick a Card to Get Your Prediction"
+msgstr "选择一张塔罗牌来开始预测"
+
+#: .\shop_app\templates\prediction.html:19
+msgid "Drag"
+msgstr "拖拽"
+
+#: .\shop_app\templates\prediction.html:19
+msgid " or "
+msgstr "或者"
+
+#: .\shop_app\templates\prediction.html:19
+msgid " a card"
+msgstr "一张卡片"
+
+#: .\shop_app\templates\prediction.html:58
+msgid "Get My Lucky Flower"
+msgstr "获取我的幸运花朵"
+
+#: .\shop_app\templates\product.html:31
+msgid "Type"
+msgstr "品种"
+
+#: .\shop_app\templates\product.html:39
+msgid "Color"
+msgstr "颜色"
+
+#: .\shop_app\templates\product.html:47
+msgid "Description"
+msgstr "描述"
+
+#: .\shop_app\templates\product.html:83
+msgid "Add To Cart"
+msgstr "添加到购物车"
+
+#: .\shop_app\templates\product.html:96
+msgid "Comments"
+msgstr "评论"
+
+#: .\shop_app\templates\product.html:107
+msgid "write a comment..."
+msgstr "写一个评论"
+
+#: .\shop_app\templates\product.html:109 .\shop_app\templates\service.html:141
+msgid "Post"
+msgstr "发布"
+
+#: .\shop_app\templates\profile.html:245
+msgid "Personal Details"
+msgstr "个人信息"
+
+#: .\shop_app\templates\profile.html:249
+msgid "Username"
+msgstr "用户名"
+
+#: .\shop_app\templates\profile.html:255
+msgid "Firstname"
+msgstr "名字"
+
+#: .\shop_app\templates\profile.html:261
+msgid "Lastname"
+msgstr "姓氏"
+
+#: .\shop_app\templates\profile.html:267
+msgid "Birthday"
+msgstr "生日"
+
+#: .\shop_app\templates\profile.html:273
+msgid "Phone"
+msgstr "电话号码"
+
+#: .\shop_app\templates\profile.html:279
+msgid "Email"
+msgstr "邮箱"
+
+#: .\shop_app\templates\profile.html:285
+msgid "Region"
+msgstr "地区"
+
+#: .\shop_app\templates\profile.html:294
+msgid "Edit Fields"
+msgstr "修改"
+
+#: .\shop_app\templates\profile.html:295
+msgid "Save Changes"
+msgstr "保存修改"
+
+#: .\shop_app\templates\result.html:26
+msgid "Hover to See the Detail"
+msgstr "翻转卡牌查看结果"
+
+#: .\shop_app\templates\result.html:31
+msgid "Order Now"
+msgstr "立刻下单"
+
+#: .\shop_app\templates\service.html:48
+msgid "replied by customer service "
+msgstr "客服回复"
+
+#: .\shop_app\templates\service.html:56
+msgid "Sorry... No questions yet."
+msgstr "抱歉，还没有问题"
+
+#: .\shop_app\templates\service.html:115
+msgid "New Question"
+msgstr "新提问"
+
+#: .\shop_app\templates\service.html:122
+msgid "Question Title"
+msgstr "问题标题"
+
+#: .\shop_app\templates\service.html:131
+msgid "Quality"
+msgstr "数量"
+
+#: .\shop_app\templates\service.html:135
+msgid "Product"
+msgstr "商品"
 
 #: .\test_shop\settings.py:120
 msgid "English"

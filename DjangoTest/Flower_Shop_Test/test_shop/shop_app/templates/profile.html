@@ -1,7 +1,9 @@
 
 {% extends "_profile_base.html" %}
+{% load i18n %}
 
-{% block title %}Account{% endblock %}
+{% block title %}{% trans "Account"%}{% endblock %}
+
 
 {% block content %}
       <style>
@@ -227,7 +229,6 @@ html.active .button a.save {
                         {% csrf_token %}
                         {{ msg }}
                         {{ af.as_p }}
-                        {#<input type="file" name="photo">#}
                         <input type="submit" value="OK"/>
                     </form>
 {#				 <button  class="btn btn-sm btn-light border-0"> Edit Photo</button>#}
@@ -241,47 +242,47 @@ html.active .button a.save {
 	<div class="card-body">
 		<div class="row gutters">
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<h6 class="mb-2 text-primary">Personal Details</h6>
+				<h6 class="mb-2 text-primary">{% trans "Personal Details"%}</h6>
 			</div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="field">
-                <label>Username</label>
+                <label>{% trans "Username"%}</label>
                 <input id = "username" type="text" value="{{ user.username }}" />
             </div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				 <div class="field">
-                <label>Firstname</label>
+                <label>{% trans "Firstname"%}</label>
                 <input id = "firstname" type="text" value="{{ user.first_name }}" />
             </div>
 			</div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				 <div class="field">
-                <label>Lastname</label>
+                <label>{% trans "Lastname"%}</label>
                 <input id = "lastname" type="text" value="{{ user.last_name }}" />
             </div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 		 <div class="field">
-                <label>Birthday</label>
+                <label>{% trans "Birthday"%}</label>
                 <input id = "birthday" type="date" value="{{ profile.date_of_birth | date:'Y-m-d' }}" />
             </div>
             </div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 			     <div class="field">
-                <label>Phone</label>
+                <label>{% trans "Phone"%}</label>
                 <input id = "phone" type="text" value="{{ profile.phone }}" />
             </div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 		   <div class="field">
-                <label>Email</label>
+                <label>{% trans "Email"%}</label>
                 <input id = "email" type="email" value="{{ user.email }}" />
             </div>
 			</div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 	     <div class="field">
-                <label>Region</label>
+                <label>{% trans "Region"%}</label>
                 <input id = "region" type="text" value="{{ profile.region }}" />
             </div>
 		</div>
@@ -290,8 +291,8 @@ html.active .button a.save {
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="text-right">
 		             <div class="button" align="center">
-                        <a class="btn-primary edit" href="#">Edit Fields</a>
-                        <a class="btn-secondary save" href="#" data-toggle="modal" data-target="#modal-warning" onclick="changeProfile({{ user.id }})">Save Changes</a>
+                        <a class="btn-primary edit" href="#">{% trans "Edit Fields"%}</a>
+                        <a class="btn-secondary save" href="#" data-toggle="modal" data-target="#modal-warning" onclick="changeProfile({{ user.id }})">{% trans "Save Changes"%}</a>
                     </div>
                 </div>
 			</div>
@@ -314,7 +315,7 @@ html.active .button a.save {
 
                 <div class="modal-body" id="msgcontent"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">{% trans "OK"%}</button>
                 </div>
             </div> <!-- / .modal-content -->
         </div> <!-- / .modal-dialog -->

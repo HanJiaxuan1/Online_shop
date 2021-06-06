@@ -2,6 +2,7 @@
 
 {% block title %}DIY{% endblock %}
 
+{% load i18n %}
 
 {% block content %}
 
@@ -17,12 +18,12 @@
 
 <div align="center">
 <div class="guid">
-    <h1 class="title">Design Your Bouquet!</h1>
+    <h1 class="title">{% trans "Design Your Bouquet!"%}</h1>
     <p class="description">
-        <span class="bold">Drag</span> Flowers to your bouquet
+        <span class="bold"></span> {% trans "Drag Flowers to your bouquet"%}
     </p>
     <div align="center">
- <button class="btn btn-success"  id="save" data-toggle="modal" data-target="#modal-warning">Done!</button>
+ <button class="btn btn-success"  id="save" data-toggle="modal" data-target="#modal-warning">{% trans "Done!"%}</button>
     </div>
 </div>
 </div>
@@ -130,9 +131,9 @@
                 </div>
                 <div class="modal-title"></div>
 
-                <div class="modal-body">Your bouquet has been saved.</div>
+                <div class="modal-body">{% trans "Your bouquet has been saved."%}</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">{% trans "OK"%}</button>
                 </div>
             </div> <!-- / .modal-content -->
         </div> <!-- / .modal-dialog -->

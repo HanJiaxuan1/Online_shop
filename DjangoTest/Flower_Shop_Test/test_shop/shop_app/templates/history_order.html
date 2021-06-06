@@ -2,6 +2,7 @@
 {% extends "_profile_base.html" %}
 
 {% block title %}Account{% endblock %}
+{% load i18n %}
 
 {% block content %}
    <style type="text/css">
@@ -53,7 +54,7 @@
 <div class="container bootdey">
     <div class="panel panel-default panel-order">
         <div class="panel-heading">
-            <h4 >Order History</h4>
+            <h4 >{% trans "Order History"%}</h4>
 
         </div>
 
@@ -87,7 +88,7 @@
                                  Cost: {{ order.total_price }} <br />
                             </small>
                         </div>
-                        <div class="col-md-12">order made on:  <a href="#">{{ order.order_date }}</a></div>
+                        <div class="col-md-12">{% trans "order made on: "%} <a href="#">{{ order.order_date }}</a></div>
                     </div>
                 </div>
             </div>
