@@ -4,9 +4,155 @@
 {% load i18n %}
 
 {% block content %}
+    <link rel="stylesheet" href="/static/store/static/css/bootstrap.min10.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
 <div id="content-main">
+  <style type="text/css">
 
 
+
+
+  
+
+.chat-header {
+    padding: 15px 20px;
+    border-bottom: 2px solid #f4f7f6
+}
+
+.chat-header img {
+    float: left;
+    border-radius: 40px;
+    width: 40px
+}
+
+.chat-header .chat-about {
+    float: left;
+    padding-left: 10px
+}
+
+.chat-history {
+    padding: 20px;
+    border-bottom: 2px solid #fff
+}
+
+.chat-history ul {
+    padding: 0
+}
+
+.chat-history ul li {
+    list-style: none;
+    margin-bottom: 30px
+}
+
+.chat-history ul li:last-child {
+    margin-bottom: 0px
+}
+
+.chat-history .message-data {
+    margin-bottom: 15px
+}
+
+.chat-history .message-data img {
+    border-radius: 40px;
+    width: 40px
+}
+
+.chat-history .message-data-time {
+    color: #434651;
+    padding-left: 6px
+}
+
+.chat-history .message {
+    color: #444;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    display: inline-block;
+    position: relative
+}
+
+.chat-history .message:after {
+    bottom: 100%;
+    left: 7%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #fff;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.chat-history .my-message {
+    background: #efefef
+}
+
+.chat-history .my-message:after {
+    bottom: 100%;
+    left: 30px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #efefef;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.chat-history .other-message {
+    background: #e8f1f3;
+    text-align: right
+}
+
+.chat-history .other-message:after {
+    border-bottom-color: #e8f1f3;
+    left: 93%
+}
+
+.chat-message {
+    padding: 20px
+}
+
+.online,
+.offline,
+.me {
+    margin-right: 2px;
+    font-size: 8px;
+    vertical-align: middle
+}
+
+.online {
+    color: #86c541
+}
+
+.offline {
+    color: #e47297
+}
+
+.me {
+    color: #1d8ecd
+}
+
+.float-right {
+    float: right
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0
+}
+
+</style>
+<div class="chat-history">
 <div class="float-right"><a href="{% url 'shop_app_question:question_detail' question.question_id %}" class="text-black">
                                 {% trans "Check Replies"%}</a></div>
                            </div>
@@ -22,7 +168,7 @@
     {% endif %}
 
     {% if message.source == 'staff' %}
-            <li class="clearfix">
+            <li class="clearfix" style="list-style: none">
         <div class="message-data">
             <span class="message-data-time">{{ message.date }}</span>
                <img src="../../static/store/avatar.jpg" alt="admin">
@@ -43,6 +189,6 @@
         </div>
     </div>
 </form>
-
+</div>
 </div>
 {% endblock %}
