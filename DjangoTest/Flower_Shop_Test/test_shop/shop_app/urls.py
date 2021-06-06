@@ -45,5 +45,6 @@ urlpatterns = [
     path('DIY/', views.DIY, name='DIY'),
     path('check_mode/', views.checkMode, name='check_mode'),
     path('<int:product_id>/add_comment/', views.add_comment, name='comment'),
-    path('diy_pic/', views.savePic, name='diy_pic')
+    path('diy_pic/', views.savePic, name='diy_pic'),
+    path('diy_pic_order/', views.savePicOrder, name='diy_pic_order')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

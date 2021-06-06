@@ -89,9 +89,9 @@
                                          {% for item in product_list %}
                                              {% if item.product_obj.product_id == 1 %}
                                                  <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
-                                                 <img  width="80px"  src="/media/media/static/product/{{ user.id }}_DIY.png"/>
+                                                 <img id="diy_img"  width="80px"  src="/media/media/static/product/{{ user.id }}_DIY.png"/>
                                                  <span>
-                                                     <p class="my-0">{{ item.product_obj.product_name }}</p></span>
+                                                     <p id="diy_name" class="my-0">{{ item.product_obj.product_name }}</p></span>
                                                  <span class="text-muted" id="i_num">   {{ item.product_num }}</span>
                                              </li>
                                              {% else %}
@@ -401,6 +401,7 @@ function goBack() {
         let phone = Number($("#p_number").val())
         let address = $("#address").val()
 
+
         $("#mo_name").html(receiver);	      //赋值给模态框
         $("#mo_phone").html(phone);
         $("#mo_address").html(address);
@@ -408,6 +409,18 @@ function goBack() {
         {#console.log("receiver = "+ receiver );#}
         {#console.log("phone = "+phone);#}
         {#console.log("address = "+ address);#}
+
+        console.log(order_id)
+
+        let image = $("#diy_img")
+
+        if (image != null){
+            console.log("its a diy order");
+            let img_src = image.attr("src");
+            savediypic(img_src, order_id)
+        }
+
+
     $.ajax({
         type : 'post',
         url : '../../add_order/',
@@ -423,6 +436,27 @@ function goBack() {
         }
     });
 }
+
+
+function savediypic(dataSRC, order_id) {
+    console.log("savediypic activate")
+    $.ajax({
+        type : 'post',
+        url : '../../diy_pic_order/',
+        data: {
+            'dataSRC' : dataSRC,
+            'order_id' : order_id
+        },
+        async : false,
+        success : function() {
+
+        }
+    });
+}
+
+
+
+
 function addtocart(order_id) {
     {#console.log("order_id = "+ order_id );#}
     $.ajax({

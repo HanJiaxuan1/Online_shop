@@ -18,6 +18,7 @@ from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, P
     EpidemicMode, ProductComment
 from .forms import CartForm, AddPhotoForm
 import base64
+import shutil
 
 
 
@@ -190,6 +191,7 @@ def add_order(request):
         receiver = str(request.POST.get("receiver"))
         phone = int(request.POST.get("phone"))
         address = str(request.POST.get("address"))
+
 
         selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
         selected_order.status = 'paid'
@@ -700,4 +702,21 @@ def savePic(request):
     imagedata = base64.b64decode(data)
     with open('./media/media/static/product/'+pic_name, 'wb') as f:
         f.write(imagedata)
+    return JsonResponse({"msg": 'good'})
+
+@csrf_exempt
+def savePicOrder(request):
+    data = str(request.POST.get('dataSRC'))
+    order_id = request.POST.get('order_id')
+    pic_name = str(request.user.id)+'_'+str(order_id)+'_DIY.png'
+    data = data.strip('/')
+
+    old_path = data
+    new_path = 'media/user/diy/' + pic_name
+    # new_path = 'media/media/static/product/1_4_DIY.png'
+    os.renames(old_path, new_path)
+
+    # imagedata = base64.b64decode(data)
+    # with open('./media/user/diy/'+pic_name, 'wb') as f:
+    #     f.write(imagedata)
     return JsonResponse({"msg": 'good'})
