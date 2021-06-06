@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-06 12:19+0800\n"
+"POT-Creation-Date: 2021-06-06 15:36+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,8 +33,8 @@ msgstr "购物车"
 #: .\account\templates\base.html:127 .\account\templates\base.html:252
 #: .\shop_app\templates\_base.html:127 .\shop_app\templates\_base.html:252
 #: .\shop_app\templates\_profile_base.html:275
-#: .\shop_app\templates\_profile_base.html:377
-#: .\shop_app\templates\_profile_base.html:468
+#: .\shop_app\templates\_profile_base.html:390
+#: .\shop_app\templates\_profile_base.html:470
 #: .\shop_app\templates\_shop_base.html:81
 #: .\shop_app\templates\_shop_base.html:227
 #: .\shop_app\templates\service.html:133
@@ -75,6 +75,7 @@ msgstr "花朵智能识别"
 
 #: .\account\templates\base.html:150 .\shop_app\templates\_base.html:150
 #: .\shop_app\templates\_profile_base.html:298
+#: .\shop_app\templates\_profile_base.html:373
 #: .\shop_app\templates\_shop_base.html:104
 msgid "Profile"
 msgstr "个人主页"
@@ -118,32 +119,32 @@ msgid "Select"
 msgstr "选择"
 
 #: .\account\templates\base.html:237 .\shop_app\templates\_base.html:237
-#: .\shop_app\templates\_profile_base.html:453
+#: .\shop_app\templates\_profile_base.html:455
 #: .\shop_app\templates\_shop_base.html:212
 #: .\shop_app\templates\order.html:182 .\shop_app\templates\service.html:132
 msgid "Delivery"
 msgstr "外送"
 
 #: .\account\templates\base.html:242 .\shop_app\templates\_base.html:242
-#: .\shop_app\templates\_profile_base.html:458
+#: .\shop_app\templates\_profile_base.html:460
 #: .\shop_app\templates\_shop_base.html:217
 msgid "We offer good delivery service."
 msgstr "我们致力于提供最优质的服务"
 
 #: .\account\templates\base.html:257 .\shop_app\templates\_base.html:257
-#: .\shop_app\templates\_profile_base.html:473
+#: .\shop_app\templates\_profile_base.html:475
 #: .\shop_app\templates\_shop_base.html:232
 msgid "We bring you love and happiness."
 msgstr "我们带给您爱与快乐"
 
 #: .\account\templates\base.html:267 .\shop_app\templates\_base.html:267
-#: .\shop_app\templates\_profile_base.html:483
+#: .\shop_app\templates\_profile_base.html:485
 #: .\shop_app\templates\_shop_base.html:242
 msgid "Payment"
 msgstr "支付"
 
 #: .\account\templates\base.html:272 .\shop_app\templates\_base.html:272
-#: .\shop_app\templates\_profile_base.html:488
+#: .\shop_app\templates\_profile_base.html:490
 #: .\shop_app\templates\_shop_base.html:247
 msgid "Many payment options are available."
 msgstr "支持多种支付方式"
@@ -176,15 +177,15 @@ msgid "Welcome"
 msgstr "欢迎"
 
 #: .\shop_app\templates\_profile_base.html:370
-#: .\shop_app\templates\profile.html:5
+#: .\shop_app\templates\address.html:4
 msgid "Account"
 msgstr "我的账号"
 
-#: .\shop_app\templates\_profile_base.html:373
+#: .\shop_app\templates\_profile_base.html:375
 msgid "Favorites"
 msgstr "收藏夹"
 
-#: .\shop_app\templates\_profile_base.html:375
+#: .\shop_app\templates\_profile_base.html:377
 msgid "My Address"
 msgstr "我的地址"
 
@@ -192,14 +193,6 @@ msgstr "我的地址"
 #: .\shop_app\templates\service.html:134
 msgid "Order"
 msgstr "订单信息"
-
-#: .\shop_app\templates\_profile_base.html:390
-msgid "Cancelled Order"
-msgstr "取消订单"
-
-#: .\shop_app\templates\_profile_base.html:392
-msgid "My Comments"
-msgstr "我的评论"
 
 #: .\shop_app\templates\_shop_base.html:185
 msgid "Life Blooms Like Flowers"
@@ -488,6 +481,22 @@ msgstr "订单历史"
 msgid "order made on: "
 msgstr "订单创建于："
 
+#: .\shop_app\templates\index.html:61
+msgid "Price Range"
+msgstr "价格区间"
+
+#: .\shop_app\templates\index.html:79 .\shop_app\templates\index.html:83
+msgid "Filter"
+msgstr "筛选"
+
+#: .\shop_app\templates\index.html:80
+msgid "Show all"
+msgstr "展示全部"
+
+#: .\shop_app\templates\index.html:89
+msgid "All"
+msgstr "全部"
+
 #: .\shop_app\templates\index.html:138
 msgid "No polls are available."
 msgstr "没有合适的筛选结果"
@@ -731,6 +740,12 @@ msgstr "英语"
 #: .\test_shop\settings.py:121
 msgid "Simplified Chinese"
 msgstr "中文"
+
+#~ msgid "Cancelled Order"
+#~ msgstr "取消订单"
+
+#~ msgid "My Comments"
+#~ msgstr "我的评论"
 
 #~ msgid "Weekly inexpensive loose flower"
 #~ msgstr "每周不贵的散花"

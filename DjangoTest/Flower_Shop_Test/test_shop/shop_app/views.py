@@ -11,7 +11,7 @@ from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.views import View
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile, Address, DefaultAddress, \
@@ -19,7 +19,6 @@ from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, P
 from .forms import CartForm, AddPhotoForm
 import base64
 import shutil
-
 
 
 def index(request):
@@ -210,7 +209,7 @@ def add_order(request):
 #     selected_order.save()
 #     return index(request)
 
-
+@csrf_exempt
 def profile(request):
     # global logedin_user
     # if request.user.is_authenticated:
@@ -400,7 +399,7 @@ def history_order(request):
                         pic2 = product_obj.product_image
                     p_list.append(ProductInfo(product_obj, product_num))
                 i = i + 1
-            print(pic1, pic2)
+
             o_list.append(OrderInfo(p_list, order_id, total_price, order_date, a_order.status, pic1, pic2))
         return render(request, 'history_order.html', {'order_list': o_list})
     else:
@@ -709,6 +708,7 @@ def savePic(request):
 
 @csrf_exempt
 def savePicOrder(request):
+
     data = str(request.POST.get('dataSRC'))
     order_id = request.POST.get('order_id')
     pic_name = str(request.user.id)+'_'+str(order_id)+'_DIY.png'

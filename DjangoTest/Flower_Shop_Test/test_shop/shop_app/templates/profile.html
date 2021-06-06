@@ -1,9 +1,9 @@
 
 {% extends "_profile_base.html" %}
+
+{% block title %}Account{% endblock %}
+
 {% load i18n %}
-
-{% block title %}{% trans "Account"%}{% endblock %}
-
 
 {% block content %}
       <style>
@@ -226,7 +226,7 @@ html.active .button a.save {
 			</div>
 			<div class="about">
                     <form method="post" enctype="multipart/form-data" action="{% url 'shop_app:profile' %}">
-                        {% csrf_token %}
+{#                        {% csrf_token %}#}
                         {{ msg }}
                         {{ af.as_p }}
                         <input type="submit" value="OK"/>
@@ -429,7 +429,6 @@ function changeProfile(getId){
 }
 
 </script>
-
 {% endblock %}
 
 
