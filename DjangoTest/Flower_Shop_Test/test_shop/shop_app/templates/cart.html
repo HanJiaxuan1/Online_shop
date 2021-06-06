@@ -318,7 +318,7 @@ function changeNumber(getId,value){
         data:{'getId':getId,"changenumber":value},
         async : false,
         success : function(data){
-             {#$("#msg_content").html("Success change " + data["getId"]);#}
+             $("#msg_content").html("Successfully changed the number of "+data["item"]);
         }
     });
 }

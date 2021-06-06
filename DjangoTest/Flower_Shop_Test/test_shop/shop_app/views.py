@@ -552,8 +552,10 @@ def changenumber(request):
     changeObject.number = changenumber
     changeObject.save()
     print(changeObject)
+    pid = changeObject.product_id
+    item = Product.objects.get(product_id=pid)
     # Cart.objects.filter(cart_id=getid).update(number=changenumber)
-    response = JsonResponse({"getId": getid})
+    response = JsonResponse({"item": item.product_name})
     return response
 
 
