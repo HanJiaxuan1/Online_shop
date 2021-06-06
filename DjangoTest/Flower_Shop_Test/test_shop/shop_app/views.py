@@ -400,7 +400,7 @@ def history_order(request):
                         pic2 = product_obj.product_image
                     p_list.append(ProductInfo(product_obj, product_num))
                 i = i + 1
-            print(pic1, pic2)
+
             o_list.append(OrderInfo(p_list, order_id, total_price, order_date, a_order.status, pic1, pic2))
         return render(request, 'history_order.html', {'order_list': o_list})
     else:
@@ -709,6 +709,7 @@ def savePic(request):
 
 @csrf_exempt
 def savePicOrder(request):
+
     data = str(request.POST.get('dataSRC'))
     order_id = request.POST.get('order_id')
     pic_name = str(request.user.id)+'_'+str(order_id)+'_DIY.png'

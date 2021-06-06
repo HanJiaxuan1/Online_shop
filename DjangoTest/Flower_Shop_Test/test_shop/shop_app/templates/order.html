@@ -91,6 +91,7 @@
                                                  <li class="list-group-item d-flex justify-content-between lh-condensed order-list">
                                                  <img id="diy_img"  width="80px"  src="/media/media/static/product/{{ user.id }}_DIY.png"/>
                                                  <span>
+                                                     <p id="diy_order_id" class="my-0">{{ order_id }}</p>
                                                      <p id="diy_name" class="my-0">{{ item.product_obj.product_name }}</p></span>
                                                  <span class="text-muted" id="i_num">   {{ item.product_num }}</span>
                                              </li>
@@ -354,11 +355,41 @@ window.onload=function(){
 
         }
     });
+
 }
 
 
 
-  $(document).ready(function() {
+
+
+$(document).ready(function() {
+
+    let image = $("#diy_img")
+
+    console.log("---------------before saving image");
+    if (image != null){
+            console.log("-------------------ready to save image");
+            let img_src = image.attr("src");
+            {#savediypic(img_src, order_id)#}
+        let order_id = $("#diy_order_id").text()
+        console.log("------------------image save ajax activate")
+        console.log(img_src)
+        console.log(order_id)
+            $.ajax({
+                type : 'post',
+                url : '../../diy_pic_order/',
+                async : false,
+                cache: true,
+                data: {
+                    'dataSRC' : img_src,
+                    'order_id' : order_id
+                },
+                success : function() {
+                console.log("-------------------save image success");
+                }
+            });
+    }
+
 
    $("#pickup").click(function() {
 
@@ -371,6 +402,13 @@ window.onload=function(){
 
    });
 
+
+
+
+
+
+
+
   });
 
 function goBack() {
@@ -378,10 +416,10 @@ function goBack() {
     window.location.href = document.referrer;
 }
 
-    $(function() {
+$(function() {
         // 加载完页面时,计算总计
         calculateItemSum();
-    });
+});
     function calculateItemSum(){
         let sum_all = 0
         let each_item = $(".order-list").each(function (index) {
@@ -410,15 +448,6 @@ function goBack() {
         {#console.log("phone = "+phone);#}
         {#console.log("address = "+ address);#}
 
-        console.log(order_id)
-
-        let image = $("#diy_img")
-
-        if (image != null){
-            console.log("its a diy order");
-            let img_src = image.attr("src");
-            savediypic(img_src, order_id)
-        }
 
 
     $.ajax({
@@ -436,25 +465,6 @@ function goBack() {
         }
     });
 }
-
-
-function savediypic(dataSRC, order_id) {
-    console.log("savediypic activate")
-    $.ajax({
-        type : 'post',
-        url : '../../diy_pic_order/',
-        data: {
-            'dataSRC' : dataSRC,
-            'order_id' : order_id
-        },
-        async : false,
-        success : function() {
-
-        }
-    });
-}
-
-
 
 
 function addtocart(order_id) {
