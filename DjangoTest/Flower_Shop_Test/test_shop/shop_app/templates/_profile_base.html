@@ -229,7 +229,7 @@ p {
 
             <span class="navbar-caption-wrap">
                 <img src="https://img.icons8.com/color/50/000000/ikebana.png"/>
-                <a class="navbar-caption text-black display-2" >
+                <a class="navbar-caption text-black display-2"   href="{% url 'shop_app:index' %}">
                     Bouquet Pickup
                 </a>
 
@@ -369,12 +369,12 @@ p {
         <h4 class="font-italic">
             {% trans "Account" %}</h4>
        <ol class="list-unstyled ">
+           <li><a href="{% url 'shop_app:profile' %}" style="color: gray">
+              {% trans "Profile" %}</a></li>
           <li><a href="{% url 'shop_app:favorites' %}" style="color: gray">
               {% trans "Favorites" %}</a></li>
           <li><a href="{% url 'shop_app:address' %}" style="color: gray">
               {% trans "My Address" %}</a></li>
-           <li><a href="{% url 'shop_app:service' %}" style="color: gray">
-              {% trans "Service" %}</a></li>
         </ol>
 
       </div>
@@ -386,10 +386,12 @@ p {
         <ol class="list-unstyled ">
           <li><a href="{% url 'shop_app:history_order' %}" style="color: gray">
               {% trans "My Orders" %}</a></li>
-          <li><a href="#" style="color: gray">
-              {% trans "Cancelled Order" %}</a></li>
-          <li><a href="#" style="color: gray">
-              {% trans "My Comments" %}</a></li>
+          <li><a href="{% url 'shop_app:service' %}"  style="color: gray">
+              {% trans "Service" %}</a></li>
+{#          <li><a href="#" style="color: gray">#}
+{#              {% trans "Cancelled Order" %}</a></li>#}
+{#          <li><a href="#" style="color: gray">#}
+{#              {% trans "My Comments" %}</a></li>#}
 
         </ol>
 
