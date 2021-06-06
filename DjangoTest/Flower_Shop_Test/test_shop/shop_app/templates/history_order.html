@@ -62,22 +62,22 @@
 
 {% for order in order_list %}
             <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-4">
                     <td style="position:relative;">
 
                         {% for product in order.products  %}
 
                             {% if product.product_obj.product_id == 1 %}
-                                <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80"
+                                <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="200" height="100"
                                      src="/media/user/diy/{{ request.user.id }}_{{ order.order_id }}_DIY.png">
 
                             {% else %}
-                                <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="80" height="80"
+                                <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="100" height="100"
                                      src="/media/{{order.pic1}}" />
 
 
                                 {% if order.pic2 %}
-                                    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="80" height="80" src="/media/{{order.pic2}}" />
+                                    <img class="media-object img-thumbnail" style="position:absolute; top:15px; left:10px; z-index:1" width="100" height="100" src="/media/{{order.pic2}}" />
                                 {% endif %}
 
                             {% endif %}
@@ -87,21 +87,36 @@
 </td>
                 </div>
 
-                <div class="col-md-11">
+                <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="pull-right"><label class="label label-danger">{{ order.status }}</label></div>
+                            <div class="pull-right"><label class="label label-danger">
+
+
+
+                                {% if order.status == 'paid' or order.status == 'unpaid'  %}
+                                    <a href="/{{ order.order_id }}/order" class="btn btn-info display-7">{{ order.status }}</a>
+                                {% else %}
+                                    <a href="#" class="btn btn-info display-9">{{ order.status }}</a>
+                                {% endif %}
+
+
+
+                            </label></div>
 
                              <small>
+                             <div>{% trans "Receiver Name"%} : {{ order.order_receiver }}</div>
+                             <div>{% trans "Phone"%} : {{ order.order_phone }}</div>
+                             <div>{% trans "Address"%} : {{ order.order_address }}</div>
                              {% for product in order.products  %}
                                  {{ product.product_obj.product_name }}
                                  <span> * {{ product.product_num }} </span>
                                  <br />
                              {% endfor %}
-                                 Cost: {{ order.total_price }} <br />
+                                 {% trans "Order Cost"%} : {{ order.total_price }} <br />
                             </small>
                         </div>
-                        <div class="col-md-12">{% trans "order made on: "%} <a href="#">{{ order.order_date }}</a></div>
+                        <div class="col-md-12">{% trans "order made on: "%} {{ order.order_date }}</div>
                     </div>
                 </div>
             </div>
