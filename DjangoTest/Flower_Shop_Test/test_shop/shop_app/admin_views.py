@@ -14,7 +14,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Product, Cart, Order, Question, QuestionDetails, Favorite, Profile
 from .forms import CartForm
-from .views import QuestionInfo, time_delta
+from .views import QuestionInfo, time_delta, OrderInfo, ProductInfo
 
 
 def question(request):
@@ -175,3 +175,49 @@ def statistics(request):
                                                'week3': week3,'week4': week4,'week5': week5,'week6': week6,
                                                'number1': week_bouquet, 'number2': number2,'number3': number3,
                                                'number4': number4,'number5': number5,'number6': number6})
+
+
+def order(request):
+    # order_all_list = Order.objects.order_by('order_id')
+    # order_list = []
+    # for order in order_all_list:
+    #     order_list.append(OrderInfo(order.order_id, order.
+    #                                       time_delta(question.date)))
+    # context = {
+    #     'question_list': question_list,
+    # }
+    # return render(request, 'admin_question.html', context)
+
+    #     logedin_user = get_object_or_404(Profile, request.user.username)
+
+
+    order_list = Order.objects.order_by('-order_id')
+
+    o_list = []
+    for a_order in order_list:
+        order_id = a_order.order_id
+        order_receiver = a_order.receiver
+        order_phone = a_order.phone
+        order_address = a_order.address
+        product_details = a_order.order_list.split(';')
+        total_price = 0
+        order_date = a_order.date.strftime('%y/%m/%d')
+        p_list = []
+        i = 1
+        pic1 = ''
+        pic2 = ''
+        for detail in product_details:
+            if detail != '':
+                product_obj = Product.objects.get(pk=int(detail.split(':')[0]))
+                product_num = detail.split(':')[1]
+                total_price = total_price + int(product_obj.price) * int(product_num)
+                if i == 1:
+                    pic1 = product_obj.product_image
+                if i == 2:
+                    pic2 = product_obj.product_image
+                p_list.append(ProductInfo(product_obj, product_num))
+            i = i + 1
+
+        o_list.append(OrderInfo(p_list, order_id, total_price, order_date, a_order.status, pic1, pic2, order_receiver,
+                                order_phone, order_address))
+    return render(request, 'admin_history_order.html', {'order_list': o_list})

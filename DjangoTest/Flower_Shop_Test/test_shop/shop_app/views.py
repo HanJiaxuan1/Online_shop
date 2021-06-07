@@ -594,6 +594,7 @@ def addToOrder(request):
 def order(request, order_id):
     user = request.user
     selected_order = Order.objects.filter(user=request.user).get(pk=order_id)
+    order_status = selected_order.status
     info = selected_order.order_list
     product_details = info.split(';')
     p_list = []
@@ -610,7 +611,9 @@ def order(request, order_id):
             p_list.append(ProductInfo(product_obj, product_num))
     # print(p_list)
 
-    return render(request, 'order.html', {'product_list': p_list, 'order_id': order_id,
+    return render(request, 'order.html', {'product_list': p_list,
+                                          'order_id': order_id,
+                                          'order_status': order_status,
                                           'user': request.user,
                                           'default_address': defaultAddress})
 
@@ -725,7 +728,8 @@ def savePicOrder(request):
     old_path = data
     new_path = 'media/user/diy/' + pic_name
     # new_path = 'media/media/static/product/1_4_DIY.png'
-    os.renames(old_path, new_path)
+    shutil.copy(old_path, new_path)
+    # os.renames(old_path, new_path)
 
     # imagedata = base64.b64decode(data)
     # with open('./media/user/diy/'+pic_name, 'wb') as f:
