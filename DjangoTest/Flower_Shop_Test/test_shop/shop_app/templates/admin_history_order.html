@@ -20,7 +20,7 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <style type="text/css">
 
-     <style type="text/css">
+<style type="text/css">
 
 .container.panel-order .row {
 	border-bottom: 1px solid #ccc;
@@ -107,29 +107,23 @@
                         <div class="col-md-12">
                             <div class="pull-right"><label class="label label-danger">
 
-
-
-                                {% if order.status == 'paid' or order.status == 'unpaid'  %}
-                                    <a href="/{{ order.order_id }}/order" class="btn btn-info display-7">{{ order.status }}</a>
-                                {% else %}
-                                    <a href="#" class="btn btn-info display-9">{{ order.status }}</a>
-                                {% endif %}
-
-
-
                             </label></div>
 
-                             <small>
+                            <a href="{{ order.order_id }}/" class="btn btn-info display-7">Detail</a>
+
+
+                             <div>{% trans "Order ID"%} : {{ order.order_id }}</div>
                              <div>{% trans "Receiver Name"%} : {{ order.order_receiver }}</div>
-                             <div>{% trans "Phone"%} : {{ order.order_phone }}</div>
-                             <div>{% trans "Address"%} : {{ order.order_address }}</div>
+                             <div>{% trans "Order Status"%} : {{ order.status }}</div>
+                            <div class="col-md-12">
                              {% for product in order.products  %}
                                  {{ product.product_obj.product_name }}
                                  <span> * {{ product.product_num }} </span>
                                  <br />
                              {% endfor %}
+                            </div>
                                  {% trans "Order Cost"%} : {{ order.total_price }} <br />
-                            </small>
+
                         </div>
                         <div class="col-md-12">{% trans "order made on: "%} {{ order.order_date }}</div>
                     </div>

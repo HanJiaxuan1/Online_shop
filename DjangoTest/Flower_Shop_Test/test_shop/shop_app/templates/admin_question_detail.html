@@ -7,7 +7,7 @@
 <div id="content-main">
 
 
-<div class="float-right"><a href="{% url 'shop_app_question:question_detail' question.question_id %}" class="text-black">
+<div class="float-right"><a href="{% url 'admin_question:question_detail' question.question_id %}" class="text-black">
                                 {% trans "Check Replies"%}</a></div>
                            </div>
 {% for message in detail_list %}
@@ -32,7 +32,7 @@
     {% endif %}
 {% endfor %}
 
-<form action="{% url 'shop_app_question:adminNewMessage' question.question_id %}" method="post">
+<form action="{% url 'admin_question:adminNewMessage' question.question_id %}" method="post">
         {% csrf_token %}
     <div class="chat-message clearfix">
         <div class="input-group mb-0">
