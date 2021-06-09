@@ -255,28 +255,7 @@ p {
 
 
           {% endif %}
-
-                            <li class="nav-item ">
-					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:about_us' %}">
-						{% trans "About Us" %}
-                    </a>
-
-				</li>
-
-                       <li class="nav-item ">
-					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:cart' %}">
-						{% trans "Cart" %}
-                    </a>
-
-				</li>
-
-                <li class="nav-item ">
-					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:service' %}">
-						{% trans "Service" %}
-                    </a>
-
-				</li>
-                    	<li class="nav-item dropdown open">
+                <li class="nav-item dropdown open">
 					<a class="nav-link link text-black display-4 dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">
 						{% trans "Store" %}
                     </a>
@@ -293,6 +272,15 @@ p {
 
 					</div>
 				</li>
+
+                <li class="nav-item ">
+					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:cart' %}">
+						{% trans "Cart" %}
+                    </a>
+
+				</li>
+
+
          <li class="nav-item dropdown open">
 					<a class="nav-link link text-black display-4 dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">
 						{% trans "Profile" %}</a>
@@ -306,14 +294,19 @@ p {
 
 					</div>
 				</li>
+
+
+                <li class="nav-item ">
+					<a class="nav-link link text-black display-4 " href="{% url 'shop_app:about_us' %}">
+						{% trans "About Us" %}
+                    </a>
+				</li>
+
             </ul>
    {% if request.user.is_authenticated %}
 
        <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4 " href="{% url 'account:logout' %}" >
                   {% trans "Logout" %}</a></div>
-
-
-
 
           {% else %}
 
@@ -321,9 +314,10 @@ p {
        <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-4 " href="{% url 'account:login' %}" >
                   {% trans "Login" %}</a></div>
 
-
-
           {% endif %}
+
+       <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-info display-15 " href="/admin" >
+                  {% trans "Staff Portal" %}</a></div>
 
 
             <div>
