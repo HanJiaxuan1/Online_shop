@@ -202,6 +202,9 @@
                     <label for="address">{% trans "Receiver Address"%}</label>
                     {% if default_address %}
                     {% for default_item in default_address %}
+                        <div>Default Address:
+                            <p id="default_hint">{{default_item.default_address.address}}</p>
+                        </div>
                     <input type="text" class="form-control" id="address"  placeholder={% trans "Please enter your address here."%}
                            required  value="{{default_item.default_address.address}}" >
                     {% endfor %}
@@ -369,7 +372,8 @@ $(document).ready(function() {
     let image = $("#diy_img")
 
     console.log("---------------before saving image");
-    if (image != null){
+    console.log(image.val());
+    if (image.val() != null){
             console.log("-------------------ready to save image");
             let img_src = image.attr("src");
             {#savediypic(img_src, order_id)#}
@@ -395,12 +399,16 @@ $(document).ready(function() {
 
    $("#pickup").click(function() {
 
+    $("#receiver_address>input").attr("value", "Pick up at store");
     $("#receiver_address").hide();
+
 
    });
       $("#delivery").click(function() {
 
-    $("#receiver_address").show();
+          let def_address = $("#default_hint").text()
+          $("#receiver_address>input").attr("value", def_address);
+          $("#receiver_address").show();
 
    });
 
