@@ -43,7 +43,7 @@ def admin_message(request, question_id):
                                   source='staff',
                                   date=datetime.datetime.now().strftime('%I:%M %p, %m.%d'))
     new_message.save()
-    return HttpResponseRedirect(reverse('shop_app_question:question_detail', args=(question.question_id,)))
+    return HttpResponseRedirect(reverse('admin_question:question_detail', args=(question.question_id,)))
 
 
 def statistics(request):

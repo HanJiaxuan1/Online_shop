@@ -260,7 +260,6 @@
     <div class="col-sm-12">
         <div class="card chat-app">
 
-
             <div class="chat">
                 <div class="chat-header clearfix">
                     <div class="row">
@@ -269,7 +268,6 @@
                             <div class="chat-about">
                                 <h4 class="m-b-0">{{ question.question_text }}</h4>
                                 <small> {{ question.category }}</small>
-
 
                             </div>
                             <div class="float-right"><a href="{% url 'shop_app:communication' question.question_id %}" class="text-black">
@@ -285,7 +283,7 @@
                                 <li class="clearfix">
                             <div class="message-data text-right">
                                 <span class="message-data-time">{{ message.date }}</span>
-                                <img src="../../static/store/photo.jpg" alt="avatar">
+                                <img src="/static/store/photo.jpg" alt="avatar">
                             </div>
                             <div class="message other-message float-right"> {{ message.answer_text }}</div>
                         </li>
@@ -295,7 +293,7 @@
                                 <li class="clearfix">
                             <div class="message-data">
                                 <span class="message-data-time">{{ message.date }}</span>
-                                   <img src="../../static/store/avatar.jpg" alt="avatar">
+                                   <img src="/static/store/avatar.jpg" alt="avatar">
                             </div>
                             <div class="message my-message">{{ message.answer_text }}</div>
                         </li>
