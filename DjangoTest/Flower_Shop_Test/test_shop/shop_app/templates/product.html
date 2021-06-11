@@ -111,6 +111,26 @@
                     <hr>
 </form>
                     <ul class="media-list">
+                        {% for comment in comments %}
+                        <li class="media">
+                            <a href="#" class="pull-left">
+                                {% if not comment.user_portrait %}
+                                    <img src="/static/store/photo.jpg" alt="" class="img-circle">
+                                {% else %}
+                                    <img src="/media/user/{{ comment.user_portrait }}" alt="" class="img-circle">
+                                {% endif %}
+                            </a>
+                            <div class="media-body">
+                                <span class="text-muted pull-right">
+                                    <small class="text-muted">{{ comment.time_d }}</small>
+                                </span>
+                                <strong class="text-success">{{ comment.username }}</strong>
+                                <p>
+                                    {{ comment.text }}
+                                </p>
+                            </div>
+                        </li>
+                        {% endfor %}
                         <li class="media">
                             <a href="#" class="pull-left">
                                 <img src="/static/store/avatar.jpg" alt="" class="img-circle">
@@ -139,26 +159,7 @@
                                 </p>
                             </div>
                         </li>
-                        {% for comment in comments %}
-                        <li class="media">
-                            <a href="#" class="pull-left">
-                                {% if not comment.user_portrait %}
-                                    <img src="/static/store/photo.jpg" alt="" class="img-circle">
-                                {% else %}
-                                    <img src="/media/{{ comment.user_portrait }}" alt="" class="img-circle">
-                                {% endif %}
-                            </a>
-                            <div class="media-body">
-                                <span class="text-muted pull-right">
-                                    <small class="text-muted">{{ comment.time_d }}</small>
-                                </span>
-                                <strong class="text-success">{{ comment.username }}</strong>
-                                <p>
-                                    {{ comment.text }}
-                                </p>
-                            </div>
-                        </li>
-                        {% endfor %}
+
                     </ul>
                 </div>
             </div>
