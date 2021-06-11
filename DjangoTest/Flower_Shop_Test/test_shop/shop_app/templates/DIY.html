@@ -8,8 +8,9 @@
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<link rel="stylesheet" href="../../static/style/style.css" />
-    <link rel="stylesheet" href="../../static/style/prediction.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridstack@latest/dist/gridstack.min.css" />
+	<link rel="stylesheet" href="/static/style/style.css" />
+<link rel="stylesheet" href="/static/style/prediction.css" />
 		<!-- import the webpage's JavaScript file -->
 		<script src="../../static/style/script.js" defer></script>
 
@@ -22,105 +23,111 @@
     <p class="description">
         <span class="bold"></span> {% trans "Drag Flowers to your bouquet"%}
     </p>
-    <div align="center">
+
  <button class="btn btn-success"  id="save" data-toggle="modal" data-target="#modal-warning">{% trans "Done!"%}</button>
-    </div>
-</div>
-</div>
-<div class="row gutters" style="background: white" id="all">
- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+
+
+<div  style="background: white" id="all">
+<div class="row">
+
      		<div id="terrarium">
 				<div class="jar-top"></div>
-              <img class="box" alt="box" width="85%" id="box" src="../../static/style/images/circle.png" />
+              <img class="box" alt="box"  id="box" src="../../static/style/images/circle.png" />
 
-			</div>
+
  </div>
-            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-12">
-			<div id="left-container" class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    </div>
+    <div class="row col-md-12" width="100%">
+
+			<div   style="box-sizing: inherit" >
+
+                    <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant1" src="../../static/style/images/flower1.png" />
 				</div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant2" src="../../static/style/images/flower2.png" />
 				</div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant3" src="../../static/style/images/flower3.png" />
 				</div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant4" src="../../static/style/images/flower4.png" />
 				</div>
                     </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant5" src="../../static/style/images/flower5.png" />
 				</div>
                 </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant6" src="../../static/style/images/flower6.png" />
 				</div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant7" src="../../static/style/images/flower7.png" />
 				</div>
                     </div>
 
 			</div>
-            </div>
-            </div>
 
-         <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-12">
-			<div id="right-container" class="container">
-                <div class="row">
-                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+	<div class="row-cols-md-6" >
+
+                     <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant8" src="../../static/style/images/flower8.png" />
 				</div>
                      </div>
-                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                     <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant9" src="../../static/style/images/flower9.png" />
 				</div>
                      </div>
-                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                     <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant10" src="../../static/style/images/flower10.png" />
 				</div>
                      </div>
-                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                     <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant11" src="../../static/style/images/flower11.png" />
 				</div>
                      </div>
-                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                     <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant12" src="../../static/style/images/flower12.png" />
 				</div>
                      </div>
-                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                     <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant13" src="../../static/style/images/flower13.png" />
 				</div>
                      </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 ">
 				<div class="plant-holder">
 					<img class="plant" alt="plant" id="plant14" src="../../static/style/images/flower14.png" />
 				</div>
-                    </div>
+
 			</div>
          </div>
-         </div>
+        </div>
+
+
+
+            </div>
 </div>
 
+</div>
 
 
     <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
@@ -213,8 +220,8 @@
   $("#save").click(function () {
         html2canvas($("#all"),{
             dpi: window.devicePixelRatio,
-            x:822,
-            y:822,
+            x:722,
+            y:722,
             scale: 1,
             useCORS: true}).then (function (canvas)  {
 
