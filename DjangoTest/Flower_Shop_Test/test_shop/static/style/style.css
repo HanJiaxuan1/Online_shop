@@ -2,72 +2,27 @@
 
 
 .container {
-position: relative;
+	width: 100%;
 	top: 0px;
-
-
-}
-
-
-
-
-
-
- @media screen and (max-width: 767px) {
-    .plant-holder {
-	position: relative;
-	margin-left: 105px;
-}
-#box{
-	margin-top: 50px;
-	width:80%;
-	alignment: center;
-}
-.plant {
     position: relative;
 
-	max-width:60px;
-	z-index: 2;
 }
-        }
-        /* min-width:768px */
 
-        @media screen and (min-width: 768px) {
-    .plant-holder {
+.plant-holder {
 	position: relative;
-	margin-left: 108px;
-}
-
-#box{
-	margin-top: 60px;
-	width:80%;
-	alignment: center;
-}
-.plant {
-    position: relative;
-
-	max-width:60px;
-	z-index: 2;
-}
-        }
-        /* min-width:1200px */
-
-        @media screen and (min-width:1200px) {
-           .plant-holder {
-	position: relative;
-	margin-left: 200px;
+	height: 100%;
+	left: -10px;
 }
 
 .plant {
     position: relative;
-
-	max-width:150px;
+	max-width: 150%;
+	max-height: 150%;
 	z-index: 2;
 }
 
 #box{
-	margin-top: 60px;
-	width:50%;
-	alignment: center;
+	margin-top: 100px;
 }
-        }
+
+
