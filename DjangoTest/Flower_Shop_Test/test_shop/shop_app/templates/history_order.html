@@ -56,6 +56,10 @@
         <div class="panel-heading">
             <h4 >{% trans "Order History"%}</h4>
 
+            <div>
+                {% trans "You can still modify your information until the order is delivered"%}
+            </div>
+
         </div>
 
         <div class="panel-body">
@@ -69,7 +73,7 @@
 
                             {% if product.product_obj.product_id == 1 %}
                                 <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="90" height="90"
-                                     src="/media/user/diy/{{ request.user.id }}_{{ order.order_id }}_DIY.png">
+                                     src="/media/user/diy/{{ order.user_id }}_{{ order.order_id }}_DIY.png">
 
                             {% else %}
                                 <img class="media-object img-thumbnail" style="position:absolute;z-index:2;  left:-10px;" width="90" height="90"

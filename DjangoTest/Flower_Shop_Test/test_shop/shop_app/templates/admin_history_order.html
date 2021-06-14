@@ -84,7 +84,7 @@
 
                             {% if product.product_obj.product_id == 1 %}
                                 <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="200" height="100"
-                                     src="/media/user/diy/{{ request.user.id }}_{{ order.order_id }}_DIY.png">
+                                     src="/media/user/diy/{{ order.user_id }}_{{ order.order_id }}_DIY.png">
 
                             {% else %}
                                 <img class="media-object img-thumbnail" style="position:absolute; z-index:2; left:-10px;" width="100" height="100"

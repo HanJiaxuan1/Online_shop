@@ -196,6 +196,7 @@ def order(request):
     o_list = []
     for a_order in order_list:
         order_id = a_order.order_id
+        user_id = a_order.user.id
         order_receiver = a_order.receiver
         order_phone = a_order.phone
         order_address = a_order.address
@@ -218,6 +219,6 @@ def order(request):
                 p_list.append(ProductInfo(product_obj, product_num))
             i = i + 1
 
-        o_list.append(OrderInfo(p_list, order_id, total_price, order_date, a_order.status, pic1, pic2, order_receiver,
+        o_list.append(OrderInfo(p_list, order_id, user_id, total_price, order_date, a_order.status, pic1, pic2, order_receiver,
                                 order_phone, order_address))
     return render(request, 'admin_history_order.html', {'order_list': o_list})

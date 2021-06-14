@@ -359,9 +359,10 @@ class OrderInfo:
     pic1 = ''
     pic2 = ''
 
-    def __init__(self, product_info, order_id, price, date, status, pic1, pic2, order_receiver, order_phone, order_address):
+    def __init__(self, product_info, order_id, user_id, price, date, status, pic1, pic2, order_receiver, order_phone, order_address):
         self.products = product_info
         self.order_id = order_id
+        self.user_id = user_id
         self.total_price = price
         self.order_date = date
         self.status = status
@@ -384,6 +385,7 @@ def history_order(request):
         o_list = []
         for a_order in order_list:
             order_id = a_order.order_id
+            user_id = a_order.user.id
             order_receiver = a_order.receiver
             order_phone = a_order.phone
             order_address = a_order.address
@@ -406,7 +408,7 @@ def history_order(request):
                     p_list.append(ProductInfo(product_obj, product_num))
                 i = i + 1
 
-            o_list.append(OrderInfo(p_list, order_id, total_price, order_date, a_order.status, pic1, pic2,order_receiver,order_phone,order_address))
+            o_list.append(OrderInfo(p_list, order_id, user_id, total_price, order_date, a_order.status, pic1, pic2,order_receiver,order_phone,order_address))
         return render(request, 'history_order.html', {'order_list': o_list})
     else:
         return HttpResponseRedirect(reverse('account:login'))
